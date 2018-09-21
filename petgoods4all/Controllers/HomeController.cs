@@ -27,9 +27,9 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-        public ActionResult Test()
+        public ActionResult Productpage()
         {
-            ViewBag.Message = "This is the test page.";
+            ViewBag.Message = "This is the product info page";
 
             return View();
         }
