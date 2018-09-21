@@ -22,3 +22,44 @@ select,
 textarea {
     max-width: 280px;
 }
+
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    overflow-x: hidden;
+    font-family: 'Proxima Nova', sans-serif !important;
+}
+
+a, a:hover {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+}
+
+    .navbar ul {
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    .navbar #navbar .nav > li > a:focus {
+        background-color: #D4D4D4 !important;
+        color: black;
+    }
+
+    .navbar #navbar .nav > li > a:active, a:hover {
+        background-color: #D4D4D4 !important;
+        color: black !important;
+    }
+
+    .navbar img {
+        height: 5%;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+    }
