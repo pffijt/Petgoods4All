@@ -26,5 +26,12 @@ namespace petgoods4all.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            ViewBag.Message = "This is the test page.";
+
+            return View();
+        }
     }
 }
