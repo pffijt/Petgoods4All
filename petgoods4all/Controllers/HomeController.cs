@@ -26,5 +26,12 @@ namespace petgoods4all.Controllers
 
             return View();
         }
+
+        public ActionResult ShoppingCart()
+        {
+            ViewBag.Message = "Your ShoppingCart page.";
+
+            return View();
+        }
     }
 }
