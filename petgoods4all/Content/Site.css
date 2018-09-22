@@ -96,16 +96,20 @@ a, a:hover {
         margin-top: 7.5px;
     }
 
-        .navbar-nav > li {
-            float: none;
-        }
+    .navbar-nav > li {
+        float: none;
+    }
 
-            .navbar-nav > li > a {
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
+    .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 
     .collapse.in {
         display: block !important;
     }
+}
+
+hr {
+    border-color: black;
 }
