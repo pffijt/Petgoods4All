@@ -64,7 +64,7 @@ a, a:hover {
     bottom: 0;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1170px) {
     .navbar-header {
         float: none;
     }
