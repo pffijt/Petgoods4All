@@ -34,10 +34,21 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public ActionResult Aanmelden()
+        {
+            ViewBag.Message = "Your SignUp page.";
+
+            return View();
+        }
+        public ActionResult Inloggen()
+        {
+            ViewBag.Message = "Your Login page.";
+
+            return View();
+        }
         public ActionResult Productpage()
         {
-            ViewBag.Message = "This is the product info page";
-
+            ViewBag.Message = "Product page";
             return View();
         }
     }

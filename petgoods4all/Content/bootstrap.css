@@ -4319,28 +4319,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
     .navbar-collapse .navbar-text:last-child {
         margin-right: 0;
     }
-        .navbar-collapse.collapse {
-            display: block !important;
-            height: auto !important;
-            padding-bottom: 0;
-            overflow: visible !important;
-        }
-
-        .navbar-collapse.in {
-            overflow-y: visible;
-        }
-
-        .navbar-collapse .navbar-nav.navbar-left:first-child {
-            margin-left: -15px;
-        }
-
-        .navbar-collapse .navbar-nav.navbar-right:last-child {
-            margin-right: -15px;
-        }
-
-        .navbar-collapse .navbar-text:last-child {
-            margin-right: 0;
-        }
 }
 
 .container > .navbar-header,
