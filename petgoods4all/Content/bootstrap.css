@@ -4257,7 +4257,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-collapse {
+<<<<<<< HEAD
     max-height: auto;
+=======
+    max-height: 340px;
+>>>>>>> origin/Product-information
     padding-right: 15px;
     padding-left: 15px;
     overflow-x: visible;
@@ -4297,6 +4301,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
         box-shadow: none;
     }
 
+<<<<<<< HEAD
     .navbar-collapse.collapse {
         display: block !important;
         height: auto !important;
@@ -4319,6 +4324,30 @@ textarea.input-group-sm > .input-group-btn > .btn {
     .navbar-collapse .navbar-text:last-child {
         margin-right: 0;
     }
+=======
+        .navbar-collapse.collapse {
+            display: block !important;
+            height: auto !important;
+            padding-bottom: 0;
+            overflow: visible !important;
+        }
+
+        .navbar-collapse.in {
+            overflow-y: visible;
+        }
+
+        .navbar-collapse .navbar-nav.navbar-left:first-child {
+            margin-left: -15px;
+        }
+
+        .navbar-collapse .navbar-nav.navbar-right:last-child {
+            margin-right: -15px;
+        }
+
+        .navbar-collapse .navbar-text:last-child {
+            margin-right: 0;
+        }
+>>>>>>> origin/Product-information
 }
 
 .container > .navbar-header,

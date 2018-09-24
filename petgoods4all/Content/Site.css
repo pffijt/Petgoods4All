@@ -42,6 +42,7 @@ a, a:hover {
     width: 100%;
 }
 
+<<<<<<< HEAD
 .navbar ul {
     margin-left: 0%;
     margin-right: 10%;
@@ -112,4 +113,56 @@ a, a:hover {
 
 hr {
     border-color: black;
+=======
+    .navbar ul {
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    .navbar #navbar .nav > li > a:focus {
+        background-color: #D4D4D4 !important;
+        color: black;
+    }
+
+    .navbar #navbar .nav > li > a:active, a:hover {
+        background-color: #D4D4D4 !important;
+        color: black !important;
+    }
+
+    .navbar img {
+        height: 5%;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+    }
+
+ul.breadcrumb 
+{
+    padding: 10px 16px;
+    list-style: none;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+ul.breadcrumb li + li:before 
+{
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+    ul.breadcrumb li a 
+{
+    color: #0275d8;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover 
+{
+    color: #01447e;
+    text-decoration: underline;
+>>>>>>> origin/Product-information
 }
