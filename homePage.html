@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap 4 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <!--de slider doet het niet zonder de onderstaande link en script-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script> 
+        $(function(){
+          $("#header").load("header.html"); 
+          $("#footer").load("footer.html"); 
+        });
+  </script> 
+</head>
+<!--import header-->
+<header>
+    <br>
+    <div class="container-fluid" style="background-color:#ffefc4;">
+        <br>
+        <div class="row">
+            <div class="col-lg-2"><!--logo-->
+                <img src="cute.jpg" class="img-responsive" alt="Logo" width="100" height="50"/>
+            </div><!--end logo-->
+            <div class="col-lg-6"><!--search-->
+                <input class="form-control" id="SearchInput" type="text" placeholder="Search.."> 
+            </div><!--end search-->
+            <div class="col-lg-2"> <!--sign up/ login-->
+                <div class="row">
+                    <div class="col-lg-5">
+                        <a href="homePage.html">
+                            <p>Sign up</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-2"><p>|</p></div>
+                    <div class="col-lg-5">
+                        <a href="homePage.html">
+                            <p>Log in</p>
+                        </a>  
+                    </div>
+                </div>
+            </div> <!--end sign up/ login-->
+            <div class="col-lg-2"> <!--shoppingcart-->
+                <div class="col-lg-12">
+                    <a href="homePage.html">
+                        <img src="cute.jpg" class="img-responsive" alt="Shopcart" width="50" height="50"/>
+                    </a>
+                </div>
+            </div> <!--end shoppingcart-->
+        </div>
+        <br>
+    </div>
+    <br>
+</header>
+<body><!--homePage-->
+    <!--slider-->
+<div id="header"></div>
+<div id="footer"></div>
+    <div class="container" style="background-color:#ffefc4;">
+        <h2>Welkom on the homepage of PetGoods4All</h2>
+        <p>Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen.
+            Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw,<br>
+            toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde 
+            om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is,<br>
+            vrijwel onveranderd, overgenomen in elektronische letterzetting. 
+            Het is in de jaren '60 populair geworden met de introductie van Letraset vellen<br>
+            met Lorem Ipsum passages en meer recentelijk door desktop publishing 
+            software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+        </p>
+        <br>
+        
+        <div id="myCarouselHomePage" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+            <li data-target="#myCarouselHomePage" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarouselHomePage" data-slide-to="1"></li>
+            <li data-target="#myCarouselHomePage" data-slide-to="2"></li>
+            </ol>
+        
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+            <div class="item active">
+                <img src="sleepingCatDog.jpg" alt="sleepingCatDog" style="width:330px;height:300px;">
+            </div>
+        
+            <div class="item">
+                <img src="cute.jpg" alt="cute" style="width:330px;height:300px;">
+            </div>
+            
+            <div class="item">
+                <img src="cat_and_dog_fighting.jpg" alt="cat_and_dog_fighting" style="width:330px;height:300px;">
+            </div>
+            </div>
+        
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarouselHomePage" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarouselHomePage" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!--uitleg over de slider. dit heet een carousel en op deze link is de uitleg erover: https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
+    <!--end slider-->
+        <br><br>
+        <!--introduction-->
+            <h3>Introduction of PetGoods4All</h3>
+        <br>
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="cat_and_dog_fighting2.jpg" alt="cat_and_dog_fighting2" style="width:530px;height:300px;">
+                <br><br>
+                <p>Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. <br>
+                    Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, <br>
+                    toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde <br>
+                    om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is, <br>
+                    vrijwel onveranderd, overgenomen in elektronische letterzetting. <br>
+                    Het is in de jaren '60 populair geworden met de introductie van Letraset vellen <br>
+                    met Lorem Ipsum passages en meer recentelijk door desktop publishing <br>
+                    software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img src="sleepingCatDog2.jpg" alt="sleepingCatDog2" style="width:530px;height:300px;">
+                <br><br>
+                <p>Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. <br>
+                    Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, <br>
+                    toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde <br>
+                    om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is, <br>
+                    vrijwel onveranderd, overgenomen in elektronische letterzetting. <br>
+                    Het is in de jaren '60 populair geworden met de introductie van Letraset vellen <br>
+                    met Lorem Ipsum passages en meer recentelijk door desktop publishing <br>
+                    software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
+                </p>
+            </div>
+        </div>
+        <!--end introduction-->
+        <br>
+        <div class="row">
+        <!--link to polisie page-->
+            <div class="col-lg-6">
+                <a href="homePage.html">
+                    <p>To the contact page</p>
+                </a>
+            </div>
+        <!--end link to polisie page-->
+        <!--link to contact page-->
+            <div class="col-lg-6">
+                <a href="homePage.html">
+                    <p>To the policy page</p>
+                </a>
+            </div>
+        <!--end link to contact page-->
+        </div>
+    </div>
+</body><!--end homepage-->
+<footer>
+    <br>
+    <div class="container-fluid" style="background-color:#ffefc4;">
+        <br>
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+                <p>This webshop is made by PetGoods4All</p>
+            </div>
+            <div class="col-lg-4">
+                <i class="fa fa-copyright" style="font-size:24px"></i>
+            </div>
+        </div>
+        <br>
+    </div>
+</footer>
+<!--import footer-->
+</html> 
