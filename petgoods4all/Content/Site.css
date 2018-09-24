@@ -42,7 +42,6 @@ a, a:hover {
     width: 100%;
 }
 
-<<<<<<< HEAD
 .navbar ul {
     margin-left: 0%;
     margin-right: 10%;
@@ -113,8 +112,8 @@ a, a:hover {
 
 hr {
     border-color: black;
-=======
-    .navbar ul {
+}
+    /*.navbar ul {
         margin-left: 0%;
         margin-right: 10%;
     }
@@ -134,9 +133,9 @@ hr {
         position: fixed;
         top: 0;
         bottom: 0;
-    }
+    }*/
 
-ul.breadcrumb 
+/*ul.breadcrumb 
 {
     padding: 10px 16px;
     list-style: none;
@@ -164,5 +163,4 @@ ul.breadcrumb li a:hover
 {
     color: #01447e;
     text-decoration: underline;
->>>>>>> origin/Product-information
-}
+}*/
