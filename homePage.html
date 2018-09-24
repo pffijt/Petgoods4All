@@ -11,17 +11,21 @@
   <!--de slider doet het niet zonder de onderstaande link en script-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <!--de header en footer werken nog niet vanaf een ander bestand-->
   <script> 
         $(function(){
           $("#header").load("header.html"); 
           $("#footer").load("footer.html"); 
         });
   </script> 
+  <div id="header"></div>
+  <div id="footer"></div>
 </head>
 <!--import header-->
 <header>
     <br>
-    <div class="container-fluid" style="background-color:#ffefc4;">
+    <div class="container-fluid" style="background-color:#ffe8d3;">
         <br>
         <div class="row">
             <div class="col-lg-2"><!--logo-->
@@ -57,11 +61,10 @@
     </div>
     <br>
 </header>
+
 <body><!--homePage-->
     <!--slider-->
-<div id="header"></div>
-<div id="footer"></div>
-    <div class="container" style="background-color:#ffefc4;">
+    <div class="container-fluid" style="background-color:#ffe8d3;">
         <h2>Welkom on the homepage of PetGoods4All</h2>
         <p>Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen.
             Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw,<br>
@@ -161,9 +164,10 @@
         </div>
     </div>
 </body><!--end homepage-->
+
 <footer>
     <br>
-    <div class="container-fluid" style="background-color:#ffefc4;">
+    <div class="container-fluid" style="background-color:#ffe8d3;">
         <br>
         <div class="row">
             <div class="col-lg-4">
