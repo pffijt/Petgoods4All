@@ -41,7 +41,13 @@ a, a:hover {
     position: fixed;
     width: 100%;
 }
-
+.navbar-brand {
+    background: url(../Content/Images/Logo_Petgoods4You.png) no-repeat top left;
+    display: block;
+    width: 248px;
+    height: 59px;
+    text-indent: -9999px;
+}
 .navbar ul {
     margin-left: 0%;
     margin-right: 10%;
