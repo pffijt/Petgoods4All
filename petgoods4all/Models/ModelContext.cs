@@ -7,9 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace petgoods4all.Models
 {
-    public class Model : DbContext
+    public class ModelContext : DbContext
     {   //this is actual entity object linked to the Voorraad in our DB
         public DbSet<Voorraad> Voorraad { get; set; }
+
+        public DbSet<Account> Account { get; set; }
 
         //this method is run automatically by EF the first time we run the application
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -17,15 +19,5 @@ namespace petgoods4all.Models
             //here we define the name of our database
             optionsBuilder.UseNpgsql("User ID=postgres;Password=admin;Host=localhost;Port=5432;Database=Voorraad;Pooling=true;");
         }
-    }
-
-    public class Voorraad
-    {
-        public int Id { get; set; }
-        public string Naam { get; set; }
-        public string Dier { get; set; }
-        public string Subklasse { get; set; }
-        public int Kwantiteit { get; set; }
-        public double Prijs { get; set; }
-    }
+    } 
 }

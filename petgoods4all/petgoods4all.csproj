@@ -405,7 +405,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\ModelContext.cs" />
+    <Compile Include="Models\Voorraad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -464,6 +466,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Home\View.cshtml" />
     <None Include="Views\Home\Wishpage.cshtml" />
   </ItemGroup>
   <ItemGroup>
