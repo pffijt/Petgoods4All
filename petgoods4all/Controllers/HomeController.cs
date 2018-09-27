@@ -51,5 +51,10 @@ namespace petgoods4all.Controllers
             ViewBag.Message = "Product page";
             return View();
         }
+        public ActionResult Wishpage()
+        {
+            ViewBag.Message = "This is your wishpage.";
+            return View();
+        }
     }
 }
