@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace petgoods4all.Controllers
 {
     public class AccountController : Controller
@@ -25,6 +26,8 @@ namespace petgoods4all.Controllers
         {
             var email = inputEmail;
             var password = inputPassword;
+
+            var result = from Acc in account select Acc;
 
             return View();
         }
