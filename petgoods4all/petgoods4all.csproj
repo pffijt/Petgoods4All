@@ -354,6 +354,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\bgAnimals.jpg" />
     <Content Include="Content\Images\cart.png" />
     <Content Include="Content\Images\Cat food.jpg" />
     <Content Include="Content\Images\cat_and_dog_fighting.jpg" />
@@ -366,6 +367,7 @@
     <Content Include="Content\Images\sleepingCatDog.jpg" />
     <Content Include="Content\Images\sleepingCatDog2.jpg" />
     <Content Include="Content\signin.css" />
+    <Content Include="Content\índex.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
