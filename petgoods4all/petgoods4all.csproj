@@ -458,7 +458,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ShoppingCart.cshtml" />
     <Content Include="Views\Account\Aanmelden.cshtml" />
-    <Content Include="Views\Home\Inloggen.cshtml" />
+    <Content Include="Views\Account\Inloggen.cshtml" />
     <Content Include="Views\Home\Productpage.cshtml" />
     <Content Include="Views\Order\OrderHistory.cshtml" />
   </ItemGroup>

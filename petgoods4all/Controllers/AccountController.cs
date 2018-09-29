@@ -21,6 +21,13 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public ActionResult Inloggen()
+        {
+            ViewBag.Message = "Your Login page.";
+
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
         {
@@ -28,12 +35,14 @@ namespace petgoods4all.Controllers
             var password = inputPassword;
 
             var db = new ModelContext();
+        
+            var result = from acc in db.Account select acc.id;
 
-            var result = from acc in db.Account select acc;
+            var MaxId = result.Max();
 
             Account a = new Account
             {
-                id = result.Count() + 1,
+                id = MaxId + 1,
                 email = inputEmail,
                 password = confirmPassword
             };
@@ -41,8 +50,7 @@ namespace petgoods4all.Controllers
             db.Account.Add(a);
             db.SaveChanges();
             
-
-            return View();
+            return View("~/Views/Account/Inloggen.cshtml");
         }
     }
 }
