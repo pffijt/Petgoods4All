@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using petgoods4all.Models;
 
 namespace petgoods4all.Controllers
 {
@@ -27,7 +27,20 @@ namespace petgoods4all.Controllers
             var email = inputEmail;
             var password = inputPassword;
 
-            var result = from Acc in account select Acc;
+            var db = new ModelContext();
+
+            var result = from acc in db.Account select acc;
+
+            Account a = new Account
+            {
+                id = result.Count() + 1,
+                email = inputEmail,
+                password = confirmPassword
+            };
+
+            db.Account.Add(a);
+            db.SaveChanges();
+            
 
             return View();
         }
