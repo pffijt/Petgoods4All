@@ -51,5 +51,15 @@ namespace petgoods4all.Controllers
             ViewBag.Message = "Product page";
             return View();
         }
+        public ActionResult ProductBrowsen()
+        {
+            ViewBag.Message = "Producten";
+            return View();
+        }
+        public ActionResult infoPagina()
+        {
+            ViewBag.Message = "Information";
+            return View();
+        }
     }
 }
