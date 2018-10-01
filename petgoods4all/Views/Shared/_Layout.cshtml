@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - Petgoods4All</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/índex.css"/>
 </head>
 <body>
     <!-- ROUTING NAVBAR -->
@@ -20,17 +21,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    @Html.ActionLink("Petgoods4All", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @*@Html.ActionLink("Petgoods4All", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                    <img src="~/Content/Images/Logo_Petgoods4You.png" class="img-responsive" alt="Logo" width="200" height="50" />
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Dog", "Index", "Home")</li>
                     <li>@Html.ActionLink("Cat", "About", "Home")</li>
                     <li>@Html.ActionLink("Bird", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Other animals", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Shopping cart", "ShoppingCart", "Home")</li>
-                    <li>@Html.ActionLink("Product page", "ProductPage", "Home")</li>
+                    <li>@Html.ActionLink("Information", "infoPagina", "Home")</li>
                     <li>
                         <form class="nav navbar-form form-inline">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

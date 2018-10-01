@@ -411,6 +411,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\contact.css" />
+    <Content Include="Content\Images\bg3.PNG" />
+    <Content Include="Content\Images\bgAnimals.jpg" />
+    <Content Include="Content\Images\bgAnimals2.jpg" />
     <Content Include="Content\Images\cart.png" />
     <Content Include="Content\Images\Cat food.jpg" />
     <Content Include="Content\Images\cat_and_dog_fighting.jpg" />
@@ -422,7 +426,10 @@
     <Content Include="Content\Images\lookingAnimals.jpg" />
     <Content Include="Content\Images\sleepingCatDog.jpg" />
     <Content Include="Content\Images\sleepingCatDog2.jpg" />
+    <Content Include="Content\infoPagina.css" />
+    <Content Include="Content\productBrowsen.css" />
     <Content Include="Content\signin.css" />
+    <Content Include="Content\índex.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -456,6 +463,8 @@
     <Content Include="Views\Home\Aanmelden.cshtml" />
     <Content Include="Views\Home\Inloggen.cshtml" />
     <Content Include="Views\Home\Productpage.cshtml" />
+    <Content Include="Views\Home\productBrowsen.cshtml" />
+    <Content Include="Views\Home\infoPagina.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
