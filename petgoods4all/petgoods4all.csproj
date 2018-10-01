@@ -401,11 +401,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\ModelContext.cs" />
+    <Compile Include="Models\Voorraad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -460,11 +464,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ShoppingCart.cshtml" />
-    <Content Include="Views\Home\Aanmelden.cshtml" />
-    <Content Include="Views\Home\Inloggen.cshtml" />
+    <Content Include="Views\Account\Aanmelden.cshtml" />
+    <Content Include="Views\Account\Inloggen.cshtml" />
     <Content Include="Views\Home\Productpage.cshtml" />
     <Content Include="Views\Home\productBrowsen.cshtml" />
     <Content Include="Views\Home\infoPagina.cshtml" />
+    <Content Include="Views\Order\OrderHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -473,6 +478,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Home\View.cshtml" />
     <None Include="Views\Home\Wishpage.cshtml" />
   </ItemGroup>
   <ItemGroup>
