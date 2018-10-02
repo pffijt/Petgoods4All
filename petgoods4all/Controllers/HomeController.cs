@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace petgoods4all.Controllers
 {
@@ -34,26 +34,26 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-        public ActionResult Aanmelden()
-        {
-            ViewBag.Message = "Your SignUp page.";
-
-            return View();
-        }
-        public ActionResult Inloggen()
-        {
-            ViewBag.Message = "Your Login page.";
-
-            return View();
-        }
         public ActionResult Productpage()
         {
             ViewBag.Message = "Product page";
             return View();
         }
+
         public ActionResult Wishpage()
         {
             ViewBag.Message = "This is your wishpage.";
+
+            return View();
+        }
+        public ActionResult ProductBrowsen()
+        {
+            ViewBag.Message = "Producten";
+            return View();
+        }
+        public ActionResult infoPagina()
+        {
+            ViewBag.Message = "Information";
             return View();
         }
     }

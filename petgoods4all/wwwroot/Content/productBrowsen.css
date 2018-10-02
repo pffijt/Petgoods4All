@@ -1,0 +1,37 @@
+﻿
+h2 {
+    padding: 50px 20px 20px 20px;
+}
+
+body, p {
+    padding: 10px 10px 10px 10px;
+    
+}
+
+#browsProduct, img {
+    margin: 5px 0px 0px 15px;
+    border-radius: 10%;
+    text-align: center;
+}
+
+#browsProductContainer {
+    background-color: #ffddbf;
+    padding: 20px 5px 0px 0px;
+    margin: 20px 15px 0px 15px;
+    border-radius: 10%;
+    text-align: center;
+    width:210px;
+    height:225px;
+}
+
+button {
+    margin: 0px 0px 0px 35px;
+    background-color: snow;
+    border-color: #ffddbe;
+    border-radius: 10%;
+}
+
+    button:hover {
+        background-color: #ffddbe;
+        border-color: snow;
+    }
