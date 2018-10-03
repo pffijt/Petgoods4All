@@ -69,6 +69,7 @@ a, a:hover {
     position: fixed;
     width: 100%;
     background-color:white;
+    border-color: transparent;
     
 }
 
