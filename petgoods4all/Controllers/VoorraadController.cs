@@ -26,7 +26,12 @@ namespace petgoods4all.Controllers
             //Db context
             var db = new ModelContext();
 
-            var result = from voorraad in db.Voorraad select voorraad;
+            var productSearchLowerCase = productSearch.ToLower();
+
+            var result = from voorraad in db.Voorraad where voorraad.Dier == productSearch || voorraad.Naam == productSearch || voorraad.Subklasse == productSearch || voorraad.Naam.Contains(productSearch) || voorraad.Dier.Contains(productSearch) || voorraad.Naam.Contains(productSearchLowerCase) || voorraad.Dier.Contains(productSearchLowerCase) select voorraad;
+            var productList = result.ToList();
+
+            ViewBag.Voorraad = productList;
 
             return View("~/Views/Voorraad/productBrowsen.cshtml");
         }

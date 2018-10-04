@@ -3,6 +3,10 @@
     padding-bottom: 20px;
 }
 
+.container {
+    width: 100%;
+}
+
 .navbar .container {
     width: 110%;
 }
