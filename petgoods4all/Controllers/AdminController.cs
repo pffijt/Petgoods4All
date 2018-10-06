@@ -71,7 +71,28 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-        public ActionResult ReadProduct(string inputAdminProductNaam)
+        public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, double inputAdminProductPrijs, int inputAdminProductKwantiteit )
+        {
+            var db = new ModelContext();
+            var result = from voor in db.Voorraad select voor.Id;
+
+            var MaxId = result.Max();
+
+            Voorraad a = new Voorraad
+            {
+                Id = MaxId + 1,
+                Naam = inputAdminProductNaam,
+                Dier = inputAdminProductDier,
+                Subklasse = inputAdminProductSuptype,
+                Prijs = inputAdminProductPrijs,
+                Kwantiteit = inputAdminProductKwantiteit
+            };
+            db.Voorraad.Add(a);
+            db.SaveChanges();
+            return View();
+        }
+
+            public ActionResult ReadProduct(string inputAdminProductNaam)
         {
             var db = new ModelContext();
             Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
@@ -79,14 +100,14 @@ namespace petgoods4all.Controllers
             return View(product);
         }
 
-        public ActionResult UpdateProduct(string inputAdminProductNaam, string newNaam, string newDier, string newSubklasse, int newKwantiteit, double newPrijs  )
+        public ActionResult UpdateProduct(string inputAdminProductNaam, string newNaam, string newDier, string newSubtype, int newKwantiteit, double newPrijs  )
         {
             var db = new ModelContext();
             Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
             product.Dier = newDier;
             product.Kwantiteit = newKwantiteit;
             product.Naam = newNaam;
-            product.Subklasse = newSubklasse;
+            product.Subklasse = newSubtype;
             product.Prijs = newPrijs;
             return View(product);
         }
