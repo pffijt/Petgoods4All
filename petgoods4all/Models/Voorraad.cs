@@ -12,7 +12,6 @@ namespace petgoods4all.Models
         public string Dier { get; set; }
         public string Subklasse { get; set; }
         public int Kwantiteit { get; set; }
-        public string Prijs { get; set; }
-        public string image {get; set;}
+        public double Prijs { get; set; }
     }
 }
