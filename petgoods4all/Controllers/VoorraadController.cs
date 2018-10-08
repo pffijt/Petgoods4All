@@ -35,5 +35,13 @@ namespace petgoods4all.Controllers
 
             return View("~/Views/Voorraad/productBrowsen.cshtml");
         }
+
+        [HttpGet]
+        public IActionResult ShoppingCart(int identication)
+        {
+            Console.WriteLine(identication);
+
+            return View();
+        }
     }
 }

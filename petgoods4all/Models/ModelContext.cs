@@ -13,6 +13,8 @@ namespace petgoods4all.Models
 
         public DbSet<Account> Account { get; set; }
 
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
+
         //this method is run automatically by EF the first time we run the application
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
