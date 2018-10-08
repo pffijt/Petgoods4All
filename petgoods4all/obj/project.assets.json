@@ -12720,9 +12720,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\Petgoods4All.csproj",
-      "projectName": "Petgoods4All",
-      "projectPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\Petgoods4All.csproj",
+      "projectUniqueName": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "projectName": "petgoods4all",
+      "projectPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
       "packagesPath": "C:\\Users\\Pepsi\\.nuget\\packages\\",
       "outputPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\obj\\",
       "projectStyle": "PackageReference",

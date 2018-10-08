@@ -21,7 +21,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "Petgoods4All/1.0.0": {
+      "petgoods4all/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.EntityFrameworkCore.Design": "2.1.3",
@@ -29,10 +29,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.1.2"
         },
         "runtime": {
-          "Petgoods4All.dll": {}
+          "petgoods4all.dll": {}
         },
         "compile": {
-          "Petgoods4All.dll": {}
+          "petgoods4all.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4046,7 +4046,7 @@
     }
   },
   "libraries": {
-    "Petgoods4All/1.0.0": {
+    "petgoods4all/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
