@@ -1,7 +1,8 @@
-﻿
+﻿@model IEnumerable<petgoods4all.Models.Voorraad>
 @{
     ViewBag.Title = "Producten";
 }
+<!--<h1>@ViewData["Type"]</h1>-->
 <br />
 <br />
 <br />
@@ -9,95 +10,121 @@
     <link rel="stylesheet" href="~/Content/productBrowsen.css" />
 </head>
 <div class="container-fluid" id="bodyPB" style="background-color:#ffe8d3;">
-    <h2>Selected animal tab</h2>
+    <h2>@ViewBag.animal</h2>
     <hr />
     <br />
     <!--begin selecting-->
     <div class="row">
         <button class="button button5">Sorting</button>
         <button class="button button5">Popular</button>
+        <div class="pull-right">
+            @ViewBag.firstnum - @ViewBag.secondnum of @ViewBag.count results
+        </div>
     </div>
     <br />
-    <!--end selecting-->
-    <!--begin products-->
     <div id="browsProduct">
         <div class="row">
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-        </div>
-        <div class="row">
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-        </div>
-        <div class="row">
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
+            @foreach(var item in Model)
+            {
+                <div id="browsProductContainer" class="col-lg-3">
+                    <img src="@Html.DisplayFor(modelItem => item.image)" alt="@Html.DisplayFor(modelItem => item.Naam)" style="width:140px;height:140px;" />
+                    
+                        <li><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a></li>
+                        <br/>
+                        @Html.DisplayFor(modelItem => item.Prijs)
+                    
+                </div>
+            }
         </div>
     </div>
+    <!--end selecting-->
+    <!--begin products-->
+    <!--<div id="browsProduct">
+        <div class="row">
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+        </div>
+        <div class="row">
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+        </div>
+        <div class="row">
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+            <div id="browsProductContainer" class="col-lg-3">
+                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                <br />
+                <p>@ViewBag.Title <br />&euro; 10,-</p>
+            </div>
+        </div>
+    </div>-->
     <!--end products-->
     <!--begin page pagination-->
+    @{
+        var second = ViewBag.paginationindex - 1;
+        var third = ViewBag.paginationindex + 1;
+        if(second < 1)
+        {
+            second = 1;
+        }
+    }
     <div class="row">
         <div class="text-center">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+                <li class="page-item"><a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@second">@second</a></li>
+                <li class="page-item"><a style="color:black;"class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@ViewBag.paginationindex">@ViewBag.paginationindex</a></li>
+                <li class="page-item"><a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@third">@third</a></li>
+                <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
             </ul>
         </div>
     </div>
