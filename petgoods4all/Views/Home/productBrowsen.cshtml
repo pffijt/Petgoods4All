@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/Content/productBrowsen.css" />
 </head>
 <div class="container-fluid" id="bodyPB" style="background-color:#ffe8d3;">
-    <h2>Selected animal tab</h2>
+    <h2>@ViewBag.animal</h2>
     <hr />
     <br />
     <!--begin selecting-->
@@ -28,11 +28,11 @@
             {
                 <div id="browsProductContainer" class="col-lg-3">
                     <img src="@Html.DisplayFor(modelItem => item.image)" alt="@Html.DisplayFor(modelItem => item.Naam)" style="width:140px;height:140px;" />
-                    <p>
-                        @Html.DisplayFor(modelItem => item.Naam)
+                    
+                        <li><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a></li>
                         <br/>
                         @Html.DisplayFor(modelItem => item.Prijs)
-                    </p>
+                    
                 </div>
             }
         </div>

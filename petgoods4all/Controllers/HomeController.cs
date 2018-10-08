@@ -36,10 +36,14 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-        public ActionResult Productpage()
+        public ActionResult Productpage(int identication = 1)
         {
             ViewBag.Message = "Product page";
-            return View();
+            using (var db = new ModelContext())
+            {
+                var product = from m in db.Voorraad where m.Id == identication select m;
+                return View(product.ToList());
+            }
         }
 
         public ActionResult Wishpage()
@@ -54,7 +58,7 @@ namespace petgoods4all.Controllers
             using (var db = new ModelContext())
             {
                 //pagination per soort
-                ViewBag.firstnum = 1+(P*16)-16;
+                ViewBag.firstnum = (P*16)-15;
                 ViewBag.secondnum = 16*P;
                 ViewBag.paginationindex = P;
                 ViewBag.animal = D;
