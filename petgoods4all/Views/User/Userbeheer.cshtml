@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ViewData["Title"] - Petgoods4All</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/Content/signin.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body>
+    <br /><br /><br /><br /><br /><br /><br />
+    <form class="table" method="put" style="background-color:#ffe8d3;">
+        <div class="row">
+            <h2>Gegevens beheer</h2>
+            <p>
+                <a href="~/Views/User/UserHome.cshtml">Home</a>
+            </p>
+        </div>
+        <div class="row">
+            <table>
+                <tr>
+                    <th>E-mail</th>
+                    <th>Wachtwoord</th>
+                    <th>Save</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="email" id="inputEmailUser" name="inputEmailUser" class="form-control" placeholder="Email-adres" required autofocus>
+                    </td>
+                    <td>
+                        <input type="password" id="inputPasswordUser" name="inputPasswordUser" class="form-control" placeholder="Wachtwoord" required>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
+                    </td>
+                </tr>
+            </table>
+            <br /><br />
+        </div>
+    </form>
+</body>
+</html>
