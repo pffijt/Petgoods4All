@@ -29,16 +29,10 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-        public ActionResult ShoppingCart()
-        {
-            ViewBag.Message = "Your ShoppingCart page.";
-
-            return View();
-        }
-
         public ActionResult Productpage(int identication = 1)
         {
             ViewBag.Message = "Product page";
+            ViewBag.ProductId = identication;
             using (var db = new ModelContext())
             {
                 var product = from m in db.Voorraad where m.Id == identication select m;
