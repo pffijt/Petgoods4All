@@ -6714,7 +6714,7 @@
       ]
     },
     "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
-      "sha512": "H6ZsQzxYw/6k2DfEQRXdC+vQ6obd6Uba3uGJrnJ2vG4PRXjQZ7seB13JdCfE72abp8E6Fk3gGgDzfJiLZi5ZpQ==",
+      "sha512": "UMlN++q5qqzQ2HH+uOrKxN5fmBXMQDhrYkSaPJxhmyzfJaFPirrVr1raim/Ocq1psAZoB9+7JSAf0GDAX35wUg==",
       "type": "package",
       "path": "microsoft.extensions.platformabstractions/1.1.0",
       "files": [
@@ -8169,10 +8169,11 @@
       ]
     },
     "System.Buffers/4.4.0": {
-      "sha512": "AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
+      "sha512": "VCJfpWcYG1gT3WwivZWgT0KaqY678MQBvrOI2si6V8GHeQOtuW+wpiv5ss4KyfGG+cFFdPNaI+nw2/kExCtGgQ==",
       "type": "package",
       "path": "system.buffers/4.4.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp2.0/_._",
@@ -10093,10 +10094,11 @@
       ]
     },
     "System.Numerics.Vectors/4.4.0": {
-      "sha512": "UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
+      "sha512": "ZhdgJiihSOGD325jClouHy8WSPtwFSj6K1OymoEyN0Wc9Y6X2OVxn65VKfTWHQOYM+QljlVSreporVNvZm8rEA==",
       "type": "package",
       "path": "system.numerics.vectors/4.4.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -12714,23 +12716,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pepsi\\.nuget\\packages\\": {},
+    "C:\\Users\\Alex_\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\Petgoods4All.csproj",
-      "projectName": "Petgoods4All",
-      "projectPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\Petgoods4All.csproj",
-      "packagesPath": "C:\\Users\\Pepsi\\.nuget\\packages\\",
-      "outputPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\obj\\",
+      "projectUniqueName": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "projectName": "petgoods4all",
+      "projectPath": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "packagesPath": "C:\\Users\\Alex_\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Pepsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alex_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12738,6 +12740,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://reactjs.net/packages/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
