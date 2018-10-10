@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<petgoods4all.Models.Voorraad>
+@{
     ViewBag.Title = "Friskies Pate";
 }
 <!-- Dit is gemaakt door Pepijn Fijt, als jullie het niet begrijpen dan moet je even een berichtje versturen-->
@@ -6,15 +7,15 @@
 <h3>@ViewBag.Message</h3>-->
 <ul class="breadcrumb">
     <li><a href="../">Home</a></li>
-    <li><a href="#">@ViewBag.Title</a></li>
+    <li><a href="#">@foreach(var item in Model){@Html.DisplayFor(modelItem => item.Naam)}</a></li>
 </ul>
 <div class="row">
     <div class="col-sm-4">
-        <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" />
+        <img src="@foreach(var item in Model){@Html.DisplayFor(modelItem => item.image)}" alt="@foreach(var item in Model){@Html.DisplayFor(modelItem => item.Naam)}" />
     </div>
     <div class="col-sm-8">
-        <h2>@ViewBag.Title</h2>
-        <p style="color:red;">&euro; 10,-</p>
+        <h2>@foreach(var item in Model){@Html.DisplayFor(modelItem => item.Naam)}</h2>
+        <p style="color:red;">@foreach(var item in Model){@Html.DisplayFor(modelItem => item.Prijs)}</p>
         <label for="sel1">Select list:</label>
         <div>
             <div class="form-group col-sm-4">
