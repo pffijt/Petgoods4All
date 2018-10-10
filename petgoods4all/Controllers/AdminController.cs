@@ -42,13 +42,11 @@ namespace petgoods4all.Controllers
         public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, int inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
         {
             var db = new ModelContext();
-            var result = from pro in db.Account select pro.id;
-
-            var MaxId = result.Max();
+            
 
             Account a = new Account
             {
-                id = MaxId + 1,
+                
                 email = inputAdminKlantMail,
                 Admin = false,
                 password = inputAdminKlantWw,
@@ -95,13 +93,10 @@ namespace petgoods4all.Controllers
         public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, double inputAdminProductPrijs, int inputAdminProductKwantiteit )
         {
             var db = new ModelContext();
-            var result = from voor in db.Voorraad select voor.Id;
-
-            var MaxId = result.Max();
+            
 
             Voorraad a = new Voorraad
             {
-                Id = MaxId + 1,
                 Naam = inputAdminProductNaam,
                 Dier = inputAdminProductDier,
                 Subklasse = inputAdminProductSuptype,
