@@ -39,7 +39,28 @@ namespace petgoods4all.Controllers
         }
 
 
+        public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, int inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
+        {
+            var db = new ModelContext();
+            var result = from pro in db.Account select pro.id;
 
+            var MaxId = result.Max();
+
+            Account a = new Account
+            {
+                id = MaxId + 1,
+                email = inputAdminKlantMail,
+                Admin = false,
+                password = inputAdminKlantWw,
+                Voornaam = inputAdminKlantVoorNm,
+                Achternaam = inputAdminKlantAchterNaam,
+                Telnr = inputAdminKlantTel,
+                Straatnaam = inputAdminKlantAdres
+            };
+            db.Account.Add(a);
+            db.SaveChanges();
+            return View();
+        }
 
 
 

@@ -62,10 +62,10 @@
                     <input type="image" id="inputAdminProductImg" name="inputAdminProductImg" class="form-control" placeholder="Img"  required>
                 </td>
                 <td>
-                    <button class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
+                    <button asp-controller="Admin" asp-action="CreateAccount" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
                 </td>
                 <td>
-                    <button class="btn btn-sm btn-primary btn-block" type="submit">Delete</button>
+                    <button asp-controller="Admin" asp-action="DeleteAccount" class="btn btn-sm btn-primary btn-block" type="submit">Delete</button>
                 </td>
             </tr>
         </table>
