@@ -36,7 +36,7 @@
                     <th>Telefoonnummer</th>
                     <th>Addres</th>
                     <th>Wachtwoord</th>
-                    <th>Save</th>
+                    @*<th>Save</th>*@
                     <th>X</th>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                         <input type="text" id="inputAdminKlantVoorNm" name="inputAdminKlantVoorNm" class="form-control" placeholder="Voornaam" required>
                     </td>
                     <td>
-                        <input type="text" id="inputAdminKlantAchterNaam" name="inputAdminKlantAchterNm" class="form-control" placeholder="Achternaam" required>
+                        <input type="text" id="inputAdminKlantAchterNaam" name="inputAdminKlantAchterNaam" class="form-control" placeholder="Achternaam" required>
                     </td>
                     <td>
                         <input type="email" id="inputAdminKlantMail" name="inputAdminKlantMail" class="form-control" placeholder="E-mail" required>
@@ -62,10 +62,10 @@
                         <input type="password" id="inputAdminKlantWw" name="inputAdminKlantWw" class="form-control" placeholder="Ww" required>
                     </td>
                     <td>
-                        <button asp-controller="Admin" asp-action="AdminKlantbeheer" method="CreateAccount" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
+                        <button asp-controller="Admin" asp-action="CreateAccount" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
                     </td>
                     <td>
-                        <button asp-controller="Admin" asp-action="AdminKlantbeheer"  method="DeleteAccount" class="btn btn-sm btn-primary btn-block" type="submit">Delete</button>
+                        <button asp-controller="Admin" asp-action="DeleteAccount" class="btn btn-sm btn-primary btn-block" type="submit">Delete</button>
                     </td>
                 </tr>
             </table>

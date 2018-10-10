@@ -39,14 +39,44 @@ namespace petgoods4all.Controllers
         }
 
 
+        
+        public ActionResult ReadProduct(string inputAdminProductNaam)
+        {
+            var db = new ModelContext();
+            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
+
+            return AdminProductbeheer();
+        }
+
+
+        public ActionResult ReadAccount(string inputAdminKlantMail)
+        {
+            var db = new ModelContext();
+            Account account = db.Account.Find(inputAdminKlantMail);
+            
+
+            return AdminKlantbeheer(); 
+        }
+        [HttpPost]
+        public ActionResult UpdateAccount(string inputAdminKlantMail, string newEmail)
+        { 
+            var db = new ModelContext();
+            Account account = db.Account.Find(inputAdminKlantMail);
+
+            account.email = newEmail;
+            
+            db.Account.Update(account);
+            return AdminKlantbeheer();
+        }
+
         public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, int inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
         {
             var db = new ModelContext();
-            
+
 
             Account a = new Account
             {
-                
+
                 email = inputAdminKlantMail,
                 Admin = false,
                 password = inputAdminKlantWw,
@@ -57,29 +87,7 @@ namespace petgoods4all.Controllers
             };
             db.Account.Add(a);
             db.SaveChanges();
-            return View();
-        }
-
-
-
-        public ActionResult ReadAccount(string inputAdminKlantMail)
-        {
-            var db = new ModelContext();
-            Account account = db.Account.Find(inputAdminKlantMail);
-            
-
-            return View(account);
-        }
-
-        public ActionResult UpdateAccount(string inputAdminKlantMail, string newEmail)
-        { 
-            var db = new ModelContext();
-            Account account = db.Account.Find(inputAdminKlantMail);
-
-            account.email = newEmail;
-            
-            db.Account.Update(account);
-            return View(account);
+            return View(a);
         }
 
         public ActionResult DeleteAccount(string inputAdminKlantMail)
@@ -87,7 +95,7 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             Account account = db.Account.Find(inputAdminKlantMail);
             db.Account.Remove(account);
-            return View();
+            return AdminKlantbeheer();
         }
 
         public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, double inputAdminProductPrijs, int inputAdminProductKwantiteit )
@@ -105,16 +113,10 @@ namespace petgoods4all.Controllers
             };
             db.Voorraad.Add(a);
             db.SaveChanges();
-            return View();
+            return AdminProductbeheer();
         }
 
-            public ActionResult ReadProduct(string inputAdminProductNaam)
-        {
-            var db = new ModelContext();
-            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
-
-            return View(product);
-        }
+            
 
         public ActionResult UpdateProduct(string inputAdminProductNaam, string newNaam, string newDier, string newSubtype, int newKwantiteit, double newPrijs  )
         {
@@ -125,14 +127,14 @@ namespace petgoods4all.Controllers
             product.Naam = newNaam;
             product.Subklasse = newSubtype;
             product.Prijs = newPrijs;
-            return View(product);
+            return AdminProductbeheer();
         }
         public ActionResult DeleteProduct(string inputAdminProductNaam)
         {
             var db = new ModelContext();
             Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
             db.Voorraad.Remove(product);
-            return View();
+            return AdminProductbeheer();
         }
             /*[HttpPost]
             public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
