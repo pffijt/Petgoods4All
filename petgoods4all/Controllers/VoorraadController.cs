@@ -35,12 +35,11 @@ namespace petgoods4all.Controllers
 
             return View("~/Views/Voorraad/productBrowsen.cshtml");
         }
-        [HttpPost]
-        public ActionResult AddToShoppingCart(int productId)
+        
+        public ActionResult AddToShoppingCart(int identication)
         {
             var db = new ModelContext();
             var MaxId = 0;
-            var UserAlreadyHasItemsInShoppingCart = 1;
 
             //check if user already has items in ShoppingCart
             //add quantity to shoppingcart
@@ -56,54 +55,19 @@ namespace petgoods4all.Controllers
             }
 
             //check if this user already has items in shoppingcart
-
-            //var result = from s in db.ShoppingCart where userid == userid select s.Id;
-            //if (!result.Any())
-            //{
-            //UserAlreadyHasItemsInShoppingCart = 0;
-            //}
-            //else
-            //{
-            //UserAlreadyHasItemsInShoppingCart = 1;  
-            //}
-            List<int> productList = new List<int>();
-
-            productList.Add(productId);
-            if (UserAlreadyHasItemsInShoppingCart == 0)
-            {
                 
-                //if of user ingelogd is session of met de bestaande inlog is het httpcontext.current.user
-                //if (httpcontext.current.user != null){
+            //if of user ingelogd is session of met de bestaande inlog is het httpcontext.current.user
+            //if (httpcontext.current.user != null){
                 ShoppingCart shoppingCart = new ShoppingCart
-                {
-                    Id = MaxId + 1,
-                    Voorraad = productList,
-                    Account = 1,
-                };
-
-                db.ShoppingCart.Add(shoppingCart);
-                db.SaveChanges();
-            }
-            else
             {
-                //get existing list from db and add new productId
-                var list = from s in db.ShoppingCart where s.Account == 1 select s.Voorraad;
-                var voorraadList = list.ToList();
-                foreach (var item in list) {
-                    voorraadList.Add(item);
-                }
+                Id = MaxId + 1,
+                VoorraadId = identication,
+                AccountId = 1,
+            };
 
-
-                ShoppingCart shoppingCart = new ShoppingCart
-                {
-                    Id = MaxId + 1,
-                    Voorraad = voorraadList,
-                    Account = 1,
-                };
-
-                db.ShoppingCart.Update(shoppingCart);
-                db.SaveChanges();
-            }
+            db.ShoppingCart.Add(shoppingCart);
+            db.SaveChanges();
+            
             //}
             //else{
             //create session with list add the productid to the session
@@ -115,12 +79,16 @@ namespace petgoods4all.Controllers
         public ActionResult ShoppingCart(int productId)
         {
             var db = new ModelContext();
+            //make query to find what user is logged in or get products from session
+
             //item uit de voorraad met prodcut id
-            var result = from s in db.ShoppingCart select s;
+            var result = from s in db.ShoppingCart where s.AccountId == 1 select s.VoorraadId;
+
+            //get products from voorraad db foreach productid got from result
 
             var productList = result.ToList();
 
-            //ViewBag.ShoppingCart = productList;
+            ViewBag.ShoppingCart = productList;
 
             return View();
         }

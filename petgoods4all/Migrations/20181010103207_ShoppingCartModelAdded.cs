@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace petgoods4all.Migrations
@@ -28,8 +27,8 @@ namespace petgoods4all.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Voorraad = table.Column<List<int>>(nullable: true),
-                    Account = table.Column<int>(nullable: false)
+                    VoorraadId = table.Column<int>(nullable: false),
+                    AccountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

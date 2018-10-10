@@ -5,7 +5,7 @@
 <!-- Dit is gemaakt door Pepijn Fijt, als jullie het niet begrijpen dan moet je even een berichtje versturen-->
 <!--<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>-->
-<form class="form-products" method="post" asp-controller="Voorraad" asp-action="AddToShoppingCart">
+<form class="form-products" method="post">
     <ul class="breadcrumb">
         <li><a href="../">Home</a></li>
         <li><a href="#">@foreach (var item in Model)
@@ -30,12 +30,14 @@
                         <option>4</option>
                     </select>
                 </div>
-                @foreach (var item in Model)
+                @*@foreach (var item in Model)
                 {
                     <input type="text" value="@item.Id" name="productId" id="productId" style="visibility:hidden">
+                }*@
+
+                @foreach (var item in Model) {
+                <button type="submit" asp-controller="Voorraad" asp-action="AddToShoppingCart" asp-route-identication="@item.Id" class="btn btn-warning col-sm-4">Into shopping cart</button>
                 }
-                <button type="submit" class="btn btn-warning col-sm-4">Into shopping cart</button>
-                
             </div>
         </div>
         Delivery information
