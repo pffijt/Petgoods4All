@@ -18,20 +18,22 @@
 </head>
 <body class="text-center">
     <form class="form-signin">
-        <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email-adres" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Wachtwoord" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Gegevens onthouden
-            </label>
+        <div class="container-fluid" style="background-color:#ffe8d3;">
+            <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email-adres" required autofocus><br />
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Wachtwoord" required>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Gegevens onthouden
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Inloggen</button>
+            <a asp-area="" asp-controller="Home" asp-action="Aanmelden">Nog geen account? Klik hier</a>
+            <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Inloggen</button>
-        <a asp-area="" asp-controller="Home" asp-action="Aanmelden">Nog geen account? Klik hier</a>
-        <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
-    </form>
+</form>
 </body>
 </html>
