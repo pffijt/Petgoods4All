@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using petgoods4all.Models;
 
 namespace petgoods4all.Controllers
@@ -36,11 +37,17 @@ namespace petgoods4all.Controllers
             return View("~/Views/Voorraad/productBrowsen.cshtml");
         }
         
-        public ActionResult AddToShoppingCart(int identication)
+        [HttpPost]
+        public ActionResult AddToShoppingCart(int identication, int Quantity)
         {
             var db = new ModelContext();
             var MaxId = 0;
 
+            List<int> productList = new List<int>();
+            productList.Add(identication);
+
+
+            //add products to local shoppingcart in sessions
             //check if user already has items in ShoppingCart
             //add quantity to shoppingcart
 
@@ -54,7 +61,6 @@ namespace petgoods4all.Controllers
                 MaxId = result.Max();
             }
 
-            //check if this user already has items in shoppingcart
                 
             //if of user ingelogd is session of met de bestaande inlog is het httpcontext.current.user
             //if (httpcontext.current.user != null){
@@ -63,34 +69,54 @@ namespace petgoods4all.Controllers
                 Id = MaxId + 1,
                 VoorraadId = identication,
                 AccountId = 1,
+                Quantity = Quantity,
             };
 
             db.ShoppingCart.Add(shoppingCart);
             db.SaveChanges();
-            
+
             //}
             //else{
-            //create session with list add the productid to the session
+            // return View("~/Views/Account/Inloggen.cshtml");
             //}
 
-            return View("~/Views/Voorraad/ShoppingCart.cshtml");
+            return ShoppingCart();
         }
 
-        public ActionResult ShoppingCart(int productId)
+        public ActionResult ShoppingCart()
         {
             var db = new ModelContext();
             //make query to find what user is logged in or get products from session
 
             //item uit de voorraad met prodcut id
-            var result = from s in db.ShoppingCart where s.AccountId == 1 select s.VoorraadId;
+            var result = from s in db.ShoppingCart where s.AccountId == 1 select s;
 
+            var ShoppingCartList = result.ToList();
             //get products from voorraad db foreach productid got from result
+            List<Voorraad> productList = new List<Voorraad>();
 
-            var productList = result.ToList();
+            foreach (var item in ShoppingCartList)
+            {
+                var voorraadResult = from v in db.Voorraad where v.Id == item.VoorraadId select v;
+                foreach (var i in voorraadResult)
+                {
+                    productList.Add(new Voorraad()
+                    {
+                        Id = i.Id,
+                        Naam = i.Naam,
+                        Dier = i.Dier,
+                        Subklasse = i.Subklasse,
+                        Kwantiteit = item.Quantity,
+                        Prijs = i.Prijs,
+                        image = i.image
+                    });
+                }
+            }
 
+            Console.WriteLine(productList);
             ViewBag.ShoppingCart = productList;
 
-            return View();
+            return View("~/Views/Voorraad/ShoppingCart.cshtml");
         }
     }
 }

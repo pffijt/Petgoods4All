@@ -39,6 +39,8 @@ namespace petgoods4all.Migrations
 
                     b.Property<int>("AccountId");
 
+                    b.Property<int>("Quantity");
+
                     b.Property<int>("VoorraadId");
 
                     b.HasKey("Id");
