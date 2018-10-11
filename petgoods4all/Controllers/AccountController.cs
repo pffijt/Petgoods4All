@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using petgoods4all.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace petgoods4all.Controllers
 {
@@ -51,6 +52,37 @@ namespace petgoods4all.Controllers
             db.SaveChanges();
             
             return View("~/Views/Account/Inloggen.cshtml");
+        }
+        [HttpPost]
+        public ActionResult Inloggen(string inputEmail, string inputPassword)
+        {
+            var email = inputEmail;
+            var password = inputPassword;
+
+            var db = new ModelContext();
+
+            var resultEmail = (from acc in db.Account where email == acc.email select acc.email).Single();
+            var resultPassword = (from acc in db.Account where password == acc.password select acc.password).Single();
+            var resultAdmin = (from acc in db.Account where email == acc.email select acc.Admin).Single();
+
+            if (resultEmail == email && resultPassword == password)
+            {
+                HttpContext.Session.SetString("resultEmail", resultEmail);
+
+                if (resultAdmin == true)
+                {
+                    string strEmailId = HttpContext.Session.GetString("resultEmail");
+                    return View("~/Views/Home/About.cshtml");
+                }
+                else
+                {
+                    return View("~/Views/Home/Index.cshtml");
+                }
+            }
+            else
+            {
+                return View("~/Views/Account/Inloggen.cshtml");
+            }
         }
     }
 }
