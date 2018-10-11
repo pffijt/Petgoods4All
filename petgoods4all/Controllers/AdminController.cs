@@ -45,7 +45,7 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
 
-            return AdminProductbeheer();
+            return View("~/Views/Admin/AdminProductbeheer.cshtml");
         }
 
 
@@ -53,9 +53,9 @@ namespace petgoods4all.Controllers
         {
             var db = new ModelContext();
             Account account = db.Account.Find(inputAdminKlantMail);
-            
 
-            return AdminKlantbeheer(); 
+
+            return View("~/Views/Admin/AdminKlantbeheer.cshtml");
         }
         [HttpPost]
         public ActionResult UpdateAccount(string inputAdminKlantMail, string newEmail)
@@ -66,7 +66,7 @@ namespace petgoods4all.Controllers
             account.email = newEmail;
             
             db.Account.Update(account);
-            return AdminKlantbeheer();
+            return View("~/Views/Admin/AdminKlantbeheer.cshtml");
         }
 
         public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, int inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
@@ -76,7 +76,6 @@ namespace petgoods4all.Controllers
 
             Account a = new Account
             {
-
                 email = inputAdminKlantMail,
                 Admin = false,
                 password = inputAdminKlantWw,
@@ -87,7 +86,7 @@ namespace petgoods4all.Controllers
             };
             db.Account.Add(a);
             db.SaveChanges();
-            return View(a);
+            return View("~/Views/Admin/AdminKlantbeheer.cshtml");
         }
 
         public ActionResult DeleteAccount(string inputAdminKlantMail)
@@ -95,7 +94,7 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             Account account = db.Account.Find(inputAdminKlantMail);
             db.Account.Remove(account);
-            return AdminKlantbeheer();
+            return View("~/Views/Admin/AdminKlantbeheer.cshtml");
         }
 
         public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, double inputAdminProductPrijs, int inputAdminProductKwantiteit )
@@ -113,7 +112,7 @@ namespace petgoods4all.Controllers
             };
             db.Voorraad.Add(a);
             db.SaveChanges();
-            return AdminProductbeheer();
+            return View("~/Views/Admin/AdminProductbeheer.cshtml");
         }
 
             
@@ -127,14 +126,14 @@ namespace petgoods4all.Controllers
             product.Naam = newNaam;
             product.Subklasse = newSubtype;
             product.Prijs = newPrijs;
-            return AdminProductbeheer();
+            return View("~/Views/Admin/AdminProductbeheer.cshtml");
         }
         public ActionResult DeleteProduct(string inputAdminProductNaam)
         {
             var db = new ModelContext();
             Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
             db.Voorraad.Remove(product);
-            return AdminProductbeheer();
+            return View("~/Views/Admin/AdminProductbeheer.cshtml");
         }
             /*[HttpPost]
             public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
