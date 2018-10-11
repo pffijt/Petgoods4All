@@ -15,6 +15,19 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <script type="text/javascript">// Using jQuery.
+
+        $(document).ready(function() {
+
+            $('#searchKlanten').keydown(function(event) {
+                // enter has keyCode = 13, change it if you want to use another button
+                if (event.keyCode == 13) {
+                    this.form.submit();
+                    return false;
+                }
+            });
+
+        });</script>
 </head>
 <body>
     <br /><br /><br /><br /><br /><br /><br />
@@ -27,9 +40,13 @@
             </p>
         </div>
         <div class="row">
+                <button asp-controller="Admin" id="searchKlanten" asp-action="searchKlanten" class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
+                <input class="form-control btn-sm type="search" placeholder="Search" aria-label="Search">
+
+        </div>
+        <div class="row">
             <table>
                 <tr>
-                    <th>Id</th>
                     <th>Gebr.Nm</th>
                     <th>Naam</th>
                     <th>E-mail</th>
@@ -40,9 +57,6 @@
                     <th>X</th>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="number" id="inputAdminKlantId" name="inputAdminKlantId" class="form-control" placeholder="Id" required autofocus>
-                    </td>
                     <td>
                         <input type="text" id="inputAdminKlantVoorNm" name="inputAdminKlantVoorNm" class="form-control" placeholder="Voornaam" required>
                     </td>
@@ -67,9 +81,9 @@
                     <td>
                         <button asp-controller="Admin" asp-action="DeleteProduct" class="btn btn-sm btn-primary btn-block" type="submit">Delete</button>
                     </td>
-                </tr>
+                </tr><br />
             </table>
-        </div>
+        </div><br /><br />
     </form>
 </body>
 </html>
