@@ -2,70 +2,69 @@
 @{
     ViewBag.Title = "My Wishlist";
 }
-<h2>
-    @ViewBag.Title
-</h2>
+<div class="container-fluid" style="background-color:#ffe8d3;">
+    <h2>
+        @ViewBag.Title
+    </h2>
+    <!-- Meerendeels van Jordi gecopied-->
+    <!-- 1 ROW DIV REPRESENTS ONE ITEM -->
+    <!-- WHEN NOT HARDCODED THESE SHOULD BE GENERATED WITH A FOREACH -->
 
-<!-- Meerendeels van Jordi gecopied-->
-<!-- 1 ROW DIV REPRESENTS ONE ITEM -->
-<!-- WHEN NOT HARDCODED THESE SHOULD BE GENERATED WITH A FOREACH -->
+    <div class="row">
+        <div class="col-md-2">
+            <br>
+            <img src="~/Content/Images/dogfood.jpg" width="180px" height="100px" />
+        </div>
+        <div class="col-md-2">
+            <h3>Product Title</h3>
+            <p>Quantity: 1</p>
+            <p>Price: $ 9</p>
+        </div>
+        <div class="col-md-8">
+            <br><br>
+            <button type="button" class="btn btn-warning">+ Add to Cart</button>
+            <br /><br />
+            <button type="button" class="btn btn-danger">x Remove </button>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-2">
+            <br>
+            <img src="~/Content/Images/Cat food.jpg" width="180px" height="100px" />
+        </div>
+        <div class="col-md-2">
+            <h3>Product Title</h3>
+            <p>Quantity: 1</p>
+            <p>Price: $ 9</p>
+        </div>
+        <div class="col-md-8">
+            <br><br>
+            <button type="button" class="btn btn-warning">+ Add to Cart</button>
+            <br /><br />
+            <button type="button" class="btn btn-danger">x Remove</button>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-2">
+            <br>
+            <img src="~/Content/Images/dogfood.jpg" width="180px" height="100px" />
+        </div>
+        <div class="col-md-2">
+            <h3>Product Title</h3>
+            <p>Quantity: 1</p>
+            <p>Price: $ 9</p>
+        </div>
+        <div class="col-md-8">
+            <br><br>
+            <button type="button" class="btn btn-warning">+ Add to Cart</button>
+            <br /><br />
+            <button type="button" class="btn btn-danger">x Remove</button>
+        </div>
+    </div>
+    <br>
 
-<div class="row">
-    <div class="col-md-2">
-        <br>
-        <img src="~/Content/Images/dogfood.jpg" width="180px" height="100px"/>
-    </div>
-    <div class="col-md-2">
-        <h3>Product Title</h3>
-        <p>Quantity: 1</p>
-        <p>Price: $ 9</p>
-    </div>
-    <div class="col-md-8">
-        <br><br>
-        <button type="button" class="btn btn-warning" >+ Add to Cart</button>
-        <br/><br/>
-             <button type="button" class="btn btn-danger">x Remove </button>
-    </div>
 </div>
-<br>
-<hr>
-
-<div class="row">
-    <div class="col-md-2">
-        <br>
-        <img src="~/Content/Images/Cat food.jpg" width="180px"  height="100px" />
-    </div>
-    <div class="col-md-2">
-        <h3>Product Title</h3>
-        <p>Quantity: 1</p>
-        <p>Price: $ 9</p>
-    </div>
-    <div class="col-md-8">
-        <br><br>
-        <button type="button" class="btn btn-warning">+ Add to Cart</button>
-        <br /><br />
-        <button type="button" class="btn btn-danger">x Remove</button>
-    </div>
-</div>
-<br>
-<hr>
-
-<div class="row">
-    <div class="col-md-2">
-        <br>
-        <img src="~/Content/Images/dogfood.jpg" width="180px"  height="100px" />
-    </div>
-    <div class="col-md-2">
-        <h3>Product Title</h3>
-        <p>Quantity: 1</p>
-        <p>Price: $ 9</p>
-    </div>
-    <div class="col-md-8">
-        <br><br>
-        <button type="button" class="btn btn-warning">+ Add to Cart</button>
-        <br /><br />
-        <button type="button" class="btn btn-danger">x Remove</button>
-    </div>
-</div>
-<br>
-<hr>
