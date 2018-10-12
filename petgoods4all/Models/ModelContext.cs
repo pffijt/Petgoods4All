@@ -10,10 +10,10 @@ namespace petgoods4all.Models
     public class ModelContext : DbContext
     {   //this is actual entity object linked to the Voorraad in our DB
         public DbSet<Voorraad> Voorraad { get; set; }
-
         public DbSet<Account> Account { get; set; }
-
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderedProducts> OrderedProducts { get; set; } 
 
         //this method is run automatically by EF the first time we run the application
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

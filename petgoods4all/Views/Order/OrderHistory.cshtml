@@ -23,29 +23,18 @@
                             <td>Datum</td>
                             <td>Bedrag</td>
                             <td>Orderstatus</td>
-                            <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
+                            <td>Bestelling bekijken</td>
                         </tr>
-                        <tr>
-                            <td>10234901824190121</td>
-                            <td>05.09.18</td>
-                            <td>$ 189.94</td>
-                            <td>Afgeleverd</td>
-                            <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
-                        </tr>
-                        <tr>
-                            <td>102353623515235</td>
-                            <td>25.12.18</td>
-                            <td>$ 95.24</td>
-                            <td>Afgeleverd</td>
-                            <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
-                        </tr>
-                        <tr>
-                            <td>124235363121421</td>
-                            <td>25.09.18</td>
-                            <td>$ 25.94</td>
-                            <td>Verzonden</td>
-                            <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
-                        </tr>
+                        @foreach (var item in ViewBag.Orders)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Datum</td>
+                                <td>$ @item.Prijs</td>
+                                <td>@item.OrderStatus</td>
+                                <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
+                            </tr>
+                        }
                     </table>
                 </div>
             </div>

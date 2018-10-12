@@ -55,14 +55,18 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="cat">Cat</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="fish">Fish</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="reptile">Reptiles</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="infoPagina">Information</a></li>
-                    <li><a asp-area="" asp-controller="Order" asp-action="OrderHistory">Order history page</a></li>
+                    
                     <li>
                         <form class="nav navbar-form form-inline" method="post" asp-controller="Voorraad" asp-action="productSearch" asp->
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="productSearch" name="productSearch">
                         </form>
                     </li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @using Microsoft.AspNetCore.Http;
+
+                    @if (Context.Session.GetInt32("UserIdKey") != null) {
+                    <li><a asp-area="" asp-controller="Voorraad" asp-action="ShoppingCart">&#xe116;</a></li>
+                    }
                     <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
                     <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Sign Up</a></li>
                     <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Login</a></li>

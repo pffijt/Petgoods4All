@@ -6,15 +6,22 @@
 
 <!-- HEADER, ORDER AND PRICE INDICATOR-->
 <div class="row">
-    <div class="col-md-6">
+    <form class="form-products" method="post" asp-controller="Order" asp-action="OrderProducts">
+        <div class="col-md-6">
 
-        <h2>price: $ @ViewBag.Prijs</h2>
+            <h2>price: $ @ViewBag.Prijs</h2>
+            <input type="text" value="@ViewBag.Prijs" name="prijs" id="prijs" style="visibility:hidden">
 
-    </div>
+        </div>
 
-    <div class="col-md-6">
-        <h2 align="right"><button type="button" class="btn btn-success">Order now</button></h2>
-    </div>
+        <div class="col-md-6">
+            <h2 align="right">
+
+                <button type="submit" asp-controller="Order" asp-action="OrderProducts" class="btn btn-success col-sm-4" align="right">Order</button>
+
+            </h2>
+        </div>
+    </form>
 </div>
 
 <br>
