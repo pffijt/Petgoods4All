@@ -62,11 +62,13 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
 
             var resultEmail = (from acc in db.Account where email == acc.email select acc.email).Single();
+            var resultId = (from acc in db.Account where email == acc.email select acc.id).Single();
             var resultPassword = (from acc in db.Account where password == acc.password select acc.password).Single();
             var resultAdmin = (from acc in db.Account where email == acc.email select acc.Admin).Single();
 
             if (resultEmail == email && resultPassword == password)
             {
+                HttpContext.Session.SetInt32("UserIdKey", resultId);
                 HttpContext.Session.SetString("resultEmail", resultEmail);
 
                 if (resultAdmin == true)

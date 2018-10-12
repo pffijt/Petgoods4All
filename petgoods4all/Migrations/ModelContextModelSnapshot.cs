@@ -23,6 +23,8 @@ namespace petgoods4all.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Admin");
+
                     b.Property<string>("email");
 
                     b.Property<string>("password");
@@ -59,7 +61,7 @@ namespace petgoods4all.Migrations
 
                     b.Property<string>("Naam");
 
-                    b.Property<string>("Prijs");
+                    b.Property<decimal>("Prijs");
 
                     b.Property<string>("Subklasse");
 

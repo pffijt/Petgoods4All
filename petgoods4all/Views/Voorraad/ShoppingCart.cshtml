@@ -7,7 +7,9 @@
 <!-- HEADER, ORDER AND PRICE INDICATOR-->
 <div class="row">
     <div class="col-md-6">
-        <h2>price: $ 100000</h2>
+
+        <h2>price: $ @ViewBag.Prijs</h2>
+
     </div>
 
     <div class="col-md-6">
@@ -20,32 +22,36 @@
 <!-- 1 ROW DIV REPRESENTS ONE ITEM -->
 
 <!-- WHEN NOT HARDCODED THESE SHOULD BE GENERATED WITH A FOREACH -->
-<div class="row">
-    <br><br>
-    <div class="col-md-12">
-        <p align="left">items</p>
-    </div>
-</div>
-<hr>
-@foreach (var item in ViewBag.ShoppingCart)
-{
-<div class="row">
-    <div class="col-md-2">
-        <br>
-        <img src="~/Content/Images/@item.image" width="180px" />
-    </div>
-    <div class="col-md-2">
-        <h3>@item.Naam</h3>
-        <p>Quantity: @item.Kwantiteit</p>
-        <p>Price: $ @item.Prijs</p>
-    </div>
-    <div class="col-md-8">
+<div class="container-fluid" id="bodyPB" style="background-color:#ffe8d3;">
+    <div class="row">
         <br><br>
-        <h3 align="right">X</h3>
+        <div class="col-md-12">
+            <p align="left">items</p>
+        </div>
     </div>
+    <hr>
+    @foreach (var item in ViewBag.ShoppingCart)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                <br>
+                <img src="~/Content/Images/@item.image" width="180px" />
+            </div>
+            <div class="col-md-2">
+                <h3>@item.Naam</h3>
+                <p>Quantity: @item.Kwantiteit</p>
+                <p>Price: $ @item.Prijs</p>
+            </div>
+            <div class="col-md-8">
+                <br><br>
+                <form class="form-products" method="post" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart">
+                    <button type="submit" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Id" class="btn btn-danger col-sm-4" align="right">Remove</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <hr>
+    }
 </div>
-<br>
-<hr>
-}
-   
+
 
