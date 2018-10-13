@@ -40,6 +40,11 @@
                 @foreach (var item in Model) {
                 <button type="submit" asp-controller="Voorraad" asp-action="AddToShoppingCart" asp-route-identication="@item.Id" class="btn btn-warning col-sm-4">Into shopping cart</button>
                 }
+                @foreach (var item in Model) {
+                <form action="" method="POST">
+                    <button  class="btn btn-danger col-sm-1" asp-controller="Home" asp-route-identication="@item.Id" type="submit">&#10084;</button>
+                </form>
+                }
             </div>
         </div>
         Delivery information

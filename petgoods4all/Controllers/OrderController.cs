@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using System.Net.Mail;
 using petgoods4all.Models;
 using petgoods4all.Controllers;
 
@@ -96,6 +97,24 @@ namespace petgoods4all.Controllers
                 db.SaveChanges();
 
             }
+            var check = (from s in db.ShoppingCart where s.AccountId == UserId select s).ToList();
+            MailMessage mail = new MailMessage();
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("petgoods4all@gmail.com");
+            mail.To.Add("petgoods4all@gmail.com");
+            mail.Subject = "Order: "+ MaxId + 1;
+            mail.Body = "Order placed from user "+UserId+".<br/>";
+            foreach(var item in check)
+            {
+                var item2 = (from s in db.Voorraad where item.VoorraadId == s.Id select s.Naam).Single();
+                mail.Body = mail.Body + "Product: "+item2+"<br/>";
+            }
+            client.Port = 587;
+            client.Credentials = new System.Net.NetworkCredential("petgoods4all@gmail.com", "adminpetgoods4all");
+            client.EnableSsl = true;
+            client.Send(mail);
+            Console.WriteLine("Mail sent");
+            
             return OrderHistory();
         }
     }

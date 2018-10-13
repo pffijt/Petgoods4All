@@ -14,12 +14,13 @@ namespace petgoods4all.Models
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderedProducts> OrderedProducts { get; set; } 
+        public DbSet<Wishlist> Wishlist { get; set; }
 
         //this method is run automatically by EF the first time we run the application
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //here we define the name of our database
-            optionsBuilder.UseNpgsql("User ID=postgres;Password=jessiefag123;Host=localhost;Port=5433;Database=petgoods4all;Pooling=true;");
+            optionsBuilder.UseNpgsql("User ID=postgres;Password=admin;Host=localhost;Port=5432;Database=petgoods4all;Pooling=true;");
         }
     } 
 }

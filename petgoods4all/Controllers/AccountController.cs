@@ -32,14 +32,19 @@ namespace petgoods4all.Controllers
         [HttpPost]
         public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
         {
+            int MaxId;
             var email = inputEmail;
             var password = inputPassword;
-
             var db = new ModelContext();
-        
             var result = from acc in db.Account select acc.id;
-
-            var MaxId = result.Max();
+            if( !result.Any() )
+            {
+                MaxId = 0;
+            }
+            else
+            {
+                MaxId = result.Max();
+            }
 
             Account a = new Account
             {
@@ -51,39 +56,46 @@ namespace petgoods4all.Controllers
             db.Account.Add(a);
             db.SaveChanges();
             
-            return View("~/Views/Account/Inloggen.cshtml");
+            return Redirect("Inloggen");
         }
         [HttpPost]
         public ActionResult Inloggen(string inputEmail, string inputPassword)
         {
-            var email = inputEmail;
-            var password = inputPassword;
-
-            var db = new ModelContext();
-
-            var resultEmail = (from acc in db.Account where email == acc.email select acc.email).Single();
-            var resultId = (from acc in db.Account where email == acc.email select acc.id).Single();
-            var resultPassword = (from acc in db.Account where password == acc.password select acc.password).Single();
-            var resultAdmin = (from acc in db.Account where email == acc.email select acc.Admin).Single();
-
-            if (resultEmail == email && resultPassword == password)
+            using (var db = new ModelContext())
             {
-                HttpContext.Session.SetInt32("UserIdKey", resultId);
-                HttpContext.Session.SetString("resultEmail", resultEmail);
-
-                if (resultAdmin == true)
+                var cilc = from acc in db.Account where inputEmail == acc.email select acc.email;
+                if(cilc.Any() == true)
                 {
-                    string strEmailId = HttpContext.Session.GetString("resultEmail");
-                    return View("~/Views/Home/About.cshtml");
+                    var resultEmail = (from acc in db.Account where inputEmail == acc.email select acc.email).Single();
+                    var resultId = (from acc in db.Account where inputEmail == acc.email select acc.id).Single();
+                    var resultPassword = (from acc in db.Account where inputPassword == acc.password select acc.password).Single();
+                    var resultAdmin = (from acc in db.Account where inputEmail == acc.email select acc.Admin).Single();
+                    int userId = (from r in db.Account where r.email==inputEmail   select r.id).Single();
+                    if (resultEmail == inputEmail && resultPassword == inputPassword)
+                    {
+                        HttpContext.Session.SetInt32("UserIdKey", resultId);
+                        HttpContext.Session.SetString("resultEmail", resultEmail);
+                        
+                        if (resultAdmin == true)
+                        {
+                            HttpContext.Session.SetInt32("UID",userId);
+                            return View("~/Views/Home/About.cshtml");
+                        }
+                        else
+                        {
+                            HttpContext.Session.SetInt32("UID",userId);
+                            return View("~/Views/Home/Index.cshtml");
+                        }
+                    }
+                    else
+                    {
+                        return View("~/Views/Account/Inloggen.cshtml");
+                    }
                 }
                 else
                 {
-                    return View("~/Views/Home/Index.cshtml");
+                    return View("~/Views/Account/Inloggen.cshtml");
                 }
-            }
-            else
-            {
-                return View("~/Views/Account/Inloggen.cshtml");
             }
         }
     }

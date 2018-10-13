@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using petgoods4all.Models;
 
 
@@ -40,10 +41,139 @@ namespace petgoods4all.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Productpage()
+        {
+            int identication= Int32.Parse(HttpContext.Request.Query["identication"].ToString());
+            using (var db = new ModelContext())
+            {
+                int pID = (from m in db.Voorraad where m.Id == identication select m.Id).Single();
+                int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
+                if(uID != 0)
+                {
+                    int MaxId;
+                    var result = from m in db.Wishlist select m.id;
+                    if( !result.Any() )
+                    {
+                        MaxId = 0;
+                    }
+                    else
+                    {
+                        MaxId = result.Max();
+                    }
+                    Wishlist n = new Wishlist
+                    {
+                        id = MaxId + 1,
+                        customerid = uID,
+                        productid = pID
+                    };
+                    db.Wishlist.Add(n);
+                    db.SaveChanges();
+                }
+                var product = from m in db.Voorraad where m.Id == identication select m;
+                return View(product.ToList());
+            }
+        }
+
         public ActionResult Wishpage()
         {
+            int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
             ViewBag.Message = "This is your wishpage.";
+            ViewBag.uID = uID;
+            if(uID != 0)
+            {
+                using(var db = new ModelContext())
+                {
+                    var _emptylist = (from m in db.Wishlist where m.customerid == uID  select m).ToList();
+                    if(_emptylist.Any())
+                    {
+                        Console.WriteLine("List is not empty");
+                        ViewBag.emptylist = false;
+                        List<petgoods4all.Models.Voorraad> pList = new List<petgoods4all.Models.Voorraad>();
+                        int index = 1;
+                        int MaxId;
+                        var myList = (from m in db.Wishlist where m.customerid == uID select m).ToList();
+                        if( !myList.Any() )
+                        {
+                            MaxId = 0;
+                        }
+                        else
+                        {
+                            MaxId = myList.Count();
+                            while(index != MaxId+1)
+                            {
+                                var pID = (from s in myList select s.productid).Skip(index-1).Take(1).Single();
+                                var p = (from m in db.Voorraad where pID == m.Id select m).Single();
+                                pList.Add(p);
+                                index = index + 1;
+                            }
+                        }
+                        return View(pList);
+                    }
+                    else
+                    {
+                        ViewBag.emptylist = true;
+                        return View();
+                    }
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
 
+        [HttpPost]
+        public ActionResult Wishpage(string Option, int pIDD)
+        {
+            //Dit is wel echt slecht gescriptmaarja ik weet ook niet anders
+            if(Option == "+ Add to Cart")
+            {
+                //Nog niet mogelijk
+            }
+            if(Option == "x Remove")
+            {
+                int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
+                Console.WriteLine("uID:"+uID);
+                if(uID != 0)
+                {
+                    using (var db = new ModelContext())
+                    {
+                        List<petgoods4all.Models.Wishlist> wList = new List<petgoods4all.Models.Wishlist>();
+                        var currentstate = from s in db.Wishlist select s;
+                        var currentList = currentstate.ToList();
+                        db.Wishlist.RemoveRange(currentstate);
+                        db.SaveChanges();
+                        int index = 1;
+                        int skipped = 0;
+                        int MaxId = currentList.Count();
+                        Console.WriteLine("MaxId:"+MaxId);
+                        while(index != MaxId+1)
+                        {
+                            var currentrow = (from s in currentList select s).Skip(index-1).Take(1).Single();
+                            if(currentrow.productid != pIDD)
+                            {
+                                int ind = index - skipped;
+                                currentrow.id = ind;
+                                wList.Add(currentrow);
+                                index = index +1;
+                            }
+                            if(currentrow.productid == pIDD && currentrow.customerid == uID)
+                            {
+                                skipped = 1;
+                                index = index +1;
+                            }
+                        }
+                        foreach(var item in wList)
+                        {
+                            db.Wishlist.Add(item);
+                        }
+                        db.SaveChanges();
+                        return Redirect("Wishpage");
+                    }
+                }
+
+            }
             return View();
         }
         public IActionResult ProductBrowsen(string D, int P = 1)
