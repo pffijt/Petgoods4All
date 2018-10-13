@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace petgoods4all.Migrations
 {
-    public partial class InitialCreatePetgoods4all : Migration
+    public partial class initialpetgoods4all : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,8 @@ namespace petgoods4all.Migrations
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     email = table.Column<string>(nullable: true),
-                    password = table.Column<string>(nullable: true)
+                    password = table.Column<string>(nullable: true),
+                    Admin = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,6 +39,20 @@ namespace petgoods4all.Migrations
                 {
                     table.PrimaryKey("PK_Voorraad", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Wishlist",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    customerid = table.Column<int>(nullable: false),
+                    productid = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wishlist", x => x.id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -47,6 +62,9 @@ namespace petgoods4all.Migrations
 
             migrationBuilder.DropTable(
                 name: "Voorraad");
+
+            migrationBuilder.DropTable(
+                name: "Wishlist");
         }
     }
 }

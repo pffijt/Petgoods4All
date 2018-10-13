@@ -23,6 +23,8 @@ namespace petgoods4all.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Admin");
+
                     b.Property<string>("email");
 
                     b.Property<string>("password");
@@ -52,6 +54,20 @@ namespace petgoods4all.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Voorraad");
+                });
+
+            modelBuilder.Entity("petgoods4all.Models.Wishlist", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("customerid");
+
+                    b.Property<int>("productid");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Wishlist");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,6 +12,7 @@ namespace petgoods4all.Models
         public DbSet<Voorraad> Voorraad { get; set; }
 
         public DbSet<Account> Account { get; set; }
+        public DbSet<Wishlist> Wishlist { get; set; }
 
         //this method is run automatically by EF the first time we run the application
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

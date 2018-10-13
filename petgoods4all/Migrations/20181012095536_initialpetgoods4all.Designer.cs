@@ -9,8 +9,8 @@ using petgoods4all.Models;
 namespace petgoods4all.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    [Migration("20181008075437_InitialDbCreate")]
-    partial class InitialDbCreate
+    [Migration("20181012095536_initialpetgoods4all")]
+    partial class initialpetgoods4all
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,8 @@ namespace petgoods4all.Migrations
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Admin");
 
                     b.Property<string>("email");
 
@@ -45,13 +47,29 @@ namespace petgoods4all.Migrations
 
                     b.Property<string>("Naam");
 
-                    b.Property<double>("Prijs");
+                    b.Property<string>("Prijs");
 
                     b.Property<string>("Subklasse");
+
+                    b.Property<string>("image");
 
                     b.HasKey("Id");
 
                     b.ToTable("Voorraad");
+                });
+
+            modelBuilder.Entity("petgoods4all.Models.Wishlist", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("customerid");
+
+                    b.Property<int>("productid");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Wishlist");
                 });
 #pragma warning restore 612, 618
         }
