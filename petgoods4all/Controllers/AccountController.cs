@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mail;
+using System.Text;
 using petgoods4all.Models;
 
 namespace petgoods4all.Controllers
@@ -34,13 +37,20 @@ namespace petgoods4all.Controllers
         {
             var email = inputEmail;
             var password = inputPassword;
+            int MaxId;
 
             var db = new ModelContext();
         
             var result = from acc in db.Account select acc.id;
 
-            var MaxId = result.Max();
-
+            if (!result.Any())
+            {
+                 MaxId = 0;
+            }
+            else
+            {
+                 MaxId = result.Max();
+            }
             Account a = new Account
             {
                 id = MaxId + 1,
@@ -50,7 +60,21 @@ namespace petgoods4all.Controllers
 
             db.Account.Add(a);
             db.SaveChanges();
-            
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("petgoods4all@gmail.com", "adminpetgoods4all");
+
+            MailMessage mm = new MailMessage("petgoods4all@gmail.com", email, "test", "test");
+            mm.BodyEncoding = UTF8Encoding.UTF8;
+            mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+
+            client.Send(mm);
+
             return View("~/Views/Account/Inloggen.cshtml");
         }
         [HttpPost]
@@ -67,8 +91,7 @@ namespace petgoods4all.Controllers
 
             if (resultEmail == email && resultPassword == password)
             {
-                //write to the session if user is verified
-                HttpContext.Session.SetString("resultEmail", resultEmail.ToString());
+                HttpContext.Session.SetString("resultEmail", resultEmail);
 
                 if (resultAdmin == true)
                 {

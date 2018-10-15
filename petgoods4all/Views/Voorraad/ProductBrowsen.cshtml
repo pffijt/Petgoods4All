@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Producten";
+}
+<br />
+<br />
+<br />
+<head>
+    <link rel="stylesheet" href="~/Content/productBrowsen.css" />
+</head>
+<div class="container-fluid" id="bodyPB" style="background-color:#ffe8d3;">
+    <h2>Selected animal tab</h2>
+    <hr />
+    <br />
+    <!--Filters-->
+    <div class="row">
+    </div>
+    <br />
+    <!--end selecting-->
+    <!--begin products-->
+    <div id="browsProduct">
+        <div class="row">
+            @foreach (var item in ViewBag.Voorraad)
+            {
+                <div id="browsProductContainer" class="col-sm-3 offset-1">
+                    <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
+                    <br />
+                    <p>@item.Naam <br />&euro; @item.Prijs</p>
+                </div>
+            }
+        </div>
+    </div>
+    <!--end products-->
+    <!--begin page pagination-->
+    <div class="row">
+        <div class="text-center">
+            <ul class="pagination">
+            </ul>
+        </div>
+    </div>
+    <!--end page pagination-->
+</div>
+

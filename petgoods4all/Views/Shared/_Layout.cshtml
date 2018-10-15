@@ -16,38 +16,62 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     <link rel="stylesheet" href="~/Content/índex.css"/>
+
+    @*Search form submit when enter is pressed*@
+    <script type="text/javascript">
+        // Using jQuery.
+
+        $(document).ready(function () {
+
+            $('#productSearch').keydown(function (event) {
+                // enter has keyCode = 13, change it if you want to use another button
+                if (event.keyCode == 13) {
+                    this.form.submit();
+                    return false;
+                }
+            });
+
+        });
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header left">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="~/Content/Images/Logo_Petgoods4You.png" class="img-responsive" alt="Logo" width="200" height="50" />
+                
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Dog</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Cat</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Bird</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Other Animals</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="infoPagina">Information</a></li>
-                    <li><a asp-area="" asp-controller="Order" asp-action="OrderHistory">Order history page</a></li>
-            
+                <ul class="nav navbar-nav navbar-left">
+                    <img src="~/Content/Images/Logo_Petgoods4You.png" alt="Logo" width="200" height="50" />
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="dog">Dog</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="cat">Cat</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="fish">Fish</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="reptile">Reptiles</a></li>
+
                     <li>
-                        <form class="nav navbar-form form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="nav navbar-form form-inline" method="post" asp-controller="Voorraad" asp-action="productSearch" asp->
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="productSearch" name="productSearch">
                         </form>
                     </li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @using Microsoft.AspNetCore.Http;
+
+                    @if (Context.Session.GetInt32("UserIdKey") != null)
+                    {
+                        <li><a asp-area="" asp-controller="Voorraad" asp-action="ShoppingCart">&#xe116;</a></li>
+                    }
                     <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
+                    @*@Html.Partial("_LoginPartial")*@
                     <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Sign Up</a></li>
                     <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Login</a></li>
-
                 </ul>
             </div>
         </div>
