@@ -27,7 +27,8 @@
             </p>
         </div>
         <div class="row">
-                <input asp-controller="Admin" asp-action="ReadAccount" id="searchKlanten"class="form-control btn-sm type="search" placeholder="Search E-mail" aria-label="Search">
+            <button asp-controller="Admin" asp-action="ReadAccount" class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
+            <input asp-controller="Admin" asp-action="ReadAccount" name="searchEmail" id="searchEmail" class="form-control btn-sm" type="search" placeholder="Search E-mail" aria-label="Search">
 
         </div>
         <div class="row">
@@ -48,22 +49,22 @@
                         <input type="number" id="inputAdminKlantId" name="inputAdminKlantId" class="form-control" placeholder="Id" required autofocus>
                     </td>*@
                     <td>
-                        <input type="text" id="inputAdminKlantVoorNm" name="inputAdminKlantVoorNm" class="form-control" placeholder="Voornaam" required>
+                        <input type="text" id="inputAdminKlantVoorNm" name="inputAdminKlantVoorNm" class="form-control" placeholder="Voornaam" >
                     </td>
                     <td>
-                        <input type="text" id="inputAdminKlantAchterNaam" name="inputAdminKlantAchterNaam" class="form-control" placeholder="Achternaam" required>
+                        <input type="text" id="inputAdminKlantAchterNaam" name="inputAdminKlantAchterNaam" class="form-control" placeholder="Achternaam" >
                     </td>
                     <td>
-                        <input type="email" id="inputAdminKlantMail" name="inputAdminKlantMail" class="form-control" placeholder="E-mail" required>
+                        <input type="email" id="inputAdminKlantMail" name="inputAdminKlantMail" class="form-control" placeholder="E-mail" >
                     </td>
                     <td>
-                        <input type="number" id="inputAdminKlantTel" name="inputAdminKlantTel" class="form-control" placeholder="Tel." required>
+                        <input type="number" id="inputAdminKlantTel" name="inputAdminKlantTel" class="form-control" placeholder="Tel." >
                     </td>
                     <td>
-                        <input type="text" id="inputAdminKlantAdres" name="inputAdminKlantAdres" class="form-control" placeholder="Adres" required>
+                        <input type="text" id="inputAdminKlantAdres" name="inputAdminKlantAdres" class="form-control" placeholder="Adres" >
                     </td>
                     <td>
-                        <input type="password" id="inputAdminKlantWw" name="inputAdminKlantWw" class="form-control" placeholder="Ww" required>
+                        <input type="password" id="inputAdminKlantWw" name="inputAdminKlantWw" class="form-control" placeholder="Ww" >
                     </td>
                     <td>
                         <button asp-controller="Admin" asp-action="CreateAccount" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>

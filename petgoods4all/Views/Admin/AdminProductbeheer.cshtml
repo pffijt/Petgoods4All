@@ -27,7 +27,8 @@
             </p>
         </div>
         <div class="row">
-                <input asp-controller="Admin" asp-action="ReadProduct" id="searchKlanten"class="form-control btn-sm type="search" placeholder="Search Naam" aria-label="Search">
+            <button asp-controller="Admin" asp-action="ReadProduct" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
+            <input asp-controller="Admin" asp-action="ReadProduct" id="search" name="searchName" class="form-control btn-sm" type="search" placeholder="Search Naam" aria-label="Search">
 
         </div>
         <div class="row">
@@ -48,22 +49,22 @@
                     <input type="number" id="inputAdminProductId" name="inputAdminProductId" class="form-control" placeholder="Id" required autofocus>
                 </td>*@
                 <td>
-                    <input type="text" id="inputAdminProductNaam" name="inputAdminProductNaam" class="form-control" placeholder="Naam" required>
+                    <input type="text" id="inputAdminProductNaam" name="inputAdminProductNaam" class="form-control" placeholder="Naam" >
                 </td>
                 <td>
-                    <input type="text" id="inputAdminProductDier" name="inputAdminProductDier" class="form-control" placeholder="Dier" required>
+                    <input type="text" id="inputAdminProductDier" name="inputAdminProductDier" class="form-control" placeholder="Dier">
                 </td>
                 <td>
-                    <input type="text" id="inputAdminProductSuptype" name="inputAdminProductSuptype" class="form-control" placeholder="Suptype" required>
+                    <input type="text" id="inputAdminProductSuptype" name="inputAdminProductSuptype" class="form-control" placeholder="Suptype" >
                 </td>
                 <td>
-                    <input type="text" id="inputAdminProductPrijs" name="inputAdminProductPrijs" class="form-control" placeholder="Prijs"  required>
+                    <input type="text" id="inputAdminProductPrijs" name="inputAdminProductPrijs" class="form-control" placeholder="Prijs"  >
                 </td>
                 <td>
-                    <input type="number" id="inputAdminProductKwantiteit" name="inputAdminProductKwantiteit" class="form-control" placeholder="Kwantiteit"  required>
+                    <input type="number" id="inputAdminProductKwantiteit" name="inputAdminProductKwantiteit" class="form-control" placeholder="Kwantiteit"  >
                 </td>
                 <td>
-                    <input type="image" id="inputAdminProductImg" name="inputAdminProductImg" class="form-control" placeholder="Img"  required>
+                    <input type="image" id="inputAdminProductImg" name="inputAdminProductImg" class="form-control" placeholder="Img"  >
                 </td>
                 <td>
                     <button asp-controller="Admin" asp-action="CreateProduct" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>

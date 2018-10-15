@@ -40,19 +40,19 @@ namespace petgoods4all.Controllers
 
 
         
-        public ActionResult ReadProduct(string inputAdminProductNaam)
+        public ActionResult ReadProduct(string searchName)
         {
             var db = new ModelContext();
-            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
+            Voorraad product = db.Voorraad.Find(searchName);
 
             return View("~/Views/Admin/AdminProductbeheer.cshtml");
         }
 
 
-        public ActionResult ReadAccount(string inputAdminKlantMail)
+        public ActionResult ReadAccount(string searchEmail)
         {
             var db = new ModelContext();
-            Account account = db.Account.Find(inputAdminKlantMail);
+            Account account = db.Account.Find(searchEmail);
 
 
             return View("~/Views/Admin/AdminKlantbeheer.cshtml");
@@ -89,10 +89,10 @@ namespace petgoods4all.Controllers
             return View("~/Views/Admin/AdminKlantbeheer.cshtml");
         }
 
-        public ActionResult DeleteAccount(string inputAdminKlantMail)
+        public ActionResult DeleteAccount(string searchEmail)
         {
             var db = new ModelContext();
-            Account account = db.Account.Find(inputAdminKlantMail);
+            Account account = db.Account.Find(searchEmail);
             db.Account.Remove(account);
             return View("~/Views/Admin/AdminKlantbeheer.cshtml");
         }
@@ -128,10 +128,10 @@ namespace petgoods4all.Controllers
             product.Prijs = newPrijs;
             return View("~/Views/Admin/AdminProductbeheer.cshtml");
         }
-        public ActionResult DeleteProduct(string inputAdminProductNaam)
+        public ActionResult DeleteProduct(string searchName)
         {
             var db = new ModelContext();
-            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
+            Voorraad product = db.Voorraad.Find(searchName);
             db.Voorraad.Remove(product);
             return View("~/Views/Admin/AdminProductbeheer.cshtml");
         }
