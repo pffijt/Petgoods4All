@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ViewData["Title"] - Petgoods4All</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/Content/signin.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <br /><br /><br /><br /><br /><br /><br />
+    <form class="table" method="put" style="background-color:#ffe8d3;">
+        <div class="row">
+            <h2>Product beheer</h2>
+            <p>
+                <a href="~/Views/Admin/AdminInstellingen.cshtml">Instellingen</a> | 
+                <a href="~/Views/Admin/AdminKlantbeheer.cshtml">Klant beheer</a>
+            </p>
+        </div>
+        <div class="row">
+        <table>
+            <tr>
+                @*<th>Id</th>*@
+                <th>Naam</th>
+                <th>Dier</th>
+                <th>Suptype</th>
+                <th>Prijs</th>
+                <th>Kwantiteit</th>
+                <th>Img</th>
+                <th>Save</th>
+                <th>X</th>
+            </tr>
+            <tr>
+                @*<td>
+                    <input type="number" id="inputAdminProductId" name="inputAdminProductId" class="form-control" placeholder="Id" required autofocus>
+                </td>*@
+                <td>
+                    <input type="text" id="inputAdminProductNaam" name="inputAdminProductNaam" class="form-control" placeholder="Naam" required>
+                </td>
+                <td>
+                    <input type="text" id="inputAdminProductDier" name="inputAdminProductDier" class="form-control" placeholder="Dier" required>
+                </td>
+                <td>
+                    <input type="text" id="inputAdminProductSuptype" name="inputAdminProductSuptype" class="form-control" placeholder="Suptype" required>
+                </td>
+                <td>
+                    <input type="text" id="inputAdminProductPrijs" name="inputAdminProductPrijs" class="form-control" placeholder="Prijs"  required>
+                </td>
+                <td>
+                    <input type="number" id="inputAdminProductKwantiteit" name="inputAdminProductKwantiteit" class="form-control" placeholder="Kwantiteit"  required>
+                </td>
+                <td>
+                    <input type="image" id="inputAdminProductImg" name="inputAdminProductImg" class="form-control" placeholder="Img"  required>
+                </td>
+                <td>
+                    <button asp-controller="Admin" asp-action="CreateProduct" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
+                </td>
+                <td>
+                    <button asp-controller="Admin" asp-action="DeleteAccount" class="btn btn-sm btn-primary btn-block" type="submit">Delete</button>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </form>
+</body>
+</html>
