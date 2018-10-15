@@ -1,7 +1,7 @@
 ﻿<!-- Dit is gemaakt door Pepijn Fijt, als jullie het niet begrijpen dan moet je even een berichtje versturen-->
 @model IEnumerable<petgoods4all.Models.Voorraad>
 @{
-    ViewBag.Title = "My Wishlist";
+    ViewBag.Title = "Mijn wensenlijst";
 }
 <h2>
     @ViewBag.Title
@@ -18,15 +18,15 @@
             <div class="col-md-4">
                 <h3>@Html.DisplayFor(modelItem => item.Naam)</h3>
                 <p>Kwantiteit: @Html.DisplayFor(modelItem => item.Kwantiteit)</p>
-                <p>@Html.DisplayFor(modelItem => item.Prijs)</p>
+                <p>$ @Html.DisplayFor(modelItem => item.Prijs)</p>
             </div>
             <div class="col-md-3">
                 <br><br>
                 <form action="" method="POST">
                     <input type="hidden" value="@Html.DisplayFor(modelItem => item.Id)" name="pIDD">
-                    <input type="submit" class="btn btn-warning" value="+ Add to Cart" name="Option" />
+                    <input type="submit" class="btn btn-warning" value="+ Naar winkelwagen" name="Option" />
                 <br/><br/>
-                    <input type="submit" class="btn btn-danger" value="x Remove" placeholder="hello" name="Option" />
+                    <input type="submit" class="btn btn-danger" value="x Verwijderen" placeholder="hello" name="Option" />
                 </form>
                 <br/>
                 <br/>
@@ -39,13 +39,13 @@
 @if(@ViewBag.emptylist == true)
 {
     <div style="background-color: #ffe8d3;">
-        <h3>Je wishlist is leeg!</h3>
+        <h3>Je wensenlijst is leeg!</h3>
     </div>
 }
 @if(@ViewBag.uID == 0)
 {
     <div style="background-color: #ffe8d3;">
-        <h3 style="padding-top:10px;">Een wishlist is voor de gebruiker met een account</h3>
-        <p  style="padding-left:50px;"><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Maak nu een account aan </a>of<a asp-area="" asp-controller="Account" asp-action="Inloggen"> login in!</a></p>
+        <h3 style="padding-top:10px;">Een wensenlijst is voor de gebruiker met een account</h3>
+        <p  style="padding-left:50px;"><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Maak nu een account aan </a>of<a asp-area="" asp-controller="Account" asp-action="Inloggen"> login!</a></p>
     </div>
 }

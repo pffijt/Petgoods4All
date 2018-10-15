@@ -127,11 +127,11 @@ namespace petgoods4all.Controllers
         public ActionResult Wishpage(string Option, int pIDD)
         {
             //Dit is wel echt slecht gescriptmaarja ik weet ook niet anders
-            if(Option == "+ Add to Cart")
+            if(Option == "+ Naar winkelwagen")
             {
                 //Nog niet mogelijk
             }
-            if(Option == "x Remove")
+            if(Option == "x Verwijderen")
             {
                 int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
                 Console.WriteLine("uID:"+uID);

@@ -21,7 +21,7 @@
             {@Html.DisplayFor(modelItem => item.Naam)}</h2>
             <p style="color:red;">@foreach (var item in Model)
             {@Html.DisplayFor(modelItem => item.Prijs)}</p>
-            <label for="sel1">Quantity:</label>
+            <label for="sel1">Kwantiteit:</label>
             <div>
                 <div class="form-group col-sm-4">
                     <select class="form-control" id="Quantity" name="Quantity">
@@ -38,7 +38,7 @@
                 }*@
 
                 @foreach (var item in Model) {
-                <button type="submit" asp-controller="Voorraad" asp-action="AddToShoppingCart" asp-route-identication="@item.Id" class="btn btn-warning col-sm-4">Into shopping cart</button>
+                <button type="submit" asp-controller="Voorraad" asp-action="AddToShoppingCart" asp-route-identication="@item.Id" class="btn btn-warning col-sm-4">Naar winkelwagen</button>
                 }
                 @foreach (var item in Model) {
                 <form action="" method="POST">
@@ -47,10 +47,10 @@
                 }
             </div>
         </div>
-        Delivery information
+        Bezorg informatie
     </div>
 </form>
-    <h3>Related options</h3>
+    <h3>Gerelateerde producten</h3>
     <hr />
     <div class="row">
         <div class="col-sm-4">
@@ -82,7 +82,7 @@
             </div>
         </div>
     </div>
-    <h3>Product information</h3>
+    <h3>Product informatie</h3>
     <hr />
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nulla sem, laoreet sit amet lobortis nec, auctor rhoncus ex. Maecenas quis turpis nisi. Integer viverra pretium libero, non aliquet est ornare id. Aliquam in venenatis libero. Nam ut nisi accumsan, accumsan sem vel, luctus lorem. Praesent sed sollicitudin turpis, in commodo purus. Fusce lorem arcu, suscipit vitae egestas eget, hendrerit at mauris. Nunc purus nisi, dignissim sit amet risus quis, faucibus pellentesque elit. Maecenas sodales convallis congue. Curabitur ullamcorper nibh quis euismod elementum. Cras egestas, mi quis mollis iaculis, eros mi egestas sem, vel auctor erat augue non magna. In condimentum pellentesque leo, sit amet molestie nibh tristique eu. Sed diam est, imperdiet ac ex ut, mattis mattis eros.
