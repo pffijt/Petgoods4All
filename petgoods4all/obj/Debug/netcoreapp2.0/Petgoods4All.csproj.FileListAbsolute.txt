@@ -13,9 +13,9 @@ D:/Petgoods4All/Code_Petsgoods4All/Petgoods4All/petgoods4all/obj/Debug/netcoreap
 /Users/els/Documents/GitHub/Petgoods4All/petgoods4all/bin/Debug/netcoreapp2.0/petgoods4all.runtimeconfig.dev.json
 /Users/els/Documents/GitHub/Petgoods4All/petgoods4all/bin/Debug/netcoreapp2.0/petgoods4all.dll
 /Users/els/Documents/GitHub/Petgoods4All/petgoods4all/bin/Debug/netcoreapp2.0/petgoods4all.pdb
-/Users/els/Documents/GitHub/Petgoods4All/petgoods4all/obj/Debug/netcoreapp2.0/petgoods4all.csprojAssemblyReference.cache
 /Users/els/Documents/GitHub/Petgoods4All/petgoods4all/obj/Debug/netcoreapp2.0/petgoods4all.csproj.CoreCompileInputs.cache
 /Users/els/Documents/GitHub/Petgoods4All/petgoods4all/obj/Debug/netcoreapp2.0/petgoods4all.AssemblyInfoInputs.cache
 /Users/els/Documents/GitHub/Petgoods4All/petgoods4all/obj/Debug/netcoreapp2.0/petgoods4all.AssemblyInfo.cs
 /Users/els/Documents/GitHub/Petgoods4All/petgoods4all/obj/Debug/netcoreapp2.0/petgoods4all.dll
 /Users/els/Documents/GitHub/Petgoods4All/petgoods4all/obj/Debug/netcoreapp2.0/petgoods4all.pdb
+/Users/els/Documents/GitHub/Petgoods4All/petgoods4all/obj/Debug/netcoreapp2.0/petgoods4all.csprojResolveAssemblyReference.cache
