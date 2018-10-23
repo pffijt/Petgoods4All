@@ -18,6 +18,34 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public ActionResult ViewOrder(int orderId)
+        {
+            var db = new ModelContext();
+            var result = from s in db.OrderedProducts where s.OrderId == orderId select s;
+
+            List<Voorraad> voorraadList = new List<Voorraad>();
+
+            foreach (var item in result)
+            {
+                var orderedProductsResult = (from s in db.Voorraad where s.Id == item.ProductId select s).Single();
+
+                voorraadList.Add(new Voorraad {
+                    Id = orderedProductsResult.Id,
+                    Naam = orderedProductsResult.Naam,
+                    Dier = orderedProductsResult.Dier,
+                    Subklasse = orderedProductsResult.Subklasse,
+                    Kwantiteit = item.Quantity,
+                    Prijs = orderedProductsResult.Prijs,
+                    image = orderedProductsResult.image,
+                });
+            
+            }
+
+            ViewBag.ViewOrder = voorraadList;
+
+            return View();
+        }
+
         public ActionResult OrderHistory()
         {
             var db = new ModelContext();
@@ -85,6 +113,15 @@ namespace petgoods4all.Controllers
                     MaxOrderedProductsId = resultt.Max();
                 }
 
+                var voorraad = (from v in db.Voorraad where v.Id == item.VoorraadId select v).Single();
+                if (voorraad.Kwantiteit < 0)
+                {
+                    ViewBag.Error = "NietInVoorraad";
+                    return View("~/Views/Order/OrderError.cshtml");
+                }
+                voorraad.Kwantiteit -= item.Quantity;
+                db.SaveChanges();
+
                 OrderedProducts orderedProducts = new OrderedProducts
                 {
                     Id = MaxOrderedProductsId + 1,
@@ -96,7 +133,10 @@ namespace petgoods4all.Controllers
                 db.OrderedProducts.Add(orderedProducts);
                 db.SaveChanges();
 
+
+                
             }
+            
             var check = (from s in db.ShoppingCart where s.AccountId == UserId select s).ToList();
             MailMessage mail = new MailMessage();
             SmtpClient client = new SmtpClient("smtp.gmail.com");
