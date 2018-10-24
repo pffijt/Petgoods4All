@@ -1,0 +1,33 @@
+@{
+    ViewBag.Title = "Order";
+}
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid" style="background-color:#ffe8d3;">
+
+    <h2>Besteladres</h2>
+    <div class="row">
+        <div class="col-lg-7" id="form">
+            <form class="form-inline" role="form" action="" method="POST">
+                <h2>Prijs: $ @ViewBag.Prijs</h2>
+                <input type="text" value="@ViewBag.Prijs" name="prijs" id="prijs" style="visibility:hidden">
+                <br/>
+                Aanhef:<br/>
+                <input type="radio" name="o_aanhef" value="Dhr."> Dhr.<br>
+                <input type="radio" name="o_aanhef" value="Mvr."> Mvr.<br><br/>
+                Naam:<br/>
+                <input type="text" class="form-control" name="o_name" id="o_name" placeholder="Naam" required><br />
+                Postcode:<br/>
+                <input type="text" class="form-control" name="o_postal" id="o_postal" placeholder="Postcode" required><br />
+                Adres:<br/>
+                <input type="text" class="form-control" name="o_address" id="o_address" placeholder="Adres" required><br />
+                Huisnummer:<br/>
+                <input type="number" class="form-control" name="o_number" id="o_number" placeholder="Huisnummer" required>
+                <br/><br/>
+                <button type="submit" asp-controller="Order" asp-action="OrderProducts" class="btn btn-success col-sm-4">Bestellen</button>
+            </form>
+        </div>
+    </div>
+</div>
