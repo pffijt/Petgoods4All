@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using petgoods4all.Models;
+using PagedList;
 
 namespace petgoods4all.Controllers
 {
@@ -57,6 +58,70 @@ namespace petgoods4all.Controllers
 
             return View("~/Views/Admin/AdminKlantbeheer.cshtml");
         }
+
+
+        public ActionResult ReadIndexAccounts(string sortOrder, string currentFilter, string searchString, int? page)
+        {
+            var db = new ModelContext();
+            
+
+                ViewBag.CurrentSort = sortOrder;
+                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Achternaam_desc" : "";
+
+
+                if (searchString != null)
+                {
+                    page = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
+
+                ViewBag.CurrentFilter = searchString;
+
+
+                var accounts = from s in db.Account
+                               select s;
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    accounts = accounts.Where(s => s.Achternaam.Contains(searchString)
+                                           || s.Voornaam.Contains(searchString)
+                                           || s.Gemeente.Contains(searchString)
+                                           || s.email.Contains(searchString)
+                                           );
+                }
+                switch (sortOrder)
+                {
+                    case "Achternaam_desc":
+                        accounts = accounts.OrderByDescending(s => s.Achternaam);
+                        break;
+                    case "Voornaam":
+                        accounts = accounts.OrderBy(s => s.Voornaam);
+                        break;
+                    case "Voornaam_desc":
+                        accounts = accounts.OrderByDescending(s => s.Voornaam);
+                        break;
+                    case "Gemeente":
+                        accounts = accounts.OrderBy(s => s.Gemeente);
+                        break;
+                    case "Gemeente_desc":
+                        accounts = accounts.OrderByDescending(s => s.Gemeente);
+                        break;
+                    default:  // Name ascending 
+                        accounts = accounts.OrderBy(s => s.Achternaam);
+                        break;
+                }
+
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(accounts.ToPagedList(pageNumber, pageSize));
+        }
+
+
+
+
         [HttpPost]
         public ActionResult UpdateAccount(string inputAdminKlantMail, string newEmail)
         { 
