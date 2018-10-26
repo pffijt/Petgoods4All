@@ -7,7 +7,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{ 
+    if (Model == null)
+    {
+        var db = new ModelContext();
 
+
+        Account a = new Account
+        {
+            email = "a@admin.nl",
+            Admin = true,
+            password = "admin",
+            Voornaam = "Loek",
+            Achternaam = "vandenBerg",
+            Telnr = 6666666,
+            Straatnaam = "berkenlaan"
+        };
+        db.Account.Add(a);
+        db.SaveChanges();
+    }
+}
 <html>
 <head>
     <meta charset="utf-8" />
