@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using System.Net.Mail;
 using petgoods4all.Models;
 using petgoods4all.Controllers;
+using PayPal.Core;
+using PayPal.v1;
 
 namespace petgoods4all.Controllers
 {
@@ -44,10 +50,107 @@ namespace petgoods4all.Controllers
 
             return View();
         }
-
         [HttpPost]
-        public ActionResult OrderProducts(string prijs, string o_aanhef, string o_name, string o_postal, string o_address, string o_number)
+        public async Task<ActionResult> Pay(string prijs, string o_aanhef, string o_name, string o_postal, string o_address, string o_number)
         {
+             
+            var environment = new SandboxEnvironment("AfhChBO_sRh2R1nq5nInREi6dirZOidl2yLauLpc_r46xF5Tv7-Nd5cYgzWcu2VrDAV0DnQpeDcZoe0Y", "EMshNZsEwYQA-xjq_e3CicdRll-qmh3WE3pNkmKKUaV9LhLdPnhDLvpyOoR41BIcZVR1qEKE6vvyr-uG");
+            var Pay_client = new PayPalHttpClient(environment);
+            
+            var payment = new PayPal.v1.Payments.Payment()
+            {
+                Intent = "sale",
+                Transactions = new List<PayPal.v1.Payments.Transaction>() 
+                {
+                    new PayPal.v1.Payments.Transaction()
+                    {
+                        Amount = new PayPal.v1.Payments.Amount()
+                        {
+                            Total = prijs,
+                            Currency = "USD",
+                            Details = new  PayPal.v1.Payments.AmountDetails() 
+                            {
+                                Subtotal = prijs
+                            }
+                        },
+                        ItemList = new PayPal.v1.Payments.ItemList()
+                            {
+                            Items = new List<PayPal.v1.Payments.Item>()
+                            {
+                                new PayPal.v1.Payments.Item()
+                                {
+                                    Name="Petgoods4All Products",
+                                    Currency = "USD",
+                                    Price = prijs,
+                                    Quantity = "1",
+                                    Description = "Bedankt voor uw aankoop"
+                                }   
+                            }
+                        }
+                        ,
+                        Description="Betaling Petgoods4All"
+                    }
+                },
+                RedirectUrls = new PayPal.v1.Payments.RedirectUrls() 
+                {
+                    CancelUrl = "https://example.com/cancel",
+                    ReturnUrl = "http://localhost:56003/Order/OrderProducts?prijs="+prijs+"&o_aanhef="+o_aanhef+"&o_name="+o_name+"&o_postal="+o_postal+"&o_address="+o_address+"&o_number="+o_number
+                },
+                Payer = new PayPal.v1.Payments.Payer() 
+                {
+                    PaymentMethod = "paypal"
+                }
+            };
+            PayPal.v1.Payments.PaymentCreateRequest request = new PayPal.v1.Payments.PaymentCreateRequest();
+            request.RequestBody(payment);
+            System.Net.HttpStatusCode statusCode;
+
+            try 
+            {
+
+                BraintreeHttp.HttpResponse httpResponse = await Pay_client.Execute(request);
+                BraintreeHttp.HttpResponse response = httpResponse;
+                statusCode = response.StatusCode;
+                PayPal.v1.Payments.Payment result = response.Result<PayPal.v1.Payments.Payment>();
+                string redirectUrl = null;
+                    foreach(PayPal.v1.Payments.LinkDescriptionObject link in result.Links)
+                    {
+                        if(link.Rel.Equals("approval_url"))
+                        {
+                            redirectUrl = link.Href;
+                            Console.WriteLine(redirectUrl);
+                            return Redirect(redirectUrl);
+                        }
+                    }
+            } 
+            catch(BraintreeHttp.HttpException httpException) 
+            {
+                statusCode = httpException.StatusCode;
+                var debugId = httpException.Headers.GetValues("PayPal-Debug-Id").FirstOrDefault();
+                Console.WriteLine(debugId);
+                return CustOrder(prijs);
+            }
+            return CustOrder(prijs);
+
+        }
+        public ActionResult OrderProducts()
+        {
+            var o_aanhef= HttpContext.Request.Query["o_aanhef"].ToString();
+            var o_name= HttpContext.Request.Query["o_name"].ToString();
+            var o_postal= HttpContext.Request.Query["o_postal"].ToString();
+            var o_address= HttpContext.Request.Query["o_address"].ToString();
+            var o_number= HttpContext.Request.Query["o_number"].ToString();
+            var prijs= HttpContext.Request.Query["prijs"].ToString();
+            var paymentId = HttpContext.Request.Query["paymentId"].ToString();
+            var PayerID = HttpContext.Request.Query["PayerID"].ToString();
+
+            PayPal.v1.Payments.PaymentExecuteRequest request = new PayPal.v1.Payments.PaymentExecuteRequest(paymentId);
+            request.RequestBody(new PayPal.v1.Payments.PaymentExecution()
+            {
+                PayerId = PayerID
+            });
+
+
             if(o_aanhef == null)
             {
                 o_aanhef = "";

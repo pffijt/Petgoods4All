@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "a94d29bd5ef6df26bb2b56f7fb969818c1063e62"
+    "signature": "92e5be4ecdb6bfafb15cbbf84f81a33f243b28ab"
   },
   "compilationOptions": {
     "defines": [
@@ -27,13 +27,22 @@
           "Microsoft.EntityFrameworkCore.Design": "2.1.3",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "2.1.2"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "2.1.2",
+          "PayPal": "2.0.0-rc2"
         },
         "runtime": {
           "petgoods4all.dll": {}
         },
         "compile": {
           "petgoods4all.dll": {}
+        }
+      },
+      "BraintreeHttp-Dotnet/0.3.0": {
+        "runtime": {
+          "lib/netstandard2.0/BraintreeHttp-Dotnet.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/BraintreeHttp-Dotnet.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -2544,6 +2553,17 @@
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
         }
       },
+      "PayPal/2.0.0-rc2": {
+        "dependencies": {
+          "BraintreeHttp-Dotnet": "0.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Source.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/Source.dll": {}
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -4311,6 +4331,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "BraintreeHttp-Dotnet/0.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fhDqo9V68BFvH6EWZVlUuQEg67KmgQtF7Ge2vkvxFq5oKdSLIwWprfTSL5LCB11Jdedgw0QZ7XKhSQrWTzvrCg==",
+      "path": "braintreehttp-dotnet/0.3.0",
+      "hashPath": "braintreehttp-dotnet.0.3.0.nupkg.sha512"
+    },
     "Libuv/1.10.0": {
       "type": "package",
       "serviceable": true,
@@ -5563,6 +5590,13 @@
       "sha512": "sha512-WCkN68c8q+USG+Ot1MmBDH+9DUo5dk7UB0QDMiwCYhrH7ZoFLKFGGNzJ8C3LTR1DvB1LW9BOxKeznnZznKiCTA==",
       "path": "nuget.frameworks/4.0.0",
       "hashPath": "nuget.frameworks.4.0.0.nupkg.sha512"
+    },
+    "PayPal/2.0.0-rc2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ryqzUiQHkLZEomaNtUfiFyHTZJX6ZmkzqaxhxMQhhPg5iZOcvwhT3aRO4rjdgV2vhth26FIOMabx4w/v4kLgkQ==",
+      "path": "paypal/2.0.0-rc2",
+      "hashPath": "paypal.2.0.0-rc2.nupkg.sha512"
     },
     "Remotion.Linq/2.2.0": {
       "type": "package",

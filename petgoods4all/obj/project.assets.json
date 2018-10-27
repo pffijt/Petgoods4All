@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "BraintreeHttp-Dotnet/0.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/BraintreeHttp-Dotnet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BraintreeHttp-Dotnet.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -2930,6 +2939,18 @@
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
         }
       },
+      "PayPal/2.0.0-rc2": {
+        "type": "package",
+        "dependencies": {
+          "BraintreeHttp-Dotnet": "0.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Source.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Source.dll": {}
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -5095,6 +5116,17 @@
     }
   },
   "libraries": {
+    "BraintreeHttp-Dotnet/0.3.0": {
+      "sha512": "fhDqo9V68BFvH6EWZVlUuQEg67KmgQtF7Ge2vkvxFq5oKdSLIwWprfTSL5LCB11Jdedgw0QZ7XKhSQrWTzvrCg==",
+      "type": "package",
+      "path": "braintreehttp-dotnet/0.3.0",
+      "files": [
+        ".signature.p7s",
+        "braintreehttp-dotnet.0.3.0.nupkg.sha512",
+        "braintreehttp-dotnet.nuspec",
+        "lib/netstandard2.0/BraintreeHttp-Dotnet.dll"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -8155,6 +8187,17 @@
         "lib/netstandard1.3/NuGet.Frameworks.xml",
         "nuget.frameworks.4.0.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
+      ]
+    },
+    "PayPal/2.0.0-rc2": {
+      "sha512": "ryqzUiQHkLZEomaNtUfiFyHTZJX6ZmkzqaxhxMQhhPg5iZOcvwhT3aRO4rjdgV2vhth26FIOMabx4w/v4kLgkQ==",
+      "type": "package",
+      "path": "paypal/2.0.0-rc2",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Source.dll",
+        "paypal.2.0.0-rc2.nupkg.sha512",
+        "paypal.nuspec"
       ]
     },
     "Remotion.Linq/2.2.0": {
@@ -13300,7 +13343,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 2.1.3",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 2.1.2"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 2.1.2",
+      "PayPal >= 2.0.0-rc2"
     ]
   },
   "packageFolders": {
@@ -13364,6 +13408,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[2.1.2, )"
+          },
+          "PayPal": {
+            "target": "Package",
+            "version": "[2.0.0-rc2, )"
           }
         },
         "imports": [
