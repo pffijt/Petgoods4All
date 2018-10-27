@@ -31,6 +31,11 @@ namespace petgoods4all.Controllers
 
             return View();
         }
+        public ActionResult Uitloggen()
+        {
+         
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
@@ -91,16 +96,16 @@ namespace petgoods4all.Controllers
 
             if (resultEmail == email && resultPassword == password)
             {
-                HttpContext.Session.SetString("resultEmail", resultEmail);
+                //HttpContext.Session.SetString("resultEmail", resultEmail);
 
                 if (resultAdmin == true)
                 {
-                    string strEmailId = HttpContext.Session.GetString("resultEmail");
-                    return View("~/Views/Home/About.cshtml");
+                    //string strEmailId = HttpContext.Session.GetString("resultEmail");
+                    return View("~/Views/Admin/AdminHome.cshtml");
                 }
                 else
                 {
-                    return View("~/Views/Home/Index.cshtml");
+                    return View("~/Views/User/UserHome.cshtml");
                 }
             }
             else

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ViewData["Title"] - Petgoods4All</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/Content/signin.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <br /><br /><br /><br /><br /><br /><br />
+    <div class="container">
+        <form class="table" method="put" style="background-color:#ffe8d3;">
+            <div class="row">
+                <h2>Klant beheer</h2>
+                <p>
+                    <a href="~/Views/Admin/AdminInstellingen.cshtml">Instellingen</a> | 
+                    <a href="~/Views/Admin/AdminProductbeheer.cshtml">Product beheer</a>
+                </p>
+            </div>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Voornaam</th>
+                            <th scope="col">Achternaam</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Telefoonnummer</th>
+                            <th scope="col">Adres</th>
+                            <th scope="col">Wachtwoord</th>
+                        </tr>
+                    </thead>
+                     <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" id="inputAdminKlantVoorNm" name="inputAdminKlantVoorNm" class="form-control" placeholder="Voornaam" required>
+                        </td>
+                        <td>
+                            <input type="text" id="inputAdminKlantAchterNaam" name="inputAdminKlantAchterNaam" class="form-control" placeholder="Achternaam" required>
+                        </td>
+                        <td>
+                            <input type="email" id="inputAdminKlantMail" name="inputAdminKlantMail" class="form-control" placeholder="E-mail" required>
+                        </td>
+                        <td>
+                            <input type="number" id="inputAdminKlantTel" name="inputAdminKlantTel" class="form-control" placeholder="Tel." required>
+                        </td>
+                        <td>
+                            <input type="text" id="inputAdminKlantAdres" name="inputAdminKlantAdres" class="form-control" placeholder="Adres" required>
+                        </td>
+                        <td>
+                            <input type="password" id="inputAdminKlantWw" name="inputAdminKlantWw" class="form-control" placeholder="Ww" required>
+                        </td>
+                        <td>
+                            <button asp-controller="Admin" asp-action="CreateAccount" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
+                        </td>
+                        <td>
+                            <button asp-controller="Admin" asp-action="DeleteAccount" class="btn btn-sm btn-primary btn-block" type="submit">Delete</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

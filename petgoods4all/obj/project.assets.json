@@ -13304,11 +13304,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex_\\Documents\\HR\\Jaar 2\\Project\\Alex\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "projectUniqueName": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
       "projectName": "petgoods4all",
-      "projectPath": "C:\\Users\\Alex_\\Documents\\HR\\Jaar 2\\Project\\Alex\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "projectPath": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
       "packagesPath": "C:\\Users\\Alex_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex_\\Documents\\HR\\Jaar 2\\Project\\Alex\\Petgoods4All\\petgoods4all\\obj\\",
+      "outputPath": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

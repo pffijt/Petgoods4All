@@ -12,5 +12,10 @@ namespace petgoods4all.Models
         public string email { get; set; }
         public string password { get; set; }
         public Boolean Admin { get; set; }
+        public string voornaam { get; set; }
+        public string achternaam { get; set; }
+        public int telefoonnummer { get; set; }
+        public string straatnaam { get; set; }
+
     }
 }
