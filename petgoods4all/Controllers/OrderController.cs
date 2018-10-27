@@ -54,7 +54,7 @@ namespace petgoods4all.Controllers
         public async Task<ActionResult> Pay(string prijs, string o_aanhef, string o_name, string o_postal, string o_address, string o_number)
         {
              
-            var environment = new SandboxEnvironment("AfhChBO_sRh2R1nq5nInREi6dirZOidl2yLauLpc_r46xF5Tv7-Nd5cYgzWcu2VrDAV0DnQpeDcZoe0Y", "EMshNZsEwYQA-xjq_e3CicdRll-qmh3WE3pNkmKKUaV9LhLdPnhDLvpyOoR41BIcZVR1qEKE6vvyr-uG");
+            var environment = new SandboxEnvironment("ATAmdaFGY2Pz6CH83fmdK8OaXu2Wd8b9fLDyuU8X3SNiAzvu2_Ks4IU3wPiNbpE74nWIkhb4jN_7pz9E", "EOksjziNOaGEYh-OroCWTFT_EKDlqJEIpsrZLMtUhmYNxgDZ_v6KGwyL1MFcWJ-dfv97PApRKroAAT0g");
             var Pay_client = new PayPalHttpClient(environment);
             
             var payment = new PayPal.v1.Payments.Payment()
@@ -133,7 +133,7 @@ namespace petgoods4all.Controllers
             return CustOrder(prijs);
 
         }
-        public ActionResult OrderProducts()
+        public async Task<ActionResult> OrderProducts()
         {
             var o_aanhef= HttpContext.Request.Query["o_aanhef"].ToString();
             var o_name= HttpContext.Request.Query["o_name"].ToString();
@@ -143,13 +143,16 @@ namespace petgoods4all.Controllers
             var prijs= HttpContext.Request.Query["prijs"].ToString();
             var paymentId = HttpContext.Request.Query["paymentId"].ToString();
             var PayerID = HttpContext.Request.Query["PayerID"].ToString();
+            var environment = new SandboxEnvironment("ATAmdaFGY2Pz6CH83fmdK8OaXu2Wd8b9fLDyuU8X3SNiAzvu2_Ks4IU3wPiNbpE74nWIkhb4jN_7pz9E", "EOksjziNOaGEYh-OroCWTFT_EKDlqJEIpsrZLMtUhmYNxgDZ_v6KGwyL1MFcWJ-dfv97PApRKroAAT0g");
+            var Pay_client = new PayPalHttpClient(environment);
 
             PayPal.v1.Payments.PaymentExecuteRequest request = new PayPal.v1.Payments.PaymentExecuteRequest(paymentId);
             request.RequestBody(new PayPal.v1.Payments.PaymentExecution()
             {
                 PayerId = PayerID
             });
-
+            BraintreeHttp.HttpResponse response = await Pay_client.Execute(request);
+            Console.WriteLine("Shiet man");
 
             if(o_aanhef == null)
             {
