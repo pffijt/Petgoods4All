@@ -3,11 +3,9 @@
 @model PagedList.IPagedList<petgoods4all.Models.Account>
 @using PagedList.Mvc;
 @using System.Web.Mvc;
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-@{ 
+
+@*@{ 
     if (Model == null)
     {
         var db = new ModelContext();
@@ -26,7 +24,7 @@
         db.Account.Add(a);
         db.SaveChanges();
     }
-}
+}*@
 <html>
 <head>
     <meta charset="utf-8" />
@@ -102,26 +100,29 @@
                     </td>
                 </tr>
             </table>
+    
         </div><br /><br />
-        <h3>Klanten</h3>
+    </form>
+    <h3>Klanten</h3>
+    <form class="table" asp-controller="Admin" asp-action="ReadAllAccounts" method="get" >
 
-        @using (Html.BeginForm("ReadIndexAccounts", "Admincontroller", FormMethod.Get))
+    @*@using (Html.BeginForm("ReadIndexAccounts", "Admincontroller", FormMethod.Get))
         {
             <p>
                 Zoeken op achternaam: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
                 <input type="submit" value="Search" />
             </p>
-        }
-        <table class="table">
+        }*@
+    @*<table class="table">
             <tr>
                 <th>
-                    @Html.ActionLink("Achternaam", "ReadIndexAccounts", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("Achternaam", "ReadIndexAccounts")
                 </th>
                 <th>
-                    @Html.ActionLink("E-mail", "ReadIndexAccounts", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("E-mail", "ReadIndexAccounts")
                 </th>
                 <th>
-                    @Html.ActionLink("Voornaam", "ReadIndexAccounts", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("Voornaam", "ReadIndexAccounts")
                 </th>
                 <th></th>
             </tr>
@@ -138,8 +139,29 @@
                         @Html.DisplayFor(modelItem => item.Voornaam)
                     </td>
                 </tr>
+
             }
-        </table>
-    </form>
+        </table>*@
+
+
+
+
+    <table>
+        @foreach (var item in ViewBag.ReadAccounts)
+        {
+            <tr>
+                <td>
+                    @item.Achternaam
+                </td>
+                <td>
+                    @item.Voornaam
+                </td>
+                <td>
+                    @item.email
+                </td>
+            </tr>
+        }
+    </table>
+</form>
 </body>
 </html>

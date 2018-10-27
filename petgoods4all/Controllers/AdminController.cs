@@ -50,13 +50,16 @@ namespace petgoods4all.Controllers
         }
 
 
-        public ActionResult ReadAccount(string searchEmail)
+
+        public ActionResult ReadAllAccounts()
         {
             var db = new ModelContext();
-            Account account = db.Account.Find(searchEmail);
+            var accounts = from m in db.Account
+                          select m; 
 
 
-            return View("~/Views/Admin/AdminKlantbeheer.cshtml");
+            ViewBag.ReadAccounts = accounts;
+            return View();
         }
 
 
