@@ -67,13 +67,17 @@
                     @if (Context.Session.GetInt32("UserIdKey") != null)
                     {
                         <li><a asp-area="" asp-controller="Voorraad" asp-action="ShoppingCart">&#xe116;</a></li>
-
-                        @*<li><a asp-area="" asp-controller="Account" asp-action="Uitloggen">Log uit</a></li>*@
+                        <li><a asp-area="" asp-controller="Account" asp-action="Uitloggen">Log uit</a></li>
                     }
-                    <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
-                    @*@Html.Partial("_LoginPartial")*@
-                    <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Sign Up</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Login</a></li>
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Sign Up</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Login</a></li>
+                    }
+                    
+
+
                 </ul>
             </div>
         </div>
