@@ -6,6 +6,14 @@
 
 <!--<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>-->
+<head>
+    <meta charset="utf-8" />
+    <title>ViewData["Title"] - Petgoods4All</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/Content/productPage.css" />
+    </environment>
+</head>
 <div class="container-fluid" style="background-color:#ffe8d3;">
 <form class="form-products" method="post" asp-controller="Voorraad" asp-action="AddToShoppingCart">
     <ul class="breadcrumb">
@@ -19,9 +27,12 @@
         </div>
         <div class="col-sm-8">
             <h2>@foreach (var item in Model)
-            {@Html.DisplayFor(modelItem => item.Naam)}</h2>
+            {@Html.DisplayFor(modelItem => item.Naam)
+            }
+            </h2>
             <p style="color:red;">@foreach (var item in Model)
-            {@Html.DisplayFor(modelItem => item.Prijs)}</p>
+            {@Html.DisplayFor(modelItem => item.Prijs)}
+            </p>
             <label for="sel1">Kwantiteit:</label>
             <div>
                 <div class="form-group col-sm-4">
@@ -48,7 +59,7 @@
                 }
             </div>
         </div>
-        Bezorg informatie
+        <h5>Bezorg informatie</h5>
     </div>
 </form>
     <h3>Gerelateerde producten</h3>
