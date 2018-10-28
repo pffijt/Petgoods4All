@@ -6,11 +6,22 @@
 
 <!--<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>-->
+<head>
+    <meta charset="utf-8" />
+    <title>ViewData["Title"] - Petgoods4All</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/Content/productPage.css" />
+    </environment>
+</head>
+<div class="container-fluid" style="background-color:#ffe8d3;">
 <form class="form-products" method="post" asp-controller="Voorraad" asp-action="AddToShoppingCart">
     <ul class="breadcrumb">
         <li><a href="../">Home</a></li>
         <li><a href="#">@foreach (var item in Model)
-        {@Html.DisplayFor(modelItem => item.Naam)}</a></li>
+        {@Html.DisplayFor(modelItem => item.Naam)
+        }
+        </a></li>
     </ul>
     <div class="row">
         <div class="col-sm-4">
@@ -18,15 +29,20 @@
         </div>
         <div class="col-sm-8">
             <h2>@foreach (var item in Model)
-            {@Html.DisplayFor(modelItem => item.Naam)}</h2>
+            {@Html.DisplayFor(modelItem => item.Naam )
+            }
+            </h2>
             <p style="color:red;">@foreach (var item in Model)
-            {@Html.DisplayFor(modelItem => item.Prijs)}</p>
+            {@Html.DisplayFor(modelItem => item.Prijs)
+            }
+            </p>
             <label for="sel1">Kwantiteit:</label>
             <div>
                 <div class="form-group col-sm-4">
                     <select class="form-control" id="Quantity" name="Quantity">
                         @foreach (var item in Model) { 
-                            @for(var i = 1; i < item.Kwantiteit + 1; i++) { 
+                            @for(var i = 1; i < item.Kwantiteit + 1; i++) 
+                            { 
                                 <option>@i</option>
                             }
                         }
@@ -47,7 +63,7 @@
                 }
             </div>
         </div>
-        Bezorg informatie
+        <h5>Bezorg informatie</h5>
     </div>
 </form>
     <h3>Gerelateerde producten</h3>
@@ -99,3 +115,4 @@
     <p>
         Mauris ullamcorper nulla non dolor faucibus, ut eleifend risus ullamcorper. Praesent in mauris molestie, venenatis lectus eu, pharetra purus. Integer mollis magna orci. Morbi rutrum, mauris non fermentum pellentesque, lorem ligula condimentum nunc, nec ullamcorper ligula ex vel augue. Curabitur tincidunt interdum enim, in pulvinar nulla maximus eget. Praesent massa mauris, iaculis eu tempor vel, malesuada non felis. Duis sit amet nunc quis dolor dignissim aliquam. Curabitur lobortis non magna quis blandit. Pellentesque feugiat odio purus. Donec interdum sodales mi. Curabitur non nunc bibendum, ultricies metus quis, cursus magna. Cras vitae laoreet lectus, eu sollicitudin sapien. Nullam euismod eleifend augue ac suscipit.
     </p>
+</div>

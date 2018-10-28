@@ -26,20 +26,20 @@ footer {
     text-align: center;
 }
 
-@media only screen and (min-width: 768px) {
-    /* tablets and desktop */
-    #screensize,
-    img {
-        margin: 5px 0px 20px 20px;
-        height: 200px;
-    }
-}
-
 @media only screen and (max-width: 767px) {
     /* phones */
-    #screensize,
     img {
-        margin: 5px 0px 20px 20px;
+        margin: 5px 0px 20px 0px;
         height: 100px;
+    }
+    h2 {
+        padding: 0px 0px 0px 0px;
+        margin: 10px 0px 10px -5px;
+    }
+    p {
+        padding: 0px 0px 30px 0px;
+    }
+    h5 {
+        margin: 10px 0px 10px 20px;
     }
 }

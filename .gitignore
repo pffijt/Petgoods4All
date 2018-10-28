@@ -1,0 +1,13 @@
+.obj/
+.bin/
+.Migrations/
+.vs/
+.vscode/
+.petgoods4all/vscode/
+.petgoods4all/bin/
+.petgoods4all/obj/
+.petgoods4all/Migrations/
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/launch.json

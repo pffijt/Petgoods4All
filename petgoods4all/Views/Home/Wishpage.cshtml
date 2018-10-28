@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Mijn wensenlijst";
 }
+<div class="container-fluid" style="background-color:#ffe8d3;">
 <h2>
     @ViewBag.Title
 </h2>
@@ -10,7 +11,7 @@
 {
     @foreach(var item in Model)
     {
-        <div class="row" style="background-color: #ffe8d3;">
+        <div class="row">
             <div class="col-md-2">
                 <br>
                 <img src="@Html.DisplayFor(modelItem => item.image)" width="180px" height="100px"/>
@@ -38,14 +39,15 @@
 }
 @if(@ViewBag.emptylist == true)
 {
-    <div style="background-color: #ffe8d3;">
+    <div>
         <h3>Je wensenlijst is leeg!</h3>
     </div>
 }
 @if(@ViewBag.uID == 0)
 {
-    <div style="background-color: #ffe8d3;">
+    <div>
         <h3 style="padding-top:10px;">Een wensenlijst is voor de gebruiker met een account</h3>
         <p  style="padding-left:50px;"><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Maak nu een account aan </a>of<a asp-area="" asp-controller="Account" asp-action="Inloggen"> login!</a></p>
     </div>
 }
+</div>
