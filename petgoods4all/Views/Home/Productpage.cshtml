@@ -19,7 +19,9 @@
     <ul class="breadcrumb">
         <li><a href="../">Home</a></li>
         <li><a href="#">@foreach (var item in Model)
-        {@Html.DisplayFor(modelItem => item.Naam)}</a></li>
+        {@Html.DisplayFor(modelItem => item.Naam)
+        }
+        </a></li>
     </ul>
     <div class="row">
         <div class="col-sm-4">
@@ -27,18 +29,20 @@
         </div>
         <div class="col-sm-8">
             <h2>@foreach (var item in Model)
-            {@Html.DisplayFor(modelItem => item.Naam)
+            {@Html.DisplayFor(modelItem => item.Naam )
             }
             </h2>
             <p style="color:red;">@foreach (var item in Model)
-            {@Html.DisplayFor(modelItem => item.Prijs)}
+            {@Html.DisplayFor(modelItem => item.Prijs)
+            }
             </p>
             <label for="sel1">Kwantiteit:</label>
             <div>
                 <div class="form-group col-sm-4">
                     <select class="form-control" id="Quantity" name="Quantity">
                         @foreach (var item in Model) { 
-                            @for(var i = 1; i < item.Kwantiteit + 1; i++) { 
+                            @for(var i = 1; i < item.Kwantiteit + 1; i++) 
+                            { 
                                 <option>@i</option>
                             }
                         }

@@ -35,7 +35,7 @@ namespace petgoods4all.Controllers
 
             ViewBag.Voorraad = productList;
 
-            return View("~/Views/Voorraad/productBrowsen.cshtml");
+            return View("~/Views/Voorraad/ProductBrowsen.cshtml");
         }
         
         [HttpPost]
