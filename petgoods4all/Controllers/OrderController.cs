@@ -227,7 +227,7 @@ namespace petgoods4all.Controllers
                 },
                 RedirectUrls = new PayPal.v1.Payments.RedirectUrls() 
                 {
-                    CancelUrl = "https://example.com/cancel",
+                    CancelUrl = "http://localhost:56003/",
                     ReturnUrl = "http://localhost:56003/Order/OrderProducts?prijs="+prijs+"&o_aanhef="+o_aanhef+"&o_name="+o_name+"&o_postal="+o_postal+"&o_address="+o_address+"&o_number="+o_number
                 },
                 Payer = new PayPal.v1.Payments.Payer() 
