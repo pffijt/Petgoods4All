@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace petgoods4all.Migrations
 {
-    public partial class InitialCreatepetgoods4all : Migration
+    public partial class initialdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,11 @@ namespace petgoods4all.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     email = table.Column<string>(nullable: true),
                     password = table.Column<string>(nullable: true),
-                    Admin = table.Column<bool>(nullable: false)
+                    Admin = table.Column<bool>(nullable: false),
+                    voornaam = table.Column<string>(nullable: true),
+                    achternaam = table.Column<string>(nullable: true),
+                    straatnaam = table.Column<string>(nullable: true),
+                    telefoonnummer = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
