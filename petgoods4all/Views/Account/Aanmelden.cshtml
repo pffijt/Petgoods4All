@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/Content/signin.css" />
+        <link rel="stylesheet" href="~/Content/Site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -31,10 +32,27 @@
         }
     </script>
     <form class="form-signin" method="post"><br><br><br><br>
+
         <div class="container-fluid" style="background-color:#ffe8d3;">
             <div class="text-center mb-4">
                 <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
                 <h1 class="h3 mb-3 font-weight-normal">Aanmelden</h1>
+            </div>
+            <div class="form-label-group">
+                <label for="voornaam">Voornaam</label>
+                <input type="text" id="inputVoornaam" name="inputVoornaam" class="form-control" placeholder="Voornaam" required>
+            </div>
+            <div class="form-label-group">
+                <label for="achternaam">Achternaam</label>
+                <input type="text" id="inputAchternaam" name="inputAchternaam" class="form-control" placeholder="Achternaam" required>
+            </div>
+            <div class="form-label-group">
+                <label for="straatnaam">Straatnaam</label>
+                <input type="text" id="inputStraatnaam" name="inputStraatnaam" class="form-control" placeholder="Straatnaam" required>
+            </div>
+            <div class="form-label-group">
+                <label for="telefoonnummer">Telefoonnummer</label>
+                <input type="text" id="inputTelefoonnummer" name="inputTelefoonummer" class="form-control" placeholder="Telefoonnummer" required>
             </div>
             <div class="form-label-group">
                 <label for="inputEmail">Email-adres</label>

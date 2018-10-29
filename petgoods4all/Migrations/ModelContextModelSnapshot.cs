@@ -26,9 +26,17 @@ namespace petgoods4all.Migrations
 
                     b.Property<bool>("Admin");
 
+                    b.Property<string>("achternaam");
+
                     b.Property<string>("email");
 
                     b.Property<string>("password");
+
+                    b.Property<string>("straatnaam");
+
+                    b.Property<string>("telefoonnummer");
+
+                    b.Property<string>("voornaam");
 
                     b.HasKey("id");
 

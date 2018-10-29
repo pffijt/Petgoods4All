@@ -22,6 +22,116 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public IActionResult SearchFilter(string DierDropdown, string SubklasseDropdown, string minPrijs, string maxPrijs, string search)
+        {
+            var productSearchLowerCase = search.ToLower();
+
+            var db = new ModelContext();
+            IQueryable<Voorraad> query = from voorraad in db.Voorraad where voorraad.Dier == search || voorraad.Naam == search || voorraad.Subklasse == search || voorraad.Naam.Contains(search) || voorraad.Dier.Contains(search) || voorraad.Naam.Contains(productSearchLowerCase) || voorraad.Dier.Contains(productSearchLowerCase) select voorraad;
+
+            if (DierDropdown != null && SubklasseDropdown == null && minPrijs == null && maxPrijs == null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier));
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown != null && SubklasseDropdown != null && minPrijs == null && maxPrijs == null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier) && SubklasseDropdown.Contains(p.Subklasse));
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown != null && SubklasseDropdown != null && minPrijs != null && maxPrijs == null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier) && SubklasseDropdown.Contains(p.Subklasse));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown != null && SubklasseDropdown != null && minPrijs != null && maxPrijs != null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier) && SubklasseDropdown.Contains(p.Subklasse));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown == null && SubklasseDropdown != null && minPrijs != null && maxPrijs != null)
+            {
+                query = query.Where(p => SubklasseDropdown.Contains(p.Subklasse));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown == null && SubklasseDropdown == null && minPrijs != null && maxPrijs != null)
+            {
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown == null && SubklasseDropdown == null && minPrijs == null && maxPrijs != null)
+            {
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown == null && SubklasseDropdown != null && minPrijs == null && maxPrijs == null)
+            {
+                query = query.Where(p => SubklasseDropdown.Contains(p.Subklasse));
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown == null && SubklasseDropdown != null && minPrijs != null && maxPrijs == null)
+            {
+                query = query.Where(p => SubklasseDropdown.Contains(p.Subklasse));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown == null && SubklasseDropdown == null && minPrijs != null && maxPrijs == null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier) && SubklasseDropdown.Contains(p.Subklasse));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown != null && SubklasseDropdown == null && minPrijs != null && maxPrijs == null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown != null && SubklasseDropdown == null && minPrijs != null && maxPrijs != null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown != null && SubklasseDropdown == null && minPrijs == null && maxPrijs != null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown != null && SubklasseDropdown != null && minPrijs == null && maxPrijs != null)
+            {
+                query = query.Where(p => DierDropdown.Contains(p.Dier) && SubklasseDropdown.Contains(p.Subklasse));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown == null && SubklasseDropdown != null && minPrijs == null && maxPrijs != null)
+            {
+                query = query.Where(p => SubklasseDropdown.Contains(p.Subklasse));
+                //prijs filter kan niet omdat ik niet kan parsen en er foutieve data is aangeleverd door project leider
+                ViewBag.Voorraad = query;
+            }
+            else if (DierDropdown == null && SubklasseDropdown == null && minPrijs == null && maxPrijs == null)
+            {
+                //Doe niks
+            }
+
+            var dier = (from voorraad in db.Voorraad select voorraad.Dier).Distinct();
+            var dierList = dier.ToList();
+
+            var subklasse = (from voorraad in db.Voorraad select voorraad.Subklasse).Distinct();
+            var subklasseList = subklasse.ToList();
+
+            ViewBag.Subklasse = subklasseList;
+            ViewBag.Dier = dierList;
+            ViewBag.SearchedString = search;
+
+            return View("~/Views/Voorraad/ProductBrowsen.cshtml");
+        }
+
         [HttpPost]
         public IActionResult ProductSearch(string productSearch)
         {
@@ -33,6 +143,15 @@ namespace petgoods4all.Controllers
             var result = from voorraad in db.Voorraad where voorraad.Dier == productSearch || voorraad.Naam == productSearch || voorraad.Subklasse == productSearch || voorraad.Naam.Contains(productSearch) || voorraad.Dier.Contains(productSearch) || voorraad.Naam.Contains(productSearchLowerCase) || voorraad.Dier.Contains(productSearchLowerCase) select voorraad;
             var productList = result.ToList();
 
+            var dier = (from voorraad in db.Voorraad select voorraad.Dier).Distinct();
+            var dierList = dier.ToList();
+
+            var subklasse = (from voorraad in db.Voorraad select voorraad.Subklasse).Distinct();
+            var subklasseList = subklasse.ToList();
+
+            ViewBag.Subklasse = subklasseList;
+            ViewBag.Dier = dierList;
+            ViewBag.SearchedString = productSearch;
             ViewBag.Voorraad = productList;
 
             return View("~/Views/Voorraad/productBrowsen.cshtml");
@@ -48,7 +167,7 @@ namespace petgoods4all.Controllers
             productList.Add(identication);
             int AccountId = 0;
 
-            var UserId = HttpContext.Session.GetInt32("UserIdKey");
+            var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
                 AccountId = 0;
@@ -107,7 +226,7 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             //make query to find what user is logged in or get products from session
 
-            var UserId = HttpContext.Session.GetInt32("UserIdKey");
+            var UserId = HttpContext.Session.GetInt32("UID");
 
             //item uit de voorraad met prodcut id
             var result = from s in db.ShoppingCart where s.AccountId == UserId select s;
@@ -144,7 +263,7 @@ namespace petgoods4all.Controllers
                 double a = Convert.ToDouble(item.Prijs);
                 double b = a * item.Kwantiteit;
                 c = c + b;
-                decimal d = Convert.ToDecimal(c / 1);
+                decimal d = Convert.ToDecimal(c / 100);
                 string prijs = d.ToString("0.00");
 
                 ViewBag.Prijs = prijs;
