@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.AspNetCore.Mvc;
-using petgoods4all.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Net.Mail;
+using System.Text;
+using petgoods4all.Models;
+using System.Net;
 
 namespace petgoods4all.Controllers
 {
     public class AccountController : Controller
     {
+
         // GET: Account
         [HttpGet]
         public ActionResult Index()
@@ -28,74 +32,99 @@ namespace petgoods4all.Controllers
 
             return View();
         }
+        public ActionResult Uitloggen()
+        {
+         
+            return View();
+        }
 
         [HttpPost]
-        public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
+        public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword, string inputVoornaam, string inputAchternaam, string inputStraatnaam, string inputTelefoonnummer)
         {
             int MaxId;
             var email = inputEmail;
             var password = inputPassword;
+            var voornaam = inputVoornaam;
+            var achternaam = inputAchternaam;
+            var straatnaam = inputStraatnaam;
+            var telefoonnummer = inputTelefoonnummer; 
+
             var db = new ModelContext();
             var result = from acc in db.Account select acc.id;
-            if( !result.Any() )
+
+            if (!result.Any())
             {
-                MaxId = 0;
+                 MaxId = 0;
             }
             else
             {
-                MaxId = result.Max();
+                 MaxId = result.Max();
             }
-
             Account a = new Account
             {
                 id = MaxId + 1,
                 email = inputEmail,
-                password = confirmPassword
+                password = confirmPassword,
+                voornaam = inputVoornaam,
+                achternaam = inputAchternaam,
+                straatnaam = inputStraatnaam,
+                telefoonnummer = inputTelefoonnummer
+
             };
 
             db.Account.Add(a);
             db.SaveChanges();
-            
-            return Redirect("Inloggen");
+
+            MailMessage message = new System.Net.Mail.MailMessage();
+            string fromEmail = "petgoods4all@gmail.com";
+            string emailPassword = "adminpetgoods4all";
+            message.From = new MailAddress(fromEmail);
+            message.To.Add(email);
+            message.Subject = "Activatie mail";
+            message.Body = @"Klik op de link om uw account te activeren http://localhost:56002/Account/Inloggen";
+            message.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+
+            using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
+            {
+                smtpClient.EnableSsl = true;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential(fromEmail, emailPassword);
+
+                smtpClient.Send(message.From.ToString(), message.To.ToString(), message.Subject, message.Body);
+            }
+
+            return View("~/Views/Account/Inloggen.cshtml");
         }
         [HttpPost]
         public ActionResult Inloggen(string inputEmail, string inputPassword)
         {
-            using (var db = new ModelContext())
+            var email = inputEmail;
+            var password = inputPassword;
+
+            var db = new ModelContext();
+
+            var resultEmail = (from acc in db.Account where email == acc.email select acc.email).Single();
+            var resultPassword = (from acc in db.Account where password == acc.password select acc.password).Single();
+            var resultAdmin = (from acc in db.Account where email == acc.email select acc.Admin).Single();
+
+            if (resultEmail == email && resultPassword == password)
             {
-                var cilc = from acc in db.Account where inputEmail == acc.email select acc.email;
-                if(cilc.Any() == true)
+                //HttpContext.Session.SetString("resultEmail", resultEmail);
+
+                if (resultAdmin == true)
                 {
-                    var resultEmail = (from acc in db.Account where inputEmail == acc.email select acc.email).Single();
-                    var resultId = (from acc in db.Account where inputEmail == acc.email select acc.id).Single();
-                    var resultPassword = (from acc in db.Account where inputPassword == acc.password select acc.password).Single();
-                    var resultAdmin = (from acc in db.Account where inputEmail == acc.email select acc.Admin).Single();
-                    int userId = (from r in db.Account where r.email==inputEmail   select r.id).Single();
-                    if (resultEmail == inputEmail && resultPassword == inputPassword)
-                    {
-                        HttpContext.Session.SetInt32("UserIdKey", resultId);
-                        HttpContext.Session.SetString("resultEmail", resultEmail);
-                        
-                        if (resultAdmin == true)
-                        {
-                            HttpContext.Session.SetInt32("UID",userId);
-                            return View("~/Views/Home/About.cshtml");
-                        }
-                        else
-                        {
-                            HttpContext.Session.SetInt32("UID",userId);
-                            return View("~/Views/Home/Index.cshtml");
-                        }
-                    }
-                    else
-                    {
-                        return View("~/Views/Account/Inloggen.cshtml");
-                    }
+                    //string strEmailId = HttpContext.Session.GetString("resultEmail");
+                    return View("~/Views/Admin/AdminHome.cshtml");
                 }
                 else
                 {
-                    return View("~/Views/Account/Inloggen.cshtml");
+                    return View("~/Views/User/UserHome.cshtml");
                 }
+            }
+            else
+            {
+                return View("~/Views/Account/Inloggen.cshtml");
             }
         }
     }
