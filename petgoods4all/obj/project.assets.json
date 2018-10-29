@@ -5285,10 +5285,11 @@
       ]
     },
     "MailKit/2.0.6": {
-      "sha512": "xO7c8jHlbN15CoEKvIOkED6fN3W0hzUghXeh8GX8C8tSVA1mhPQnPwm7xIH7GbxkZt/IaLnvc9sVuFGxVR+yRw==",
+      "sha512": "6V2q9gAVPNHCpMlmJheLdC45f4HXW5fh1CFq7c5oFeJceJpcFVxRf6ukyQufx4LYXt2lhqQIG21yfsPOhiKFdA==",
       "type": "package",
       "path": "mailkit/2.0.6",
       "files": [
+        ".signature.p7s",
         "lib/monoandroid/MailKit.dll",
         "lib/monoandroid/MailKit.xml",
         "lib/net45/MailKit.dll",
@@ -7217,7 +7218,7 @@
       ]
     },
     "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
-      "sha512": "UMlN++q5qqzQ2HH+uOrKxN5fmBXMQDhrYkSaPJxhmyzfJaFPirrVr1raim/Ocq1psAZoB9+7JSAf0GDAX35wUg==",
+      "sha512": "H6ZsQzxYw/6k2DfEQRXdC+vQ6obd6Uba3uGJrnJ2vG4PRXjQZ7seB13JdCfE72abp8E6Fk3gGgDzfJiLZi5ZpQ==",
       "type": "package",
       "path": "microsoft.extensions.platformabstractions/1.1.0",
       "files": [
@@ -7933,10 +7934,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration/2.0.0": {
-      "sha512": "tLLwy1BTo2IK6LR3lFnY/vMXptLc+5cL9z+jnWH9nB2CfzQ1R2nXvULK3zqMlUSOoSxZIpdIJPIDo5rXQhTifQ==",
+      "sha512": "7BO5PTtCV0/c0bZwesoqnKThROghk6arNy7qmHwxBzy3Wuh3BslMLJIVWxg1BxgF4/ybqUDmRd1y+rz0JNTe0w==",
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration/2.0.0",
       "files": [
+        ".signature.p7s",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.dll",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.xml",
         "microsoft.visualstudio.web.codegeneration.2.0.0.nupkg.sha512",
@@ -7944,10 +7946,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Contracts/2.0.0": {
-      "sha512": "UIlELB0laoUrkGRcMLwUpek6sUXtlxToDsAg0xU4gQvDGYIfe7bBJjka54XBHq/TZEsZ0NipOaFiNQOfRTd2xA==",
+      "sha512": "4USNpW/X6sLhbR1O/5RShU3JvkhAVpKuueNT139yv9Z/XckSE11WzjkejY05+nwsfmtPFB+KRynarJJ5boRvmA==",
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.contracts/2.0.0",
       "files": [
+        ".signature.p7s",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.xml",
         "microsoft.visualstudio.web.codegeneration.contracts.2.0.0.nupkg.sha512",
@@ -7955,10 +7958,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Core/2.0.0": {
-      "sha512": "6KNE9zrJieCUB4C/7yPC6rM+RxMh7HK8i8IJ0/9yXkPekUMuXwK3KNTYJLW1Okp0AHbHuqyJfDvU3cd4+bA1MA==",
+      "sha512": "XCwyV8fCRpvMGHuJfI3FaAzEbCoJahobc4TZtvGlYA2vGo5vwLcC5WaRaTXH2WjgK9Z5MYdP3cclCaJp3TOjfg==",
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.core/2.0.0",
       "files": [
+        ".signature.p7s",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.dll",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.xml",
         "microsoft.visualstudio.web.codegeneration.core.2.0.0.nupkg.sha512",
@@ -7966,10 +7970,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Design/2.0.0": {
-      "sha512": "14dGqnnOnNxKGrGZKFQGGzMDtQ23WVuIOZkcH5KE0LeHEhjc+9u8raAiFhXnRu8P/PHpXjbcgW/Zdq71sSqnlg==",
+      "sha512": "e45LCYfDojpxPhf/8x8esNAy1h1xwOAlHrV8JKgR3glQW/e3YW3LtZgHNlU7A0I5Xau88bVxr3NPTM9oSNsiow==",
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.design/2.0.0",
       "files": [
+        ".signature.p7s",
         "lib/net461/dotnet-aspnet-codegenerator-design.exe",
         "lib/net461/dotnet-aspnet-codegenerator-design.xml",
         "lib/netcoreapp2.0/dotnet-aspnet-codegenerator-design.dll",
@@ -7980,10 +7985,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore/2.0.0": {
-      "sha512": "TO4MtSOwW4aelTTtL189NVIXRAPSIo9lkg/avwxtJQ716mzNrEE2zQWiquUqTqGKCrM0hGBDsD1B5mrTzFNR/Q==",
+      "sha512": "yOE+AH2I2ZNGCLoEgXtksQcp9UiXlrL2ireUvbEB/GCskl0nWCZUK8t84mLv2jXintJ967koGHMJeGZbpBm30g==",
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.entityframeworkcore/2.0.0",
       "files": [
+        ".signature.p7s",
         "Templates/DbContext/NewLocalDbContext.cshtml",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.xml",
@@ -7992,10 +7998,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Templating/2.0.0": {
-      "sha512": "xqWkF83O8pXtWoYJq+v5VIUssHC7axvcJA2z0MUczfnXUUmKXK73Rqmy6+Oilw0Q4iRwmCs/rzROBEznWzFh1A==",
+      "sha512": "RL9Xiobla5MkYW62yU5J3STmu4aSz6Y0K1qaYY7keHiUTLcNgkvArkY+uIAtbJwsOLFrBnduJXWfhU1J2pQ2Ag==",
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.templating/2.0.0",
       "files": [
+        ".signature.p7s",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Templating.xml",
         "microsoft.visualstudio.web.codegeneration.templating.2.0.0.nupkg.sha512",
@@ -8003,10 +8010,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Utils/2.0.0": {
-      "sha512": "zOgx7CO/uqtmTj67i39Y/NkcLqFr6wjdlDwSlWW6ZXxbaL/nCMH6DC5yz6kwbOh7ttC6E5hVYb927jvaHJIh+Q==",
+      "sha512": "Fo3ZYKGdm0qNY2kSZ4+hkh9aRwo41TcELcdrCJrFDTH6z45axgyFGopE7Pr1j/cxjAwjyzHLFqBJYrd/O3iVew==",
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.utils/2.0.0",
       "files": [
+        ".signature.p7s",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll",
         "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Utils.xml",
         "microsoft.visualstudio.web.codegeneration.utils.2.0.0.nupkg.sha512",
@@ -8014,10 +8022,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc/2.0.0": {
-      "sha512": "pRNaVqgHcQoPQt2CLYDkImYKkmo7pcvJE1VudM4AMX9vRJNMkWzP82WcHlo2pDNrcG1Rhr7s2RSWPdwSwilYWw==",
+      "sha512": "tixkx++gaTp8k99xa+Va6c8WuY7Dh4LNtledPU480ZBDQl4AmxsIhtqcphQ80Jbyzl3Eu1g5IlZ0B4viMX/BIA==",
       "type": "package",
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.0.0",
       "files": [
+        ".signature.p7s",
         "Generators/ParameterDefinitions/area.json",
         "Generators/ParameterDefinitions/controller.json",
         "Generators/ParameterDefinitions/razorpage.json",
@@ -8133,10 +8142,11 @@
       ]
     },
     "MimeKit/2.0.6": {
-      "sha512": "gf06pNxMut1Re9cLJe66MOOwoswCiYGdsvyAYDjIuVrAe++uskr+R2dm5uPxUp8BT76p3yTP65Lx5wKloiOaRA==",
+      "sha512": "4E5mpiqYA/cWO/JIyYwHduKEcPWmq4uG74EWpMEmF5wnBtJgt8tmYnbnHnpXCntSJwX33Ugroj8JY7ZOoFTqHA==",
       "type": "package",
       "path": "mimekit/2.0.6",
       "files": [
+        ".signature.p7s",
         "lib/monoandroid/BouncyCastle.dll",
         "lib/monoandroid/MimeKit.dll",
         "lib/monoandroid/MimeKit.xml",
@@ -8384,10 +8394,11 @@
       ]
     },
     "Portable.BouncyCastle/1.8.2": {
-      "sha512": "XpJVIhjPiO0o+DU36eeIzqnRilDmE8Z7Kfhm9V9o1yNqM3ikgleD94Z5W/LeEu3t63LaZl2CNJexaix+I6AUMg==",
+      "sha512": "oVhFVbTNx02DA83ssNKLI1GGQGb2EJK/OazEqlJGaowtvAZhjxLjhgb9lVuyhzY1n5+PslBffTXHPe97TmNZvg==",
       "type": "package",
       "path": "portable.bouncycastle/1.8.2",
       "files": [
+        ".signature.p7s",
         "lib/net40/BouncyCastle.Crypto.dll",
         "lib/net40/BouncyCastle.Crypto.xml",
         "lib/netstandard1.0/BouncyCastle.Crypto.dll",
@@ -8872,11 +8883,10 @@
       ]
     },
     "System.Buffers/4.4.0": {
-      "sha512": "VCJfpWcYG1gT3WwivZWgT0KaqY678MQBvrOI2si6V8GHeQOtuW+wpiv5ss4KyfGG+cFFdPNaI+nw2/kExCtGgQ==",
+      "sha512": "AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
       "type": "package",
       "path": "system.buffers/4.4.0",
       "files": [
-        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp2.0/_._",
@@ -11052,11 +11062,10 @@
       ]
     },
     "System.Numerics.Vectors/4.4.0": {
-      "sha512": "ZhdgJiihSOGD325jClouHy8WSPtwFSj6K1OymoEyN0Wc9Y6X2OVxn65VKfTWHQOYM+QljlVSreporVNvZm8rEA==",
+      "sha512": "UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
       "type": "package",
       "path": "system.numerics.vectors/4.4.0",
       "files": [
-        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -13706,23 +13715,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alex_\\.nuget\\packages\\": {},
+    "C:\\Users\\Pepsi\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "projectUniqueName": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
       "projectName": "petgoods4all",
-      "projectPath": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
-      "packagesPath": "C:\\Users\\Alex_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex_\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\obj\\",
+      "projectPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "packagesPath": "C:\\Users\\Pepsi\\.nuget\\packages\\",
+      "outputPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Alex_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Pepsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13730,7 +13739,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://reactjs.net/packages/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

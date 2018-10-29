@@ -64,12 +64,22 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     @using Microsoft.AspNetCore.Http;
 
-                    @if (Context.Session.GetInt32("UserIdKey") != null) {
-                    <li><a asp-area="" asp-controller="Voorraad" asp-action="ShoppingCart">&#xe116;</a></li>
+                    @if (Context.Session.GetInt32("UserIdKey") != null)
+                    {
+                        <li><a asp-area="" asp-controller="Order" asp-action="OrderHistory" asp-route-D="reptile">Bestel Geschiedenis</a></li>
+                        <li><a asp-area="" asp-controller="Voorraad" asp-action="ShoppingCart">&#xe116;</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
                     }
-                    <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Aanmelden</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Inloggen</a></li>
+
+                    @if (Context.Session.GetInt32("UserIdKey") == null)
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Sign Up</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Login</a></li>
+                    }
+                    @if (Context.Session.GetInt32("UserIdKey") != null)
+                    {
+                        <li><a asp-area="" asp-controller="#" asp-action="#">logout</a></li>
+                    }
                 </ul>
             </div>
         </div>
