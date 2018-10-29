@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/Content/signin.css" />
+        <link rel="stylesheet" href="~/Content/Site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -37,6 +38,22 @@
                 <h1 class="h3 mb-3 font-weight-normal">Aanmelden</h1>
             </div>
             <div class="form-label-group">
+                <label for="voornaam">Voornaam</label>
+                <input type="text" id="inputVoornaam" name="inputVoornaam" class="form-control" placeholder="Voornaam" required>
+            </div>
+            <div class="form-label-group">
+                <label for="achternaam">Achternaam</label>
+                <input type="text" id="inputAchternaam" name="inputAchternaam" class="form-control" placeholder="Achternaam" required>
+            </div>
+            <div class="form-label-group">
+                <label for="straatnaam">Straatnaam</label>
+                <input type="text" id="inputStraatnaam" name="inputStraatnaam" class="form-control" placeholder="Straatnaam" required>
+            </div>
+            <div class="form-label-group">
+                <label for="telefoonnummer">Telefoonnummer</label>
+                <input type="text" id="inputTelefoonnummer" name="inputTelefoonummer" class="form-control" placeholder="Telefoonnummer" required>
+            </div>
+            <div class="form-label-group">
                 <label for="inputEmail">Email-adres</label>
                 <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email-adres" required autofocus>
             </div><br />
@@ -49,9 +66,10 @@
                 <label for="inputPassword">Bevestig wachtwoord</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Bevestig wachtwoord" onkeyup='check();' required>
             </div>
+
             <button class="btn btn-lg btn-primary btn-block" type="submit">Account aanmaken</button>
             <p class="mt-5 mb-3 text-muted text-center">&copy; 2018-2019</p>
-            </div>
+        </div>
 </form>
 </body>
 </html>

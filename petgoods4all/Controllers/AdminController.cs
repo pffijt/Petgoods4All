@@ -69,7 +69,7 @@ namespace petgoods4all.Controllers
             return AdminKlantbeheer();
         }
 
-        public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, int inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
+        public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, string inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
         {
             var db = new ModelContext();
 

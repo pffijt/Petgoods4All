@@ -39,10 +39,14 @@ namespace petgoods4all.Controllers
         }
 
         [HttpPost]
-        public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
+        public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword, string inputVoornaam, string inputAchternaam, string inputStraatnaam, string inputTelefoonnummer)
         {
             var email = inputEmail;
             var password = inputPassword;
+            var voornaam = inputVoornaam;
+            var achternaam = inputAchternaam;
+            var straatnaam = inputStraatnaam;
+            var telefoonnummer = inputTelefoonnummer; 
             int MaxId;
 
             var db = new ModelContext();
@@ -61,7 +65,12 @@ namespace petgoods4all.Controllers
             {
                 id = MaxId + 1,
                 email = inputEmail,
-                password = confirmPassword
+                password = confirmPassword,
+                voornaam = inputVoornaam,
+                achternaam = inputAchternaam,
+                straatnaam = inputStraatnaam,
+                telefoonnummer = inputTelefoonnummer
+
             };
 
             db.Account.Add(a);
@@ -85,21 +94,6 @@ namespace petgoods4all.Controllers
 
                 smtpClient.Send(message.From.ToString(), message.To.ToString(), message.Subject, message.Body);
             }
-
-            //SmtpClient client = new SmtpClient();
-            //client.Port = 587;
-            //client.Host = "smtp.gmail.com";
-            //client.EnableSsl = true;
-            //client.Timeout = 10000;
-            //client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //client.UseDefaultCredentials = false;
-            //client.Credentials = new System.Net.NetworkCredential("petgoods4all@gmail.com", "adminpetgoods4all");
-
-            //MailMessage mm = new MailMessage("petgoods4all@gmail.com", email, "Verificatie email", "test");
-            //mm.BodyEncoding = UTF8Encoding.UTF8;
-            //mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-
-            //client.Send(mm);
 
             return View("~/Views/Account/Inloggen.cshtml");
         }
