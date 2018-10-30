@@ -57,6 +57,20 @@ namespace petgoods4all.Controllers
 
             return AdminKlantbeheer(); 
         }
+
+        public ActionResult AdminKlantIndex(int id)
+        {
+            var db = new ModelContext();
+            using(db)
+            {
+                var accounts = db.Account.FirstOrDefault(x => x.id == id);
+
+            return View(accounts);
+            }
+        }
+
+
+
         [HttpPost]
         public ActionResult UpdateAccount(string inputAdminKlantMail, string newEmail)
         { 
