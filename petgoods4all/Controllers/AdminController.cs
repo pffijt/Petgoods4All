@@ -56,11 +56,11 @@ namespace petgoods4all.Controllers
             return AdminKlantbeheer(); 
         }
 
-        public ActionResult AdminKlantIndex(int id)
+        public ActionResult AdminKlantIndex()
         {
             using(db)
             {
-                var accounts = db.Account.FirstOrDefault(x => x.id == id);
+                var accounts = db.Account.ToList();
 
             return View(accounts);
             }
