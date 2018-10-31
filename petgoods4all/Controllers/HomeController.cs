@@ -30,15 +30,45 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public class AccountReview{
+            public int Id { get; set; }
+            public string Description { get; set; }
+            public int StarRating { get; set; }
+            public int UserId { get; set; }
+            public int ProductId { get; set; }
+            public string Naam { get; set; }
+            public string Achternaam { get; set; }
+            public string Email { get; set; }
+        }
+
         public ActionResult Productpage(int identication = 1)
         {
             ViewBag.Message = "Product page";
             ViewBag.ProductId = identication;
-            using (var db = new ModelContext())
-            {
-                var product = from m in db.Voorraad where m.Id == identication select m;
-                return View(product.ToList());
-            }
+            var db = new ModelContext();
+            var product = from m in db.Voorraad where m.Id == identication select m;
+            var UID = HttpContext.Session.GetInt32("UID");
+
+            var reviews =
+                from r in db.Review
+                join u in db.Account on r.UserId equals u.id
+                select new AccountReview
+                {
+                    Id = r.Id,
+                    Description = r.Description,
+                    StarRating = r.StarRating,
+                    UserId = r.UserId,
+                    ProductId = r.ProductId,
+                    Naam = u.voornaam,
+                    Achternaam = u.achternaam,
+                    Email = u.email
+                };
+
+            var reviewList = reviews.ToList();
+            ViewBag.reviews = reviewList;
+            ViewBag.UserId = UID;
+
+            return View(product.ToList());
         }
 
         [HttpPost]
@@ -49,7 +79,8 @@ namespace petgoods4all.Controllers
             {
                 int pID = (from m in db.Voorraad where m.Id == identication select m.Id).Single();
                 int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
-                if(uID != 0)
+                var UID = HttpContext.Session.GetInt32("UID");
+                if (uID != 0)
                 {
                     int MaxId;
                     var result = from m in db.Wishlist select m.id;
@@ -71,16 +102,33 @@ namespace petgoods4all.Controllers
                     db.SaveChanges();
                 }
                 var product = from m in db.Voorraad where m.Id == identication select m;
-                var reviews = from r in db.Review where r.ProductId == identication select r;
-                ViewBag.reviews = reviews;
+                //var reviews = from r in db.Review where r.ProductId == identication select r;
 
-                List<string> users = new List<string>();
+                var reviews =
+                    from r in db.Review
+                    join u in db.Account on r.UserId equals u.id
+                    select new
+                    {
+                        Id = r.Id,
+                        Description = r.Description,
+                        StarRating = r.StarRating,
+                        UserId = r.UserId,
+                        ProductId = r.ProductId,
+                        Naam = u.voornaam,
+                        Achternaam = u.achternaam,
+                        Email = u.email
+                    };
+                var reviewList = reviews.ToList();
+                ViewBag.reviews = reviewList;
+                ViewBag.UserId = UID;
 
-                foreach (var item in reviews)
-                {
-                    var user = (from u in db.Account where u.id == item.UserId select u.voornaam).Single();
-                    users.Add(user);
-                }
+                //List<string> users = new List<string>();
+
+                //foreach (var item in reviews)
+                //{
+                //    var user = (from u in db.Account where u.id == item.UserId select u.voornaam).Single();
+                //    users.Add(user);
+                //}
 
                 return View(product.ToList());
             }
@@ -116,7 +164,7 @@ namespace petgoods4all.Controllers
             db.Review.Add(review);
             db.SaveChanges();
 
-            return Productpage();
+            return Redirect("ProductPage");
         }
 
         public ActionResult Wishpage()

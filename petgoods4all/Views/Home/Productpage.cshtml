@@ -143,21 +143,25 @@
             {
                 <input type="text" style="visibility:hidden" id="productId" name="productId" value="@item.Id">
 
-                <button type="submit" class="btn btn-success" asp-route-identication="@item.Id">Submit</button>
+                <button type="submit" class="btn btn-success" asp-controller="Home" asp-action="AddReviews" asp-route-identication="@item.Id">Submit</button>
             }
         </form>
+        <hr/>
     }
-    @foreach (var item in ViewBag.reviews)
+    @if (ViewBag.UserId != null)
     {
-        <!-- Reviews varaible moet een join worden-->
-        <!-- Klant Naam-->
-        <table>
-            <tr>
-                <td></td>
-            </tr>
-        </table>
-        <!-- Star rating-->
-        <!-- Customer discription-->
+        @foreach (var item in ViewBag.reviews)
+        {
+            <!-- Reviews varaible moet een join worden-->
+            <!-- Klant Naam-->
+            <p>@item.StarRating<br>
+            @item.Naam | @item.Email<br>
+            @item.Description</p>
+            <!-- Star rating-->
+            <!-- Customer discription-->
+            <hr/>
+        }
     }
+    
 </div>
 </div>

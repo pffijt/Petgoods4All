@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace petgoods4all.Migrations
 {
-    public partial class InitialCreatepetgoods4all : Migration
+    public partial class IntitialDbCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,11 @@ namespace petgoods4all.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     email = table.Column<string>(nullable: true),
                     password = table.Column<string>(nullable: true),
-                    Admin = table.Column<bool>(nullable: false)
+                    Admin = table.Column<bool>(nullable: false),
+                    voornaam = table.Column<string>(nullable: true),
+                    achternaam = table.Column<string>(nullable: true),
+                    straatnaam = table.Column<string>(nullable: true),
+                    telefoonnummer = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,6 +56,22 @@ namespace petgoods4all.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderedProducts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Review",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Description = table.Column<string>(nullable: true),
+                    StarRating = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Review", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,6 +132,9 @@ namespace petgoods4all.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderedProducts");
+
+            migrationBuilder.DropTable(
+                name: "Review");
 
             migrationBuilder.DropTable(
                 name: "ShoppingCart");
