@@ -1,0 +1,66 @@
+﻿@model IEnumerable<petgoods4all.Models.Voorraad>
+
+@{
+    ViewData["Title"] = "AdminVoorraadIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AdminVoorraadIndex</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Naam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dier)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subklasse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kwantiteit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prijs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.image)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subklasse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kwantiteit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>
+            <td>
+                <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Voorraad</a> |
+                <a asp-action="AdminVoorraadDetails" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Verwijderen</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

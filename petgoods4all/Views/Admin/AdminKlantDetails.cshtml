@@ -1,0 +1,61 @@
+﻿@model petgoods4all.Models.Account
+
+@{
+    ViewData["Title"] = "Klant Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Klant Details</h2>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.voornaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.achternaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.straatnaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.straatnaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.telefoonnummer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.telefoonnummer)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="AdminKlantEdit" asp-route-id="@Model.id">Bijwerken</a> |
+    <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
+</div>

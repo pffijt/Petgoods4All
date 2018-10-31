@@ -66,11 +66,39 @@ namespace petgoods4all.Controllers
             }
         }
 
+        public ActionResult AdminVoorraadIndex()
+        {
+            using (db)
+            {
+                var voorraad = db.Voorraad.ToList();
+
+                return View(voorraad);
+            }
+        }
+
+        public ActionResult AdminKlantDetails(int? id)
+        {
+
+            Account account = db.Account.Find(id);
+
+            return View(account);
+        }
+
+        public ActionResult AdminVoorraadDetails(int? id)
+        {
+
+            Voorraad voorraad = db.Voorraad.Find(id);
+
+            return View(voorraad);
+        }
 
 
         [HttpPost]
         
-        public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, string inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
+        
+
+
+        public ActionResult AdminCreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, string inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
         {
             Account a = new Account
             {
@@ -85,10 +113,45 @@ namespace petgoods4all.Controllers
             };
             db.Account.Add(a);
             db.SaveChanges();
-            return View(a);
+            return View();
         }
 
-        
+        public ActionResult AdminKlantEdit(int? id)
+        {
+            
+            var accountToUpdate = db.Account.Find(id);
+
+            db.SaveChanges();
+
+                    return View();
+        }
+
+        public ActionResult AdminVoorraadEdit(int? id)
+        {
+
+            var voorraadToUpdate = db.Voorraad.Find(id);
+
+            db.SaveChanges();
+
+            return View();
+        }
+
+        public ActionResult AdminKlantDelete(int? id)
+        {
+            var accountToDelete = db.Account.Find(id);
+            db.Account.Remove(accountToDelete);
+            db.SaveChanges();
+            return RedirectToAction("AdminKlantIndex");
+        }
+
+        public ActionResult AdminVoorraadDelete(int? id)
+        {
+            var voorraadToDelete = db.Voorraad.Find(id);
+            db.Voorraad.Remove(voorraadToDelete);
+            db.SaveChanges();
+            return RedirectToAction("AdminVoorraadIndex");
+        }
+
 
         public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit )
         {
@@ -105,29 +168,12 @@ namespace petgoods4all.Controllers
             };
             db.Voorraad.Add(a);
             db.SaveChanges();
-            return AdminProductbeheer();
+            return View();
         }
 
             
 
-        public ActionResult UpdateProduct(string inputAdminProductNaam, string newNaam, string newDier, string newSubtype, int newKwantiteit, string newPrijs  )
-        {
-            var db = new ModelContext();
-            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
-            product.Dier = newDier;
-            product.Kwantiteit = newKwantiteit;
-            product.Naam = newNaam;
-            product.Subklasse = newSubtype;
-            product.Prijs = newPrijs;
-            return AdminProductbeheer();
-        }
-        public ActionResult DeleteProduct(string inputAdminProductNaam)
-        {
-            var db = new ModelContext();
-            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
-            db.Voorraad.Remove(product);
-            return AdminProductbeheer();
-        }
+        
             /*[HttpPost]
             public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
             {
