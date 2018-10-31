@@ -22,11 +22,13 @@
         <div class="row">
             <form method="post" asp-controller="Voorraad" asp-action="SearchFilter" asp-route-search="@ViewBag.SearchedString">
                 Dier:<select id="DierDropdown" name="DierDropdown">
+                         <option></option>
                   @foreach (var item in ViewBag.Dier) { 
                       <option value="@item">@item</option>
                   }
                 </select>
                 SubKlasse:<select id="SubklassDropwdown" name="SubklasseDropdown">
+                        <option></option>
                     @foreach (var item in ViewBag.Subklasse)
                     {
                         <option value="@item">@item</option>
