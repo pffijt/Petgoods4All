@@ -71,8 +71,52 @@ namespace petgoods4all.Controllers
                     db.SaveChanges();
                 }
                 var product = from m in db.Voorraad where m.Id == identication select m;
+                var reviews = from r in db.Review where r.ProductId == identication select r;
+                ViewBag.reviews = reviews;
+
+                List<string> users = new List<string>();
+
+                foreach (var item in reviews)
+                {
+                    var user = (from u in db.Account where u.id == item.UserId select u.voornaam).Single();
+                    users.Add(user);
+                }
+
                 return View(product.ToList());
             }
+        }
+
+        public ActionResult AddReviews(string description, int productId, int rating)
+        {
+            ViewBag.Message = "Product page";
+            var db = new ModelContext();
+            var MaxId = 0;
+            var UID = HttpContext.Session.GetInt32("UID");
+            var UserId = UID.GetValueOrDefault();
+            var ProductPage = new HomeController().Productpage(productId);
+
+            var result = from s in db.Review select s.Id;
+            if (!result.Any())
+            {
+            }
+            else
+            {
+                MaxId = result.Max();
+            }
+
+            Review review = new Review
+            {
+                Id = MaxId + 1,
+                Description = description,
+                StarRating = rating,
+                ProductId = productId,
+                UserId = UserId,
+            };
+
+            db.Review.Add(review);
+            db.SaveChanges();
+
+            return Productpage();
         }
 
         public ActionResult Wishpage()

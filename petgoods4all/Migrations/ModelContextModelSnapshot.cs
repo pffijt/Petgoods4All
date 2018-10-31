@@ -77,6 +77,24 @@ namespace petgoods4all.Migrations
                     b.ToTable("OrderedProducts");
                 });
 
+            modelBuilder.Entity("petgoods4all.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("StarRating");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Review");
+                });
+
             modelBuilder.Entity("petgoods4all.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("Id")
