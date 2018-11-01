@@ -29,15 +29,44 @@ namespace petgoods4all.Controllers
 
             return View();
         }
+        public List<int> Related(int indentication)
+        {
+            List<int> productsID = new List<int>();
+            using (var db = new ModelContext())
+            {
+                string getType = (from m in db.Voorraad where m.Id == indentication select m.Dier).Single();
+                string getSub = (from m in db.Voorraad where m.Id == indentication select m.Subklasse).Single();
+                var getRelated = (from m in db.Voorraad where m.Dier == getType && m.Subklasse == getSub && m.Id != indentication select m.Id).ToList();
+    
+                if(getRelated.Count() < 3 || getRelated == null)
+                {
+                    getRelated = (from m in db.Voorraad where m.Dier == getType  && m.Id != indentication select m.Id).ToList();
+                }
+                productsID = ((getRelated.OrderBy(x => Guid.NewGuid())).Take(3).ToList());
 
+            }
+
+            return productsID;
+        }
         public ActionResult Productpage(int identication = 1)
         {
             ViewBag.Message = "Product page";
             ViewBag.ProductId = identication;
             using (var db = new ModelContext())
             {
-                var product = from m in db.Voorraad where m.Id == identication select m;
-                return View(product.ToList());
+                //De hoofdproduct en 3 gerelateerde
+                List<int> relatedProducts = Related(identication);
+                foreach(var item in relatedProducts)
+                {
+                    Console.WriteLine(item.ToString());
+                }           
+
+                petgoods4all.Models.Voorraad products = (from m in db.Voorraad where m.Id == identication select m).Single();
+                List<petgoods4all.Models.Voorraad> otherProducts = (from m in db.Voorraad where m.Id == relatedProducts[0] 
+                || m.Id == relatedProducts[1] || m.Id == relatedProducts[2] select m).ToList();
+                otherProducts.Add(products);
+
+                return View(otherProducts);
             }
         }
 
