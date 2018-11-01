@@ -1,11 +1,11 @@
 ﻿@model petgoods4all.Models.Voorraad
 
 @{
-    ViewData["Title"] = "AdminVoorraadDetails";
+    ViewData["Title"] = "Voorraad Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AdminVoorraadDetails</h2>
+<h2>Voorraad Details</h2>
 
 <div>
     <h4>Voorraad</h4>
@@ -50,6 +50,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="AdminVoorraadEdit" asp-route-id="@Model.Id">Bijwerken</a> |
     <a asp-action="AdminVoorraadIndex">Terug naar de lijst</a>
 </div>
