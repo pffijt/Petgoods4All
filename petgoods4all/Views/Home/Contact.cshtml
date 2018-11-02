@@ -10,33 +10,27 @@
 </head>
 <div class="container-fluid" style="background-color:#ffe8d3;">
 
-    <h2>@ViewBag.Title us</h2>
+    <h2>@ViewBag.Title</h2>
     <div class="row">
-        <div class="col-lg-7" id="form">
-            <form class="form-inline" role="form">
-                <input type="text" class="form-control" id="name2" placeholder="Enter name"><br />
-                <input type="text" class="form-control" id="phone2" placeholder="Enter phone number"><br />
-                <input type="text" class="form-control" id="email2" placeholder="Enter email"><br /><br />
-                <textarea class="form-control" rows="5" id="helpme" placeholder="How can we help you?"></textarea>
-                <button type="button" class="btn btn-primary mb-12">Send</button>
+        <div class="col-md-6">
+            <form method="post">
+                <div class="form-label-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="text" id="contactEmail" name="contactEmail" class="form-control" placeholder="E-mail" required>
+                </div>
+                <div class="form-label-group">
+                    <label for="Onderwerp">Onderwerp</label>
+                    <input type="text" id="Onderwerp" name="Onderwerp" class="form-control" placeholder="Onderwerp" required>
+                </div>
+                <div class="form-label-group">
+                    <label for="Bericht">Bericht</label>
+                    <textarea type="text"  id="Bericht" name="Bericht" class="form-control" placeholder="Bericht" rows="3"></textarea>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Versturen</button>
             </form>
         </div>
-        <div class="col-lg-5">
-            <address>
-                <strong>Customer service</strong><br />
-                <p>Phone: 425.555.0100<br />
-                Email: <a href="mailto:Support@example.com">Support@example.com</a></p>
-            </address><br />
-            <address>
-                <strong>Headquarter</strong><br />
-                <p>
-                    Company Inc.<br />
-                    One Microsoft Way<br />
-                    Redmond, WA 98052-6399<br />
-                    Phone: 425.555.0100<br />
-                    <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-                </p>
-            </address>
-        </div>
     </div>
+
+
+    
 </div>
