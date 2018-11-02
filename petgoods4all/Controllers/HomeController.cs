@@ -5,7 +5,8 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using petgoods4all.Models;
-
+using MailKit.Net.Smtp;
+using MimeKit;
 
 namespace petgoods4all.Controllers
 {
@@ -39,6 +40,31 @@ namespace petgoods4all.Controllers
                 var product = from m in db.Voorraad where m.Id == identication select m;
                 return View(product.ToList());
             }
+        }
+
+        [HttpPost]
+        public ActionResult Contact(string contactEmail, string Onderwerp, string Bericht)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(contactEmail));
+            message.To.Add(new MailboxAddress("petgoods4all@gmail.com"));
+            message.Subject = Onderwerp;
+            message.Body = new TextPart("html")
+            {
+                Text = "From: " + contactEmail + "<br>" +
+                "Onderwerp: " + Onderwerp + "<br>" +
+                "Bericht: " + Bericht
+            };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587);
+                client.Authenticate("petgoods4all@gmail.com", "adminpetgoods4all");
+                client.Send(message);
+                client.Disconnect(false);
+            }
+
+            return View("Contact");
         }
 
         [HttpPost]

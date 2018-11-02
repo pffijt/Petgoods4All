@@ -8,3 +8,14 @@ D:\Petgoods4All\Code_Petsgoods4All\Petgoods4All\petgoods4all\obj\Debug\netcoreap
 D:\Petgoods4All\Code_Petsgoods4All\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.AssemblyInfo.cs
 D:\Petgoods4All\Code_Petsgoods4All\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.dll
 D:\Petgoods4All\Code_Petsgoods4All\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.pdb
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.deps.json
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.runtimeconfig.json
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.runtimeconfig.dev.json
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.dll
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.pdb
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.csprojAssemblyReference.cache
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.csproj.CoreCompileInputs.cache
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.AssemblyInfoInputs.cache
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.AssemblyInfo.cs
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.dll
+C:\Users\Alex_\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.pdb
