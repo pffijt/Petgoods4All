@@ -136,6 +136,20 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public ActionResult AdminKlantUpdate(int? id)
+        {
+            db.SaveChanges();
+            return RedirectToAction("AdminKlantIndex");
+
+        }
+
+        public ActionResult AdminVoorraadUpdate(int? id)
+        {
+            db.SaveChanges();
+            return RedirectToAction("AdminVoorraadIndex");
+
+        }
+
         public ActionResult AdminKlantDelete(int? id)
         {
             var accountToDelete = db.Account.Find(id);
