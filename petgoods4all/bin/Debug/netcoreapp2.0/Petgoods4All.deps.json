@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "e903efe3eb6703edcf5d88ef6535a60735553054"
+    "signature": "908073acffe54dae50b08025d6cf88092d63b63e"
   },
   "compilationOptions": {
     "defines": [
@@ -30,7 +30,8 @@
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.1.2",
-          "PayPal": "2.0.0-rc2"
+          "PayPal": "2.0.0-rc2",
+          "System.Web.Mvc.Extensions": "1.1.1.2"
         },
         "runtime": {
           "petgoods4all.dll": {}
@@ -4775,6 +4776,17 @@
         }
       },
       "System.ValueTuple/4.5.0": {},
+      "System.Web.Mvc.Extensions/1.1.1.2": {
+        "runtime": {
+          "lib/net45/System.Web.Mvc.Extensions.dll": {
+            "assemblyVersion": "1.1.0.6",
+            "fileVersion": "1.1.0.6"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Mvc.Extensions.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -7238,6 +7250,13 @@
       "sha512": "sha512-xZtSZNEHGa+tGsKuP4sh257vxJ/yemShz4EusmomkynMzuEDDjVaErBNewpzEF6swUgbcrSQAX3ELsEp1zCOwA==",
       "path": "system.valuetuple/4.5.0",
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
+    },
+    "System.Web.Mvc.Extensions/1.1.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A8+X7EW9un/RedIBhpA/LMSvWw8iaEa9mJt0nvcFYQM2F1CoggZp6e7c50CIDfL6g5/105u7Q/QO8m7EUGtL9A==",
+      "path": "system.web.mvc.extensions/1.1.1.2",
+      "hashPath": "system.web.mvc.extensions.1.1.1.2.nupkg.sha512"
     },
     "System.Xml.ReaderWriter/4.3.0": {
       "type": "package",

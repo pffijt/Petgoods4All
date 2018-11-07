@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc.Extensions;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using petgoods4all.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace petgoods4all.Controllers
 {
@@ -28,33 +32,11 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-        public ActionResult AdminKlantbeheer()
-        { 
-            return View();
-        }
-
-        public ActionResult AdminProductbeheer()
-        {
-            return View();
-        }
+        
 
 
         
-        public ActionResult ReadProduct(string inputAdminProductNaam)
-        {
-            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
-
-            return AdminProductbeheer();
-        }
-
-
-        public ActionResult ReadAccount(string inputAdminKlantMail)
-        {
-            Account account = db.Account.Find(inputAdminKlantMail);
-            
-
-            return AdminKlantbeheer(); 
-        }
+        
 
         public ActionResult AdminKlantIndex()
         {
@@ -92,13 +74,31 @@ namespace petgoods4all.Controllers
             return View(voorraad);
         }
 
+        public ActionResult AdminCreateAccount()
+        {
+
+            return View();
+        }
+
+        public ActionResult AdminKlantEdit()
+        {
+            return View();
+        }
+
+        public ActionResult AdminCreateVoorraad()
+        {
+
+            return View();
+        }
+
+        public ActionResult AdminVoorraadEdit()
+        {
+            return View();
+        }
+
 
         [HttpPost]
-        
-        
-
-
-        public ActionResult AdminCreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, string inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
+        public ActionResult AdminCreateAccountSave(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, string inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
         {
             Account a = new Account
             {
@@ -113,41 +113,42 @@ namespace petgoods4all.Controllers
             };
             db.Account.Add(a);
             db.SaveChanges();
-            return View();
+            return RedirectToPage("./Admin/AdminKlantIndex");
         }
-
-        public ActionResult AdminKlantEdit(int? id)
+      
+        
+        public ActionResult AdminKlantEditSave(int? id, string newvoornaam, string newachternaam, string newemail, string newstraatnaam, string newtelefoonnummer)
         {
-            
             var accountToUpdate = db.Account.Find(id);
 
-            db.SaveChanges();
+            accountToUpdate.achternaam = newachternaam;
+            accountToUpdate.voornaam = newvoornaam;
+            accountToUpdate.telefoonnummer = newtelefoonnummer;
+            accountToUpdate.straatnaam = newstraatnaam;
+            accountToUpdate.email = newemail;
+            
 
-                    return View();
+                db.SaveChanges();
+
+            return RedirectToPage("./Admin/AdminKlantIndex");
         }
 
-        public ActionResult AdminVoorraadEdit(int? id)
+
+        public  ActionResult AdminVoorraadEditSave(int? id, string newNaam, string newDier, string newSubklasse, int newKwantiteit, string newPrijs, string newimage)
         {
 
             var voorraadToUpdate = db.Voorraad.Find(id);
 
-            db.SaveChanges();
+            voorraadToUpdate.Naam = newNaam;
+            voorraadToUpdate.Dier = newDier;
+            voorraadToUpdate.Subklasse = newSubklasse;
+            voorraadToUpdate.Kwantiteit = newKwantiteit;
+            voorraadToUpdate.Prijs = newPrijs;
+            voorraadToUpdate.image = newimage;
 
-            return View();
-        }
+                db.SaveChanges();
 
-        public ActionResult AdminKlantUpdate(int? id)
-        {
-            db.SaveChanges();
-            return RedirectToAction("AdminKlantIndex");
-
-        }
-
-        public ActionResult AdminVoorraadUpdate(int? id)
-        {
-            db.SaveChanges();
-            return RedirectToAction("AdminVoorraadIndex");
-
+            return RedirectToPage("./Admin/AdminVoorradIndex");
         }
 
         public ActionResult AdminKlantDelete(int? id)
@@ -167,7 +168,7 @@ namespace petgoods4all.Controllers
         }
 
 
-        public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit )
+        public ActionResult AdminCreateVoorraadSave(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit )
         {
             var db = new ModelContext();
             

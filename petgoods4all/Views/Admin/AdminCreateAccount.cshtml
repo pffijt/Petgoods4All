@@ -1,11 +1,11 @@
 ﻿@model petgoods4all.Models.Account
 
 @{
-    ViewData["Title"] = "Account toevoegen";
+    ViewData["Title"] = "AdminCreateAccount";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Account toevoegen</h2>
+<h2>Maak een nieuw Account</h2>
 
 <h4>Account</h4>
 <hr />
@@ -51,14 +51,14 @@
                 <span asp-validation-for="telefoonnummer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Opslaan" class="btn btn-default" />
+                <input asp-action="AdminCreateAccountSave" type="submit" value="Opslaan" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
+    <a asp-action="Terug naar de lijst">Back to List</a>
 </div>
 
 @section Scripts {
