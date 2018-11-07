@@ -151,21 +151,7 @@ namespace petgoods4all.Controllers
             return RedirectToPage("./Admin/AdminVoorradIndex");
         }
 
-        public ActionResult AdminKlantDelete(int? id)
-        {
-            var accountToDelete = db.Account.Find(id);
-            db.Account.Remove(accountToDelete);
-            db.SaveChanges();
-            return RedirectToAction("AdminKlantIndex");
-        }
-
-        public ActionResult AdminVoorraadDelete(int? id)
-        {
-            var voorraadToDelete = db.Voorraad.Find(id);
-            db.Voorraad.Remove(voorraadToDelete);
-            db.SaveChanges();
-            return RedirectToAction("AdminVoorraadIndex");
-        }
+        
 
 
         public ActionResult AdminCreateVoorraadSave(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit )
@@ -185,33 +171,47 @@ namespace petgoods4all.Controllers
             db.SaveChanges();
             return View();
         }
-
-            
-
-        
-            /*[HttpPost]
-            public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
-            {
-                var email = inputEmail;
-                var password = inputPassword;
-
-                var db = new ModelContext();
-
-                var result = from acc in db.Account select acc.id;
-
-                var MaxId = result.Max();
-
-                Account a = new Account
-                {
-                    id = MaxId + 1,
-                    email = inputEmail,
-                    password = confirmPassword
-                };
-
-                db.Account.Add(a);
-                db.SaveChanges();
-
-                return View("~/Views/Account/Inloggen.cshtml");
-            }*/
+        [HttpDelete]
+        public ActionResult AdminKlantDelete(int? id)
+        {
+            var accountToDelete = db.Account.Find(id);
+            db.Account.Remove(accountToDelete);
+            db.SaveChanges();
+            return RedirectToAction("AdminKlantIndex");
         }
+
+        public ActionResult AdminVoorraadDelete(int? id)
+        {
+            var voorraadToDelete = db.Voorraad.Find(id);
+            db.Voorraad.Remove(voorraadToDelete);
+            db.SaveChanges();
+            return RedirectToAction("AdminVoorraadIndex");
+        }
+
+
+        /*[HttpPost]
+        public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
+        {
+            var email = inputEmail;
+            var password = inputPassword;
+
+            var db = new ModelContext();
+
+            var result = from acc in db.Account select acc.id;
+
+            var MaxId = result.Max();
+
+            Account a = new Account
+            {
+                id = MaxId + 1,
+                email = inputEmail,
+                password = confirmPassword
+            };
+
+            db.Account.Add(a);
+            db.SaveChanges();
+
+            return View("~/Views/Account/Inloggen.cshtml");
+        }*/
+    }
 }
