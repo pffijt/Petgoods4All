@@ -1,12 +1,9 @@
 ﻿@model petgoods4all.Models.Account
-
 @{
     ViewData["Title"] = "AdminKlantEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>AdminKlantEdit</h2>
-
 <h4>Account</h4>
 <hr />
 <div class="row">
@@ -52,16 +49,14 @@
                 <span asp-validation-for="telefoonnummer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" asp-action="AdminKlantUpdate" class="btn btn-default" />
+                <input type="submit" value="Opslaan"  class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

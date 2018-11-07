@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using petgoods4all.Models;
+
 
 namespace petgoods4all.Controllers
 {
@@ -26,34 +28,6 @@ namespace petgoods4all.Controllers
         public ActionResult AdminInstellingen()
         {
             return View();
-        }
-
-        public ActionResult AdminKlantbeheer()
-        { 
-            return View();
-        }
-
-        public ActionResult AdminProductbeheer()
-        {
-            return View();
-        }
-
-
-        
-        public ActionResult ReadProduct(string inputAdminProductNaam)
-        {
-            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
-
-            return AdminProductbeheer();
-        }
-
-
-        public ActionResult ReadAccount(string inputAdminKlantMail)
-        {
-            Account account = db.Account.Find(inputAdminKlantMail);
-            
-
-            return AdminKlantbeheer(); 
         }
 
         public ActionResult AdminKlantIndex()
@@ -92,85 +66,52 @@ namespace petgoods4all.Controllers
             return View(voorraad);
         }
 
+        public ActionResult AdminCreateAccount()
+        {
+
+            return View();
+        }
+
+        public ActionResult AdminKlantEdit()
+        {
+            return View();
+        }
+
+        public ActionResult AdminCreateVoorraad()
+        {
+
+            return View();
+        }
+
+        public ActionResult AdminVoorraadEdit()
+        {
+            return View();
+        }
+
 
         [HttpPost]
-        
-        
-
-
-        public ActionResult AdminCreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, string inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
+        public ActionResult AdminCreateAccountSave(string email, string achternaam, string voornaam, string telefoonnummer, string straatnaam, bool Admin, string password)
         {
             Account a = new Account
             {
 
-                email = inputAdminKlantMail,
+                email = email,
                 Admin = false,
-                password = inputAdminKlantWw,
-                voornaam = inputAdminKlantVoorNm,
-                achternaam = inputAdminKlantAchterNaam,
-                telefoonnummer = inputAdminKlantTel,
-                straatnaam = inputAdminKlantAdres
+                password = password,
+                voornaam = voornaam,
+                achternaam = achternaam,
+                telefoonnummer = telefoonnummer,
+                straatnaam = straatnaam
             };
             db.Account.Add(a);
             db.SaveChanges();
-            return View();
+            return RedirectToPage("/AdminKlantIndex");
         }
 
-        public ActionResult AdminKlantEdit(int? id)
-        {
-            
-            var accountToUpdate = db.Account.Find(id);
-
-            db.SaveChanges();
-
-                    return View();
-        }
-
-        public ActionResult AdminVoorraadEdit(int? id)
-        {
-
-            var voorraadToUpdate = db.Voorraad.Find(id);
-
-            db.SaveChanges();
-
-            return View();
-        }
-
-        public ActionResult AdminKlantUpdate(int? id)
-        {
-            db.SaveChanges();
-            return RedirectToAction("AdminKlantIndex");
-
-        }
-
-        public ActionResult AdminVoorraadUpdate(int? id)
-        {
-            db.SaveChanges();
-            return RedirectToAction("AdminVoorraadIndex");
-
-        }
-
-        public ActionResult AdminKlantDelete(int? id)
-        {
-            var accountToDelete = db.Account.Find(id);
-            db.Account.Remove(accountToDelete);
-            db.SaveChanges();
-            return RedirectToAction("AdminKlantIndex");
-        }
-
-        public ActionResult AdminVoorraadDelete(int? id)
-        {
-            var voorraadToDelete = db.Voorraad.Find(id);
-            db.Voorraad.Remove(voorraadToDelete);
-            db.SaveChanges();
-            return RedirectToAction("AdminVoorraadIndex");
-        }
-
-
-        public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit )
+        public ActionResult AdminCreateVoorraadSave(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit)
         {
             var db = new ModelContext();
-            
+
 
             Voorraad a = new Voorraad
             {
@@ -185,32 +126,85 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        [HttpPut]
+        public ActionResult AdminKlantEditSave(int? id, string newvoornaam, string newachternaam, string newemail, string newstraatnaam, string newtelefoonnummer)
+        {
+            var accountToUpdate = db.Account.Find(id);
+
+            accountToUpdate.achternaam = newachternaam;
+            accountToUpdate.voornaam = newvoornaam;
+            accountToUpdate.telefoonnummer = newtelefoonnummer;
+            accountToUpdate.straatnaam = newstraatnaam;
+            accountToUpdate.email = newemail;
             
 
-        
-            /*[HttpPost]
-            public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
-            {
-                var email = inputEmail;
-                var password = inputPassword;
+                db.SaveChanges();
+            return RedirectToAction("AdminKlantIndex");
+        }
 
-                var db = new ModelContext();
 
-                var result = from acc in db.Account select acc.id;
+        public  ActionResult AdminVoorraadEditSave(int? id, string newNaam, string newDier, string newSubklasse, int newKwantiteit, string newPrijs, string newimage)
+        {
 
-                var MaxId = result.Max();
+            var voorraadToUpdate = db.Voorraad.Find(id);
 
-                Account a = new Account
-                {
-                    id = MaxId + 1,
-                    email = inputEmail,
-                    password = confirmPassword
-                };
+            voorraadToUpdate.Naam = newNaam;
+            voorraadToUpdate.Dier = newDier;
+            voorraadToUpdate.Subklasse = newSubklasse;
+            voorraadToUpdate.Kwantiteit = newKwantiteit;
+            voorraadToUpdate.Prijs = newPrijs;
+            voorraadToUpdate.image = newimage;
 
-                db.Account.Add(a);
                 db.SaveChanges();
 
-                return View("~/Views/Account/Inloggen.cshtml");
-            }*/
+            return View("~/Views/Admin/AdminVoorraadIndex");
         }
+
+        
+
+
+        
+        [HttpDelete]
+        public ActionResult AdminKlantDelete(int? id)
+        {
+            var accountToDelete = db.Account.Find(id);
+            db.Account.Remove(accountToDelete);
+            db.SaveChanges();
+            return RedirectToPage("./Admin/AdminKlantIndex");
+        }
+
+        public ActionResult AdminVoorraadDelete(int? id)
+        {
+            var voorraadToDelete = db.Voorraad.Find(id);
+            db.Voorraad.Remove(voorraadToDelete);
+            db.SaveChanges();
+            return View("~/Views/Admin/AdminVoorraadIndex");
+        }
+
+
+        /*[HttpPost]
+        public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
+        {
+            var email = inputEmail;
+            var password = inputPassword;
+
+            var db = new ModelContext();
+
+            var result = from acc in db.Account select acc.id;
+
+            var MaxId = result.Max();
+
+            Account a = new Account
+            {
+                id = MaxId + 1,
+                email = inputEmail,
+                password = confirmPassword
+            };
+
+            db.Account.Add(a);
+            db.SaveChanges();
+
+            return View("~/Views/Account/Inloggen.cshtml");
+        }*/
+    }
 }
