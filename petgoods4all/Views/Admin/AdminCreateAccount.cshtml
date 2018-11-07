@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AdminCreateAccount">
+        <form asp-action="AdminCreateAccountSave">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="email" class="control-label"></label>
@@ -51,7 +51,7 @@
                 <span asp-validation-for="telefoonnummer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input asp-action="AdminCreateAccountSave" type="submit" value="Opslaan" class="btn btn-default" />
+                <button type="submit" value="Opslaan" class="btn btn-default btn-primary">Opslaan </button>
             </div>
         </form>
     </div>

@@ -92,72 +92,80 @@ namespace petgoods4all.Controllers
         [HttpPost]
         public ActionResult AdminCreateAccountSave(string email, string achternaam, string voornaam, string telefoonnummer, string straatnaam, bool Admin, string password)
         {
-            Account a = new Account
+            using (db)
             {
+                Account a = new Account
+                {
 
-                email = email,
-                Admin = false,
-                password = password,
-                voornaam = voornaam,
-                achternaam = achternaam,
-                telefoonnummer = telefoonnummer,
-                straatnaam = straatnaam
-            };
-            db.Account.Add(a);
-            db.SaveChanges();
-            return RedirectToPage("/AdminKlantIndex");
+                    email = email,
+                    Admin = false,
+                    password = password,
+                    voornaam = voornaam,
+                    achternaam = achternaam,
+                    telefoonnummer = telefoonnummer,
+                    straatnaam = straatnaam
+                };
+                db.Account.Add(a);
+                db.SaveChanges();
+            }
+            return RedirectToAction("AdminKlantIndex");
         }
 
-        public ActionResult AdminCreateVoorraadSave(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit)
+        public ActionResult AdminCreateVoorraadSave(string Naam, string Dier, string Subklasse, string Prijs, int Kwantiteit)
         {
-            var db = new ModelContext();
-
-
-            Voorraad a = new Voorraad
+            using (db)
             {
-                Naam = inputAdminProductNaam,
-                Dier = inputAdminProductDier,
-                Subklasse = inputAdminProductSuptype,
-                Prijs = inputAdminProductPrijs,
-                Kwantiteit = inputAdminProductKwantiteit
-            };
-            db.Voorraad.Add(a);
-            db.SaveChanges();
-            return View();
+
+
+                Voorraad a = new Voorraad
+                {
+                    Naam = Naam,
+                    Dier = Dier,
+                    Subklasse = Subklasse,
+                    Prijs = Prijs,
+                    Kwantiteit = Kwantiteit
+                };
+                db.Voorraad.Add(a);
+                db.SaveChanges();
+            }
+            return RedirectToAction("AdminVoorraadIndex");
         }
 
-        [HttpPut]
-        public ActionResult AdminKlantEditSave(int? id, string newvoornaam, string newachternaam, string newemail, string newstraatnaam, string newtelefoonnummer)
+        
+        public ActionResult AdminKlantEditSave(int? id, string voornaam, string achternaam, string email, string straatnaam, string telefoonnummer)
         {
-            var accountToUpdate = db.Account.Find(id);
+            using (db)
+            {
+                var accountToUpdate = db.Account.FirstOrDefault();
 
-            accountToUpdate.achternaam = newachternaam;
-            accountToUpdate.voornaam = newvoornaam;
-            accountToUpdate.telefoonnummer = newtelefoonnummer;
-            accountToUpdate.straatnaam = newstraatnaam;
-            accountToUpdate.email = newemail;
-            
+                accountToUpdate.achternaam = achternaam;
+                accountToUpdate.voornaam = voornaam;
+                accountToUpdate.telefoonnummer = telefoonnummer;
+                accountToUpdate.straatnaam = straatnaam;
+                accountToUpdate.email = email;
 
                 db.SaveChanges();
+            }
             return RedirectToAction("AdminKlantIndex");
         }
 
 
-        public  ActionResult AdminVoorraadEditSave(int? id, string newNaam, string newDier, string newSubklasse, int newKwantiteit, string newPrijs, string newimage)
+        public  ActionResult AdminVoorraadEditSave(int? id, string Naam, string Dier, string Subklasse, int Kwantiteit, string Prijs, string image)
         {
+            using (db)
+            {
+                var voorraadToUpdate = db.Voorraad.FirstOrDefault();
 
-            var voorraadToUpdate = db.Voorraad.Find(id);
-
-            voorraadToUpdate.Naam = newNaam;
-            voorraadToUpdate.Dier = newDier;
-            voorraadToUpdate.Subklasse = newSubklasse;
-            voorraadToUpdate.Kwantiteit = newKwantiteit;
-            voorraadToUpdate.Prijs = newPrijs;
-            voorraadToUpdate.image = newimage;
+                voorraadToUpdate.Naam = Naam;
+                voorraadToUpdate.Dier = Dier;
+                voorraadToUpdate.Subklasse = Subklasse;
+                voorraadToUpdate.Kwantiteit = Kwantiteit;
+                voorraadToUpdate.Prijs = Prijs;
+                voorraadToUpdate.image = image;
 
                 db.SaveChanges();
-
-            return View("~/Views/Admin/AdminVoorraadIndex");
+            }
+            return RedirectToAction("AdminVoorraadIndex"); 
         }
 
         
@@ -167,18 +175,24 @@ namespace petgoods4all.Controllers
         [HttpDelete]
         public ActionResult AdminKlantDelete(int? id)
         {
-            var accountToDelete = db.Account.Find(id);
-            db.Account.Remove(accountToDelete);
-            db.SaveChanges();
-            return RedirectToPage("./Admin/AdminKlantIndex");
+            using (db)
+            {
+                var accountToDelete = db.Account.FirstOrDefault(); ;
+                db.Account.Remove(accountToDelete);
+                db.SaveChanges();
+            }
+            return RedirectToAction("AdminKlantIndex");
         }
 
         public ActionResult AdminVoorraadDelete(int? id)
         {
-            var voorraadToDelete = db.Voorraad.Find(id);
-            db.Voorraad.Remove(voorraadToDelete);
-            db.SaveChanges();
-            return View("~/Views/Admin/AdminVoorraadIndex");
+            using (db)
+            {
+                var voorraadToDelete = db.Voorraad.FirstOrDefault();
+                db.Voorraad.Remove(voorraadToDelete);
+                db.SaveChanges();
+            }
+            return RedirectToAction("AdminVoorraadIndex");
         }
 
 
