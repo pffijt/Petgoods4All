@@ -96,7 +96,7 @@ namespace petgoods4all.Controllers
             {
                 Account a = new Account
                 {
-
+                    //id = 33,
                     email = email,
                     Admin = false,
                     password = password,
@@ -167,17 +167,13 @@ namespace petgoods4all.Controllers
             }
             return RedirectToAction("AdminVoorraadIndex"); 
         }
-
-        
-
-
         
         [HttpDelete]
         public ActionResult AdminKlantDelete(int? id)
         {
             using (db)
             {
-                var accountToDelete = db.Account.FirstOrDefault(); ;
+                var accountToDelete = db.Account.FirstOrDefault();
                 db.Account.Remove(accountToDelete);
                 db.SaveChanges();
             }

@@ -1,0 +1,69 @@
+﻿@model petgoods4all.Models.Account
+
+@{
+    ViewData["Title"] = "AdminKlantDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Klant Delete</h2>
+
+<div><form asp-action="AdminKlantEditSave">
+    <h4>Account</h4>
+    <hr />
+    <h3>Weet je zeker dat u dit account wilt verwijderen?</h3>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.voornaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.achternaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.straatnaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.straatnaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.telefoonnummer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.telefoonnummer)
+        </dd>
+    </dl>
+</div>
+<!-- <div>
+    <a asp-action="AdminKlantDelete" asp-controller="Admin" asp-route-id="@Model.id">Verwijderen</a> |
+</div> -->
+<div class="form-group">
+    <button type="submit" value="Delete" class="btn btn-default btn-primary" >Verwijderen </button>
+</div>
+</form>
+<div>
+    <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
+</div>
