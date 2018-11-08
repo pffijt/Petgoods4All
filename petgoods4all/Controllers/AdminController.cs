@@ -94,9 +94,12 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
+                var result = from acc in db.Account select acc.id
+                var MaxId = result.Max();
+
                 Account a = new Account
                 {
-                    //id = 33,
+                    id = MaxId + 1,
                     email = email,
                     Admin = false,
                     password = password,
@@ -115,10 +118,13 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
+                var result = from acc in db.Account select acc.id;
 
+                var MaxId = result.Max();
 
                 Voorraad a = new Voorraad
                 {
+                    Id = MaxId + 1,
                     Naam = Naam,
                     Dier = Dier,
                     Subklasse = Subklasse,
@@ -168,7 +174,7 @@ namespace petgoods4all.Controllers
             return RedirectToAction("AdminVoorraadIndex"); 
         }
         
-        [HttpDelete]
+        
         public ActionResult AdminKlantDelete(int? id)
         {
             using (db)
