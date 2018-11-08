@@ -172,7 +172,7 @@ namespace petgoods4all.Controllers
 
 
         
-        [HttpDelete]
+        
         public ActionResult AdminKlantDelete(int? id)
         {
             using (db)
