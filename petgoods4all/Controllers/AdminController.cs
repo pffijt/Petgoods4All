@@ -94,7 +94,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var result = from acc in db.Account select acc.id
+                var result = from acc in db.Account select acc.id;
                 var MaxId = result.Max();
 
                 Account a = new Account
