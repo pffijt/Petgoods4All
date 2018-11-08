@@ -180,6 +180,7 @@ namespace petgoods4all.Controllers
             return RedirectToAction("AdminKlantIndex");
         }
 
+        [HttpDelete]
         public ActionResult AdminVoorraadDelete(int? id)
         {
             using (db)
