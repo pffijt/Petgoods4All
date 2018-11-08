@@ -29,7 +29,7 @@ namespace petgoods4all.Controllers
         {
             return View();
         }
-
+        //Roept pagina op met de lijsten van Account of Product
         public ActionResult AdminKlantIndex()
         {
             using(db)
@@ -49,7 +49,7 @@ namespace petgoods4all.Controllers
                 return View(voorraad);
             }
         }
-
+        //Roept pagina op met de Details van Account of Product
         public ActionResult AdminKlantDetails(int? id)
         {
 
@@ -65,30 +65,32 @@ namespace petgoods4all.Controllers
 
             return View(voorraad);
         }
-
+        //Roept pagina op voor het aanmaken van een Account of Product
         public ActionResult AdminCreateAccount()
         {
 
             return View();
         }
+        public ActionResult AdminCreateVoorraad()
+        {
 
+                    return View();
+        }
+
+        //Roept pagina op voor de Details van een Account of Product
         public ActionResult AdminKlantEdit()
         {
             return View();
         }
 
-        public ActionResult AdminCreateVoorraad()
-        {
-
-            return View();
-        }
+        
 
         public ActionResult AdminVoorraadEdit()
         {
             return View();
         }
 
-
+        //Creeren nieuw Account/Product als je op de Opslaan knop klikt
         [HttpPost]
         public ActionResult AdminCreateAccountSave(string email, string achternaam, string voornaam, string telefoonnummer, string straatnaam, bool Admin, string password)
         {
@@ -138,7 +140,7 @@ namespace petgoods4all.Controllers
             return RedirectToAction("AdminVoorraadIndex");
         }
 
-        
+        //Updaten Account/Product als je op de opslaan knop klikt in de Edit pagina
         public ActionResult AdminKlantEditSave(int? id, string voornaam, string achternaam, string email, string straatnaam, string telefoonnummer)
         {
             using (db)
@@ -174,12 +176,9 @@ namespace petgoods4all.Controllers
             }
             return RedirectToAction("AdminVoorraadIndex"); 
         }
-
         
 
-
-        
-        
+        //Deleten Account/Product waarbij je op de knop klikt
         public ActionResult AdminKlantDelete(int? id)
         {
             using (db)
