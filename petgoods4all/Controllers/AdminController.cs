@@ -184,7 +184,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var accountToDelete = db.Account.FirstOrDefault(); ;
+                var accountToDelete = db.Account.Find(id); ;
                 db.Account.Remove(accountToDelete);
                 db.SaveChanges();
             }
@@ -195,7 +195,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var voorraadToDelete = db.Voorraad.FirstOrDefault();
+                var voorraadToDelete = db.Voorraad.Find(id);
                 db.Voorraad.Remove(voorraadToDelete);
                 db.SaveChanges();
             }
