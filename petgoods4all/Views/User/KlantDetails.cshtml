@@ -22,12 +22,6 @@
             @Html.DisplayFor(model => model.password)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Admin)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Admin)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.voornaam)
         </dt>
         <dd>
@@ -54,6 +48,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="KlantEdit" asp-controller="Admin" asp-route-id="@Model.id">Bijwerken</a> |
+    <a asp-action="KlantEdit" asp-controller="User" asp-route-id="@Model.id">Bijwerken</a> |
     <a asp-action="KlantIndex">Terug naar account pagina</a>
 </div>

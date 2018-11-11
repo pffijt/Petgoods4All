@@ -111,7 +111,7 @@ namespace petgoods4all.Controllers
                 db.Account.Add(a);
                 db.SaveChanges();
             }
-            return RedirectToAction("AdminKlantIndex");
+            return RedirectToAction("UserHome");
         }
 
         public ActionResult AdminCreateVoorraadSave(string Naam, string Dier, string Subklasse, string Prijs, int Kwantiteit)
@@ -136,7 +136,6 @@ namespace petgoods4all.Controllers
             }
             return RedirectToAction("AdminVoorraadIndex");
         }
-
         
         public ActionResult AdminKlantEditSave(int? id, string voornaam, string achternaam, string email, string straatnaam, string telefoonnummer)
         {

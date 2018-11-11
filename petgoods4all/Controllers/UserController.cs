@@ -9,10 +9,11 @@ namespace petgoods4all.Controllers
 {
     public class UserController : Controller
     {
-
+        /////////inlog page////////
         // GET: User
-        [HttpGet]
+        ModelContext db = new ModelContext();
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -31,30 +32,37 @@ namespace petgoods4all.Controllers
         //
         public ActionResult ReadAccount(string inputEmailUser)
         {
-            var db = new ModelContext();
             Account account = db.Account.Find(inputEmailUser);
 
             return View(account);
         }
 
-        public ActionResult UpdateAccount(string inputEmailUser, string newEmail, string newinputPasswordUser)
-        {
-            var db = new ModelContext();
-            Account account = db.Account.Find(inputEmailUser);
-            account.email = newEmail;
-            account.password = newinputPasswordUser;
-            db.Account.Update(account);
+        public ActionResult UpdateAccount(string inputEmailUser, string originalEmailUser, string inputPasswordUser, string inputVoornaamUser, string inputAchternaamUser, string inputTelefoonnummerUser, string inputStraatnaamUser)
+        {            
+            using (db)
+            {
+                //var accountUpdate = db.Account.Find(inputEmailUser);// input from inlog, comparing db email.
+                var accountUpdate = db.Account.Where(account => account.email == originalEmailUser).FirstOrDefault();
+                accountUpdate.voornaam = inputVoornaamUser;
+                accountUpdate.achternaam = inputAchternaamUser;
+                accountUpdate.telefoonnummer = inputTelefoonnummerUser;
+                accountUpdate.straatnaam = inputStraatnaamUser;
+                accountUpdate.password = inputPasswordUser;
+                accountUpdate.email = inputEmailUser;
 
-            return View(account);
+                db.Account.Update(accountUpdate);
+                db.SaveChanges();
+            }
+            
+            return RedirectToAction("UserHome");
         }
 
         public ActionResult DeleteAccount(string inputEmailUser)
         {
-            var db = new ModelContext();
             Account account = db.Account.Find(inputEmailUser);
             db.Account.Remove(account);
 
             return View();
-        }
+        }        
     }
 }

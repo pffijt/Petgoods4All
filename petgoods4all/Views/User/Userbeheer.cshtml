@@ -19,34 +19,67 @@
 </head>
 <body>
     <br /><br /><br /><br /><br /><br /><br />
-    <form class="table" method="put" style="background-color:#ffe8d3;">
-        <div class="row">
-            <h2>Gegevens beheer</h2>
-            <p>
-                <a href="~/Views/User/UserHome.cshtml">Home</a>
-            </p>
-        </div>
-        <div class="row">
-            <table>
-                <tr>
-                    <th>E-mail</th>
-                    <th>Wachtwoord</th>
-                    <th>Save</th>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="email" id="inputEmailUser" name="inputEmailUser" class="form-control" placeholder="Email-adres" required autofocus>
-                    </td>
-                    <td>
-                        <input type="password" id="inputPasswordUser" name="inputPasswordUser" class="form-control" placeholder="Wachtwoord" required>
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
-                    </td>
-                </tr>
-            </table>
-            <br /><br />
-        </div>
+    <form class="table" method="put" style="background-color:#ffe8d3;" asp-action="UpdateAccount">
+        <div class="container">
+            <div class="row">
+                <h2>Gegevens beheer</h2>
+                <p>
+                    <a href="~/User/UserHome">Home</a>
+                </p>
+            </div>
+            <div class="row">
+                <table>
+                    <tr>
+                        <th>Voornaam</th>
+                        <th>Achternaam</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="voornaam" id="inputVoornaamUser" name="inputVoornaamUser" class="form-control" placeholder="Voornaam" required >
+                        </td>
+                        <td>
+                            <input type="achternaam" id="inputAchternaamUser" name="inputAchternaamUser" class="form-control" placeholder="Achternaam" required >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Straatnaam</th>
+                        <th>Telefoonnummer</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="straatnaam" id="inputStraatnaamUser" name="inputStraatnaamUser" class="form-control" placeholder="Straatnaam" required >
+                        </td>
+                        <td>
+                            <input type="telefoonnummer" id="inputTelefoonnummerUser" name="inputTelefoonnummerUser" class="form-control" placeholder="Telefoonnummer" required >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>E-mail</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="email" id="inputEmailUser" name="inputEmailUser" class="form-control" placeholder="Email-adres" required>
+                            <input type="email" id="originalEmailUser" name="originalEmailUser" class="form-control" placeholder="OrgineleEmail-adres" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Wachtwoord</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" id="inputPasswordUser" name="inputPasswordUser" class="form-control" placeholder="Wachtwoord" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- <button class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button> -->
+                            <button class="btn btn-sm btn-primary btn-block" value="Opslaan" type="submit">Opslaan</button>
+                        </td>
+                    </tr>
+                </table>
+                <br /><br />
+            </div>
+        </div>    
     </form>
 </body>
 </html>
