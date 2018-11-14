@@ -3,10 +3,10 @@
     ViewData["Title"] = "AdminKlantEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>AdminKlantEdit</h2>
-<h4>Account</h4>
+<h2 style="background-color:#ffe8d3;">AdminKlantEdit</h2>
+<h4 style="background-color:#ffe8d3;">Account</h4>
 <hr />
-<div class="row">
+<div class="row" style="background-color:#ffe8d3;">
     <div class="col-md-4">
         <form asp-action="AdminKlantEditSave">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -55,7 +55,7 @@
     </div>
 </div>
 <div>
-    <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
+    <a asp-action="AdminKlantIndex" style="background-color:#ffe8d3;">Terug naar de lijst</a>
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
