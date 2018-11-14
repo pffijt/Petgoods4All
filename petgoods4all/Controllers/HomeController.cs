@@ -52,6 +52,7 @@ namespace petgoods4all.Controllers
             var reviews =
                 from r in db.Review
                 join u in db.Account on r.UserId equals u.id
+                orderby r.Id descending
                 select new AccountReview
                 {
                     Id = r.Id,
@@ -64,9 +65,21 @@ namespace petgoods4all.Controllers
                     Email = u.email
                 };
 
+            var averageRating = from r in db.Review where r.ProductId == identication select r.StarRating;
+
             var reviewList = reviews.ToList();
             ViewBag.reviews = reviewList;
             ViewBag.UserId = UID;
+
+            if (! averageRating.Any())
+            {
+                ViewBag.AverageRating = 0;
+            }
+            else
+            {
+                var average = (from r in db.Review where r.ProductId == identication select r.StarRating).Average();
+                ViewBag.AverageRating = average;
+            }
 
             return View(product.ToList());
         }
@@ -141,7 +154,7 @@ namespace petgoods4all.Controllers
             var MaxId = 0;
             var UID = HttpContext.Session.GetInt32("UID");
             var UserId = UID.GetValueOrDefault();
-            var ProductPage = new HomeController().Productpage(productId);
+            //var ProductPage = new HomeController().Productpage(productId);
 
             var result = from s in db.Review select s.Id;
             if (!result.Any())
@@ -164,7 +177,7 @@ namespace petgoods4all.Controllers
             db.Review.Add(review);
             db.SaveChanges();
 
-            return Redirect("ProductPage");
+            return Redirect("/Home/productpage?identication=" + productId);
         }
 
         public ActionResult Wishpage()
