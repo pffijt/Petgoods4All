@@ -25,11 +25,34 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public ActionResult updateGegevens()
+        {
+            return View();
+        }
+
         public ActionResult UserBeheer()
         {
              // var UserId = HttpContext.Session.GetInt32("UID");
             var userId = HttpContext.Session.GetInt32("UID");
             ViewBag.userId = userId;
+
+            using (db)
+            {
+
+                var model = from acc in db.Account select acc;
+                // var model = from acc in db.Account
+                //             select new Account
+                //     {
+                //         voornaam = acc.voornaam,
+                //         achternaam = acc.achternaam,
+                //         telefoonnummer = acc.telefoonnummer,
+                //         straatnaam = acc.straatnaam,
+                //         password = acc.password,
+                //         email = acc.email
+                //     };
+                ViewBag.AccountData = model.ToList();
+
+            }
             return View();
         }
         
@@ -45,8 +68,10 @@ namespace petgoods4all.Controllers
         {            
             using (db)
             {
+                var userId = HttpContext.Session.GetInt32("UID");
+                
                 //var accountUpdate = db.Account.Find(inputEmailUser);// input from inlog, comparing db email.
-                var accountUpdate = db.Account.Where(account => account.email == originalEmailUser).FirstOrDefault();
+                var accountUpdate = db.Account.Where(account => account.id == userId).FirstOrDefault();
                 accountUpdate.voornaam = inputVoornaamUser;
                 accountUpdate.achternaam = inputAchternaamUser;
                 accountUpdate.telefoonnummer = inputTelefoonnummerUser;
@@ -58,6 +83,28 @@ namespace petgoods4all.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("UserHome");
+        }
+
+        public ActionResult readAccount()
+        {
+            using (db)
+            {
+
+                var model = from acc in db.Account select acc;
+                // var model = from acc in db.Account
+                //             select new Account
+                //     {
+                //         voornaam = acc.voornaam,
+                //         achternaam = acc.achternaam,
+                //         telefoonnummer = acc.telefoonnummer,
+                //         straatnaam = acc.straatnaam,
+                //         password = acc.password,
+                //         email = acc.email
+                //     };
+                ViewBag.AccountData = model.ToList();
+
+                return View();
+            }
         }
 
         public ActionResult DeleteAccount(string inputEmailUser)
