@@ -1,0 +1,55 @@
+﻿@model petgoods4all.Models.Voorraad
+
+@{
+    ViewData["Title"] = "Voorraad Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Voorraad Details</h2>
+
+<div>
+    <h4>Voorraad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subklasse)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subklasse)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Kwantiteit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kwantiteit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Prijs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="AdminVoorraadEditSave" asp-route-id="@Model.Id">Bijwerken</a> |
+    <a asp-action="AdminVoorraadIndex">Terug naar de lijst</a>
+</div>
