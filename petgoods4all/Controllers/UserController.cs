@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,9 @@ namespace petgoods4all.Controllers
 
         public ActionResult UserBeheer()
         {
+             // var UserId = HttpContext.Session.GetInt32("UID");
+            var userId = HttpContext.Session.GetInt32("UID");
+            ViewBag.userId = userId;
             return View();
         }
         
@@ -53,7 +57,6 @@ namespace petgoods4all.Controllers
                 db.Account.Update(accountUpdate);
                 db.SaveChanges();
             }
-            
             return RedirectToAction("UserHome");
         }
 
