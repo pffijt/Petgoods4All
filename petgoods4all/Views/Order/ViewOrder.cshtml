@@ -3,12 +3,12 @@
     ViewData["Title"] = "ViewOrder";
 }
 
-<h2>ViewOrder</h2>
+<h2>Bestel Geschiedenis</h2>
 <div class="container-fluid" id="bodyPB" style="background-color:#ffe8d3;">
     <div class="row">
         <br><br>
         <div class="col-md-12">
-            <p align="left">items</p>
+            <p align="left">Producten</p>
         </div>
     </div>
     <hr>
@@ -23,12 +23,6 @@
                 <h3>@item.Naam</h3>
                 <p>Quantity: @item.Kwantiteit</p>
                 <p>Price: $ @item.Prijs</p>
-            </div>
-            <div class="col-md-8">
-                <br><br>
-                <form class="form-products" method="post" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart">
-                    <button type="submit" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Id" class="btn btn-danger col-sm-4" align="right">Remove</button>
-                </form>
             </div>
         </div>
         <br>
