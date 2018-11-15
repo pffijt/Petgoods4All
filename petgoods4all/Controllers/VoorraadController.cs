@@ -145,8 +145,6 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-      
-
         [HttpPost]
         public IActionResult Search (string productSearch, string DierDropdown, string SubklasseDropdown, string minPrijs, string maxPrijs)
         {

@@ -280,50 +280,7 @@ namespace petgoods4all.Controllers
             //Dit is wel echt slecht gescriptmaarja ik weet ook niet anders
             if(Option == "+ Naar winkelwagen")
             {
-                int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
-                Console.WriteLine("uID:"+uID);
-                if(uID != 0)
-                {
-                    var db = new ModelContext();
-                    var MaxId = 0;
-                    List<int> productList = new List<int>();
-                    productList.Add(pIDD);
-                    int AccountId = 0;
-                    var UserId = HttpContext.Session.GetInt32("UID");
-                    if (UserId == null)
-                    {
-                        AccountId = 0;
-                    }
-                    else
-                    {
-                        AccountId = UserId.Value;
-                    }
-                    var result = from s in db.ShoppingCart select s.Id;
-                    if (!result.Any())
-                    {
-                    }
-                    else
-                    {
-                        MaxId = result.Max();
-                    }
-                    if (AccountId == 0)
-                    {
-                        return View("~/Views/Account/Inloggen.cshtml");
-                    }
-                    else
-                    {
-                        ShoppingCart shoppingCart = new ShoppingCart
-                        {
-                            Id = MaxId + 1,
-                            VoorraadId = pIDD,
-                            AccountId = AccountId,
-                            Quantity = 1,
-                        };
-                        db.ShoppingCart.Add(shoppingCart);
-                        db.SaveChanges();
-                    }
-                    return Redirect("Wishpage");
-                }
+                //Nog niet mogelijk
             }
             if(Option == "x Verwijderen")
             {

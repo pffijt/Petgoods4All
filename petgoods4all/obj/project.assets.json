@@ -5865,10 +5865,18 @@
       ]
     },
     "Microsoft.AspNetCore.JsonPatch/2.0.0": {
+<<<<<<< HEAD
       "sha512": "US78cfi7nrPTXeONgcSWbgrUBLs1Aca4kCJTieWXDLg0G0gwmdfPbd6S3c5TdJRQdA69K3UhPAs9r9ZAMjIFAA==",
       "type": "package",
       "path": "microsoft.aspnetcore.jsonpatch/2.0.0",
       "files": [
+=======
+      "sha512": "TTegmLlmfFvCJ/7QRCMWswfmB17DmBS5Z/ahkGW9RihQPvjmW/3FpckVUJSn0D8chbGfM7PUCCXfEYlsKFDF0A==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.jsonpatch/2.0.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
         "microsoft.aspnetcore.jsonpatch.2.0.0.nupkg.sha512",
@@ -6423,10 +6431,18 @@
       ]
     },
     "Microsoft.CodeAnalysis.Common/2.3.1": {
+<<<<<<< HEAD
       "sha512": "nGATpUW09zOGFLQZ3JXIObJyNlk2dvgNgC7Kh+iDpxGWgKHSgpHMXnGmXUecJa4CNi0HhUENKSnEack1aF/MwQ==",
       "type": "package",
       "path": "microsoft.codeanalysis.common/2.3.1",
       "files": [
+=======
+      "sha512": "EveBUvavpZ0za8ZGzJwwMWW56lyuSYheExUKFt7hxLDaBaSaNp1OpLtzgn+p8/VpkCl8RsUdt4aEB+0oPCvh2Q==",
+      "type": "package",
+      "path": "microsoft.codeanalysis.common/2.3.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard1.3/Microsoft.CodeAnalysis.dll",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.xml",
         "microsoft.codeanalysis.common.2.3.1.nupkg.sha512",
@@ -6434,10 +6450,18 @@
       ]
     },
     "Microsoft.CodeAnalysis.CSharp/2.3.1": {
+<<<<<<< HEAD
       "sha512": "fvO7Q8FqzmWX8gzzCk4Bf34Ms06bZ6r/A9tUz1ndj3ioitAxSC2QUXbUQOJ4ExzohTtXhczJAFirgs//Nasz6A==",
       "type": "package",
       "path": "microsoft.codeanalysis.csharp/2.3.1",
       "files": [
+=======
+      "sha512": "M+9+LZt0zQVetgWiVVnixDIWpYcYGKeqdjhw7I3kLdHNy7lcNkiGf3JBnLOkz2Fx9uHQ2ApSifddFGMBBtoxig==",
+      "type": "package",
+      "path": "microsoft.codeanalysis.csharp/2.3.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.dll",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.xml",
         "microsoft.codeanalysis.csharp.2.3.1.nupkg.sha512",
@@ -6445,10 +6469,18 @@
       ]
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.3.1": {
+<<<<<<< HEAD
       "sha512": "LpK7zgRU9TQ9KOZe7vDo4DEaPj6PM6HOpvTCOpBtS7GAbwOHU2IWUgnAJvFxILXKsqJDKrM0+O6zqZhG0sBYIw==",
       "type": "package",
       "path": "microsoft.codeanalysis.csharp.workspaces/2.3.1",
       "files": [
+=======
+      "sha512": "omDiWoiYjEOANK5l3RobSGhr15neJ3y+BtCcfnM2o45HqUOYq9lnRQRjNnKL8Q3KP/Akwa2IRKrn6MWUeEgHlw==",
+      "type": "package",
+      "path": "microsoft.codeanalysis.csharp.workspaces/2.3.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.Workspaces.dll",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.Workspaces.xml",
         "microsoft.codeanalysis.csharp.workspaces.2.3.1.nupkg.sha512",
@@ -6470,10 +6502,18 @@
       ]
     },
     "Microsoft.CodeAnalysis.Workspaces.Common/2.3.1": {
+<<<<<<< HEAD
       "sha512": "/Y9zLXlvWVvGxLyNWvLrSRRZ6c1F3L2yVwhUcmGd9un7u/TJguOyY2BEOD10uA/KBDKbA4pmnWnJFq+2n5IYPg==",
       "type": "package",
       "path": "microsoft.codeanalysis.workspaces.common/2.3.1",
       "files": [
+=======
+      "sha512": "BPsMLeusNVLRz2CbIIPehLQDRn//PRouHSfHHhC0Tk3F7rQhJyXpvdmO8OQycskRUFcs1UnpARYn0vpR22iGIA==",
+      "type": "package",
+      "path": "microsoft.codeanalysis.workspaces.common/2.3.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/net46/Microsoft.CodeAnalysis.Workspaces.Desktop.dll",
         "lib/net46/Microsoft.CodeAnalysis.Workspaces.Desktop.xml",
         "lib/net46/Microsoft.CodeAnalysis.Workspaces.dll",
@@ -6680,19 +6720,35 @@
       ]
     },
     "Microsoft.Data.Sqlite/2.0.1": {
+<<<<<<< HEAD
       "sha512": "jJXCZniFDwHGnRYd9WD3vswQCyIXk0/gsne9TLFWIpy6oK4kAcKD1BTncaHQmVg0pp/YmRBKXVIh4yXSHqbsGQ==",
       "type": "package",
       "path": "microsoft.data.sqlite/2.0.1",
       "files": [
+=======
+      "sha512": "bUVc4fdknlFYUnEgljI13lr23YaOXO9GEw0Oo6ay8cWijUA/3raWVTNHdRIASF14RFcJ0RaWgLyRGxo7w2qF0Q==",
+      "type": "package",
+      "path": "microsoft.data.sqlite/2.0.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "microsoft.data.sqlite.2.0.1.nupkg.sha512",
         "microsoft.data.sqlite.nuspec"
       ]
     },
     "Microsoft.Data.Sqlite.Core/2.0.1": {
+<<<<<<< HEAD
       "sha512": "lkUOJRJEXnXAxWKhCSFjYKLhuopw+m6ClML4cF1Rt/Ek8bBUW6hn1xAHCZ9KFqkcNOpBS7rQ6nZBaSXU3mgbOQ==",
       "type": "package",
       "path": "microsoft.data.sqlite.core/2.0.1",
       "files": [
+=======
+      "sha512": "Vubn0Y9RVl82mLoL+8gA7lrbuxdA2+cJmFxfwc56bnujLtTbdcZ8Ay1k+1mGpdZ4IjUKP06IBhXaa071owXStA==",
+      "type": "package",
+      "path": "microsoft.data.sqlite.core/2.0.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard2.0/Microsoft.Data.Sqlite.dll",
         "lib/netstandard2.0/Microsoft.Data.Sqlite.xml",
         "microsoft.data.sqlite.core.2.0.1.nupkg.sha512",
@@ -6700,10 +6756,18 @@
       ]
     },
     "Microsoft.DotNet.PlatformAbstractions/2.0.3": {
+<<<<<<< HEAD
       "sha512": "cXgVdJmW3fLwmSxsv0RlTe4BIKs6slVXV5xRvsO4CV4aUeY67GelaujxY/lP5yVlaMjMM22pXKbKtUY9x050Mw==",
       "type": "package",
       "path": "microsoft.dotnet.platformabstractions/2.0.3",
       "files": [
+=======
+      "sha512": "Yi7UdOyKM4iP25nJrkSsge1zZ4FFPHGeOP1LbVdXAHo8KDaFA1SeLp045Z3b+B9QseLf/ABgZldMEUeaJ+NkjQ==",
+      "type": "package",
+      "path": "microsoft.dotnet.platformabstractions/2.0.3",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net45/Microsoft.DotNet.PlatformAbstractions.dll",
@@ -7055,10 +7119,18 @@
       ]
     },
     "Microsoft.Extensions.DependencyModel/2.0.3": {
+<<<<<<< HEAD
       "sha512": "OiNYN/QeZLuYcn4CvYrOmYgODPB1Jpqft+cT4F3Hkq5poj+1DLfbIBftMI/Pn8J7DyHhYeBMLxJUuugjvk/Fuw==",
       "type": "package",
       "path": "microsoft.extensions.dependencymodel/2.0.3",
       "files": [
+=======
+      "sha512": "3MdxcEH7P0RJ5BBvpixp9YuUVH0cmpiyOKVlMvVLHVh98ziipDbTA80AQk76vEdc2WsV3tgAgKV5fMFJj1Stcw==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencymodel/2.0.3",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net451/Microsoft.Extensions.DependencyModel.dll",
@@ -7069,10 +7141,18 @@
       ]
     },
     "Microsoft.Extensions.DiagnosticAdapter/2.0.1": {
+<<<<<<< HEAD
       "sha512": "w8nux+yppIAD3ouzLz3CEtUMj03WIQ9FAmuR6IhrCpQDcoMtajlZIkZLbryJE1jdF1wkewLLM2LpXasfu7HzQw==",
       "type": "package",
       "path": "microsoft.extensions.diagnosticadapter/2.0.1",
       "files": [
+=======
+      "sha512": "7HO5TlPQMqMoIYRZ0gQDkqi97FCZEHsSXzFIWlrHG2faOfZorN6syEmdMq/lHYBAisPfhdz1eGkhuOzmCuZKMw==",
+      "type": "package",
+      "path": "microsoft.extensions.diagnosticadapter/2.0.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/net461/Microsoft.Extensions.DiagnosticAdapter.dll",
         "lib/net461/Microsoft.Extensions.DiagnosticAdapter.xml",
         "lib/netcoreapp2.0/Microsoft.Extensions.DiagnosticAdapter.dll",
@@ -7082,10 +7162,18 @@
       ]
     },
     "Microsoft.Extensions.FileProviders.Abstractions/2.0.1": {
+<<<<<<< HEAD
       "sha512": "Gzc5yXvwIrKpdti0Ev4jC0inVrGZpI86eLZorMVRqAPXowR8JDRbcHjhmID2EqA4rdhL/IsfD42+4upKpHULDw==",
       "type": "package",
       "path": "microsoft.extensions.fileproviders.abstractions/2.0.1",
       "files": [
+=======
+      "sha512": "X3qVOCDZmj1mQnN2SfFUZZ3qfA4OPmD6XxxZpx43g/OKYvf3RI9tvVUsNECVMHEW7PjYfH83wNpqn6fThFAD0g==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.abstractions/2.0.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
         "microsoft.extensions.fileproviders.abstractions.2.0.1.nupkg.sha512",
@@ -7093,10 +7181,18 @@
       ]
     },
     "Microsoft.Extensions.FileProviders.Composite/2.0.1": {
+<<<<<<< HEAD
       "sha512": "bgAUXH3T/Y1R5bCthCiZVzEX4spvNeIHRv6+Jr4BJMxPVSFm/8er7xvywd2NCayv94frKZdDGP3mjAQZenZDxQ==",
       "type": "package",
       "path": "microsoft.extensions.fileproviders.composite/2.0.1",
       "files": [
+=======
+      "sha512": "XQgLy2EJhQwFtWFEaxidEFH5CG6UpJksUumAZFH1/DySRFyVqoUY6fExCqMNRwFUZMio6tr2eYvQGVYoNTKhGg==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.composite/2.0.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Composite.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Composite.xml",
         "microsoft.extensions.fileproviders.composite.2.0.1.nupkg.sha512",
@@ -7104,10 +7200,18 @@
       ]
     },
     "Microsoft.Extensions.FileProviders.Embedded/2.0.1": {
+<<<<<<< HEAD
       "sha512": "PH1oo04WCbKy42aga6bC4phl1rZfbFsZLuozJN1LGUUZTCnycUAZzCqG6MNRCgRiHg2bPexiQ15708vSwnuBHQ==",
       "type": "package",
       "path": "microsoft.extensions.fileproviders.embedded/2.0.1",
       "files": [
+=======
+      "sha512": "dupuUHdRuZCtSAAacLzhblRz4qHUh4PXI4hDZq7sj0KteHjyJTjcEYmKocxXexr18d2OuuYRqt57NChldouLzQ==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.embedded/2.0.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.xml",
         "microsoft.extensions.fileproviders.embedded.2.0.1.nupkg.sha512",
@@ -7115,10 +7219,18 @@
       ]
     },
     "Microsoft.Extensions.FileProviders.Physical/2.0.1": {
+<<<<<<< HEAD
       "sha512": "h+6bcXYlGldl7BUhnQKFxL2sMfeg9Gr/AuVexYOCYWmzDsc4iyUoy3NL7i2vkG209wd0ZXf+pZzRDwGPFhmlSw==",
       "type": "package",
       "path": "microsoft.extensions.fileproviders.physical/2.0.1",
       "files": [
+=======
+      "sha512": "jPqutmmCQ0SQwX6f9VYg4n/Lgah056GgfeIGoY/9G5jQDDe9Kz2q2T3lc75rNyPKG2pej3sTz+dX1uI+l2vSVA==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.physical/2.0.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Physical.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Physical.xml",
         "microsoft.extensions.fileproviders.physical.2.0.1.nupkg.sha512",
@@ -7126,10 +7238,18 @@
       ]
     },
     "Microsoft.Extensions.FileSystemGlobbing/2.0.1": {
+<<<<<<< HEAD
       "sha512": "q7KsG2kjwo2Ps0WdV7MFh64cQS0UHikV8qv4HQrUfWQyxim5vNmLzAbuduarS9QWbhRHTtUanx+ohyAQdumdnw==",
       "type": "package",
       "path": "microsoft.extensions.filesystemglobbing/2.0.1",
       "files": [
+=======
+      "sha512": "+Es2DplDfGchyuZ/IgSzLkL8FSsLn9u1lJdrP9GwAP8FyAIIQg6e7xg4BZYLq3DDi+X6+iJrkmSU8ZzOyhZQqQ==",
+      "type": "package",
+      "path": "microsoft.extensions.filesystemglobbing/2.0.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.xml",
         "microsoft.extensions.filesystemglobbing.2.0.1.nupkg.sha512",
@@ -7293,10 +7413,18 @@
       ]
     },
     "Microsoft.Extensions.ObjectPool/2.0.0": {
+<<<<<<< HEAD
       "sha512": "drOmgNZCJiNEqFM/TvyqwtogS8wqoWGQCW5KB/CVGKL6VXHw8OOMdaHyspp8HPstP9UDnrnuq+8eaCaAcQg6tA==",
       "type": "package",
       "path": "microsoft.extensions.objectpool/2.0.0",
       "files": [
+=======
+      "sha512": "u/vJNHsHilIr3bNOdnzjvlaHFTP4JacRzJLoqu3o5kl8Cxs1HrSLJ1Hv9o3ZXCwVgwkFLRFKF0a5+RDZhNExZQ==",
+      "type": "package",
+      "path": "microsoft.extensions.objectpool/2.0.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll",
         "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.xml",
         "microsoft.extensions.objectpool.2.0.0.nupkg.sha512",
@@ -7365,10 +7493,18 @@
       ]
     },
     "Microsoft.IdentityModel.Clients.ActiveDirectory/3.14.1": {
+<<<<<<< HEAD
       "sha512": "GlyzF4FWsn3LXC6rrzw6Yg2nMbGLx+7JS9a6Z8n7jhqPa5cMiNEX01tBUO1v3A9p1mk+gQzHWJheAsSpOLp/ew==",
       "type": "package",
       "path": "microsoft.identitymodel.clients.activedirectory/3.14.1",
       "files": [
+=======
+      "sha512": "A4MCkz8IWOSEGt51YwlGrQW/sualR4KnGsH+Z1wg5JARYrLzOQ0gb3qou7Yma2p6iSZuJn7h2gJrOSLoBpMAgA==",
+      "type": "package",
+      "path": "microsoft.identitymodel.clients.activedirectory/3.14.1",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.XML",
         "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
         "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.pdb",
@@ -7591,10 +7727,18 @@
       ]
     },
     "Microsoft.IdentityModel.Logging/1.1.4": {
+<<<<<<< HEAD
       "sha512": "j7t22EsDOuo0IXqAbp6ijdB1GuaY8cu3YoPNZpymOhUMTVC+wRTV0IHqxL31HacCnJHU/igsqe70fDKZgZu3oA==",
       "type": "package",
       "path": "microsoft.identitymodel.logging/1.1.4",
       "files": [
+=======
+      "sha512": "0df1EwQx7+/gJEbG5TQaoHwTiorSIdNFw2ArgtlJ0ALx5TTP9R1KN6Z7iX4njEFpoG1WmGWn3A/GxWmGOZatDg==",
+      "type": "package",
+      "path": "microsoft.identitymodel.logging/1.1.4",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
         "lib/net451/Microsoft.IdentityModel.Logging.dll",
@@ -7606,10 +7750,18 @@
       ]
     },
     "Microsoft.IdentityModel.Protocols/2.1.4": {
+<<<<<<< HEAD
       "sha512": "9aefRN9sL8XZo90Aix88IHHpAvfBl6UOiYpcKHiXbCYE2nB+zA3B8dZdNMOUH4pqXdnpYrHRDQZ2k7A4/CUgTQ==",
       "type": "package",
       "path": "microsoft.identitymodel.protocols/2.1.4",
       "files": [
+=======
+      "sha512": "R2hHCD87p7nj6zjKGvk6IHk9I6wvSgSL0J58gxS3sCjgjjFcPIM1HV5dPTAVfjx7k/hX+KXmGyuEkuSPzhdwcQ==",
+      "type": "package",
+      "path": "microsoft.identitymodel.protocols/2.1.4",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/net45/Microsoft.IdentityModel.Protocols.dll",
         "lib/net45/Microsoft.IdentityModel.Protocols.xml",
         "lib/net451/Microsoft.IdentityModel.Protocols.dll",
@@ -7621,10 +7773,18 @@
       ]
     },
     "Microsoft.IdentityModel.Protocols.OpenIdConnect/2.1.4": {
+<<<<<<< HEAD
       "sha512": "LF8JcG9BqGRwVjhu/IebuZQer6TJGDv2uxNnmg2Zkzh/d+MIC1ShsC1U3U7pVaw03SKyXmCgYm+JG0WM0mcOUw==",
       "type": "package",
       "path": "microsoft.identitymodel.protocols.openidconnect/2.1.4",
       "files": [
+=======
+      "sha512": "wgkBfjcOJOjXIzYec3VIZW9NzNFL3n8PFhfAXMj91/Efm6gD4pPioup+NgFvvKCLWQTY8gobL1A7QoYQNC4Zpw==",
+      "type": "package",
+      "path": "microsoft.identitymodel.protocols.openidconnect/2.1.4",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/net45/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
         "lib/net45/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
         "lib/net451/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
@@ -7636,10 +7796,18 @@
       ]
     },
     "Microsoft.IdentityModel.Tokens/5.1.4": {
+<<<<<<< HEAD
       "sha512": "SsJbZVPvjSlKFDAQmR2wpL6ZD/vCFlIsf0jxRlBJwyzKXZy3Wi/Xo+fE2MzAerLsJgG1UCdtplRwqDyq1euayw==",
       "type": "package",
       "path": "microsoft.identitymodel.tokens/5.1.4",
       "files": [
+=======
+      "sha512": "l+I18wTVIXsrd/vlsLmcgxhff614MtJEIAMy9KriU/zhCd28yZaVMq8H2aQVFdswKEFefqAY0uZ9y91wAhN9hw==",
+      "type": "package",
+      "path": "microsoft.identitymodel.tokens/5.1.4",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
         "lib/net451/Microsoft.IdentityModel.Tokens.dll",
@@ -7663,10 +7831,18 @@
       ]
     },
     "Microsoft.NETCore.App/2.0.0": {
+<<<<<<< HEAD
       "sha512": "/mzXF+UtZef+VpzzN88EpvFq5U6z4rj54ZMq/J968H6pcvyLOmcupmTRpJ3CJm8ILoCGh9WI7qpDdiKtuzswrQ==",
       "type": "package",
       "path": "microsoft.netcore.app/2.0.0",
       "files": [
+=======
+      "sha512": "8Lrz5RgmfIUMtpTmGG1Z+nVlCr14bFco/aQdiNYfb7uys37vQ6dVtds9xPIFANVyf6HFePhD9nGmqFcfv5eKMQ==",
+      "type": "package",
+      "path": "microsoft.netcore.app/2.0.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "Microsoft.NETCore.App.versions.txt",
         "THIRD-PARTY-NOTICES.TXT",
@@ -7941,10 +8117,18 @@
       ]
     },
     "Microsoft.NETCore.DotNetAppHost/2.0.0": {
+<<<<<<< HEAD
       "sha512": "L4GGkcI/Mxl8PKLRpFdGmLb5oI8sGIR05bDTGkzCoamAjdUl1Zhkov2swjEsZvKYT8kkdiz39LtwyGYuCJxm1A==",
       "type": "package",
       "path": "microsoft.netcore.dotnetapphost/2.0.0",
       "files": [
+=======
+      "sha512": "dYQNVWNBsO9LldqAyJTt/wYUq2BScXq3ENBaNUjELS3sT53mwrgyPpmoLHsE7H10RzYOHEl5G0sg/jpZGlIAzA==",
+      "type": "package",
+      "path": "microsoft.netcore.dotnetapphost/2.0.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
@@ -7953,10 +8137,18 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
+<<<<<<< HEAD
       "sha512": "rm7mMn0A93fwyAwVhbyOCcPuu2hZNL0A0dAur9sNG9pEkONPfCEQeF7m2mC8KpqZO0Ol6tpV5J0AF3HTXT3GXA==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostpolicy/2.0.0",
       "files": [
+=======
+      "sha512": "uYoVFwvMIp9KtOjW6huBedoBP+50Pny0aIrmJGPoaHJ9anAtrvCjS+iKFR5MIS8amJRKsLc3YEtpT/AYfYmIdA==",
+      "type": "package",
+      "path": "microsoft.netcore.dotnethostpolicy/2.0.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
@@ -7965,10 +8157,18 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
+<<<<<<< HEAD
       "sha512": "uBbjpeSrwsaTCADZCzRk+3aBzNnMqkC4zftJWBsL+Zk+8u+W+/lMb2thM5Y4hiVrv1YQg9t6dKldXzOKkY+pQw==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostresolver/2.0.0",
       "files": [
+=======
+      "sha512": "HYXxywd3EaAw1M2K5ox6oUu0NgG90oDIpyq70IBvOf2keNuMJWYTWZUAoTlpv8E0Ks09DA+gczoA64tCdII5Xw==",
+      "type": "package",
+      "path": "microsoft.netcore.dotnethostresolver/2.0.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
@@ -8217,10 +8417,18 @@
       ]
     },
     "Microsoft.Win32.Registry/4.4.0": {
+<<<<<<< HEAD
       "sha512": "dA36TlNVn/XfrZtmf0fiI/z1nd3Wfp2QVzTdj26pqgP9LFWq0i1hYEUAW50xUjGFYn1+/cP3KGuxT2Yn1OUNBQ==",
       "type": "package",
       "path": "microsoft.win32.registry/4.4.0",
       "files": [
+=======
+      "sha512": "LsK5GyV3JEhOJGigiVOQVkWPHHWXNJrwK/HrILIN1WhO3LJPW7b69qWtK5sDMp68Uw4cF21nZr5ylRc5s8iawg==",
+      "type": "package",
+      "path": "microsoft.win32.registry/4.4.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net46/Microsoft.Win32.Registry.dll",
@@ -8285,10 +8493,18 @@
       ]
     },
     "NETStandard.Library/2.0.0": {
+<<<<<<< HEAD
       "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
       "path": "netstandard.library/2.0.0",
       "files": [
+=======
+      "sha512": "sn4JwjEN5iNfqc0bd0Qje5oBZBB9wyuNn4GkQvEzfKVnZ3QH0HHoN9exxydlJGptiCMVdAZu7At9TNj0r8Z0yg==",
+      "type": "package",
+      "path": "netstandard.library/2.0.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/NETStandard.Library.targets",
@@ -8481,10 +8697,18 @@
       ]
     },
     "NuGet.Frameworks/4.0.0": {
+<<<<<<< HEAD
       "sha512": "WCkN68c8q+USG+Ot1MmBDH+9DUo5dk7UB0QDMiwCYhrH7ZoFLKFGGNzJ8C3LTR1DvB1LW9BOxKeznnZznKiCTA==",
       "type": "package",
       "path": "nuget.frameworks/4.0.0",
       "files": [
+=======
+      "sha512": "I7sPJXwWvf6J20fJgFBV3TvpBNX+WoNuFaLk8Up+bPMakUvrxhtvkHDJalIzFA+E76fJHqPUr4G1NNxr8y9EsA==",
+      "type": "package",
+      "path": "nuget.frameworks/4.0.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/net40-client/NuGet.Frameworks.dll",
         "lib/net40-client/NuGet.Frameworks.xml",
         "lib/net45/NuGet.Frameworks.dll",
@@ -8805,10 +9029,18 @@
       ]
     },
     "SQLitePCLRaw.bundle_green/1.1.7": {
+<<<<<<< HEAD
       "sha512": "Kw+n4CUhQ8S4YAPmpRUldO8S7c4LU7HHukJF0v5Sfggf8Ia9YVdIh0dYkMvKvS+DTX+OBORSMqPM0CGfAzFtVA==",
       "type": "package",
       "path": "sqlitepclraw.bundle_green/1.1.7",
       "files": [
+=======
+      "sha512": "ndZplZhKILwXTlM3v4EYQlJqTJ4OFoOoGDIk9w1a6Qv4x1lnUyM0CPnHGBzh3jnmHpUYeVCqTDwFQ9zyHZDOGQ==",
+      "type": "package",
+      "path": "sqlitepclraw.bundle_green/1.1.7",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "build/wp8/SQLitePCLRaw.bundle_green.targets",
         "build/wp80/arm/SQLitePCLRaw.batteries_green.dll",
         "build/wp80/arm/SQLitePCLRaw.batteries_v2.dll",
@@ -8850,10 +9082,18 @@
       ]
     },
     "SQLitePCLRaw.core/1.1.7": {
+<<<<<<< HEAD
       "sha512": "u9k9ZFkyTU6CVyXWpRuuXOvKi/cy/xt1oGKVSW8aUKcTL4RdH34yFNtVykEeiR68ojIEvmoZfL51h/xx2IQk5g==",
       "type": "package",
       "path": "sqlitepclraw.core/1.1.7",
       "files": [
+=======
+      "sha512": "OwSVeqJVN2M0eU7h6Xw4S8BvzNde9T1o8vP9a7OBGBC4CXBa1ePBjo7tq6gkF6yIdcDxkqLbOraHBxdLrvMq2g==",
+      "type": "package",
+      "path": "sqlitepclraw.core/1.1.7",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/MonoAndroid/SQLitePCLRaw.core.dll",
         "lib/Xamarin.Mac20/SQLitePCLRaw.core.dll",
         "lib/Xamarin.iOS10/SQLitePCLRaw.core.dll",
@@ -8874,10 +9114,18 @@
       ]
     },
     "SQLitePCLRaw.lib.e_sqlite3.linux/1.1.7": {
+<<<<<<< HEAD
       "sha512": "KRqMd1qLwJ4pzPybj8q95s+wV6jby5F0O/rp0vw3wa2Z2wHxRm0VqxS2Sejlr7Ctz+LxSr8DpNg1l1u6n/PAPA==",
       "type": "package",
       "path": "sqlitepclraw.lib.e_sqlite3.linux/1.1.7",
       "files": [
+=======
+      "sha512": "LWxJ0JhP6+FeiKadmlve/5zfdgACoUCqjbYGD2TDGpBUrHC0v+RdjZhXi48sTnkVW5fn+TtA37WV02LSMFJH3w==",
+      "type": "package",
+      "path": "sqlitepclraw.lib.e_sqlite3.linux/1.1.7",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "build/net35/SQLitePCLRaw.lib.e_sqlite3.linux.targets",
         "lib/net35/_._",
         "lib/netstandard1.0/_._",
@@ -8889,10 +9137,18 @@
       ]
     },
     "SQLitePCLRaw.lib.e_sqlite3.osx/1.1.7": {
+<<<<<<< HEAD
       "sha512": "hdZx1DKHbDi4li6abmJ+A29mxY8D6BcM0s8VMT8p4MWEyrj54CZFUm402jTV6OgZCsFGkbRFnuFdBXf4vSDO7g==",
       "type": "package",
       "path": "sqlitepclraw.lib.e_sqlite3.osx/1.1.7",
       "files": [
+=======
+      "sha512": "LnEgt++nwP2KnoFYIKdAXPjS9W8ZGU1DfL/PHyAqLBQQlfG5V0H/HHiVJOh5B6XQ4Jf0AdJQphtkVG4u2V3mYQ==",
+      "type": "package",
+      "path": "sqlitepclraw.lib.e_sqlite3.osx/1.1.7",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "build/net35/SQLitePCLRaw.lib.e_sqlite3.osx.targets",
         "lib/net35/_._",
         "lib/netstandard1.0/_._",
@@ -8903,10 +9159,18 @@
       ]
     },
     "SQLitePCLRaw.lib.e_sqlite3.v110_xp/1.1.7": {
+<<<<<<< HEAD
       "sha512": "roIdTH4a4iFa08HOwTWnzj2QYBIpSZRYfLSvHjtbH67I4DSWregrd4jkSnoOuwC5GHG08FNahBfEx3HAsVqW+g==",
       "type": "package",
       "path": "sqlitepclraw.lib.e_sqlite3.v110_xp/1.1.7",
       "files": [
+=======
+      "sha512": "M1WskZ/7pOTLCwdPgvrK4YGx+pJoT5cISUs8G8O68Wr+yLUBnz4BhnS+suhUiD1W/UAkFev/MnbeCiQj87VaTQ==",
+      "type": "package",
+      "path": "sqlitepclraw.lib.e_sqlite3.v110_xp/1.1.7",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "build/net35/SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets",
         "lib/net35/_._",
         "lib/netstandard1.0/_._",
@@ -8918,10 +9182,18 @@
       ]
     },
     "SQLitePCLRaw.provider.e_sqlite3.netstandard11/1.1.7": {
+<<<<<<< HEAD
       "sha512": "Zdug2wETm6847337EtD8MoCAtOdwM6prEXL/UsJ97Zxvoeyk/gUpdtuFNBxgJzceuty0jymjxm5yur5QajdApg==",
       "type": "package",
       "path": "sqlitepclraw.provider.e_sqlite3.netstandard11/1.1.7",
       "files": [
+=======
+      "sha512": "J81nAWSiEJK8agJR/r9uRy+0SGmsFq3GmSMu4QS0Jzr+OQDAjLVZ/qNhUF1Q15p/h/NR5/o0HyzVHPofcxEyvA==",
+      "type": "package",
+      "path": "sqlitepclraw.provider.e_sqlite3.netstandard11/1.1.7",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll",
         "sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.7.nupkg.sha512",
         "sqlitepclraw.provider.e_sqlite3.netstandard11.nuspec"
@@ -8996,10 +9268,18 @@
       ]
     },
     "System.Buffers/4.4.0": {
+<<<<<<< HEAD
       "sha512": "AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
       "type": "package",
       "path": "system.buffers/4.4.0",
       "files": [
+=======
+      "sha512": "VCJfpWcYG1gT3WwivZWgT0KaqY678MQBvrOI2si6V8GHeQOtuW+wpiv5ss4KyfGG+cFFdPNaI+nw2/kExCtGgQ==",
+      "type": "package",
+      "path": "system.buffers/4.4.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp2.0/_._",
@@ -9642,10 +9922,18 @@
       ]
     },
     "System.Data.SqlClient/4.4.3": {
+<<<<<<< HEAD
       "sha512": "D1hEOS1oPLJ6WcGCzpTWe8SauWVxnDoDTUWhv5XCNdRm/QeSUk4BQ3ZDe7BH+zNVHDBkPYjVzpVjnCl43eOSGg==",
       "type": "package",
       "path": "system.data.sqlclient/4.4.3",
       "files": [
+=======
+      "sha512": "NvG/0mC80diO0zXYt89gFC869Gn6aIn5Tx0HavxGa3IPbH2Ktflbw2HJvl24zmpAL0UF/bkGsI+jv0/aHX8dJw==",
+      "type": "package",
+      "path": "system.data.sqlclient/4.4.3",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -10287,10 +10575,18 @@
       ]
     },
     "System.IdentityModel.Tokens.Jwt/5.1.4": {
+<<<<<<< HEAD
       "sha512": "hLUU1N99aL9uyxiTraBnCKlpUKsbP/+5ygD7cswspH9/+M7fAAL0hRzt2aA4w7VEQlSSiu8j+xWFk3NRcqhfQQ==",
       "type": "package",
       "path": "system.identitymodel.tokens.jwt/5.1.4",
       "files": [
+=======
+      "sha512": "7JavD6VSV7k524yFkq+uUBxGKRuqPn57m132Vid2yQWSEOY/2H3gkFtMAcqP6p9B7GcJVW0Fu+JBzE66y5Q5nQ==",
+      "type": "package",
+      "path": "system.identitymodel.tokens.jwt/5.1.4",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "lib/net45/System.IdentityModel.Tokens.Jwt.dll",
         "lib/net45/System.IdentityModel.Tokens.Jwt.xml",
         "lib/net451/System.IdentityModel.Tokens.Jwt.dll",
@@ -11175,10 +11471,18 @@
       ]
     },
     "System.Numerics.Vectors/4.4.0": {
+<<<<<<< HEAD
       "sha512": "UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
       "type": "package",
       "path": "system.numerics.vectors/4.4.0",
       "files": [
+=======
+      "sha512": "ZhdgJiihSOGD325jClouHy8WSPtwFSj6K1OymoEyN0Wc9Y6X2OVxn65VKfTWHQOYM+QljlVSreporVNvZm8rEA==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.4.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -11552,10 +11856,18 @@
       ]
     },
     "System.Reflection.Metadata/1.5.0": {
+<<<<<<< HEAD
       "sha512": "423hF/x1/1/aBT6hjgrp8RH2zdKOd1iTujlHisSesTW/cgv1ixUitfk23ZknVzItMm6jnwp9CBwI2P3r9jpitw==",
       "type": "package",
       "path": "system.reflection.metadata/1.5.0",
       "files": [
+=======
+      "sha512": "FrpuKMhwIcK83CE8jYAMoGCqCJyHZFAb5jTOhIas6gXNO46Wt+EOXXJcVA3AvTqmCc00//b+kf+sv7N3QoxtKQ==",
+      "type": "package",
+      "path": "system.reflection.metadata/1.5.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp2.0/_._",
@@ -12298,10 +12610,18 @@
       ]
     },
     "System.Security.AccessControl/4.4.0": {
+<<<<<<< HEAD
       "sha512": "2NRFPX/V81ucKQmqNgGBZrKGH/5ejsvivSGMRum0SMgPnJxwhuNkzVS1+7gC3R2X0f57CtwrPrXPPSe6nOp82g==",
       "type": "package",
       "path": "system.security.accesscontrol/4.4.0",
       "files": [
+=======
+      "sha512": "UPF+s4KctOCpk7dpBe3QtZ1AzFEHKdhOtiNDLxGnD/nxKsVbsow5OClTy8c7yOObw/Evbv95xRwZfYZ4wLV4fA==",
+      "type": "package",
+      "path": "system.security.accesscontrol/4.4.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net46/System.Security.AccessControl.dll",
@@ -12602,10 +12922,18 @@
       ]
     },
     "System.Security.Cryptography.Xml/4.4.0": {
+<<<<<<< HEAD
       "sha512": "1Xubvo4i+K+DO6YzVh6vBKmCl5xx/cAoiJEze6VQ+XwVQU25KQC9pPrmniz2EbbJnmoQ5Rm2FFjHsfQAi0Rs+Q==",
       "type": "package",
       "path": "system.security.cryptography.xml/4.4.0",
       "files": [
+=======
+      "sha512": "u3W6J9Da+k7c8TKKKTE6ddyZxyDbRraOtt2+mfMDyJvuLvV1njx4f5Van3us/65Au9THPDM21jl/6Vvj7sxbJQ==",
+      "type": "package",
+      "path": "system.security.cryptography.xml/4.4.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net461/System.Security.Cryptography.Xml.dll",
@@ -12678,10 +13006,18 @@
       ]
     },
     "System.Security.Principal.Windows/4.4.0": {
+<<<<<<< HEAD
       "sha512": "pP+AOzt1o3jESOuLmf52YQTF7H3Ng9hTnrOESQiqsnl2IbBh1HInsAMHYtoh75iUYV0OIkHmjvveraYB6zM97w==",
       "type": "package",
       "path": "system.security.principal.windows/4.4.0",
       "files": [
+=======
+      "sha512": "yNxhQZ5oJb2Q7VqNj1Af6e+9KXzHcXJdv+eE+1Lp2+FYBwmVLQs2LfQpeSfz5RxorwlV0EpNbkLatPScb+XEWw==",
+      "type": "package",
+      "path": "system.security.principal.windows/4.4.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net46/System.Security.Principal.Windows.dll",
@@ -12846,10 +13182,18 @@
       ]
     },
     "System.Text.Encoding.CodePages/4.4.0": {
+<<<<<<< HEAD
       "sha512": "6JX7ZdaceBiLKLkYt8zJcp4xTJd1uYyXXEkPw6mnlUIjh1gZPIVKPtRXPmY5kLf6DwZmf5YLwR3QUrRonl7l0A==",
       "type": "package",
       "path": "system.text.encoding.codepages/4.4.0",
       "files": [
+=======
+      "sha512": "epF1P00AFbqPy5jZx3fpEn5qwlBDZ+dck71xYc/jLibfY6BtoFKOqoj84YHcQWV9HcWb7M13aVJ61XCdK8/3XA==",
+      "type": "package",
+      "path": "system.text.encoding.codepages/4.4.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -12958,10 +13302,18 @@
       ]
     },
     "System.Text.Encodings.Web/4.4.0": {
+<<<<<<< HEAD
       "sha512": "l/tYeikqMHX2MD2jzrHDfR9ejrpTTF7wvAEbR51AMvzip1wSJgiURbDik4iv/w7ZgytmTD/hlwpplEhF9bmFNw==",
       "type": "package",
       "path": "system.text.encodings.web/4.4.0",
       "files": [
+=======
+      "sha512": "fq0jIxxeO2/z6sqmdfhej3t2pdUYTgyLyZ+QnD5aiU0vrAID1o371LZEQ/gk2BOdfK3H9L/kV+EguX4kBqjrzw==",
+      "type": "package",
+      "path": "system.text.encodings.web/4.4.0",
+      "files": [
+        ".signature.p7s",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/System.Text.Encodings.Web.dll",
@@ -13828,23 +14180,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\l_v_d\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Pepsi\\.nuget\\packages\\": {},
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\l_v_d\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
       "projectName": "petgoods4all",
       "projectPath": "C:\\Users\\l_v_d\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
       "packagesPath": "C:\\Users\\l_v_d\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\l_v_d\\Documents\\GitHub\\Petgoods4All\\petgoods4all\\obj\\",
+=======
+      "projectUniqueName": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "projectName": "petgoods4all",
+      "projectPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\petgoods4all.csproj",
+      "packagesPath": "C:\\Users\\Pepsi\\.nuget\\packages\\",
+      "outputPath": "D:\\Petgoods4All\\Code_Petsgoods4All\\Petgoods4All\\petgoods4all\\obj\\",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\l_v_d\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Pepsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> parent of f816468... Merge branch 'Unregistered-user-Order-method'
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
