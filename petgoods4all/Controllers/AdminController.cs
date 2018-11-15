@@ -9,7 +9,7 @@ namespace petgoods4all.Controllers
 {
     public class AdminController : Controller
     {
-        
+        ModelContext db = new ModelContext();
         // GET: Admin
         [HttpGet]
 
@@ -42,7 +42,6 @@ namespace petgoods4all.Controllers
         
         public ActionResult ReadProduct(string inputAdminProductNaam)
         {
-            var db = new ModelContext();
             Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
 
             return AdminProductbeheer();
@@ -51,29 +50,28 @@ namespace petgoods4all.Controllers
 
         public ActionResult ReadAccount(string inputAdminKlantMail)
         {
-            var db = new ModelContext();
             Account account = db.Account.Find(inputAdminKlantMail);
             
 
             return AdminKlantbeheer(); 
         }
-        [HttpPost]
-        public ActionResult UpdateAccount(string inputAdminKlantMail, string newEmail)
-        { 
-            var db = new ModelContext();
-            Account account = db.Account.Find(inputAdminKlantMail);
 
-            account.email = newEmail;
-            
-            db.Account.Update(account);
-            return AdminKlantbeheer();
+        public ActionResult AdminKlantIndex()
+        {
+            using(db)
+            {
+                var accounts = db.Account.ToList();
+
+            return View(accounts);
+            }
         }
 
+
+
+        [HttpPost]
+        
         public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, string inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
         {
-            var db = new ModelContext();
-
-
             Account a = new Account
             {
 
@@ -90,13 +88,7 @@ namespace petgoods4all.Controllers
             return View(a);
         }
 
-        public ActionResult DeleteAccount(string inputAdminKlantMail)
-        {
-            var db = new ModelContext();
-            Account account = db.Account.Find(inputAdminKlantMail);
-            db.Account.Remove(account);
-            return AdminKlantbeheer();
-        }
+        
 
         public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit )
         {
