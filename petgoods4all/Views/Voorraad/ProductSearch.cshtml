@@ -26,19 +26,21 @@
         <div class="row">
             <form method="post" asp-controller="Voorraad" asp-action="Search" asp-route-productSearch="@ViewBag.SearchedString">
                 Dier:<select id="DierDropdown" name="DierDropdown">
+                <option></option>
                 @{}
                   @foreach (var item in ViewBag.Dier) { 
                       <option value="@item">@item</option>
                   }
                 </select>
                 SubKlasse:<select id="SubklassDropwdown" name="SubklasseDropdown">
+                <option></option>
                     @foreach (var item in ViewBag.Subklasse)
                     {
                         <option value="@item">@item</option>
                     }
                 </select>
-                MinPrice:<input type="text" id="minPrice" name="minPrice"/>
-                MaxPrice<input type="text" id="maxPrice" name="maxPrice"/>
+                MinPrijs;<input type="text" id="minPrijs" name="minPrijs"/>
+                MaxPrijs:<input type="text" id="maxPrijs" name="maxPrijs"/>
                 <input type="submit" />
             </form>
             

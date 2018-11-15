@@ -37,52 +37,142 @@ namespace petgoods4all.Controllers
                 string getType = (from m in db.Voorraad where m.Id == indentication select m.Dier).Single();
                 string getSub = (from m in db.Voorraad where m.Id == indentication select m.Subklasse).Single();
                 var getRelated = (from m in db.Voorraad where m.Dier == getType && m.Subklasse == getSub && m.Id != indentication select m.Id).ToList();
-    
-                if(getRelated.Count() < 3 || getRelated == null)
+
+                if (getRelated.Count() < 3 || getRelated == null)
                 {
-                    getRelated = (from m in db.Voorraad where m.Dier == getType  && m.Id != indentication select m.Id).ToList();
+                    getRelated = (from m in db.Voorraad where m.Dier == getType && m.Id != indentication select m.Id).ToList();
                 }
                 productsID = ((getRelated.OrderBy(x => Guid.NewGuid())).Take(3).ToList());
 
             }
-
             return productsID;
         }
+
+        public class AccountReview {
+            public int Id { get; set; }
+            public string Description { get; set; }
+            public int StarRating { get; set; }
+            public int UserId { get; set; }
+            public int ProductId { get; set; }
+            public string Naam { get; set; }
+            public string Achternaam { get; set; }
+            public string Email { get; set; }
+        }
+
         public ActionResult Productpage(int identication = 1)
         {
             ViewBag.Message = "Product page";
             ViewBag.ProductId = identication;
-            using (var db = new ModelContext())
+            var db = new ModelContext();
+            var product = from m in db.Voorraad where m.Id == identication select m;
+            var UID = HttpContext.Session.GetInt32("UID");
+
+            var reviews =
+                from r in db.Review
+                join u in db.Account on r.UserId equals u.id
+                orderby r.Id descending
+                select new AccountReview
+                {
+                    Id = r.Id,
+                    Description = r.Description,
+                    StarRating = r.StarRating,
+                    UserId = r.UserId,
+                    ProductId = r.ProductId,
+                    Naam = u.voornaam,
+                    Achternaam = u.achternaam,
+                    Email = u.email
+                };
+
+            var averageRating = from r in db.Review where r.ProductId == identication select r.StarRating;
+
+            var reviewList = reviews.ToList();
+            ViewBag.reviews = reviewList;
+            ViewBag.UserId = UID;
+            ViewBag.Model = product.ToList();
+
+            List<int> relatedProducts = Related(identication);
+            foreach (var item in relatedProducts)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            petgoods4all.Models.Voorraad products = (from m in db.Voorraad where m.Id == identication select m).Single();
+            List<petgoods4all.Models.Voorraad> otherProducts = (from m in db.Voorraad where m.Id == relatedProducts[0]
+            || m.Id == relatedProducts[1] || m.Id == relatedProducts[2] select m).ToList();
+            otherProducts.Add(products);
+
+
+
+            if (!averageRating.Any())
             {
                 //De hoofdproduct en 3 gerelateerde
-                List<int> relatedProducts = Related(identication);
-                foreach(var item in relatedProducts)
-                {
-                    Console.WriteLine(item.ToString());
-                }           
-
-                petgoods4all.Models.Voorraad products = (from m in db.Voorraad where m.Id == identication select m).Single();
-                List<petgoods4all.Models.Voorraad> otherProducts = (from m in db.Voorraad where m.Id == relatedProducts[0] 
-                || m.Id == relatedProducts[1] || m.Id == relatedProducts[2] select m).ToList();
-                otherProducts.Add(products);
-
-                return View(otherProducts);
+                ViewBag.AverageRating = 0;
             }
+            else
+            {
+                var average = (from r in db.Review where r.ProductId == identication select r.StarRating).Average();
+                ViewBag.AverageRating = average;
+            }
+
+            return View(otherProducts);
         }
 
         [HttpPost]
         public ActionResult Productpage()
         {
-            int identication= Int32.Parse(HttpContext.Request.Query["identication"].ToString());
+            int identication = Int32.Parse(HttpContext.Request.Query["identication"].ToString());
             using (var db = new ModelContext())
             {
                 int pID = (from m in db.Voorraad where m.Id == identication select m.Id).Single();
                 int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
-                if(uID != 0)
+                var UID = HttpContext.Session.GetInt32("UID");
+  
+                var product = from m in db.Voorraad where m.Id == identication select m;
+                //var reviews = from r in db.Review where r.ProductId == identication select r;
+
+                var reviews =
+                    from r in db.Review
+                    join u in db.Account on r.UserId equals u.id
+                    select new
+                    {
+                        Id = r.Id,
+                        Description = r.Description,
+                        StarRating = r.StarRating,
+                        UserId = r.UserId,
+                        ProductId = r.ProductId,
+                        Naam = u.voornaam,
+                        Achternaam = u.achternaam,
+                        Email = u.email
+                    };
+                var reviewList = reviews.ToList();
+                ViewBag.reviews = reviewList;
+                ViewBag.UserId = UID;
+
+                //List<string> users = new List<string>();
+
+                //foreach (var item in reviews)
+                //{
+                //    var user = (from u in db.Account where u.id == item.UserId select u.voornaam).Single();
+                //    users.Add(user);
+                //}
+
+                return View(product.ToList());
+            }
+        }
+        [HttpPost]
+        public ActionResult addWishList()
+        {
+            int identication = Int32.Parse(HttpContext.Request.Query["identication"].ToString());
+            using (var db = new ModelContext())
+            {
+                int pID = (from m in db.Voorraad where m.Id == identication select m.Id).Single();
+                int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
+                var UID = HttpContext.Session.GetInt32("UID");
+                if (uID != 0)
                 {
                     int MaxId;
                     var result = from m in db.Wishlist select m.id;
-                    if( !result.Any() )
+                    if (!result.Any())
                     {
                         MaxId = 0;
                     }
@@ -100,9 +190,41 @@ namespace petgoods4all.Controllers
                     db.SaveChanges();
                 }
                 var product = from m in db.Voorraad where m.Id == identication select m;
-                return View(product.ToList());
+                return Redirect("Wishpage");
             }
         }
+                public ActionResult AddReviews(string description, int productId, int rating)
+                {
+                    ViewBag.Message = "Product page";
+                    var db = new ModelContext();
+                    var MaxId = 0;
+                    var UID = HttpContext.Session.GetInt32("UID");
+                    var UserId = UID.GetValueOrDefault();
+                    //var ProductPage = new HomeController().Productpage(productId);
+
+                    var result = from s in db.Review select s.Id;
+                    if (!result.Any())
+                    {
+                    }
+                    else
+                    {
+                        MaxId = result.Max();
+                    }
+
+                    Review review = new Review
+                    {
+                        Id = MaxId + 1,
+                        Description = description,
+                        StarRating = rating,
+                        ProductId = productId,
+                        UserId = UserId,
+                    };
+
+                    db.Review.Add(review);
+                    db.SaveChanges();
+
+                    return Redirect("/Home/productpage?identication=" + productId);
+                }
 
         public ActionResult Wishpage()
         {
