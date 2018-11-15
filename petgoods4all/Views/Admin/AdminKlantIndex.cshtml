@@ -7,12 +7,10 @@
 
 <h2>Klanten</h2>
 
-<p>
-<<<<<<< HEAD
+
     <a asp-action="Create">Create New</a>
-=======
     <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount">Nieuwe klant</a><br />
->>>>>>> parent of 4c96bc7... Alles leesbaar gemaakt
+
 </p>
 <table class="table">
     <thead>
@@ -66,15 +64,11 @@
                 @Html.DisplayFor(modelItem => item.telefoonnummer)
             </td>
             <td>
-<<<<<<< HEAD
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-=======
+
                 <a asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@item.id">Bewerken</a> |
                 <a asp-action="AdminKlantDetails" asp-controller="Admin" asp-route-id="@item.id">Details</a> |
                 <a asp-action="AdminKlantDelete" asp-controller="Admin" asp-route-id="@item.id">Verwijder</a>
->>>>>>> parent of 4c96bc7... Alles leesbaar gemaakt
+
             </td>
         </tr>
 }
