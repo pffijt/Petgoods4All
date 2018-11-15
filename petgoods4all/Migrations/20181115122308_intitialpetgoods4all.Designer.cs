@@ -10,8 +10,8 @@ using petgoods4all.Models;
 namespace petgoods4all.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    [Migration("20181115124351_InitialDBcreate")]
-    partial class InitialDBcreate
+    [Migration("20181115122308_intitialpetgoods4all")]
+    partial class intitialpetgoods4all
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

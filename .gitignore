@@ -11,6 +11,3 @@
 .vscode/launch.json
 .vscode/tasks.json
 .vscode/launch.json
-*.cache
-*.dll
-*.pdb
