@@ -11,3 +11,5 @@
 .vscode/launch.json
 .vscode/tasks.json
 .vscode/launch.json
+*.dll
+*.dll
