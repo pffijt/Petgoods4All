@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 style="background-color:#ffe8d3;">AdminVoorraadIndex</h2>
+<h2>AdminVoorraadIndex</h2>
 
 <p>
-    <a asp-area="" asp-controller="Admin" asp-action="AdminCreateVoorraad" style="background-color:#ffe8d3;">Voeg nieuw product toe</a><br />
+    <a asp-action="Create">Create New</a>
 </p>
-<table class="table" style="background-color:#ffe8d3;">
+<table class="table">
     <thead>
         <tr>
                 <th>
@@ -55,7 +55,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.image)
             </td>
-            <td style="background-color:#ffe8d3;">
+            <td>
                 <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Voorraad</a> |
                 <a asp-action="AdminVoorraadDetails" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="AdminVoorraadDelete" asp-route-id="@item.Id">Verwijderen</a>

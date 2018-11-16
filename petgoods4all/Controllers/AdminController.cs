@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using petgoods4all.Models;
-
 
 namespace petgoods4all.Controllers
 {
@@ -29,7 +27,35 @@ namespace petgoods4all.Controllers
         {
             return View();
         }
-        //Roept pagina op met de lijsten van Account of Product
+
+        public ActionResult AdminKlantbeheer()
+        { 
+            return View();
+        }
+
+        public ActionResult AdminProductbeheer()
+        {
+            return View();
+        }
+
+
+        
+        public ActionResult ReadProduct(string inputAdminProductNaam)
+        {
+            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
+
+            return AdminProductbeheer();
+        }
+
+
+        public ActionResult ReadAccount(string inputAdminKlantMail)
+        {
+            Account account = db.Account.Find(inputAdminKlantMail);
+            
+
+            return AdminKlantbeheer(); 
+        }
+
         public ActionResult AdminKlantIndex()
         {
             using(db)
@@ -40,62 +66,76 @@ namespace petgoods4all.Controllers
             }
         }
 
-        public ActionResult AdminVoorraadIndex()
+
+
+        [HttpPost]
+        
+        public ActionResult CreateAccount(string inputAdminKlantVoorNm, string inputAdminKlantAchterNaam, string inputAdminKlantMail, string inputAdminKlantTel, string inputAdminKlantAdres, string inputAdminKlantWw)
         {
-            using (db)
+            Account a = new Account
             {
-                var voorraad = db.Voorraad.ToList();
 
-                return View(voorraad);
-            }
-        }
-        //Roept pagina op met de Details van Account of Product
-        public ActionResult AdminKlantDetails(int? id)
-        {
-
-            Account account = db.Account.Find(id);
-
-            return View(account);
-        }
-
-        public ActionResult AdminVoorraadDetails(int? id)
-        {
-
-            Voorraad voorraad = db.Voorraad.Find(id);
-
-            return View(voorraad);
-        }
-        //Roept pagina op voor het aanmaken van een Account of Product
-        public ActionResult AdminCreateAccount()
-        {
-
-            return View();
-        }
-        public ActionResult AdminCreateVoorraad()
-        {
-
-                    return View();
-        }
-
-        //Roept pagina op voor de Details van een Account of Product
-        public ActionResult AdminKlantEdit()
-        {
-            return View();
+                email = inputAdminKlantMail,
+                Admin = false,
+                password = inputAdminKlantWw,
+                voornaam = inputAdminKlantVoorNm,
+                achternaam = inputAdminKlantAchterNaam,
+                telefoonnummer = inputAdminKlantTel,
+                straatnaam = inputAdminKlantAdres
+            };
+            db.Account.Add(a);
+            db.SaveChanges();
+            return View(a);
         }
 
         
 
-        public ActionResult AdminVoorraadEdit()
+        public ActionResult CreateProduct(string inputAdminProductNaam, string inputAdminProductDier, string inputAdminProductSuptype, string inputAdminProductPrijs, int inputAdminProductKwantiteit )
         {
-            return View();
+            var db = new ModelContext();
+            
+
+            Voorraad a = new Voorraad
+            {
+                Naam = inputAdminProductNaam,
+                Dier = inputAdminProductDier,
+                Subklasse = inputAdminProductSuptype,
+                Prijs = inputAdminProductPrijs,
+                Kwantiteit = inputAdminProductKwantiteit
+            };
+            db.Voorraad.Add(a);
+            db.SaveChanges();
+            return AdminProductbeheer();
         }
 
-        //Creeren nieuw Account/Product als je op de Opslaan knop klikt
-        [HttpPost]
-        public ActionResult AdminCreateAccountSave(string email, string achternaam, string voornaam, string telefoonnummer, string straatnaam, bool Admin, string password)
+            
+
+        public ActionResult UpdateProduct(string inputAdminProductNaam, string newNaam, string newDier, string newSubtype, int newKwantiteit, string newPrijs  )
         {
-            using (db)
+            var db = new ModelContext();
+            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
+            product.Dier = newDier;
+            product.Kwantiteit = newKwantiteit;
+            product.Naam = newNaam;
+            product.Subklasse = newSubtype;
+            product.Prijs = newPrijs;
+            return AdminProductbeheer();
+        }
+        public ActionResult DeleteProduct(string inputAdminProductNaam)
+        {
+            var db = new ModelContext();
+            Voorraad product = db.Voorraad.Find(inputAdminProductNaam);
+            db.Voorraad.Remove(product);
+            return AdminProductbeheer();
+        }
+            /*[HttpPost]
+            public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
             {
+                var email = inputEmail;
+                var password = inputPassword;
+
+                var db = new ModelContext();
+
                 var result = from acc in db.Account select acc.id;
 
                 var MaxId = result.Max();
@@ -103,128 +143,14 @@ namespace petgoods4all.Controllers
                 Account a = new Account
                 {
                     id = MaxId + 1,
-                    email = email,
-                    Admin = false,
-                    password = password,
-                    voornaam = voornaam,
-                    achternaam = achternaam,
-                    telefoonnummer = telefoonnummer,
-                    straatnaam = straatnaam
+                    email = inputEmail,
+                    password = confirmPassword
                 };
+
                 db.Account.Add(a);
                 db.SaveChanges();
-            }
-            return RedirectToAction("AdminKlantIndex");
+
+                return View("~/Views/Account/Inloggen.cshtml");
+            }*/
         }
-
-        public ActionResult AdminCreateVoorraadSave(string Naam, string Dier, string Subklasse, string Prijs, int Kwantiteit)
-        {
-            using (db)
-            {
-                var result = from acc in db.Account select acc.id;
-
-                var MaxId = result.Max();
-
-                Voorraad a = new Voorraad
-                {
-                    Id = MaxId + 1,
-                    Naam = Naam,
-                    Dier = Dier,
-                    Subklasse = Subklasse,
-                    Prijs = Prijs,
-                    Kwantiteit = Kwantiteit
-                };
-                db.Voorraad.Add(a);
-                db.SaveChanges();
-            }
-            return RedirectToAction("AdminVoorraadIndex");
-        }
-
-        //Updaten Account/Product als je op de opslaan knop klikt in de Edit pagina
-        public ActionResult AdminKlantEditSave(int? id, string voornaam, string achternaam, string email, string straatnaam, string telefoonnummer)
-        {
-            using (db)
-            {
-                var accountToUpdate = db.Account.FirstOrDefault();
-
-                accountToUpdate.achternaam = achternaam;
-                accountToUpdate.voornaam = voornaam;
-                accountToUpdate.telefoonnummer = telefoonnummer;
-                accountToUpdate.straatnaam = straatnaam;
-                accountToUpdate.email = email;
-
-                db.SaveChanges();
-            }
-            return RedirectToAction("AdminKlantIndex");
-        }
-
-
-        public  ActionResult AdminVoorraadEditSave(int? id, string Naam, string Dier, string Subklasse, int Kwantiteit, string Prijs, string image)
-        {
-            using (db)
-            {
-                var voorraadToUpdate = db.Voorraad.FirstOrDefault();
-
-                voorraadToUpdate.Naam = Naam;
-                voorraadToUpdate.Dier = Dier;
-                voorraadToUpdate.Subklasse = Subklasse;
-                voorraadToUpdate.Kwantiteit = Kwantiteit;
-                voorraadToUpdate.Prijs = Prijs;
-                voorraadToUpdate.image = image;
-
-                db.SaveChanges();
-            }
-            return RedirectToAction("AdminVoorraadIndex"); 
-        }
-        
-
-        //Deleten Account/Product waarbij je op de knop klikt
-        public ActionResult AdminKlantDelete(int? id)
-        {
-            using (db)
-            {
-                var accountToDelete = db.Account.Find(id); ;
-                db.Account.Remove(accountToDelete);
-                db.SaveChanges();
-            }
-            return RedirectToAction("AdminKlantIndex");
-        }
-
-        public ActionResult AdminVoorraadDelete(int? id)
-        {
-            using (db)
-            {
-                var voorraadToDelete = db.Voorraad.Find(id);
-                db.Voorraad.Remove(voorraadToDelete);
-                db.SaveChanges();
-            }
-            return RedirectToAction("AdminVoorraadIndex");
-        }
-
-
-        /*[HttpPost]
-        public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword)
-        {
-            var email = inputEmail;
-            var password = inputPassword;
-
-            var db = new ModelContext();
-
-            var result = from acc in db.Account select acc.id;
-
-            var MaxId = result.Max();
-
-            Account a = new Account
-            {
-                id = MaxId + 1,
-                email = inputEmail,
-                password = confirmPassword
-            };
-
-            db.Account.Add(a);
-            db.SaveChanges();
-
-            return View("~/Views/Account/Inloggen.cshtml");
-        }*/
-    }
 }

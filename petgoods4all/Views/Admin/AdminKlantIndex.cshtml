@@ -1,16 +1,20 @@
 ﻿@model IEnumerable<petgoods4all.Models.Account>
 
 @{
-    ViewData["Title"] = "Klant Index";
+    ViewData["Title"] = "Klanten";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount" style="background-color:#ffe8d3;">Nieuwe klant</a><br />>Klanten</h2>
+<h2>Klanten</h2>
 
 <p>
-    <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount" style="background-color:#ffe8d3;">Voeg Nieuwe klant toe</a><br />
+<<<<<<< HEAD
+    <a asp-action="Create">Create New</a>
+=======
+    <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount">Nieuwe klant</a><br />
+>>>>>>> parent of 4c96bc7... Alles leesbaar gemaakt
 </p>
-<table class="table" style="background-color:#ffe8d3;" >
+<table class="table">
     <thead>
         <tr>
                 <th>
@@ -37,39 +41,42 @@
             <th></th>
         </tr>
     </thead>
-    <tbody class="container-fluid" >
-        
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.password)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Admin)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.voornaam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.achternaam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.straatnaam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.telefoonnummer)
-                    </td>
-                    <td>
-                        <a asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@item.id">Bewerken</a> |
-                        <a asp-action="AdminKlantDetails" asp-controller="Admin" asp-route-id="@item.id">Details</a> |
-                        <a asp-action="AdminKlantDelete" asp-controller="Admin" asp-route-id="@item.id">Verwijder</a>
-                    </td>
-                </tr>
-            }
-       
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Admin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.voornaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.achternaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.straatnaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefoonnummer)
+            </td>
+            <td>
+<<<<<<< HEAD
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+=======
+                <a asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@item.id">Bewerken</a> |
+                <a asp-action="AdminKlantDetails" asp-controller="Admin" asp-route-id="@item.id">Details</a> |
+                <a asp-action="AdminKlantDelete" asp-controller="Admin" asp-route-id="@item.id">Verwijder</a>
+>>>>>>> parent of 4c96bc7... Alles leesbaar gemaakt
+            </td>
+        </tr>
+}
     </tbody>
 </table>

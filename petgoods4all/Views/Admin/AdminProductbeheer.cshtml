@@ -22,8 +22,8 @@
         <div class="row">
             <h2>Product beheer</h2>
             <p>
-                <a href="AdminInstellingen">Instellingen</a> | 
-                <a href="AdminKlantbeheer">Klant beheer</a>
+                <a href="~/Views/Admin/AdminInstellingen.cshtml">Instellingen</a> | 
+                <a href="~/Views/Admin/AdminKlantbeheer.cshtml">Klant beheer</a>
             </p>
         </div>
         <div class="row">
@@ -65,7 +65,7 @@
                     <button asp-controller="Admin" asp-action="CreateProduct" class="btn btn-sm btn-primary btn-block" type="submit">Opslaan</button>
                 </td>
                 <td>
-                    <button asp-controller="Admin" asp-action="AdminKlantDelete" class="btn btn-sm btn-primary btn-block" type="submit">Verwijderen</button>
+                    <button asp-controller="Admin" asp-action="DeleteAccount" class="btn btn-sm btn-primary btn-block" type="submit">Delete</button>
                 </td>
             </tr>
         </table>
