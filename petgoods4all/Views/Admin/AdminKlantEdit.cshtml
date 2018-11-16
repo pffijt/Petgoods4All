@@ -1,0 +1,59 @@
+﻿@model petgoods4all.Models.Account
+@{
+    ViewData["Title"] = "AdminKlantEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="background-color:#ffe8d3;">AdminKlantEdit</h2>
+<h4 style="background-color:#ffe8d3;">Accounts</h4>
+<hr />
+<div class="row" style="background-color:#ffe8d3;">
+    <div class="col-md-4">
+        <form asp-action="AdminKlantEditSave">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Admin" /> @Html.DisplayNameFor(model => model.Admin)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="voornaam" class="control-label"></label>
+                <input asp-for="voornaam" class="form-control" />
+                <span asp-validation-for="voornaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="achternaam" class="control-label"></label>
+                <input asp-for="achternaam" class="form-control" />
+                <span asp-validation-for="achternaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="straatnaam" class="control-label"></label>
+                <input asp-for="straatnaam" class="form-control" />
+                <span asp-validation-for="straatnaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefoonnummer" class="control-label"></label>
+                <input asp-for="telefoonnummer" class="form-control" />
+                <span asp-validation-for="telefoonnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Opslaan" class="btn btn-default btn-primary" >Opslaan </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div style="background-color:#ffe8d3;">
+    <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
+</div>
