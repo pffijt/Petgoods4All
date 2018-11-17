@@ -8,6 +8,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/Content/footer.css"/>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -44,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
@@ -55,7 +56,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Hond">Honden</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Vis">Vissen</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Reptiel">Reptielen</a></li>
-                    
+
                     <li>
                         <form class="nav navbar-form form-inline" method="post" asp-controller="Voorraad" asp-action="productSearch" asp->
                             <input class="form-control mr-sm-2" type="search" placeholder="Zoeken" aria-label="Search" id="productSearch" name="productSearch">
@@ -73,8 +74,8 @@
 
                     @if (Context.Session.GetInt32("UID") == null)
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Sign Up</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Login</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Aanmelden</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Inloggen</a></li>
                     }
                     @if (Context.Session.GetInt32("UID") != null)
                     {
@@ -84,12 +85,47 @@
             </div>
         </div>
     </nav>
+
     <div class="container body-content">
         @RenderBody()
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Petgoods4All</p>
-        </footer>
+
+        <div id="myFooter">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="~/Content/Images/keurmerk.PNG" alt="Keurmerk" width="200" height="100" />
+                </div>
+                <div class="col-sm-2">
+                    <h5>Home</h5>
+                    <ul>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Inloggen</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Aanmelden</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Over ons</h5>
+                    <ul>
+                        <li><a asp-area="" asp-controller="Home" asp-action="infoPagina">Bedrijfsinformatie</a></li>
+                        <li><a href="#">Beoordelingen</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Help</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    @Html.ActionLink("Contact Ons", "Contact", "Home", new object { }, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </div>
+        <p>&copy; @DateTime.Now.Year - Petgoods4All</p>
+
+
     </div>
+
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
