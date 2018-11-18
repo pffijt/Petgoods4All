@@ -6235,56 +6235,56 @@
     "Microsoft.VisualStudio.Web.CodeGeneration/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tLLwy1BTo2IK6LR3lFnY/vMXptLc+5cL9z+jnWH9nB2CfzQ1R2nXvULK3zqMlUSOoSxZIpdIJPIDo5rXQhTifQ==",
+      "sha512": "sha512-7BO5PTtCV0/c0bZwesoqnKThROghk6arNy7qmHwxBzy3Wuh3BslMLJIVWxg1BxgF4/ybqUDmRd1y+rz0JNTe0w==",
       "path": "microsoft.visualstudio.web.codegeneration/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegeneration.2.0.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Contracts/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UIlELB0laoUrkGRcMLwUpek6sUXtlxToDsAg0xU4gQvDGYIfe7bBJjka54XBHq/TZEsZ0NipOaFiNQOfRTd2xA==",
+      "sha512": "sha512-4USNpW/X6sLhbR1O/5RShU3JvkhAVpKuueNT139yv9Z/XckSE11WzjkejY05+nwsfmtPFB+KRynarJJ5boRvmA==",
       "path": "microsoft.visualstudio.web.codegeneration.contracts/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegeneration.contracts.2.0.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Core/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6KNE9zrJieCUB4C/7yPC6rM+RxMh7HK8i8IJ0/9yXkPekUMuXwK3KNTYJLW1Okp0AHbHuqyJfDvU3cd4+bA1MA==",
+      "sha512": "sha512-XCwyV8fCRpvMGHuJfI3FaAzEbCoJahobc4TZtvGlYA2vGo5vwLcC5WaRaTXH2WjgK9Z5MYdP3cclCaJp3TOjfg==",
       "path": "microsoft.visualstudio.web.codegeneration.core/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegeneration.core.2.0.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Design/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-14dGqnnOnNxKGrGZKFQGGzMDtQ23WVuIOZkcH5KE0LeHEhjc+9u8raAiFhXnRu8P/PHpXjbcgW/Zdq71sSqnlg==",
+      "sha512": "sha512-e45LCYfDojpxPhf/8x8esNAy1h1xwOAlHrV8JKgR3glQW/e3YW3LtZgHNlU7A0I5Xau88bVxr3NPTM9oSNsiow==",
       "path": "microsoft.visualstudio.web.codegeneration.design/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegeneration.design.2.0.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TO4MtSOwW4aelTTtL189NVIXRAPSIo9lkg/avwxtJQ716mzNrEE2zQWiquUqTqGKCrM0hGBDsD1B5mrTzFNR/Q==",
+      "sha512": "sha512-yOE+AH2I2ZNGCLoEgXtksQcp9UiXlrL2ireUvbEB/GCskl0nWCZUK8t84mLv2jXintJ967koGHMJeGZbpBm30g==",
       "path": "microsoft.visualstudio.web.codegeneration.entityframeworkcore/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegeneration.entityframeworkcore.2.0.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Templating/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xqWkF83O8pXtWoYJq+v5VIUssHC7axvcJA2z0MUczfnXUUmKXK73Rqmy6+Oilw0Q4iRwmCs/rzROBEznWzFh1A==",
+      "sha512": "sha512-RL9Xiobla5MkYW62yU5J3STmu4aSz6Y0K1qaYY7keHiUTLcNgkvArkY+uIAtbJwsOLFrBnduJXWfhU1J2pQ2Ag==",
       "path": "microsoft.visualstudio.web.codegeneration.templating/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegeneration.templating.2.0.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Utils/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zOgx7CO/uqtmTj67i39Y/NkcLqFr6wjdlDwSlWW6ZXxbaL/nCMH6DC5yz6kwbOh7ttC6E5hVYb927jvaHJIh+Q==",
+      "sha512": "sha512-Fo3ZYKGdm0qNY2kSZ4+hkh9aRwo41TcELcdrCJrFDTH6z45axgyFGopE7Pr1j/cxjAwjyzHLFqBJYrd/O3iVew==",
       "path": "microsoft.visualstudio.web.codegeneration.utils/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegeneration.utils.2.0.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pRNaVqgHcQoPQt2CLYDkImYKkmo7pcvJE1VudM4AMX9vRJNMkWzP82WcHlo2pDNrcG1Rhr7s2RSWPdwSwilYWw==",
+      "sha512": "sha512-tixkx++gaTp8k99xa+Va6c8WuY7Dh4LNtledPU480ZBDQl4AmxsIhtqcphQ80Jbyzl3Eu1g5IlZ0B4viMX/BIA==",
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.0.0.nupkg.sha512"
     },
@@ -7201,7 +7201,7 @@
     "System.Threading.Tasks.Extensions/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xPuXi6WJrAoJIf/7KPtmOIiMkUHQkldNeR/IiQRwkRYezgutxY1K2gWkwenV/ON07bUoFr4Lgh+/0SmEugM+Tg==",
+      "sha512": "sha512-cWndlAQKAhHfsS6rZbYEE07HXJI9dPdyMAPOXXnVUO+hm+3G6qneMIqLDesoNBiVAPsKErsUVa2N/FRSKi+SeA==",
       "path": "system.threading.tasks.extensions/4.5.0",
       "hashPath": "system.threading.tasks.extensions.4.5.0.nupkg.sha512"
     },
