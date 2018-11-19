@@ -10,8 +10,8 @@ using petgoods4all.Models;
 namespace petgoods4all.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    [Migration("20181115122308_intitialpetgoods4all")]
-    partial class intitialpetgoods4all
+    [Migration("20181119094923_initialDB")]
+    partial class initialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,7 +32,13 @@ namespace petgoods4all.Migrations
 
                     b.Property<string>("email");
 
+                    b.Property<string>("huisnummer");
+
                     b.Property<string>("password");
+
+                    b.Property<string>("postcode");
+
+                    b.Property<string>("provincie");
 
                     b.Property<string>("straatnaam");
 

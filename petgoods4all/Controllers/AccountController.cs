@@ -39,7 +39,7 @@ namespace petgoods4all.Controllers
         }
 
         [HttpPost]
-        public ActionResult Aanmelden(string inputEmail, string inputPassword, string confirmPassword, string inputVoornaam, string inputAchternaam, string inputStraatnaam, string inputTelefoonnummer)
+        public ActionResult Aanmelden(string inputEmail, string inputPassword, string inputHuisnummer,string inputPostcode, string inputProvincie, string confirmPassword, string inputVoornaam, string inputAchternaam, string inputStraatnaam, string inputTelefoonnummer)
         {
             int MaxId;
             var email = inputEmail;
@@ -47,7 +47,10 @@ namespace petgoods4all.Controllers
             var voornaam = inputVoornaam;
             var achternaam = inputAchternaam;
             var straatnaam = inputStraatnaam;
-            var telefoonnummer = inputTelefoonnummer; 
+            var telefoonnummer = inputTelefoonnummer;
+            var huisnummer = inputHuisnummer;
+            var postcode = inputPostcode;
+            var provincie = inputProvincie; 
 
             var db = new ModelContext();
             var result = from acc in db.Account select acc.id;
@@ -68,7 +71,10 @@ namespace petgoods4all.Controllers
                 voornaam = inputVoornaam,
                 achternaam = inputAchternaam,
                 straatnaam = inputStraatnaam,
-                telefoonnummer = inputTelefoonnummer
+                huisnummer = inputHuisnummer,
+                postcode = inputPostcode,
+                provincie = inputProvincie,
+                telefoonnummer = inputTelefoonnummer,
 
             };
 
@@ -81,7 +87,7 @@ namespace petgoods4all.Controllers
             message.From = new MailAddress(fromEmail);
             message.To.Add(email);
             message.Subject = "Activatie mail";
-            message.Body = @"Klik op de link om uw account te activeren http://localhost:56002/Account/Inloggen";
+            message.Body = @"Klik op de link om uw account te activeren http://localhost:56003/Account/Inloggen";
             message.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
             using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
@@ -94,7 +100,7 @@ namespace petgoods4all.Controllers
                 smtpClient.Send(message.From.ToString(), message.To.ToString(), message.Subject, message.Body);
             }
 
-            return View("~/Views/Account/Inloggen.cshtml");
+            return Redirect("Inloggen");
         }
         [HttpPost]
         public ActionResult Inloggen(string inputEmail, string inputPassword)

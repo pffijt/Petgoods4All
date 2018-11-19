@@ -15,6 +15,9 @@ namespace petgoods4all.Models
         public string voornaam { get; set; }
         public string achternaam { get; set; }
         public string straatnaam { get; set; }
+        public string huisnummer { get; set; }
+        public string postcode { get; set; }
+        public string provincie { get; set; }
         public string telefoonnummer { get; set; }
         
     }

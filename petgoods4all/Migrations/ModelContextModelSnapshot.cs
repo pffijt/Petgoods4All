@@ -30,7 +30,13 @@ namespace petgoods4all.Migrations
 
                     b.Property<string>("email");
 
+                    b.Property<string>("huisnummer");
+
                     b.Property<string>("password");
+
+                    b.Property<string>("postcode");
+
+                    b.Property<string>("provincie");
 
                     b.Property<string>("straatnaam");
 

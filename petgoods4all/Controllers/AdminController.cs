@@ -91,7 +91,7 @@ namespace petgoods4all.Controllers
 
         //Creeren nieuw Account/Product als je op de Opslaan knop klikt
         [HttpPost]
-        public ActionResult AdminCreateAccountSave(string email, string achternaam, string voornaam, string telefoonnummer, string straatnaam, bool Admin, string password)
+        public ActionResult AdminCreateAccountSave(string email,string postcode, string provincie, string huisnummer, string achternaam, string voornaam, string telefoonnummer, string straatnaam, bool Admin, string password)
         {
             using (db)
             {
@@ -108,7 +108,10 @@ namespace petgoods4all.Controllers
                     voornaam = voornaam,
                     achternaam = achternaam,
                     telefoonnummer = telefoonnummer,
-                    straatnaam = straatnaam
+                    straatnaam = straatnaam,
+                    postcode = postcode,
+                    provincie = provincie,
+                    huisnummer = huisnummer
                 };
                 db.Account.Add(a);
                 db.SaveChanges();
@@ -140,7 +143,7 @@ namespace petgoods4all.Controllers
         }
 
         //Updaten Account/Product als je op de opslaan knop klikt in de Edit pagina
-        public ActionResult AdminKlantEditSave(int? id, string voornaam, string achternaam, string email, string straatnaam, string telefoonnummer)
+        public ActionResult AdminKlantEditSave(int? id, string voornaam, string huisnummer, string provincie, string postcode,  string achternaam, string email, string straatnaam, string telefoonnummer)
         {
             using (db)
             {
@@ -151,6 +154,9 @@ namespace petgoods4all.Controllers
                 accountToUpdate.telefoonnummer = telefoonnummer;
                 accountToUpdate.straatnaam = straatnaam;
                 accountToUpdate.email = email;
+                accountToUpdate.huisnummer = huisnummer;
+                accountToUpdate.provincie = provincie;
+                accountToUpdate.postcode = postcode;
 
                 db.SaveChanges();
             }

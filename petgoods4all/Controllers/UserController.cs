@@ -64,7 +64,7 @@ namespace petgoods4all.Controllers
             return View(account);
         }
 
-        public ActionResult UpdateAccount(string inputEmailUser, string originalEmailUser, string inputPasswordUser, string inputVoornaamUser, string inputAchternaamUser, string inputTelefoonnummerUser, string inputStraatnaamUser)
+        public ActionResult UpdateAccount(string inputEmailUser, string inputProvincieUser, string inputHuisnummerUser, string inputPostcodeUser, string originalEmailUser, string inputPasswordUser, string inputVoornaamUser, string inputAchternaamUser, string inputTelefoonnummerUser, string inputStraatnaamUser)
         {            
             using (db)
             {
@@ -77,6 +77,9 @@ namespace petgoods4all.Controllers
                 accountUpdate.telefoonnummer = inputTelefoonnummerUser;
                 accountUpdate.straatnaam = inputStraatnaamUser;
                 accountUpdate.password = inputPasswordUser;
+                accountUpdate.postcode = inputPostcodeUser;
+                accountUpdate.provincie = inputProvincieUser;
+                accountUpdate.huisnummer = inputHuisnummerUser;
                 accountUpdate.email = inputEmailUser;
 
                 db.Account.Update(accountUpdate);
