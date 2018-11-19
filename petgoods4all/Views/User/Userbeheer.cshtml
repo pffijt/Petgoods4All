@@ -4,125 +4,87 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     //petgoods4all.Models.Account item = Model[0];
 }
-
-<h2>Klant Details</h2>
-
-<div>
-    <h2>Gegevens beheer</h2>
-    <p>
-        <a href="~/User/UserHome">Home</a>
-    </p>
-    <hr />
-    <dl class="dl-horizontal">
-        @foreach(var item in ViewBag.AccountData){
-            @if(item.id == @ViewBag.userId)
-            {
-                <dt>
-                    <p>email</p>
-                </dt>
-                <dd>
-                    @item.email
-                    
-                </dd>
-                <dt>
-                    <p>password</p>
-                </dt>
-                <dd>
-                    @item.password
-                </dd>
-                <dt>
-                    <p>voornaam</p>
-                </dt>
-                <dd>
-                   @item.voornaam
-                </dd>
-                <dt>
-                    <p>voornaam</p>
-                </dt>
-                <dd>
-                  @item.achternaam
-                </dd>
-                <dt>
-                    <p>straatnaam</p>>
-                </dt>
-                <dd>
-                    @item.straatnaam
-                </dd>
-                <dt>
-                    <p>huisnummer</p>>
-                </dt>
-                <dd>
-                    @item.huisnummer
-                </dd>
-                <dt>
-                    <p>postcode</p>>
-                </dt>
-                <dd>
-                    @item.postcode
-                </dd>
-                <dt>
-                    <p>provincie</p>>
-                </dt>
-                <dd>
-                    @item.provincie
-                </dd>
-                <dt>
-                    <p>telefoonnummer</p>
-                </dt>
-                <dd>
-                    @item.telefoonnummer
-                </dd>
-            }
-        }
+<div class="container-fluid" style="background-color:#ffe8d3;">
+    <div>
+        <h2>Gegevens beheer</h2>
         <p>
             <a href="~/User/UserHome">Home</a>
         </p>
         <hr />
-        <dl class="dl-horizontal">
-            @foreach(var item in ViewBag.AccountData){
+            <dl class="dl-horizontal">
+            @foreach(var item in ViewBag.AccountData)
+            {
                 @if(item.id == @ViewBag.userId)
                 {
                     <dt>
-                        <p>Email</p>
+                        <p>email</p>
                     </dt>
                     <dd>
                         <p>@item.email</p>
+                        
                     </dd>
                     <dt>
-                        <p>Wachtwoord</p>
+                        <p>password</p>
                     </dt>
                     <dd>
                         <p>@item.password</p>
                     </dd>
                     <dt>
-                        <p>Voornaam</p>
+                        <p>voornaam</p>
                     </dt>
                     <dd>
-                        <p>@item.voornaam</p>
+                    <p>@item.voornaam</p>
                     </dd>
                     <dt>
-                        <p>Achternaam</p>
+                        <p>voornaam</p>
                     </dt>
                     <dd>
-                        <p>@item.achternaam</p>
+                    <p>@item.achternaam</p>
                     </dd>
                     <dt>
-                        <p>Straatnaam</p>
+                        <p>straatnaam</p>
                     </dt>
                     <dd>
                         <p>@item.straatnaam</p>
                     </dd>
                     <dt>
-                        <p>Telefoonnummer</p>
+                        <p>huisnummer</p>
                     </dt>
                     <dd>
-                        <p>@item.telefoonnummer</p>
+                        <p>@item.huisnummer
+
+                        </p>
+                    </dd>
+                    <dt>
+                        <p>postcode</p>
+                    </dt>
+                    <dd>
+                        <p>@item.postcode
+
+                        </p>
+                    </dd>
+                    <dt>
+                        <p>provincie</p>
+                    </dt>
+                    <dd>
+                        <p>@item.provincie
+
+                        </p>
+                    </dd>
+                    <dt>
+                        <p>telefoonnummer</p>
+                    </dt>
+                    <dd>
+                        <p>@item.telefoonnummer
+
+                        </p>
                     </dd>
                 }
             }
             <p>
                 <a asp-action="updateGegevens">Update</a>
             </p>
-        </dl>
+        
+            </dl>
+        </div>
     </div>
-</div>
