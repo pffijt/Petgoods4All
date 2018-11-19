@@ -185,9 +185,16 @@ namespace petgoods4all.Controllers
             return OrderHistory();
         }
         [HttpPost]
-        public async Task<ActionResult> Pay(string prijs, string o_aanhef, string o_name, string o_postal, string o_address, string o_number)
+        public async Task<ActionResult> Pay(string prijs)
         {
-             
+            var db = new ModelContext();
+            var UserId = HttpContext.Session.GetInt32("UID");
+            int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
+            string o_name =  (from s in db.Account where s.id == UserIdResult select s.achternaam).Single();
+            string o_postal = (from s in db.Account where s.id == UserIdResult select s.postcode).Single();
+            string o_address = (from s in db.Account where s.id == UserIdResult select s.straatnaam).Single();
+            string o_number = (from s in db.Account where s.id == UserIdResult select s.huisnummer).Single();
+            // string o_aanhef, string o_name, string o_postal, string o_address, string o_number
             var environment = new SandboxEnvironment("ATAmdaFGY2Pz6CH83fmdK8OaXu2Wd8b9fLDyuU8X3SNiAzvu2_Ks4IU3wPiNbpE74nWIkhb4jN_7pz9E", "EOksjziNOaGEYh-OroCWTFT_EKDlqJEIpsrZLMtUhmYNxgDZ_v6KGwyL1MFcWJ-dfv97PApRKroAAT0g");
             var Pay_client = new PayPalHttpClient(environment);
             
@@ -201,7 +208,7 @@ namespace petgoods4all.Controllers
                         Amount = new PayPal.v1.Payments.Amount()
                         {
                             Total = prijs,
-                            Currency = "USD",
+                            Currency = "EUR",
                             Details = new  PayPal.v1.Payments.AmountDetails() 
                             {
                                 Subtotal = prijs
@@ -214,7 +221,7 @@ namespace petgoods4all.Controllers
                                 new PayPal.v1.Payments.Item()
                                 {
                                     Name="Petgoods4All Products",
-                                    Currency = "USD",
+                                    Currency = "EUR",
                                     Price = prijs,
                                     Quantity = "1",
                                     Description = "Bedankt voor uw aankoop"
@@ -228,7 +235,7 @@ namespace petgoods4all.Controllers
                 RedirectUrls = new PayPal.v1.Payments.RedirectUrls() 
                 {
                     CancelUrl = "http://localhost:56003/",
-                    ReturnUrl = "http://localhost:56003/Order/OrderProducts?prijs="+prijs+"&o_aanhef="+o_aanhef+"&o_name="+o_name+"&o_postal="+o_postal+"&o_address="+o_address+"&o_number="+o_number
+                    ReturnUrl = "http://localhost:56003/Order/OrderProducts?prijs="+prijs+"&o_aanhef="+"DHR/MVR."+"&o_name="+o_name+"&o_postal="+o_postal+"&o_address="+o_address+"&o_number="+o_number
                 },
                 Payer = new PayPal.v1.Payments.Payer() 
                 {

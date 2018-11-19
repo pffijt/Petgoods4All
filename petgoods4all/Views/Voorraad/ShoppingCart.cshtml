@@ -9,7 +9,7 @@
     <form class="form-products" method="post" asp-controller="Order" asp-action="OrderProducts">
         <div class="col-md-6">
 
-            <h2>Prijs: $ @ViewBag.Prijs</h2>
+            <h2>Prijs: &#8364; @ViewBag.Prijs</h2>
             <input type="text" value="@ViewBag.Prijs" name="prijs" id="prijs" style="visibility:hidden">
 
         </div>
@@ -19,7 +19,7 @@
 
                 <!--<button type="submit" asp-controller="Order" 
                 asp-action="OrderProducts" class="btn btn-success col-sm-4" align="right">Bestellen</button>-->
-                <button asp-controller="Order" asp-action="CustOrder" class="btn btn-success col-sm-4" align="right">Bestellen</button>
+                <button asp-controller="Order" asp-action="Pay" class="btn btn-success col-sm-4" align="right">Bestellen</button>
 
             </h2>
         </div>
@@ -49,7 +49,7 @@
             <div class="col-md-2">
                 <h3>@item.Naam</h3>
                 <p>Kwantiteit: @item.Kwantiteit</p>
-                <p>Prijs: $ @item.Prijs</p>
+                <p>Prijs: &#8364; @item.Prijs</p>
             </div>
             <div class="col-md-8">
                 <br><br>
