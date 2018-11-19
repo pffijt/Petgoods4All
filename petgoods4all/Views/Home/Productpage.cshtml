@@ -31,7 +31,7 @@
     </ul>
     <div class="row">
         <div class="col-sm-4">
-            <img src="@Html.Raw(a.image)" alt="@Html.Raw(a.Naam)" />
+            <img src="@Html.Raw(a.image)" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" />
         </div>
         <div class="col-sm-8">
             <h2>@Html.Raw(a.Naam)</h2>
@@ -57,7 +57,7 @@
                 <button type="submit" asp-controller="Voorraad" 
                 asp-action="AddToShoppingCart" asp-route-identication="@Html.Raw(a.Id)" 
                 class="btn btn-warning col-sm-4">Naar winkelwagen</button>
-                  
+                  &nbsp;&nbsp;
                 <form action="" method="POST">
                     <button  class="btn btn-danger col-sm-1" asp-controller="Home" asp-action="addWishList"
                     asp-route-identication="@Html.Raw(a.Id)" type="submit">&#10084;</button>
@@ -70,7 +70,7 @@
 <hr />
 <div class="row">
         <div class="col-sm-4">
-                <img src="@Html.Raw(b.image)" alt="@Html.Raw(b.Naam)" style="width:50px; height:50px;" />
+                <img src="@Html.Raw(b.image)"  onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:50px; height:50px;" />
             
                 <a asp-area="" asp-controller="Home" asp-action="productpage"
                  asp-route-identication="@Html.Raw(b.Id)">
@@ -78,7 +78,7 @@
                 </a>
         </div>
         <div class="col-sm-4">
-                    <img src="@Html.Raw(c.image)" alt="@Html.Raw(c.Naam)"  style="width:50px; height:50px;"/>
+                    <img src="@Html.Raw(c.image)"  onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';"  style="width:50px; height:50px;"/>
                     <a asp-area="" asp-controller="Home" asp-action="productpage"
                     asp-route-identication="@Html.Raw(c.Id)">
                     <p style="font-size:10px;">@Html.Raw(c.Naam) <br />&#8364;  @Html.Raw(c.Prijs),-</p>
@@ -86,7 +86,7 @@
                 
         </div>
         <div class="col-sm-4">
-                    <img src="@Html.Raw(d.image)" alt="@Html.Raw(d.Naam)" style="width:50px; height:50px;" />
+                    <img src="@Html.Raw(d.image)"   onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:50px; height:50px;" />
                     <a asp-area="" asp-controller="Home" asp-action="productpage"
                     asp-route-identication="@Html.Raw(d.Id)">
                     <p style="font-size:10px;">@Html.Raw(d.Naam) <br />&#8364;  @Html.Raw(d.Prijs),-</p>

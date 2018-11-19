@@ -27,7 +27,7 @@
             @foreach(var item in Model)
             {
                 <div id="browsProductContainer" class="col-lg-3">
-                    <img src="@Html.DisplayFor(modelItem => item.image)" alt="@Html.DisplayFor(modelItem => item.Naam)" style="width:140px;height:140px;" />
+                    <img src="@Html.DisplayFor(modelItem => item.image)" alt="" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:140px;height:140px;" />
                     
                         <li style="list-style-type: none;"><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a></li>
                         <br/>
