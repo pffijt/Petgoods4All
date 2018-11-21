@@ -1,0 +1,355 @@
+﻿
+@{
+    ViewData["Title"] = "Omzet";
+}
+<script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<br>
+<h1>Inkoopprijs Bestelde producten</h1>
+<h2>Inkoopprijs</h2>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'inkoop 1')">Januari</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 2')">Februari</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 3')">Maart</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 4')">April</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 5')">Mei</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 6')">Juni</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 7')">Juli</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 8')">Augustus</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 9')">September</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 10')">Oktober</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 11')">November</button>
+        <button class="tablinks" onclick="openCity(event, 'inkoop 12')">December</button>
+    </div>
+
+    <!-- Tab content -->
+    @{double c = 0; }
+    @foreach (var item in ViewBag.Orders)
+    {
+        <div id="inkoop @item.Datum.Month" class="tabcontent">
+            @switch (@item.Datum.Month)
+            {
+                case 1:
+                    <h3>Inkoopprijs Januari </h3>
+
+                    string JanuariInkoopPrijs = ViewBag.JanuariInkoop.ToString("0.00");
+                    <p>&euro;@JanuariInkoopPrijs</p>
+
+                    break;
+                case 2:
+                    <h3>Inkoopprijs Februari </h3>
+
+                    string FebruariInkoopPrijs = ViewBag.FebruariInkoop.ToString("0.00");
+                    <p>&euro;@FebruariInkoopPrijs</p>
+
+                    break;
+                case 3:
+                    <h3>Inkoopprijs Maart </h3>
+
+                    string MaartInkoopPrijs = ViewBag.MaartInkoop.ToString("0.00");
+                    <p>&euro;@MaartInkoopPrijs</p>
+
+                    break;
+                case 4:
+                    <h3>Inkoopprijs April </h3>
+
+                    string AprilInkoopPrijs = ViewBag.AprilInkoop.ToString("0.00");
+                    <p>&euro;@AprilInkoopPrijs</p>
+
+                    break;
+                case 5:
+                    <h3>Inkoopprijs Mei </h3>
+
+                    string MeiInkoopPrijs = ViewBag.MeiInkoop.ToString("0.00");
+                    <p>&euro;@MeiInkoopPrijs</p>
+
+                    break;
+                case 6:
+                    <h3>Inkoopprijs Juni </h3>
+
+                    string JuniInkoopPrijs = ViewBag.JuniInkoop.ToString("0.00");
+                    <p>&euro;@JuniInkoopPrijs</p>
+
+                    break;
+                case 7:
+                    <h3>Inkoopprijs Juli </h3>
+
+                    string JuliInkoopPrijs = ViewBag.JuliInkoop.ToString("0.00");
+                    <p>&euro;@JuliInkoopPrijs</p>
+
+                    break;
+                case 8:
+                    <h3>Inkoopprijs Augustus </h3>
+
+                    string AugustusInkoopPrijs = ViewBag.AugustusInkoop.ToString("0.00");
+                    <p>&euro;@AugustusInkoopPrijs</p>
+
+                    break;
+                case 9:
+                    <h3>Inkoopprijs September </h3>
+
+                    string SeptemberInkoopPrijs = ViewBag.SeptemberInkoop.ToString("0.00");
+                    <p>&euro;@SeptemberInkoopPrijs</p>
+
+                    break;
+                case 10:
+                    <h3>Inkoopprijs Oktober</h3>
+
+                    string OktoberInkoopPrijs = ViewBag.OktoberInkoop.ToString("0.00");
+                    <p>&euro;@OktoberInkoopPrijs</p>
+
+                    break;
+                case 11:
+                    <h3>Inkoopprijs November</h3>
+
+                    string NovemeberInkoopPrijs = ViewBag.NovemeberInkoop.ToString("0.00");
+                    <p>&euro;@NovemeberInkoopPrijs</p>
+
+                    break;
+                case 12:
+                    <h3>Inkoopprijs December</h3>
+
+                    string DecemberInkoopPrijs = ViewBag.DecemberInkoop.ToString("0.00");
+                    <p>&euro;@DecemberInkoopPrijs</p>
+
+                    break;
+            }
+            </div>
+    }
+
+    <h2>Verkoopprijs</h2>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'verkoop 1')">Januari</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 2')">Februari</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 3')">Maart</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 4')">April</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 5')">Mei</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 6')">Juni</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 7')">Juli</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 8')">Augustus</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 9')">September</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 10')">Oktober</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 11')">November</button>
+        <button class="tablinks" onclick="openCity(event, 'verkoop 12')">December</button>
+    </div>
+
+    @foreach (var item in ViewBag.Orders)
+    {
+        <div id="verkoop @item.Datum.Month" class="tabcontent">
+            @switch (@item.Datum.Month)
+            {
+                case 1:
+                    <h3>Verkoopprijs Januari </h3>
+
+                    string JanuariPrijs = ViewBag.Januari.ToString("0.00");
+                    <p>&euro;@JanuariPrijs</p>
+
+                    break;
+                case 2:
+                    <h3>Verkoopprijs Februari </h3>
+
+                    string FebruariPrijs = ViewBag.Februari.ToString("0.00");
+                    <p>&euro;@FebruariPrijs</p>
+
+                    break;
+                case 3:
+                    <h3>Verkoopprijs Maart </h3>
+
+                    string MaartPrijs = ViewBag.Maart.ToString("0.00");
+                    <p>&euro;@MaartPrijs</p>
+
+                    break;
+                case 4:
+                    <h3>Verkoopprijs April </h3>
+
+                    string AprilPrijs = ViewBag.April.ToString("0.00");
+                    <p>&euro;@AprilPrijs</p>
+
+                    break;
+                case 5:
+                    <h3>Verkoopprijs Mei </h3>
+
+                    string MeiPrijs = ViewBag.Mei.ToString("0.00");
+                    <p>&euro;@MeiPrijs</p>
+
+                    break;
+                case 6:
+                    <h3>Verkoopprijs Juni </h3>
+
+                    string JuniPrijs = ViewBag.Juni.ToString("0.00");
+                    <p>&euro;@JuniPrijs</p>
+
+                    break;
+                case 7:
+                    <h3>Verkoopprijs Juli </h3>
+
+                    string JuliPrijs = ViewBag.Juli.ToString("0.00");
+                    <p>&euro;@JuliPrijs</p>
+
+                    break;
+                case 8:
+                    <h3>Verkoopprijs Augustus </h3>
+
+                    string AugustusPrijs = ViewBag.Augustus.ToString("0.00");
+                    <p>&euro;@AugustusPrijs</p>
+
+                    break;
+                case 9:
+                    <h3>Verkoopprijs September </h3>
+
+                    string SeptemberPrijs = ViewBag.September.ToString("0.00");
+                    <p>&euro;@SeptemberPrijs</p>
+
+                    break;
+                case 10:
+                    <h3>Verkoopprijs Oktober</h3>
+
+                    string OktoberPrijs = ViewBag.Oktober.ToString("0.00");
+                    <p>&euro;@OktoberPrijs</p>
+
+                    break;
+                case 11:
+                    <h3>Verkoopprijs November</h3>
+
+                    string NovemeberPrijs = ViewBag.Novemeber.ToString("0.00");
+                    <p>&euro;@NovemeberPrijs</p>
+
+                    break;
+                case 12:
+                    <h3>Verkoopprijs December</h3>
+
+                    string DecemberPrijs = ViewBag.December.ToString("0.00");
+                    <p>&euro;@DecemberPrijs</p>
+
+                    break;
+            }
+        </div>
+    }
+    <h2>Omzet</h2>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'omzet 1')">Januari</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 2')">Februari</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 3')">Maart</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 4')">April</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 5')">Mei</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 6')">Juni</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 7')">Juli</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 8')">Augustus</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 9')">September</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 10')">Oktober</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 11')">November</button>
+        <button class="tablinks" onclick="openCity(event, 'omzet 12')">December</button>
+    </div>
+    @foreach (var item in ViewBag.Orders)
+    {
+        <div id="omzet @item.Datum.Month" class="tabcontent">
+            @switch (@item.Datum.Month)
+            {
+                case 1:
+                    <h3>Omzet Januari </h3>
+
+                    string JanuariOmzet = ViewBag.JanuariOmzet.ToString("0.00");
+                    <p>&euro;@JanuariOmzet</p>
+
+                    break;
+                case 2:
+                    <h3>Omzet Februari </h3>
+
+                    string FebruariOmzet = ViewBag.FebruariOmzet.ToString("0.00");
+                    <p>&euro;@FebruariOmzet</p>
+
+                    break;
+                case 3:
+                    <h3>Omzet Maart </h3>
+
+                    string MaartOmzet = ViewBag.MaartOmzet.ToString("0.00");
+                    <p>&euro;@MaartOmzet</p>
+
+                    break;
+                case 4:
+                    <h3>Omzet April </h3>
+
+                    string AprilOmzet = ViewBag.AprilOmzet.ToString("0.00");
+                    <p>&euro;@AprilOmzet</p>
+
+                    break;
+                case 5:
+                    <h3>Omzet Mei </h3>
+
+                    string MeiOmzet = ViewBag.MeiOmzet.ToString("0.00");
+                    <p>&euro;@MeiOmzet</p>
+
+                    break;
+                case 6:
+                    <h3>Omzet Juni </h3>
+
+                    string JuniOmzet = ViewBag.JuniOmzet.ToString("0.00");
+                    <p>&euro;@JuniOmzet</p>
+
+                    break;
+                case 7:
+                    <h3>Omzet Juli </h3>
+
+                    string JuliOmzet = ViewBag.JuliOmzet.ToString("0.00");
+                    <p>&euro;@JuliOmzet</p>
+
+                    break;
+                case 8:
+                    <h3>Omzet Augustus </h3>
+
+                    string AugustusOmzet = ViewBag.AugustusOmzet.ToString("0.00");
+                    <p>&euro;@AugustusOmzet</p>
+
+                    break;
+                case 9:
+                    <h3>Omzet September </h3>
+
+                    string SeptemberOmzet = ViewBag.SeptemberOmzet.ToString("0.00");
+                    <p>&euro;@SeptemberOmzet</p>
+
+                    break;
+                case 10:
+                    <h3>Omzet Oktober</h3>
+
+                    string OktoberOmzet = ViewBag.OktoberOmzet.ToString("0.00");
+                    <p>&euro;@OktoberOmzet</p>
+
+                    break;
+                case 11:
+                    <h3>Omzet November</h3>
+
+                    string NovemeberOmzet = ViewBag.NovemeberOmzet.ToString("0.00");
+                    <p>&euro;@NovemeberOmzet</p>
+
+                    break;
+                case 12:
+                    <h3>Omzet December</h3>
+
+                    string DecemberOmzet = ViewBag.DecemberOmzet.ToString("0.00");
+                    <p>&euro;@DecemberOmzet</p>
+
+                    break;
+            }
+        </div>
+    }
