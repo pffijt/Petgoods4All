@@ -44,12 +44,27 @@
                 <span asp-validation-for="straatnaam" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="huisnummer" class="control-label"></label>
+                <input asp-for="huisnummer" class="form-control" />
+                <span asp-validation-for="huisnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="postcode" class="control-label"></label>
+                <input asp-for="postcode" class="form-control" />
+                <span asp-validation-for="postcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="provincie" class="control-label"></label>
+                <input asp-for="provincie" class="form-control" />
+                <span asp-validation-for="provincie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="telefoonnummer" class="control-label"></label>
                 <input asp-for="telefoonnummer" class="form-control" />
                 <span asp-validation-for="telefoonnummer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <button type="submit" value="Opslaan" class="btn btn-default btn-primary" >Opslaan </button>
+                <button type="submit" value="Opslaan" class="btn btn-default btn-primary">Opslaan </button>
             </div>
         </form>
     </div>
