@@ -2,9 +2,26 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>ViewData["Title"] - Petgoods4All</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/Content/signin.css"/>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
 </head>
 <body>
-
+    <form class="form-signin" method="post"><br><br>
+        <div class="container-fluid" style="background-color:#ffe8d3;">
+            <p>U bent nu uitgelogt. Petgoods4All wenst u nog een fijne dag toe!</p>
+            <br><br>
+        </div>
+    </form>
 </body>
 </html>

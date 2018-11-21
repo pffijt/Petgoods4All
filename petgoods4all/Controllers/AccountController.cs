@@ -34,8 +34,9 @@ namespace petgoods4all.Controllers
         }
         public ActionResult Uitloggen()
         {
-         
-            return View();
+            //HttpContext.Session.Remove();
+            HttpContext.Session.Clear();
+            return View("~/Views/Account/Inloggen.cshtml");
         }
 
         [HttpPost]
