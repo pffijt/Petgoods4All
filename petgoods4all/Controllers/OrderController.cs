@@ -80,7 +80,7 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                return View("~/Views/Account/Inloggen.cshtml");
+                return Redirect("~/Views/Account/Inloggen.cshtml");
             }
             else
             {
@@ -144,7 +144,7 @@ namespace petgoods4all.Controllers
                 if (voorraad.Kwantiteit < 0)
                 {
                     ViewBag.Error = "NietInVoorraad";
-                    return View("~/Views/Order/OrderError.cshtml");
+                    return Redirect("~/Views/Order/OrderError.cshtml");
                 }
                 voorraad.Kwantiteit -= item.Quantity;
                 db.SaveChanges();
