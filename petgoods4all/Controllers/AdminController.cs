@@ -24,6 +24,288 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public class OmzetOrder
+        {
+            public int Id { get; set; }
+            public int AccountId { get; set; }
+            public DateTime Datum { get; set; }
+            public string Prijs { get; set; }
+            public string OrderStatus { get; set; }
+            public string DatumString { get; set; }
+        }
+
+        public ActionResult Omzet()
+        {
+            var Orders = (from a in db.Order orderby a.Datum, a.Prijs  select a).Distinct();
+            //foreach (var item in Orders)
+            //{
+            //    var stringDatum = item.Datum.ToString();
+            //    string a = stringDatum.Split('-')[1].ToString();
+
+            //    var Orderss = from b in db.Order
+            //        select new OmzetOrder
+            //        {
+            //            Id = b.Id,
+            //            AccountId = b.AccountId,
+            //            Datum = b.Datum,
+            //            Prijs = b.Prijs,
+            //            OrderStatus = b.OrderStatus,
+            //            DatumString = a
+            //        };
+            //}
+
+            double c = 0;
+            double Januari = 0;
+            double Februari = 0;
+            double Maart = 0;
+            double April = 0;
+            double Mei = 0;
+            double Juni = 0;
+            double Juli = 0;
+            double Augustus = 0;
+            double September = 0;
+            double Oktober = 0;
+            double November = 0;
+            double December = 0;
+            decimal JanuariPrijs = 0;
+            decimal FebruariPrijs = 0;
+            decimal MaartPrijs = 0;
+            decimal AprilPrijs = 0;
+            decimal MeiPrijs = 0;
+            decimal JuniPrijs = 0;
+            decimal JuliPrijs = 0;
+            decimal AugustusPrijs = 0;
+            decimal SeptemberPrijs = 0;
+            decimal OktoberPrijs = 0;
+            decimal NovemberPrijs = 0;
+            decimal DecemberPrijs = 0;
+            decimal JanuariInkoopPrijs = 0;
+            decimal FebruariInkoopPrijs = 0;
+            decimal MaartInkoopPrijs = 0;
+            decimal AprilInkoopPrijs = 0;
+            decimal MeiInkoopPrijs = 0;
+            decimal JuniInkoopPrijs = 0;
+            decimal JuliInkoopPrijs = 0;
+            decimal AugustusInkoopPrijs = 0;
+            decimal SeptemberInkoopPrijs = 0;
+            decimal OktoberInkoopPrijs = 0;
+            decimal NovemberInkoopPrijs = 0;
+            decimal DecemberInkoopPrijs = 0;
+            decimal JanuariOmzet = 0;
+            decimal FebruariOmzet = 0;
+            decimal MaartOmzet = 0;
+            decimal AprilOmzet = 0;
+            decimal MeiOmzet = 0;
+            decimal JuniOmzet = 0;
+            decimal JuliOmzet = 0;
+            decimal AugustusOmzet = 0;
+            decimal SeptemberOmzet = 0;
+            decimal OktoberOmzet = 0;
+            decimal NovemberOmzet = 0;
+            decimal DecemberOmzet = 0;
+
+            foreach (var item in Orders)
+            {
+                string datumString = item.Datum.ToString();
+                string splittedDatumString = datumString.Split('-')[1].ToString();
+                if (splittedDatumString == "1") {
+                    double a = Convert.ToDouble(item.Prijs);
+                    Januari = Januari + a;
+                    double b = (Januari / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Januari / 100);
+
+                    JanuariInkoopPrijs = e;
+                    JanuariPrijs = d;
+                    JanuariOmzet = JanuariPrijs - JanuariInkoopPrijs;
+                }
+
+                if (splittedDatumString == "2")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    Februari = Februari + a;
+                    double b = (Februari / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Februari / 100);
+
+                    FebruariInkoopPrijs = e;
+                    FebruariPrijs = d;
+                    FebruariOmzet = FebruariPrijs - FebruariInkoopPrijs;
+                }
+
+                if (splittedDatumString == "3")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    Maart = Maart + a;
+                    double b = (Maart / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Maart / 100);
+
+                    MaartInkoopPrijs = e;
+                    MaartPrijs = d;
+                    MaartOmzet = MaartPrijs - MaartInkoopPrijs;
+                }
+
+                if (splittedDatumString == "4")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    April = April + a;
+                    double b = (April / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(April / 100);
+
+                    AprilInkoopPrijs = e;
+                    AprilPrijs = d;
+                    AprilOmzet = AprilPrijs - AprilInkoopPrijs;
+                }
+
+                if (splittedDatumString == "5")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    Mei = Mei + a;
+                    double b = (Mei / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Mei / 100);
+
+                    MeiInkoopPrijs = e;
+                    MeiPrijs = d;
+                    MeiOmzet = MeiPrijs - MeiInkoopPrijs;
+                }
+
+                if (splittedDatumString == "6")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    Juni = Juni + a;
+                    double b = (Juni / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Juni / 100);
+
+                    JuniInkoopPrijs = e;
+                    JuniPrijs = d;
+                    JuniOmzet = JuniPrijs - JuniInkoopPrijs;
+                }
+
+                if (splittedDatumString == "7")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    Juli = Juli + a;      
+                    double b = (Juli / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Juli / 100);
+
+                    JuliInkoopPrijs = e;
+                    JuliPrijs = d;
+                    JuliOmzet = JuliPrijs - JuliInkoopPrijs;
+                }
+
+                if (splittedDatumString == "8")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    Augustus = Augustus + a;
+                    double b = (Augustus / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Augustus / 100);
+
+                    AugustusInkoopPrijs = e;
+                    AugustusPrijs = d;
+                    AugustusOmzet = AugustusPrijs - AugustusInkoopPrijs;
+                }
+
+                if (splittedDatumString == "9")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    September = September + a;
+                    double b = (September / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(September / 100);
+
+                    SeptemberInkoopPrijs = e;
+                    SeptemberPrijs = d;
+                    SeptemberOmzet = SeptemberPrijs - SeptemberInkoopPrijs;
+                }
+
+                if (splittedDatumString == "10")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    Oktober = Oktober + a;
+                    double b = (Oktober / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Oktober / 100);
+
+                    OktoberInkoopPrijs = e;
+                    OktoberPrijs = d;
+                    OktoberOmzet = OktoberPrijs - OktoberInkoopPrijs;
+                }
+
+                if (splittedDatumString == "11")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    November = November + a;
+                    double b = (November / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(November / 100);
+
+                    NovemberInkoopPrijs = e;
+                    NovemberPrijs = d;
+                    NovemberOmzet = NovemberPrijs - NovemberInkoopPrijs;
+                }
+
+                if (splittedDatumString == "12")
+                {
+                    double a = Convert.ToDouble(item.Prijs);
+                    December = December + a;
+                    double b = (December / 100) * 80;
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(December / 100);
+
+                    DecemberInkoopPrijs = e;
+                    DecemberPrijs = d;
+                    DecemberOmzet = DecemberPrijs - DecemberInkoopPrijs;
+                }
+            }
+
+            ViewBag.Januari = JanuariPrijs;
+            ViewBag.Februari = FebruariPrijs;
+            ViewBag.Maart = MaartPrijs;
+            ViewBag.April = AprilPrijs;
+            ViewBag.Mei = MeiPrijs;
+            ViewBag.Juni = JuniPrijs;
+            ViewBag.Juli = JuliPrijs;
+            ViewBag.Augustus = AugustusPrijs;
+            ViewBag.September = SeptemberPrijs;
+            ViewBag.Oktober = OktoberPrijs;
+            ViewBag.November = NovemberPrijs;
+            ViewBag.Decemeber = DecemberPrijs;
+            ViewBag.Orders = Orders;
+            ViewBag.JanuariInkoop = JanuariInkoopPrijs;
+            ViewBag.FebruariInkoop = FebruariInkoopPrijs;
+            ViewBag.MaartInkoop = MaartInkoopPrijs;
+            ViewBag.AprilInkoop = AprilInkoopPrijs;
+            ViewBag.MeiInkoop = MeiInkoopPrijs;
+            ViewBag.JuniInkoop = JuniInkoopPrijs;
+            ViewBag.JuliInkoop = JuliInkoopPrijs;
+            ViewBag.AugustusInkoop = AugustusInkoopPrijs;
+            ViewBag.SeptemberInkoop = SeptemberInkoopPrijs;
+            ViewBag.OktoberInkoop = OktoberInkoopPrijs;
+            ViewBag.NovemberInkoop = NovemberInkoopPrijs;
+            ViewBag.DecemeberInkoop = DecemberInkoopPrijs;
+            ViewBag.JanuariOmzet = JanuariOmzet;
+            ViewBag.FebruariOmzet = FebruariOmzet;
+            ViewBag.MaartOmzet = MaartOmzet;
+            ViewBag.AprilOmzet = AprilOmzet;
+            ViewBag.MeiOmzet = MeiOmzet;
+            ViewBag.JuniOmzet = JuniOmzet;
+            ViewBag.JuliOmzet = JuliOmzet;
+            ViewBag.AugustusOmzet = AugustusOmzet;
+            ViewBag.SeptemberOmzet = SeptemberOmzet;
+            ViewBag.OktoberOmzet = OktoberOmzet;
+            ViewBag.NovemberOmzet = NovemberOmzet;
+            ViewBag.DecemeberOmzet = DecemberOmzet;
+            ViewBag.Orders = Orders;
+
+            return View();
+        }
+
         public ActionResult AdminInstellingen()
         {
             return View();
