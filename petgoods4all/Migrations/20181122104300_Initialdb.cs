@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace petgoods4all.Migrations
 {
-    public partial class initialDB : Migration
+    public partial class Initialdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,7 +23,8 @@ namespace petgoods4all.Migrations
                     huisnummer = table.Column<string>(nullable: true),
                     postcode = table.Column<string>(nullable: true),
                     provincie = table.Column<string>(nullable: true),
-                    telefoonnummer = table.Column<string>(nullable: true)
+                    telefoonnummer = table.Column<string>(nullable: true),
+                    IsEmailVerified = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

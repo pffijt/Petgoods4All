@@ -21,7 +21,7 @@ namespace petgoods4all.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //here we define the name of our database
-            optionsBuilder.UseNpgsql("User ID=postgres;Password=admin;Host=localhost;Port=5432;Database=petgoods4all;Pooling=true;");
+            optionsBuilder.UseNpgsql("User ID=postgres;Password=e30c05a1;Host=localhost;Port=5432;Database=petgoods4all;Pooling=true;");
         }
     } 
 }

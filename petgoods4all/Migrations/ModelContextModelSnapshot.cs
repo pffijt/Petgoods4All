@@ -26,6 +26,8 @@ namespace petgoods4all.Migrations
 
                     b.Property<bool>("Admin");
 
+                    b.Property<bool>("IsEmailVerified");
+
                     b.Property<string>("achternaam");
 
                     b.Property<string>("email");

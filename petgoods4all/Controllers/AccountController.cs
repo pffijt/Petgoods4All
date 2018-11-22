@@ -38,6 +38,7 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Aanmelden(string inputEmail, string inputPassword, string inputHuisnummer,string inputPostcode, string inputProvincie, string confirmPassword, string inputVoornaam, string inputAchternaam, string inputStraatnaam, string inputTelefoonnummer)
         {
@@ -75,7 +76,7 @@ namespace petgoods4all.Controllers
                 postcode = inputPostcode,
                 provincie = inputProvincie,
                 telefoonnummer = inputTelefoonnummer,
-
+                IsEmailVerified =  false,
             };
 
             db.Account.Add(a);
@@ -87,7 +88,7 @@ namespace petgoods4all.Controllers
             message.From = new MailAddress(fromEmail);
             message.To.Add(email);
             message.Subject = "Activatie mail";
-            message.Body = @"Klik op de link om uw account te activeren http://localhost:56003/Account/Inloggen";
+            message.Body = @"Klik op de link om uw account te activeren http://localhost:56003/Account/Verification?uid=" + (MaxId + 1);
             message.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
             using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
@@ -102,6 +103,21 @@ namespace petgoods4all.Controllers
 
             return Redirect("Inloggen");
         }
+
+        public ActionResult Verification(string uid)
+        {
+            var db = new ModelContext();
+            int a = Int32.Parse(uid);
+            var result = (from acc in db.Account where a == acc.id select acc.IsEmailVerified).Single();
+            Console.WriteLine("Result:"+result);
+            if (result == false)
+            {
+                (from acc in db.Account where a == acc.id select acc).ToList().ForEach(acc => acc.IsEmailVerified = true);
+            }
+            db.SaveChanges();
+            return Redirect("http://localhost:56003");
+        }
+
         [HttpPost]
         public ActionResult Inloggen(string inputEmail, string inputPassword)
         {
@@ -114,8 +130,9 @@ namespace petgoods4all.Controllers
             var resultPassword = (from acc in db.Account where password == acc.password select acc.password).Single();
             var resultAdmin = (from acc in db.Account where email == acc.email select acc.Admin).Single();
             var resultId = (from acc in db.Account where email == acc.email select acc.id).Single();
+            var resultVerified = (from acc in db.Account where email == acc.email select acc.IsEmailVerified).Single();
 
-            if (resultEmail == email && resultPassword == password)
+            if (resultEmail == email && resultPassword == password && resultVerified == true)
             {
                 //HttpContext.Session.SetString("resultEmail", resultEmail);
                 HttpContext.Session.SetInt32(("UID"),resultId);
@@ -132,7 +149,7 @@ namespace petgoods4all.Controllers
             }
             else
             {
-                return View("~/Views/Account/Inloggen.cshtml");
+                return Redirect("Inloggen");
             }
         }
     }
