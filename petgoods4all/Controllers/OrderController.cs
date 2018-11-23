@@ -268,9 +268,10 @@ namespace petgoods4all.Controllers
             {
                 statusCode = httpException.StatusCode;
                 var debugId = httpException.Headers.GetValues("PayPal-Debug-Id").FirstOrDefault();
-                Console.WriteLine("Paypal_error: "+debugId);
+                Console.WriteLine("Paypal_error: "+debugId + statusCode);
                 return Redirect("http://localhost:56003/");
             }
+
             return Redirect("http://localhost:56003/");
         }
         public async Task<ActionResult> OrderProducts()

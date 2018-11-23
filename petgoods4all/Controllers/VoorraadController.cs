@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using petgoods4all.Models;
 using petgoods4all.Controllers;
+using System.Globalization;
 
 namespace petgoods4all.Controllers
 {
@@ -258,16 +260,16 @@ namespace petgoods4all.Controllers
             foreach (var item in productList)
             {
                 
-                double a = Convert.ToDouble(item.Prijs);
+                double a = double.Parse(item.Prijs);
                 double b = a * item.Kwantiteit;
                 c = c + b;
                 decimal d = Convert.ToDecimal(c / 100);
-                string prijs = d.ToString("0.00");
+                string prijs = d.ToString(new CultureInfo("en-US"));
 
                 ViewBag.Prijs = prijs;
             }
 
-            return View("~/Views/Voorraad/ShoppingCart.cshtml");
+            return View();
         }
         [HttpPost]
         public ActionResult RemoveFromShoppingCart(int productId)
