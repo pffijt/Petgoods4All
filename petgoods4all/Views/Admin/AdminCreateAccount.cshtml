@@ -4,12 +4,12 @@
     ViewData["Title"] = "AdminCreateAccount";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div class="row" style="background-color:#ffe8d3;">
 <h2 style="background-color:#ffe8d3;">Maak een nieuw Account</h2>
 
 <h4 style="background-color:#ffe8d3;">Account</h4>
 <hr />
-<div class="row" style="background-color:#ffe8d3;">
+
     <div class="col-md-4">
         <form asp-action="AdminCreateAccountSave">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -73,7 +73,7 @@
 </div>
 
 <div style="background-color:#ffe8d3;">
-    <a asp-action="Terug naar de lijst">Back to List</a>
+    <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
 </div>
 
 

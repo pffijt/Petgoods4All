@@ -349,9 +349,9 @@ namespace petgoods4all.Controllers
         //Roept pagina op voor het aanmaken van een Account of Product
         public ActionResult AdminCreateAccount()
         {
-
             return View();
         }
+
         public ActionResult AdminCreateVoorraad()
         {
 
@@ -363,8 +363,6 @@ namespace petgoods4all.Controllers
         {
             return View();
         }
-
-
 
         public ActionResult AdminVoorraadEdit()
         {
