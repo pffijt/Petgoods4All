@@ -109,7 +109,7 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             int a = Int32.Parse(uid);
             var result = (from acc in db.Account where a == acc.id select acc.IsEmailVerified).Single();
-            Console.WriteLine("Result:"+result);
+            
             if (result == false)
             {
                 (from acc in db.Account where a == acc.id select acc).ToList().ForEach(acc => acc.IsEmailVerified = true);
