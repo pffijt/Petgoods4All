@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using petgoods4all.Models;
 
@@ -13,6 +14,10 @@ namespace petgoods4all.Controllers
         ModelContext db = new ModelContext();
         // GET: Admin
         [HttpGet]
+        public ActionResult ToegangGeweigerd()
+        {
+            return View();
+        }
 
         public ActionResult Index()
         {
@@ -21,7 +26,23 @@ namespace petgoods4all.Controllers
 
         public ActionResult AdminHome()
         {
-            return View();
+            using (db)
+            {
+                var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                                   where acc.id == userId
+                                   select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
+            }
         }
 
         public class OmzetOrder
@@ -315,58 +336,179 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var accounts = db.Account.ToList();
-
-                return View(accounts);
+                var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                              where acc.id == userId
+                              select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                { 
+                    var accounts = db.Account.ToList();
+                    return View(accounts);
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }                
             }
         }
 
         public ActionResult AdminVoorraadIndex()
         {
             using (db)
-            {
-                var voorraad = db.Voorraad.ToList();
+            {   var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                              where acc.id == userId
+                              select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                {
+                    var voorraad = db.Voorraad.ToList();
 
-                return View(voorraad);
+                    return View(voorraad);
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
             }
         }
         //Roept pagina op met de Details van Account of Product
         public ActionResult AdminKlantDetails(int? id)
         {
+            using (db)
+            {
+                var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                              where acc.id == userId
+                              select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                {
 
-            Account account = db.Account.Find(id);
+                    Account account = db.Account.Find(id);
 
-            return View(account);
+                    return View(account);
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
+            }
         }
 
         public ActionResult AdminVoorraadDetails(int? id)
         {
-
-            Voorraad voorraad = db.Voorraad.Find(id);
-
-            return View(voorraad);
+            using (db)
+            {
+                var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                              where acc.id == userId
+                              select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                {
+                    Voorraad voorraad = db.Voorraad.Find(id);
+                    return View(voorraad);
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
+            }
         }
+
         //Roept pagina op voor het aanmaken van een Account of Product
         public ActionResult AdminCreateAccount()
         {
-            return View();
+            using (db)
+            {
+                var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                              where acc.id == userId
+                              select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                {
+
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
+            }
         }
 
         public ActionResult AdminCreateVoorraad()
         {
+            using (db)
+            {
+                var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                              where acc.id == userId
+                              select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                {
 
-            return View();
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
+            }
         }
 
         //Roept pagina op voor de Details van een Account of Product
         public ActionResult AdminKlantEdit()
         {
-            return View();
+            using (db)
+            {
+                var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                              where acc.id == userId
+                              select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                {
+
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
+            }
         }
 
         public ActionResult AdminVoorraadEdit()
         {
-            return View();
+            using (db)
+            {
+                var userId = HttpContext.Session.GetInt32("UID");
+                ViewBag.userId = userId;
+                var isAdmin = from acc in db.Account
+                              where acc.id == userId
+                              select acc.Admin;
+                var loggedinUser = isAdmin.ToString();
+                if (loggedinUser == "true")
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
+            }
         }
 
         //Creeren nieuw Account/Product als je op de Opslaan knop klikt
