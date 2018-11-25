@@ -171,9 +171,14 @@ namespace petgoods4all.Controllers
             if (UserId == null)
             {
                 var skrr = from r in db.Account select r.id;
-                Random rnd = new Random();
-                var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
-                HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+                //Random rnd = new Random();
+                //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
+                var randomAccountId = skrr.Max() + 1;
+                var skrrr = HttpContext.Session.GetInt32("SessionAccountId");
+                if (skrrr == null)
+                {
+                    HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+                }
                 
                 if (!skrr.Contains(randomAccountId))
                 {
@@ -226,7 +231,7 @@ namespace petgoods4all.Controllers
             // return View("~/Views/Account/Inloggen.cshtml");
             //}
 
-            return ShoppingCart();
+            return RedirectToAction("ShoppingCart", "Voorraad");
         }
 
         public ActionResult ShoppingCart()
@@ -238,6 +243,15 @@ namespace petgoods4all.Controllers
 
             if (UserId == null) {
                 var skrr = HttpContext.Session.GetInt32("SessionAccountId");
+
+                if (skrr == null) {
+                    var skrrr = from r in db.Account select r.id;
+                    //Random rnd = new Random();
+                    //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
+                    var randomAccountId = skrrr.Max() + 1;
+                    HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+                    skrr = HttpContext.Session.GetInt32("SessionAccountId");
+                }
                 UserId = skrr;
             }
 
@@ -282,7 +296,7 @@ namespace petgoods4all.Controllers
                 ViewBag.Prijs = prijs;
             }
 
-            return View();
+            return View(); ;
         }
         [HttpPost]
         public ActionResult RemoveFromShoppingCart(int productId)
