@@ -77,123 +77,50 @@ namespace petgoods4all.Controllers
             @ViewBag.Prijs = prijs;
 
             var db = new ModelContext();
-            var UserId = HttpContext.Session.GetInt32("UID");
-            if (UserId == null)
-            {
-                return Redirect("~/Views/Account/Inloggen.cshtml");
-            }
-            else
-            {
-                int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
-            }
-
+            var UserId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(0);
             var OrderResult = from s in db.Order where s.AccountId == UserId select s;
-
             ViewBag.Orders = OrderResult;
 
             return View();
         }
-
+    
         [HttpPost]
-        public ActionResult OrderProducts(string prijs)
+        public async Task<ActionResult> Pay(string prijs, string o_email = "", string o_name = "", string o_postal ="", string o_address ="", string o_number ="")
         {
             var db = new ModelContext();
-
-            var UserId = HttpContext.Session.GetInt32("UID");
-            int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
-
-            var ShoppingCartResult = from s in db.ShoppingCart where s.AccountId == UserId select s;
-
-            //MaxId
-            int MaxId = 0;
-            var result = from s in db.Order select s.Id;
-            if (!result.Any())
+            var UserId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(1000);
+            //Unregistered account order
+            if(UserId == 1000)
             {
-            }
-            else
-            {
-                MaxId = result.Max();
-            }
-
-
-            Order order = new Order
-            {
-                Id = MaxId + 1,
-                AccountId = UserIdResult,
-                Datum = DateTime.Now,
-                Prijs = prijs,
-                OrderStatus = "Pending",
-            };
-
-            db.Order.Add(order);
-            db.SaveChanges();
-
-            foreach (var item in ShoppingCartResult)
-            {
-                int MaxOrderedProductsId = 0;
-                var resultt = from s in db.OrderedProducts select s.Id;
-                if (!resultt.Any())
+                var check_account = (from acc in db.Account where 1000 == acc.id select acc).Any();
+                if(check_account)
                 {
+                    var result = (from acc in db.Account where 1000 == acc.id select acc).Single();
+                    db.Account.Remove(result); 
+                    db.SaveChanges();
                 }
-                else
+                Account a = new Account
                 {
-                    MaxOrderedProductsId = resultt.Max();
-                }
+                    id = 1000,
+                    email = o_email,
+                    password = "",
+                    voornaam = "",
+                    achternaam = o_name,
+                    straatnaam = o_address,
+                    huisnummer = o_number,
+                    postcode = o_postal,
+                    provincie = "",
+                    telefoonnummer = "",
 
-                var voorraad = (from v in db.Voorraad where v.Id == item.VoorraadId select v).Single();
-                if (voorraad.Kwantiteit < 0)
-                {
-                    ViewBag.Error = "NietInVoorraad";
-                    return Redirect("~/Views/Order/OrderError.cshtml");
-                }
-                voorraad.Kwantiteit -= item.Quantity;
-                db.SaveChanges();
-
-                OrderedProducts orderedProducts = new OrderedProducts
-                {
-                    Id = MaxOrderedProductsId + 1,
-                    OrderId = MaxId + 1,
-                    ProductId = item.VoorraadId,
-                    Quantity = item.Quantity,
                 };
-
-                db.OrderedProducts.Add(orderedProducts);
-                db.SaveChanges();
-
-
-                
+                db.Account.Add(a);
+                db.SaveChanges(); 
             }
-            
-            var check = (from s in db.ShoppingCart where s.AccountId == UserId select s).ToList();
-            MailMessage mail = new MailMessage();
-            SmtpClient client = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("petgoods4all@gmail.com");
-            mail.To.Add("petgoods4all@gmail.com");
-            mail.Subject = "Order: "+ MaxId + 1;
-            mail.Body = "Order placed from user "+UserId+".<br/>";
-            foreach(var item in check)
-            {
-                var item2 = (from s in db.Voorraad where item.VoorraadId == s.Id select s.Naam).Single();
-                mail.Body = mail.Body + "Product: "+item2+"<br/>";
-            }
-            client.Port = 587;
-            client.Credentials = new System.Net.NetworkCredential("petgoods4all@gmail.com", "adminpetgoods4all");
-            client.EnableSsl = true;
-            client.Send(mail);
-            Console.WriteLine("Mail sent");
-            
-            return OrderHistory();
-        }
-        [HttpPost]
-        public async Task<ActionResult> Pay(string prijs)
-        {
-            var db = new ModelContext();
-            var UserId = HttpContext.Session.GetInt32("UID");
-            int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
-            string o_name =  (from s in db.Account where s.id == UserIdResult select s.achternaam).Single();
-            string o_postal = (from s in db.Account where s.id == UserIdResult select s.postcode).Single();
-            string o_address = (from s in db.Account where s.id == UserIdResult select s.straatnaam).Single();
-            string o_number = (from s in db.Account where s.id == UserIdResult select s.huisnummer).Single();
+            //Unregistered account order
+            o_name =  (from s in db.Account where s.id == UserId select s.achternaam).Single();
+            o_postal = (from s in db.Account where s.id == UserId select s.postcode).Single();
+            o_address = (from s in db.Account where s.id == UserId select s.straatnaam).Single();
+            o_number = (from s in db.Account where s.id == UserId select s.huisnummer).Single();
             // string o_aanhef, string o_name, string o_postal, string o_address, string o_number
             var environment = new SandboxEnvironment("ATAmdaFGY2Pz6CH83fmdK8OaXu2Wd8b9fLDyuU8X3SNiAzvu2_Ks4IU3wPiNbpE74nWIkhb4jN_7pz9E", "EOksjziNOaGEYh-OroCWTFT_EKDlqJEIpsrZLMtUhmYNxgDZ_v6KGwyL1MFcWJ-dfv97PApRKroAAT0g");
             var Pay_client = new PayPalHttpClient(environment);
@@ -292,65 +219,67 @@ namespace petgoods4all.Controllers
                 PayerId = PayerID
             });
             BraintreeHttp.HttpResponse response = await Pay_client.Execute(request);
-            Console.WriteLine("Shiet man");
 
             if(o_aanhef == null)
             {
                 o_aanhef = "";
             }
             var db = new ModelContext();
-            var UserId = HttpContext.Session.GetInt32("UID");
-            int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
-
-            var ShoppingCartResult = from s in db.ShoppingCart where s.AccountId == UserId select s;
-            Console.WriteLine(o_name+o_postal+o_address+o_number);
-            //MaxId
-            int MaxId = 0;
-            var result = from s in db.Order select s.Id;
-            if (!result.Any())
+            var UserId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(0);
+            if(UserId == 0)
             {
-            }
-            else
-            {
-                MaxId = result.Max();
-            }
+                int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
 
-
-            Order order = new Order
-            {
-                Id = MaxId + 1,
-                AccountId = UserIdResult,
-                Datum = DateTime.Now,
-                Prijs = prijs,
-                OrderStatus = "Pending",
-            };
-
-            db.Order.Add(order);
-            db.SaveChanges();
-
-            foreach (var item in ShoppingCartResult)
-            {
-                int MaxOrderedProductsId = 0;
-                var resultt = from s in db.OrderedProducts select s.Id;
-                if (!resultt.Any())
+                var ShoppingCartResult = from s in db.ShoppingCart where s.AccountId == UserId select s;
+                Console.WriteLine(o_name+o_postal+o_address+o_number);
+                //MaxId
+                int MaxId = 0;
+                var result = from s in db.Order select s.Id;
+                if (!result.Any())
                 {
                 }
                 else
                 {
-                    MaxOrderedProductsId = resultt.Max();
+                    MaxId = result.Max();
                 }
 
-                OrderedProducts orderedProducts = new OrderedProducts
+
+                Order order = new Order
                 {
-                    Id = MaxOrderedProductsId + 1,
-                    OrderId = MaxId + 1,
-                    ProductId = item.VoorraadId,
-                    Quantity = item.Quantity,
+                    Id = MaxId + 1,
+                    AccountId = UserIdResult,
+                    Datum = DateTime.Now,
+                    Prijs = prijs,
+                    OrderStatus = "Pending",
                 };
 
-                db.OrderedProducts.Add(orderedProducts);
+                db.Order.Add(order);
                 db.SaveChanges();
 
+                foreach (var item in ShoppingCartResult)
+                {
+                    int MaxOrderedProductsId = 0;
+                    var resultt = from s in db.OrderedProducts select s.Id;
+                    if (!resultt.Any())
+                    {
+                    }
+                    else
+                    {
+                        MaxOrderedProductsId = resultt.Max();
+                    }
+
+                    OrderedProducts orderedProducts = new OrderedProducts
+                    {
+                        Id = MaxOrderedProductsId + 1,
+                        OrderId = MaxId + 1,
+                        ProductId = item.VoorraadId,
+                        Quantity = item.Quantity,
+                    };
+
+                    db.OrderedProducts.Add(orderedProducts);
+                    db.SaveChanges();
+
+                }
             }
             var check = (from s in db.ShoppingCart where s.AccountId == UserId select s).ToList();
             //Bestellingsmail voor Petgoods4All
@@ -358,7 +287,7 @@ namespace petgoods4all.Controllers
             SmtpClient client = new SmtpClient("smtp.gmail.com");
             mail.From = new MailAddress("petgoods4all@gmail.com");
             mail.To.Add("petgoods4all@gmail.com");
-            mail.Subject = "Order: "+ MaxId + 1;
+            mail.Subject = "Order: "+ UserId + 1;
             mail.Body = "Order placed from user "+UserId+".\n";
             foreach(var item in check)
             {
@@ -377,7 +306,7 @@ namespace petgoods4all.Controllers
             string UserEmail = (from s in db.Account where s.id == UserId select s.email).Single();
             mail.To.Clear();
             mail.To.Add(UserEmail);
-            mail.Subject = "Order: "+ MaxId + 1;
+            mail.Subject = "Order: "+ UserId + 1;
             mail.Body = "Geachte "+o_aanhef+" "+o_name+", \n"
             +"Bedankt voor uw bestelling.\n"+
             "De producten komen uw kant op.\n"+

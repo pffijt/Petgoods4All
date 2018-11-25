@@ -224,7 +224,8 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             //make query to find what user is logged in or get products from session
 
-            var UserId = HttpContext.Session.GetInt32("UID");
+            var UserId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(0);
+            ViewBag.UID = UserId;
 
             //item uit de voorraad met prodcut id
             var result = from s in db.ShoppingCart where s.AccountId == UserId select s;
