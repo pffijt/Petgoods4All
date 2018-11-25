@@ -60,7 +60,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Hond">Honden</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Vis">Vissen</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Reptiel">Reptielen</a></li>
-
+                    
                     <li>
                         <form class="nav navbar-form form-inline" method="post" asp-controller="Voorraad" asp-action="Search">
                             <input class="form-control mr-sm-2" type="search" placeholder="Zoeken" aria-label="Search" id="productSearch" name="productSearch">
@@ -78,13 +78,12 @@
 
                     @if (Context.Session.GetInt32("UID") == null)
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Registreren</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Inloggen</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Sign Up</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Login</a></li>
                     }
                     @if (Context.Session.GetInt32("UID") != null)
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Uitloggen">Log uit</a></li>
-                        <li><a asp-area="" asp-controller="User" asp-action="UserBeheer">Mijn gegevens</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Uitloggen">logout</a></li>
                     }
                 </ul>
             </div>
