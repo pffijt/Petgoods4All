@@ -170,7 +170,15 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                AccountId = 0;
+                var skrr = from r in db.Account select r.id;
+                Random rnd = new Random();
+                var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
+                HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+                
+                if (!skrr.Contains(randomAccountId))
+                {
+                    AccountId = randomAccountId;
+                }
             }
             else
             {
@@ -194,12 +202,12 @@ namespace petgoods4all.Controllers
 
             //if of user ingelogd is session of met de bestaande inlog is het httpcontext.current.user
             //if (httpcontext.current.user != null){
-            if (AccountId == 0)
-            {
-                return View("~/Views/Account/Inloggen.cshtml");
-            }
-            else
-            {
+            //if (AccountId == 0)
+            //{
+            //    return View("~/Views/Account/Inloggen.cshtml");
+            //}
+            //else
+            //{
                 ShoppingCart shoppingCart = new ShoppingCart
                 {
                     Id = MaxId + 1,
@@ -211,7 +219,7 @@ namespace petgoods4all.Controllers
 
                 db.ShoppingCart.Add(shoppingCart);
                 db.SaveChanges();
-            }
+            //}
 
             //}
             //else{
@@ -227,6 +235,11 @@ namespace petgoods4all.Controllers
             //make query to find what user is logged in or get products from session
 
             var UserId = HttpContext.Session.GetInt32("UID");
+
+            if (UserId == null) {
+                var skrr = HttpContext.Session.GetInt32("SessionAccountId");
+                UserId = skrr;
+            }
 
             //item uit de voorraad met prodcut id
             var result = from s in db.ShoppingCart where s.AccountId == UserId select s;
