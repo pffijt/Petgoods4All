@@ -13,7 +13,7 @@ namespace petgoods4all.Controllers
 {
     public class AccountController : Controller
     {
-
+        ModelContext db = new ModelContext();
         // GET: Account
         [HttpGet]
         public ActionResult Index()
@@ -37,7 +37,6 @@ namespace petgoods4all.Controllers
          
             return View();
         }
-
 
         [HttpPost]
         public ActionResult Aanmelden(string inputEmail, string inputPassword, string inputHuisnummer,string inputPostcode, string inputProvincie, string confirmPassword, string inputVoornaam, string inputAchternaam, string inputStraatnaam, string inputTelefoonnummer)
