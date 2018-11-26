@@ -343,7 +343,7 @@ namespace petgoods4all.Controllers
                               select acc.Admin;
                 var loggedinUser = isAdmin.ToString();
                 if (loggedinUser == "true")
-                { 
+                {
                     var accounts = db.Account.ToList();
                     return View(accounts);
                 }
@@ -519,13 +519,13 @@ namespace petgoods4all.Controllers
             {
                 var result = from acc in db.Account select acc.id;
 
-                var MaxId = result.Max();
+                var MaxId = result.FirstOrDefault();
 
                 Account a = new Account
                 {
                     id = MaxId + 1,
                     email = email,
-                    Admin = false,
+                    Admin = Admin,
                     password = password,
                     voornaam = voornaam,
                     achternaam = achternaam,
@@ -565,7 +565,7 @@ namespace petgoods4all.Controllers
         }
 
         //Updaten Account/Product als je op de opslaan knop klikt in de Edit pagina
-        public ActionResult AdminKlantEditSave(int? id, string voornaam, string huisnummer, string provincie, string postcode,  string achternaam, string email, string straatnaam, string telefoonnummer)
+        public ActionResult AdminKlantEditSave(int? id, string voornaam,bool Admin, string huisnummer, string provincie, string postcode,  string achternaam, string email, string straatnaam, string telefoonnummer)
         {
             using (db)
             {
@@ -579,6 +579,7 @@ namespace petgoods4all.Controllers
                 accountToUpdate.huisnummer = huisnummer;
                 accountToUpdate.provincie = provincie;
                 accountToUpdate.postcode = postcode;
+                accountToUpdate.Admin = Admin;
 
                 db.SaveChanges();
             }
