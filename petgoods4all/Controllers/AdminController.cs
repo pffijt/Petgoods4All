@@ -342,15 +342,15 @@ namespace petgoods4all.Controllers
                               where acc.id == userId
                               select acc.Admin;
                 var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
-                {
-                    var accounts = db.Account.ToList();
-                    return View(accounts);
-                }
-                else
-                {
-                    return RedirectToAction("ToegangGeweigerd");
-                }                
+                //if (loggedinUser == "true")
+                //{
+                var accounts = db.Account.ToList();
+                return View(accounts);
+                //}
+                //else
+                //{
+                //    return RedirectToAction("ToegangGeweigerd");
+                //}                
             }
         }
 
@@ -433,15 +433,15 @@ namespace petgoods4all.Controllers
                               where acc.id == userId
                               select acc.Admin;
                 var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
-                {
+                //if (loggedinUser == "true")
+                //{
 
                     return View();
-                }
-                else
-                {
-                    return RedirectToAction("ToegangGeweigerd");
-                }
+                //}
+                //else
+                //{
+                //    return RedirectToAction("ToegangGeweigerd");
+                //}
             }
         }
 
@@ -468,7 +468,7 @@ namespace petgoods4all.Controllers
         }
 
         //Roept pagina op voor de Details van een Account of Product
-        public ActionResult AdminKlantEdit()
+        public ActionResult AdminKlantEdit(int? id)
         {
             using (db)
             {
@@ -478,19 +478,19 @@ namespace petgoods4all.Controllers
                               where acc.id == userId
                               select acc.Admin;
                 var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
-                {
-
-                    return View();
-                }
-                else
-                {
-                    return RedirectToAction("ToegangGeweigerd");
-                }
+                //if (loggedinUser == "true")
+                //{
+                Account account = db.Account.Find(id);
+                return View(account);
+                //}
+                //else
+                //{
+                //    return RedirectToAction("ToegangGeweigerd");
+                //}
             }
         }
 
-        public ActionResult AdminVoorraadEdit()
+        public ActionResult AdminVoorraadEdit(int? id)
         {
             using (db)
             {
@@ -502,7 +502,8 @@ namespace petgoods4all.Controllers
                 var loggedinUser = isAdmin.ToString();
                 if (loggedinUser == "true")
                 {
-                    return View();
+                    Voorraad voorraad = db.Voorraad.Find(id);
+                    return View(voorraad);
                 }
                 else
                 {
@@ -519,8 +520,9 @@ namespace petgoods4all.Controllers
             {
                 var result = from acc in db.Account select acc.id;
 
-                var MaxId = result.FirstOrDefault();
+                var MaxId = result.Max();
 
+                
                 Account a = new Account
                 {
                     id = MaxId + 1,
@@ -569,7 +571,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var accountToUpdate = db.Account.FirstOrDefault();
+                var accountToUpdate = db.Account.Find(id);
 
                 accountToUpdate.achternaam = achternaam;
                 accountToUpdate.voornaam = voornaam;
@@ -591,7 +593,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var voorraadToUpdate = db.Voorraad.FirstOrDefault();
+                var voorraadToUpdate = db.Voorraad.Find(id);
 
                 voorraadToUpdate.Naam = Naam;
                 voorraadToUpdate.Dier = Dier;
