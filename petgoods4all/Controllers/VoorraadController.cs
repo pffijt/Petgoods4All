@@ -170,17 +170,17 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                var skrr = from r in db.Account select r.id;
+                var AccountResult = from r in db.Account select r.id;
                 //Random rnd = new Random();
                 //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
-                var randomAccountId = skrr.Max() + 1;
-                var skrrr = HttpContext.Session.GetInt32("SessionAccountId");
-                if (skrrr == null)
+                var randomAccountId = AccountResult.Max() + 1;
+                var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
+                if (AccountSession == null)
                 {
                     HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
                 }
                 
-                if (!skrr.Contains(randomAccountId))
+                if (!AccountResult.Contains(randomAccountId))
                 {
                     AccountId = randomAccountId;
                 }
@@ -242,17 +242,17 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
 
             if (UserId == null) {
-                var skrr = HttpContext.Session.GetInt32("SessionAccountId");
+                var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
 
-                if (skrr == null) {
-                    var skrrr = from r in db.Account select r.id;
+                if (AccountSession == null) {
+                    var AccountResult = from r in db.Account select r.id;
                     //Random rnd = new Random();
                     //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
-                    var randomAccountId = skrrr.Max() + 1;
+                    var randomAccountId = AccountResult.Max() + 1;
                     HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
-                    skrr = HttpContext.Session.GetInt32("SessionAccountId");
+                    AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
                 }
-                UserId = skrr;
+                UserId = AccountSession;
             }
 
             //item uit de voorraad met prodcut id
@@ -308,9 +308,9 @@ namespace petgoods4all.Controllers
             
                 db.ShoppingCart.Remove(result);
                 db.SaveChanges();
-            
 
-            return ShoppingCart();
+
+            return RedirectToAction("ShoppingCart", "Voorraad");
         }
     }
 }
