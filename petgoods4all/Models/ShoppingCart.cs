@@ -9,7 +9,7 @@ namespace petgoods4all.Models
     {
         public int Id { get; set; }
         public int VoorraadId { get; set; }
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; }
         public int Quantity { get; set; }
     }
 }
