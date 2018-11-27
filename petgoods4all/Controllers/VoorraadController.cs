@@ -165,24 +165,25 @@ namespace petgoods4all.Controllers
 
             List<int> productList = new List<int>();
             productList.Add(identication);
-            int AccountId = 0;
+            int? AccountId = 0;
 
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                var AccountResult = from r in db.Account select r.id;
+                var AccountResult = from r in db.ShoppingCart select r.AccountId;
                 //Random rnd = new Random();
                 //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
-                var randomAccountId = AccountResult.Max() + 1;
+                int? randomAccountIdSum = AccountResult.Max() + 1;
+                int randomAccountId = randomAccountIdSum.GetValueOrDefault();
                 var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
                 if (AccountSession == null)
                 {
                     HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+
                 }
-                
                 if (!AccountResult.Contains(randomAccountId))
                 {
-                    AccountId = randomAccountId;
+                    AccountId = HttpContext.Session.GetInt32("SessionAccountId");
                 }
             }
             else
@@ -245,12 +246,16 @@ namespace petgoods4all.Controllers
                 var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
 
                 if (AccountSession == null) {
-                    var AccountResult = from r in db.Account select r.id;
+                    var AccountResult = from r in db.ShoppingCart select r.AccountId;
                     //Random rnd = new Random();
                     //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
-                    var randomAccountId = AccountResult.Max() + 1;
-                    HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+                    int? randomAccountIdSum = AccountResult.Max() + 1;
+                    int randomAccountId = randomAccountIdSum.GetValueOrDefault();
                     AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
+                    if (AccountSession == null)
+                    {
+                        HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+                    }
                 }
                 UserId = AccountSession;
             }

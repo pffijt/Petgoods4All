@@ -376,6 +376,14 @@ namespace petgoods4all.Controllers
                 db.SaveChanges();
 
             }
+
+            var deleteShoppingCart = (from d in db.ShoppingCart where d.AccountId == UserIdResult select d).ToList();
+            foreach (var item in deleteShoppingCart)
+            {
+                db.ShoppingCart.Remove(item);
+                db.SaveChanges();
+            }
+
             var check = (from s in db.ShoppingCart where s.AccountId == UserId select s).ToList();
             //Bestellingsmail voor Petgoods4All
             MailMessage mail = new MailMessage();
