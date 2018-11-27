@@ -261,8 +261,8 @@ namespace petgoods4all.Controllers
                 double a = Convert.ToDouble(item.Prijs);
                 double b = a * item.Kwantiteit;
                 c = c + b;
-                decimal d = Convert.ToDecimal(c / 100);
-                string prijs = d.ToString("0.00");
+                decimal d = Convert.ToDecimal(c / 1);
+                string prijs = d.ToString(new System.Globalization.CultureInfo("en-US"));
 
                 ViewBag.Prijs = prijs;
             }

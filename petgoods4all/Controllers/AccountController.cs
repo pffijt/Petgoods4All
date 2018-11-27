@@ -36,7 +36,7 @@ namespace petgoods4all.Controllers
         {
             //HttpContext.Session.Remove();
             HttpContext.Session.Clear();
-            return View("~/Views/Account/Inloggen.cshtml");
+            return Redirect("~/Home/Index");
         }
 
         [HttpPost]

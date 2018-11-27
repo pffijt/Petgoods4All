@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Omzet";
+    ViewData["Title"] = "Winst";
 }
 <script>
     function openCity(evt, cityName) {
@@ -125,8 +125,8 @@
                     case 11:
                         <h3>Inkoopprijs November</h3>
 
-                        string NovemeberInkoopPrijs = ViewBag.NovemeberInkoop.ToString("0.00");
-                        <p>&euro;@NovemeberInkoopPrijs</p>
+                        string NovemberInkoopPrijs = ViewBag.NovemberInkoop.ToString("0.00");
+                        <p>&euro; @NovemberInkoopPrijs</p>
 
                         break;
                     case 12:
@@ -140,7 +140,7 @@
                 </div>
         }
 
-        <h2>Verkoopprijs</h2>
+        <h2>Omzet</h2>
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'verkoop 1')">Januari</button>
             <button class="tablinks" onclick="openCity(event, 'verkoop 2')">Februari</button>
@@ -162,84 +162,84 @@
                 @switch (@item.Datum.Month)
                 {
                     case 1:
-                        <h3>Verkoopprijs Januari </h3>
+                        <h3>Omzet Januari </h3>
 
                         string JanuariPrijs = ViewBag.Januari.ToString("0.00");
                         <p>&euro;@JanuariPrijs</p>
 
                         break;
                     case 2:
-                        <h3>Verkoopprijs Februari </h3>
+                        <h3>Omzet Februari </h3>
 
                         string FebruariPrijs = ViewBag.Februari.ToString("0.00");
                         <p>&euro;@FebruariPrijs</p>
 
                         break;
                     case 3:
-                        <h3>Verkoopprijs Maart </h3>
+                        <h3>Omzet Maart </h3>
 
                         string MaartPrijs = ViewBag.Maart.ToString("0.00");
                         <p>&euro;@MaartPrijs</p>
 
                         break;
                     case 4:
-                        <h3>Verkoopprijs April </h3>
+                        <h3>Omzet April </h3>
 
                         string AprilPrijs = ViewBag.April.ToString("0.00");
                         <p>&euro;@AprilPrijs</p>
 
                         break;
                     case 5:
-                        <h3>Verkoopprijs Mei </h3>
+                        <h3>Omzet Mei </h3>
 
                         string MeiPrijs = ViewBag.Mei.ToString("0.00");
                         <p>&euro;@MeiPrijs</p>
 
                         break;
                     case 6:
-                        <h3>Verkoopprijs Juni </h3>
+                        <h3>Omzet Juni </h3>
 
                         string JuniPrijs = ViewBag.Juni.ToString("0.00");
                         <p>&euro;@JuniPrijs</p>
 
                         break;
                     case 7:
-                        <h3>Verkoopprijs Juli </h3>
+                        <h3>Omzet Juli </h3>
 
                         string JuliPrijs = ViewBag.Juli.ToString("0.00");
                         <p>&euro;@JuliPrijs</p>
 
                         break;
                     case 8:
-                        <h3>Verkoopprijs Augustus </h3>
+                        <h3>Omzet Augustus </h3>
 
                         string AugustusPrijs = ViewBag.Augustus.ToString("0.00");
                         <p>&euro;@AugustusPrijs</p>
 
                         break;
                     case 9:
-                        <h3>Verkoopprijs September </h3>
+                        <h3>Omzet September </h3>
 
                         string SeptemberPrijs = ViewBag.September.ToString("0.00");
                         <p>&euro;@SeptemberPrijs</p>
 
                         break;
                     case 10:
-                        <h3>Verkoopprijs Oktober</h3>
+                        <h3>Omzet Oktober</h3>
 
                         string OktoberPrijs = ViewBag.Oktober.ToString("0.00");
                         <p>&euro;@OktoberPrijs</p>
 
                         break;
                     case 11:
-                        <h3>Verkoopprijs November</h3>
+                        <h3>Omzet November</h3>
 
-                        string NovemeberPrijs = ViewBag.Novemeber.ToString("0.00");
-                        <p>&euro;@NovemeberPrijs</p>
+                        string NovemberPrijs = ViewBag.November.ToString("0.00");
+                        <p>&euro;@NovemberPrijs</p>
 
                         break;
                     case 12:
-                        <h3>Verkoopprijs December</h3>
+                        <h3>Omzet December</h3>
 
                         string DecemberPrijs = ViewBag.December.ToString("0.00");
                         <p>&euro;@DecemberPrijs</p>
@@ -248,108 +248,108 @@
                 }
             </div>
         }
-        <h2>Omzet</h2>
+        <h2>Winst</h2>
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'omzet 1')">Januari</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 2')">Februari</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 3')">Maart</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 4')">April</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 5')">Mei</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 6')">Juni</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 7')">Juli</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 8')">Augustus</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 9')">September</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 10')">Oktober</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 11')">November</button>
-            <button class="tablinks" onclick="openCity(event, 'omzet 12')">December</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 1')">Januari</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 2')">Februari</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 3')">Maart</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 4')">April</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 5')">Mei</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 6')">Juni</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 7')">Juli</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 8')">Augustus</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 9')">September</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 10')">Oktober</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 11')">November</button>
+            <button class="tablinks" onclick="openCity(event, 'Winst 12')">December</button>
         </div>
         @foreach (var item in ViewBag.Orders)
         {
-            <div id="omzet @item.Datum.Month" class="tabcontent">
+            <div id="Winst @item.Datum.Month" class="tabcontent">
                 @switch (@item.Datum.Month)
                 {
                     case 1:
-                        <h3>Omzet Januari </h3>
+                        <h3>Winst Januari </h3>
 
-                        string JanuariOmzet = ViewBag.JanuariOmzet.ToString("0.00");
-                        <p>&euro;@JanuariOmzet</p>
+                        string JanuariWinst = ViewBag.JanuariOmzet.ToString("0.00");
+                        <p>&euro;@JanuariWinst</p>
 
                         break;
                     case 2:
-                        <h3>Omzet Februari </h3>
+                        <h3>Winst Februari </h3>
 
-                        string FebruariOmzet = ViewBag.FebruariOmzet.ToString("0.00");
-                        <p>&euro;@FebruariOmzet</p>
+                        string FebruariWinst = ViewBag.FebruariOmzet.ToString("0.00");
+                        <p>&euro;@FebruariWinst</p>
 
                         break;
                     case 3:
-                        <h3>Omzet Maart </h3>
+                        <h3>Winst Maart </h3>
 
-                        string MaartOmzet = ViewBag.MaartOmzet.ToString("0.00");
-                        <p>&euro;@MaartOmzet</p>
+                        string MaartWinst = ViewBag.MaartOmzet.ToString("0.00");
+                        <p>&euro;@MaartWinst</p>
 
                         break;
                     case 4:
-                        <h3>Omzet April </h3>
+                        <h3>Winst April </h3>
 
-                        string AprilOmzet = ViewBag.AprilOmzet.ToString("0.00");
-                        <p>&euro;@AprilOmzet</p>
+                        string AprilWinst = ViewBag.AprilOmzet.ToString("0.00");
+                        <p>&euro;@AprilWinst</p>
 
                         break;
                     case 5:
-                        <h3>Omzet Mei </h3>
+                        <h3>Winst Mei </h3>
 
-                        string MeiOmzet = ViewBag.MeiOmzet.ToString("0.00");
-                        <p>&euro;@MeiOmzet</p>
+                        string MeiWinst = ViewBag.MeiOmzet.ToString("0.00");
+                        <p>&euro;@MeiWinst</p>
 
                         break;
                     case 6:
-                        <h3>Omzet Juni </h3>
+                        <h3>Winst Juni </h3>
 
-                        string JuniOmzet = ViewBag.JuniOmzet.ToString("0.00");
-                        <p>&euro;@JuniOmzet</p>
+                        string JuniWinst = ViewBag.JuniOmzet.ToString("0.00");
+                        <p>&euro;@JuniWinst</p>
 
                         break;
                     case 7:
-                        <h3>Omzet Juli </h3>
+                        <h3>Winst Juli </h3>
 
-                        string JuliOmzet = ViewBag.JuliOmzet.ToString("0.00");
-                        <p>&euro;@JuliOmzet</p>
+                        string JuliWinst = ViewBag.JuliOmzet.ToString("0.00");
+                        <p>&euro;@JuliWinst</p>
 
                         break;
                     case 8:
-                        <h3>Omzet Augustus </h3>
+                        <h3>Winst Augustus </h3>
 
-                        string AugustusOmzet = ViewBag.AugustusOmzet.ToString("0.00");
-                        <p>&euro;@AugustusOmzet</p>
+                        string AugustusWinst = ViewBag.AugustusOmzet.ToString("0.00");
+                        <p>&euro;@AugustusWinst</p>
 
                         break;
                     case 9:
-                        <h3>Omzet September </h3>
+                        <h3>Winst September </h3>
 
-                        string SeptemberOmzet = ViewBag.SeptemberOmzet.ToString("0.00");
-                        <p>&euro;@SeptemberOmzet</p>
+                        string SeptemberWinst = ViewBag.SeptemberOmzet.ToString("0.00");
+                        <p>&euro;@SeptemberWinst</p>
 
                         break;
                     case 10:
-                        <h3>Omzet Oktober</h3>
+                        <h3>Winst Oktober</h3>
 
-                        string OktoberOmzet = ViewBag.OktoberOmzet.ToString("0.00");
-                        <p>&euro;@OktoberOmzet</p>
+                        string OktoberWinst = ViewBag.OktoberOmzet.ToString("0.00");
+                        <p>&euro;@OktoberWinst</p>
 
                         break;
                     case 11:
-                        <h3>Omzet November</h3>
+                        <h3>Winst November</h3>
 
-                        string NovemeberOmzet = ViewBag.NovemeberOmzet.ToString("0.00");
-                        <p>&euro;@NovemeberOmzet</p>
+                        string NovemberWinst = ViewBag.NovemberOmzet.ToString("0.00");
+                        <p>&euro; @NovemberWinst</p>
 
                         break;
                     case 12:
-                        <h3>Omzet December</h3>
+                        <h3>Winst December</h3>
 
-                        string DecemberOmzet = ViewBag.DecemberOmzet.ToString("0.00");
-                        <p>&euro;@DecemberOmzet</p>
+                        string DecemberWinst = ViewBag.DecemberOmzet.ToString("0.00");
+                        <p>&euro;@DecemberWinst</p>
 
                         break;
                 }

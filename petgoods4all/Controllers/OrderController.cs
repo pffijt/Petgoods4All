@@ -93,7 +93,7 @@ namespace petgoods4all.Controllers
 
             return View();
         }
-
+/* 
         [HttpPost]
         public ActionResult OrderProducts(string prijs)
         {
@@ -183,7 +183,7 @@ namespace petgoods4all.Controllers
             Console.WriteLine("Mail sent");
             
             return OrderHistory();
-        }
+        }*/
         [HttpPost]
         public async Task<ActionResult> Pay(string prijs)
         {
@@ -197,7 +197,7 @@ namespace petgoods4all.Controllers
             // string o_aanhef, string o_name, string o_postal, string o_address, string o_number
             var environment = new SandboxEnvironment("ATAmdaFGY2Pz6CH83fmdK8OaXu2Wd8b9fLDyuU8X3SNiAzvu2_Ks4IU3wPiNbpE74nWIkhb4jN_7pz9E", "EOksjziNOaGEYh-OroCWTFT_EKDlqJEIpsrZLMtUhmYNxgDZ_v6KGwyL1MFcWJ-dfv97PApRKroAAT0g");
             var Pay_client = new PayPalHttpClient(environment);
-            
+            Console.WriteLine("Prijs:"+ prijs);
             var payment = new PayPal.v1.Payments.Payment()
             {
                 Intent = "sale",
@@ -268,7 +268,7 @@ namespace petgoods4all.Controllers
             {
                 statusCode = httpException.StatusCode;
                 var debugId = httpException.Headers.GetValues("PayPal-Debug-Id").FirstOrDefault();
-                Console.WriteLine("Paypal_error: "+debugId);
+                Console.WriteLine("Paypal_error: "+debugId + statusCode);
                 return Redirect("http://localhost:56003/");
             }
             return Redirect("http://localhost:56003/");
@@ -292,7 +292,7 @@ namespace petgoods4all.Controllers
                 PayerId = PayerID
             });
             BraintreeHttp.HttpResponse response = await Pay_client.Execute(request);
-            Console.WriteLine("Shiet man");
+          
 
             if(o_aanhef == null)
             {

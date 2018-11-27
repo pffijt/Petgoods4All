@@ -57,7 +57,6 @@
                 <button type="submit" asp-controller="Voorraad" 
                 asp-action="AddToShoppingCart" asp-route-identication="@Html.Raw(a.Id)" 
                 class="btn btn-warning col-sm-4">Naar winkelwagen</button>
-                  &nbsp;&nbsp;
                 <form action="" method="POST">
                     <button  class="btn btn-danger col-sm-1" asp-controller="Home" asp-action="addWishList"
                     asp-route-identication="@Html.Raw(a.Id)" type="submit">&#10084;</button>
@@ -112,7 +111,7 @@
 </p>
 
 <div id="Reviews">
-    <h3>Reviews</h3>
+    <h3>Beoordelingen</h3>
     <hr />
     <!--Add review-->
     <!-- Alleen laten zien wanneer user is ingelogt-->
@@ -168,8 +167,8 @@
                         }
                         }
     @ViewBag.MaxAmountOfItems
-    <button type="button" onclick="@(ViewBag.MaxAmountOfItems = ViewBag.MaxAmountOfItems + 5)">Read More</button>
-    
+    <!--<button type="button" onclick="@(ViewBag.MaxAmountOfItems = ViewBag.MaxAmountOfItems + 5)">Read More</button>
+    -->
     
 </div>
 </div>
