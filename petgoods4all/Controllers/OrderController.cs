@@ -59,7 +59,8 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                return View("~/Views/Account/Inloggen.cshtml");
+                UserId = HttpContext.Session.GetInt32("SessionAccountId");
+                int? UserIdResult = HttpContext.Session.GetInt32("SessionAccountId");
             }
             else
             {
@@ -80,7 +81,8 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                return Redirect("~/Views/Account/Inloggen.cshtml");
+                UserId = HttpContext.Session.GetInt32("SessionAccountId");
+                int? UserIdResult = HttpContext.Session.GetInt32("SessionAccountId");
             }
             else
             {
@@ -99,9 +101,19 @@ namespace petgoods4all.Controllers
         {
             var db = new ModelContext();
 
+            //als UID leeg is betekent dit dat de user niet geregistreerd is en halen wij het ongeregistreerde "AccountId" op uit de session
             var UserId = HttpContext.Session.GetInt32("UID");
-            int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
-
+            int? UserIdResult = 0;
+            if (UserId == null)
+            {
+                UserId = HttpContext.Session.GetInt32("SessionAccountId");
+                UserIdResult = HttpContext.Session.GetInt32("SessionAccountId");
+            }
+            else
+            {
+                UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
+            }
+            //ShoppingCart data ophalen die gelijk is aan het meegegeven Userid
             var ShoppingCartResult = from s in db.ShoppingCart where s.AccountId == UserId select s;
 
             //MaxId
@@ -115,7 +127,7 @@ namespace petgoods4all.Controllers
                 MaxId = result.Max();
             }
 
-
+            //Nieuwe Order aanmaken
             Order order = new Order
             {
                 Id = MaxId + 1,
@@ -124,7 +136,7 @@ namespace petgoods4all.Controllers
                 Prijs = prijs,
                 OrderStatus = "Pending",
             };
-
+            //Order Saven
             db.Order.Add(order);
             db.SaveChanges();
 
@@ -140,15 +152,18 @@ namespace petgoods4all.Controllers
                     MaxOrderedProductsId = resultt.Max();
                 }
 
+                //Als de voorraad leeg is kan het product niet worden besteld, user wordt doorverweven naar een error pagina
                 var voorraad = (from v in db.Voorraad where v.Id == item.VoorraadId select v).Single();
                 if (voorraad.Kwantiteit < 0)
                 {
                     ViewBag.Error = "NietInVoorraad";
                     return Redirect("~/Views/Order/OrderError.cshtml");
                 }
+                //Na het bestellen voorraad verlagen door bestelde producten
                 voorraad.Kwantiteit -= item.Quantity;
                 db.SaveChanges();
 
+                //Alle producten die besteld zijn worden in de database gezet
                 OrderedProducts orderedProducts = new OrderedProducts
                 {
                     Id = MaxOrderedProductsId + 1,
@@ -159,9 +174,6 @@ namespace petgoods4all.Controllers
 
                 db.OrderedProducts.Add(orderedProducts);
                 db.SaveChanges();
-
-
-                
             }
             
             var check = (from s in db.ShoppingCart where s.AccountId == UserId select s).ToList();
@@ -188,6 +200,7 @@ namespace petgoods4all.Controllers
         public async Task<ActionResult> Pay(string prijs)
         {
             var db = new ModelContext();
+            //if userId null "UserId = HttpContext.Session.GetInt32("SessionAccountId");" en de user zelf zijn data laten invullen
             var UserId = HttpContext.Session.GetInt32("UID");
             int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
             string o_name =  (from s in db.Account where s.id == UserIdResult select s.achternaam).Single();
@@ -268,9 +281,10 @@ namespace petgoods4all.Controllers
             {
                 statusCode = httpException.StatusCode;
                 var debugId = httpException.Headers.GetValues("PayPal-Debug-Id").FirstOrDefault();
-                Console.WriteLine("Paypal_error: "+debugId);
+                Console.WriteLine("Paypal_error: "+debugId + statusCode);
                 return Redirect("http://localhost:56003/");
             }
+
             return Redirect("http://localhost:56003/");
         }
         public async Task<ActionResult> OrderProducts()
@@ -300,7 +314,17 @@ namespace petgoods4all.Controllers
             }
             var db = new ModelContext();
             var UserId = HttpContext.Session.GetInt32("UID");
-            int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
+            int? UserIdResult = 0;
+
+            if (UserId == null)
+            {
+                UserId = HttpContext.Session.GetInt32("SessionAccountId");
+                UserIdResult = HttpContext.Session.GetInt32("SessionAccountId");
+            }
+            else
+            {
+                UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
+            }
 
             var ShoppingCartResult = from s in db.ShoppingCart where s.AccountId == UserId select s;
             Console.WriteLine(o_name+o_postal+o_address+o_number);

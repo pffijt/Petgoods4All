@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using petgoods4all.Models;
 using petgoods4all.Controllers;
+using System.Globalization;
 
 namespace petgoods4all.Controllers
 {
@@ -168,7 +170,20 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                AccountId = 0;
+                var AccountResult = from r in db.Account select r.id;
+                //Random rnd = new Random();
+                //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
+                var randomAccountId = AccountResult.Max() + 1;
+                var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
+                if (AccountSession == null)
+                {
+                    HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+                }
+                
+                if (!AccountResult.Contains(randomAccountId))
+                {
+                    AccountId = randomAccountId;
+                }
             }
             else
             {
@@ -192,12 +207,12 @@ namespace petgoods4all.Controllers
 
             //if of user ingelogd is session of met de bestaande inlog is het httpcontext.current.user
             //if (httpcontext.current.user != null){
-            if (AccountId == 0)
-            {
-                return View("~/Views/Account/Inloggen.cshtml");
-            }
-            else
-            {
+            //if (AccountId == 0)
+            //{
+            //    return View("~/Views/Account/Inloggen.cshtml");
+            //}
+            //else
+            //{
                 ShoppingCart shoppingCart = new ShoppingCart
                 {
                     Id = MaxId + 1,
@@ -209,14 +224,14 @@ namespace petgoods4all.Controllers
 
                 db.ShoppingCart.Add(shoppingCart);
                 db.SaveChanges();
-            }
+            //}
 
             //}
             //else{
             // return View("~/Views/Account/Inloggen.cshtml");
             //}
 
-            return ShoppingCart();
+            return RedirectToAction("ShoppingCart", "Voorraad");
         }
 
         public ActionResult ShoppingCart()
@@ -225,6 +240,20 @@ namespace petgoods4all.Controllers
             //make query to find what user is logged in or get products from session
 
             var UserId = HttpContext.Session.GetInt32("UID");
+
+            if (UserId == null) {
+                var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
+
+                if (AccountSession == null) {
+                    var AccountResult = from r in db.Account select r.id;
+                    //Random rnd = new Random();
+                    //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
+                    var randomAccountId = AccountResult.Max() + 1;
+                    HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+                    AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
+                }
+                UserId = AccountSession;
+            }
 
             //item uit de voorraad met prodcut id
             var result = from s in db.ShoppingCart where s.AccountId == UserId select s;
@@ -258,16 +287,16 @@ namespace petgoods4all.Controllers
             foreach (var item in productList)
             {
                 
-                double a = Convert.ToDouble(item.Prijs);
+                double a = double.Parse(item.Prijs);
                 double b = a * item.Kwantiteit;
                 c = c + b;
                 decimal d = Convert.ToDecimal(c / 100);
-                string prijs = d.ToString("0.00");
+                string prijs = d.ToString(new CultureInfo("en-US"));
 
                 ViewBag.Prijs = prijs;
             }
 
-            return View("~/Views/Voorraad/ShoppingCart.cshtml");
+            return View(); ;
         }
         [HttpPost]
         public ActionResult RemoveFromShoppingCart(int productId)
@@ -279,9 +308,9 @@ namespace petgoods4all.Controllers
             
                 db.ShoppingCart.Remove(result);
                 db.SaveChanges();
-            
 
-            return ShoppingCart();
+
+            return RedirectToAction("ShoppingCart", "Voorraad");
         }
     }
 }
