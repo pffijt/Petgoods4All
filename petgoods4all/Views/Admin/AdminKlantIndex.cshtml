@@ -11,81 +11,130 @@
     <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
     <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount">Nieuwe klant</a><br />
 </p>
-<table class="table" style="background-color:#ffe8d3;">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.voornaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.achternaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.straatnaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.huisnummer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.postcode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.provincie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.telefoonnummer)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Admin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.voornaam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.achternaam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.straatnaam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.huisnummer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.postcode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.provincie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telefoonnummer)
-            </td>
-            <td>
-                <a asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@item.id">Bewerken</a>
-                <a asp-action="AdminKlantDetails" asp-controller="Admin" asp-route-id="@item.id">Details</a>
-                <a asp-action="AdminKlantDelete" asp-controller="Admin" asp-route-id="@item.id">Verwijder</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div>
+    <table class="table" style="background-color:#ffe8d3;">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Admin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.voornaam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.achternaam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.straatnaam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.huisnummer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.postcode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.provincie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.telefoonnummer)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.voornaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.achternaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.straatnaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.huisnummer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.postcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.provincie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.telefoonnummer)
+                    </td>
+                    <td>
+                        <a asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@item.id">Bewerken</a>
+                        <a asp-action="AdminKlantDetails" asp-controller="Admin" asp-route-id="@item.id">Details</a>
+                        <a asp-action="AdminKlantDelete" asp-controller="Admin" asp-route-id="@item.id">Verwijder</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!--begin page pagination-->
+    @{
+        string fvis;
+        string lvis;
+        var second = ViewBag.paginationindex - 1;
+        var third = ViewBag.paginationindex + 1;
+        if (second != 0)
+        {
+            fvis = "visible";
+        }
+        else
+        {
+            fvis = "hidden";
+        }
+        if (third >= (ViewBag.count / 16) + 2)
+        {
+            lvis = "hidden";
+        }
+        else
+        {
+            lvis = "visible";
+        }
+        if (second < 1)
+        {
+            second = 1;
+        }
+    }
+    <div class="row">
+        <div class="text-center">
+            <ul class="pagination">
+                <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+                <li class="page-item" style="visibility:@fvis">
+                    <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex" asp-route-P="@second">@second</a>
+                </li>
+                <li class="page-item">
+                    <a style="color:black;" class="page-link" asp-area="" asp-controller="Admin"
+                       asp-action="AdminKlantIndex" asp-route-P="@ViewBag.paginationindex">@ViewBag.paginationindex</a>
+                </li>
+                <li class="page-item" style="visibility:@lvis">
+                    <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex" asp-route-P="@third">@third</a>
+                </li>
+                <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+            </ul>
+        </div>
+    </div>
+    <!--end page pagination-->
+</div>

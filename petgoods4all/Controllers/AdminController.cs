@@ -332,10 +332,26 @@ namespace petgoods4all.Controllers
             return View();
         }
         //Roept pagina op met de lijsten van Account of Product
-        public ActionResult AdminKlantIndex()
+        public ActionResult AdminKlantIndex(int P)
         {
             using (db)
             {
+                ViewBag.firstnum = (P * 16) - 15;
+                ViewBag.secondnum = 16 * P;
+                ViewBag.paginationindex = P + 1;
+
+                var query = from acc in db.Account select acc;
+
+                
+                    ViewBag.count = query.Count();
+                
+                 
+
+                if (ViewBag.secondnum > ViewBag.count)
+                {
+                    ViewBag.secondnum = ViewBag.count;
+                }
+
                 var userId = HttpContext.Session.GetInt32("UID");
                 ViewBag.userId = userId;
                 var isAdmin = from acc in db.Account
@@ -354,25 +370,42 @@ namespace petgoods4all.Controllers
             }
         }
 
-        public ActionResult AdminVoorraadIndex()
+        public ActionResult AdminVoorraadIndex(int P)
         {
             using (db)
-            {   var userId = HttpContext.Session.GetInt32("UID");
+            {
+                P = 1;
+                ViewBag.firstnum = (P * 16) - 15;
+                ViewBag.secondnum = 16 * P;
+                ViewBag.paginationindex = P;
+
+                IQueryable<Voorraad> query = from v in db.Voorraad select v;
+                
+                var result = query.Skip(((P * 16) - 16)).Take(16);
+                var voorraadList = result.ToList();
+                ViewBag.count = query.Count();
+                ViewBag.Voorraad = voorraadList;
+                if (ViewBag.secondnum > ViewBag.count)
+                {
+                    ViewBag.secondnum = ViewBag.count;
+                }
+
+                var userId = HttpContext.Session.GetInt32("UID");
                 ViewBag.userId = userId;
                 var isAdmin = from acc in db.Account
                               where acc.id == userId
                               select acc.Admin;
                 var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
-                {
-                    var voorraad = db.Voorraad.ToList();
-
-                    return View(voorraad);
-                }
-                else
-                {
-                    return RedirectToAction("ToegangGeweigerd");
-                }
+                //if (loggedinUser == "true")
+                //{
+                var voorraad = db.Voorraad.ToList();
+                
+                return View(voorraadList);
+                //}
+                //else
+                //{
+                //    return RedirectToAction("ToegangGeweigerd");
+                //}
             }
         }
         //Roept pagina op met de Details van Account of Product
