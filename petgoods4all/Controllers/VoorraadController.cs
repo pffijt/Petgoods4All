@@ -243,6 +243,7 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
 
             if (UserId == null) {
+                ViewBag.AnonymousU = true;
                 var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
 
                 if (AccountSession == null) {
@@ -258,6 +259,10 @@ namespace petgoods4all.Controllers
                     }
                 }
                 UserId = AccountSession;
+            }
+            else
+            {
+                ViewBag.AnonymousU = false;
             }
 
             //item uit de voorraad met prodcut id
