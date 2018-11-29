@@ -332,7 +332,7 @@ namespace petgoods4all.Controllers
             return View();
         }
         //Roept pagina op met de lijsten van Account of Product
-        public ActionResult AdminKlantIndex(int P)
+        public ActionResult AdminKlantIndex(int P=1)
         {
             using (db)
             {
@@ -370,11 +370,11 @@ namespace petgoods4all.Controllers
             }
         }
 
-        public ActionResult AdminVoorraadIndex(int P)
+        public ActionResult AdminVoorraadIndex(int P=1)
         {
             using (db)
             {
-                P = 1;
+                
                 ViewBag.firstnum = (P * 16) - 15;
                 ViewBag.secondnum = 16 * P;
                 ViewBag.paginationindex = P;
