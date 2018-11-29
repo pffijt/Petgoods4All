@@ -20,7 +20,14 @@
 
                 <!--<button type="submit" asp-controller="Order" 
                 asp-action="OrderProducts" class="btn btn-success col-sm-4" align="right">Bestellen</button>-->
-                <button asp-controller="Order" asp-action="Pay" class="btn btn-success col-sm-4" align="right">Bestellen</button>
+                @if(ViewBag.AnonymousU == false)
+                {
+                    <button asp-controller="Order" asp-action="Pay" class="btn btn-success col-sm-4" align="right">Bestellen</button>
+                }
+                else
+                {
+                    <button asp-controller="Order" asp-action="CustOrder" class="btn btn-success col-sm-4" align="right">Bestellen</button>
+                }
 
             </h2>
         </div>
