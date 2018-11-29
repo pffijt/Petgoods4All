@@ -43,18 +43,18 @@ button:hover {
     }
     #browsProduct,
     img {
-        margin: 5px 0px 0px 15px;
+        margin: 5px 0px 0px 5px;
         border-radius: 10%;
         text-align: center;
     }
     #browsProductContainer {
         background-color: #ffddbf;
         padding: 20px 5px 0px 0px;
-        margin: 20px 15px 0px 15px;
+        margin: 20px 15px 0px -80px;
         border-radius: 10%;
         text-align: center;
-        width: 180px;
-        height: 225px;
+        width: 220px;
+        height: 265px;
     }
     button {
         margin: 0px 0px 0px 30px;

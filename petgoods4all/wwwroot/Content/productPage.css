@@ -26,6 +26,13 @@ footer {
     text-align: center;
 }
 
+textarea {
+    width: 400px;
+    max-width: 400px;
+    height: 250px;
+    max-height: 250px;
+}
+
 @media only screen and (max-width: 767px) {
     /* phones */
     img {
@@ -41,5 +48,10 @@ footer {
     }
     h5 {
         margin: 10px 0px 10px 20px;
+    }
+    textarea {
+        width: 50px;
+        height: 100px;
+        max-height: 450px;
     }
 }

@@ -125,7 +125,7 @@
                 }
             </select>
                 <br>
-                <textarea rows="4" cols="50" maxlength="250" id="description" name="description"> </textarea><br>
+                <textarea id="description" name="description"> </textarea><br>
                 @foreach (var item in ViewBag.Model)
                 {
                     <input type="text" style="visibility:hidden" id="productId" name="productId" value="@item.Id">

@@ -5,9 +5,10 @@
 <br><br><br>
 
 <!-- HEADER, ORDER AND PRICE INDICATOR-->
+<div style="background-color:#ffe8d3;">
 <div class="row">
     <form class="form-products" method="post" asp-controller="Order" asp-action="OrderProducts">
-        <div class="col-md-6">
+        <div class="col-md-3">
 
             <h2>Prijs: &#8364; @ViewBag.Prijs</h2>
             <input type="text" value="@ViewBag.Prijs" name="prijs" id="prijs" style="visibility:hidden">
@@ -23,6 +24,7 @@
 
             </h2>
         </div>
+        <div class="col-md-3"></div>
     </form>
 </div>
 
@@ -42,16 +44,20 @@
     @foreach (var item in ViewBag.ShoppingCart)
     {
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <br>
                 <img src="@item.image" width="180px" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" />
             </div>
-            <div class="col-md-2">
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <h3>@item.Naam</h3>
                 <p>Kwantiteit: @item.Kwantiteit</p>
                 <p>Prijs: &#8364; @item.Prijs</p>
             </div>
-            <div class="col-md-8">
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <br><br>
                 <form class="form-products" method="post" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart">
                     <button type="submit" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Id" class="btn btn-danger col-sm-4" align="right">Verwijderen</button>
@@ -61,6 +67,7 @@
         <br>
         <hr>
     }
+</div>
 </div>
 
 
