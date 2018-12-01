@@ -170,7 +170,7 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                var AccountResult = from r in db.ShoppingCart select r.AccountId;
+                var AccountResult = from r in db.Account select r.id;
                 //Random rnd = new Random();
                 //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
                 int? randomAccountIdSum = AccountResult.Max() + 1;
@@ -247,7 +247,7 @@ namespace petgoods4all.Controllers
                 var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
 
                 if (AccountSession == null) {
-                    var AccountResult = from r in db.ShoppingCart select r.AccountId;
+                    var AccountResult = from r in db.Account select r.id;
                     //Random rnd = new Random();
                     //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
                     int? randomAccountIdSum = AccountResult.Max() + 1;

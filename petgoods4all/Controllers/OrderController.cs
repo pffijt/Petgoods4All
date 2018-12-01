@@ -441,7 +441,19 @@ namespace petgoods4all.Controllers
             client.EnableSsl = true;
             client.Send(mail);
             Console.WriteLine("KlantMail sent ");
-            return OrderHistory();
+            var AnonymousUser = HttpContext.Session.GetInt32("SessionAccountId");
+            if(AnonymousUser == null)
+            {
+                return OrderHistory();
+            }
+            else
+            {
+                //var delUser = (from s in db.Account where s.id == UserId select s).Single();
+                //db.Account.Remove(delUser);
+                //db.SaveChanges();
+                HttpContext.Session.SetInt32("SessionAccountId", UserId.GetValueOrDefault(0)+1);
+                return Redirect("http://localhost:56003/");
+            }
         }
     }
 }
