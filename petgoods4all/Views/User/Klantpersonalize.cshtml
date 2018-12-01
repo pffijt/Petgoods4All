@@ -1,0 +1,19 @@
+@{
+    ViewBag.Title = "Vandaag nog Persoonlijker!";
+}
+<br/><br/><br/><br/>
+<div class="container-fluid" style="background-color:#ffe8d3;">
+@if(ViewBag.empty == true)
+{
+<h1>Selecteer je huisdier!</h1>
+<p>Hiermee select je huisdier en maak je een gepersonaliseerde pagina aan.</p>
+}
+@if(ViewBag.empty == false)
+{
+<h1>Je gepersonaliseerde Pagina!</h1>
+}
+else
+{
+    <h1>ERROR</h1>
+}
+</div>

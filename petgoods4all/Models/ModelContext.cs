@@ -17,6 +17,8 @@ namespace petgoods4all.Models
         public DbSet<Wishlist> Wishlist { get; set; }
         public DbSet<Review> Review { get; set; }
 
+        public DbSet<Personal_animal> Personal_Animal {get; set;}
+
         //this method is run automatically by EF the first time we run the application
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

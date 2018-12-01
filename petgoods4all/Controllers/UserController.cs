@@ -29,7 +29,28 @@ namespace petgoods4all.Controllers
         {
             return View();
         }
-
+        public ActionResult Klantpersonalize()
+        {
+            var userId = HttpContext.Session.GetInt32("UID");
+            if(userId == null)
+            {
+                return Redirect("http://localhost:56003/");
+            }
+            using(db)
+            {
+                var checkUID = (from a in db.Account where userId == a.id select a.id).Single();
+                var checkPA = (from a in db.Personal_Animal where checkUID == a.user_id select a).Any();
+                if(checkPA == false)
+                {
+                    ViewBag.empty = true;
+                }
+                else
+                {
+                    ViewBag.empty = false;
+                }
+            }
+            return View();
+        }
         public ActionResult UserBeheer()
         {
              // var UserId = HttpContext.Session.GetInt32("UID");

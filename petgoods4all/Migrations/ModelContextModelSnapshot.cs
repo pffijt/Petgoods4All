@@ -54,7 +54,7 @@ namespace petgoods4all.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AccountId");
+                    b.Property<int?>("AccountId");
 
                     b.Property<DateTime>("Datum");
 
@@ -83,6 +83,20 @@ namespace petgoods4all.Migrations
                     b.ToTable("OrderedProducts");
                 });
 
+            modelBuilder.Entity("petgoods4all.Models.Personal_animal", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("animal");
+
+                    b.Property<int>("user_id");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Personal_Animal");
+                });
+
             modelBuilder.Entity("petgoods4all.Models.Review", b =>
                 {
                     b.Property<int>("Id")
@@ -106,7 +120,7 @@ namespace petgoods4all.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AccountId");
+                    b.Property<int?>("AccountId");
 
                     b.Property<int>("Quantity");
 

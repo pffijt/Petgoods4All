@@ -36,7 +36,7 @@ namespace petgoods4all.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    AccountId = table.Column<int>(nullable: false),
+                    AccountId = table.Column<int>(nullable: true),
                     Datum = table.Column<DateTime>(nullable: false),
                     Prijs = table.Column<string>(nullable: true),
                     OrderStatus = table.Column<string>(nullable: true)
@@ -62,6 +62,20 @@ namespace petgoods4all.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Personal_Animal",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    user_id = table.Column<int>(nullable: false),
+                    animal = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Personal_Animal", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Review",
                 columns: table => new
                 {
@@ -84,7 +98,7 @@ namespace petgoods4all.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     VoorraadId = table.Column<int>(nullable: false),
-                    AccountId = table.Column<int>(nullable: false),
+                    AccountId = table.Column<int>(nullable: true),
                     Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -135,6 +149,9 @@ namespace petgoods4all.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderedProducts");
+
+            migrationBuilder.DropTable(
+                name: "Personal_Animal");
 
             migrationBuilder.DropTable(
                 name: "Review");
