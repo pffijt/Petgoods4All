@@ -39,6 +39,21 @@ namespace petgoods4all.Controllers
             return Redirect("~/Home/Index");
         }
 
+
+        [HttpPost]
+        public JsonResult CheckEmail(string inputEmail){
+            var db = new ModelContext();
+            System.Threading.Thread.Sleep(200);
+            var SeachData = db.Account.Where( x => x.email == inputEmail).SingleOrDefault();
+            if(SeachData != null)
+            {
+                return Json(1);
+            }
+            else{
+                return Json(0);
+            }
+        }
+
         [HttpPost]
         public ActionResult Aanmelden(string inputEmail, string inputPassword, string inputHuisnummer,string inputPostcode, string inputProvincie, string confirmPassword, string inputVoornaam, string inputAchternaam, string inputStraatnaam, string inputTelefoonnummer)
         {
@@ -88,7 +103,7 @@ namespace petgoods4all.Controllers
             message.From = new MailAddress(fromEmail);
             message.To.Add(email);
             message.Subject = "Activatie mail";
-            message.Body = @"Klik op de link om uw account te activeren http://localhost:56003/Account/Inloggen";
+            message.Body = @"Klik op de link om uw account te activeren http://localhost:56003/Account/Verification?uid=" + (MaxId + 1);
             message.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
             using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
@@ -102,6 +117,20 @@ namespace petgoods4all.Controllers
             }
 
             return Redirect("Inloggen");
+        }
+
+        public ActionResult Verification(string uid)
+        {
+            var db = new ModelContext();
+            int a = Int32.Parse(uid);
+            var result = (from acc in db.Account where a == acc.id select acc.IsEmailVerified).Single();
+            
+            if (result == false)
+            {
+                (from acc in db.Account where a == acc.id select acc).ToList().ForEach(acc => acc.IsEmailVerified = true);
+            }
+            db.SaveChanges();
+            return Redirect("http://localhost:56003");
         }
         [HttpPost]
         public ActionResult Inloggen(string inputEmail, string inputPassword)
