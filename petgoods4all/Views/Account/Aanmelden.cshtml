@@ -31,7 +31,28 @@
             }
         }
     </script>
-    <form class="form-signin" method="post"><br><br><br><br><br><br><br>
+    <script>
+        function EmailCheck(){
+            $("#status").html("Checking...");
+            $.post("@Url.Action("CheckEmail","Account")",
+            {
+                inputEmail: $("#inputEmail").val()
+            },
+            function(data){
+                if (data == 0){
+                    $("#status").html('<font color="Green"> E-mail is beschikbaar</font>')
+                    $("#inputEmail").css("border-color", "Green");
+                }
+                else{
+                    $("#status").html('<font color="Red"> Er bestaat al een account met deze e-mail</font>')
+                    $("#inputEmail").css("border-color", "Red");
+                }
+            });
+        }
+        </script>
+
+    <form class="form-signin" method="post">
+        <br><br><br><br><br><br><br>
 
         <div class="container-fluid" style="background-color:#ffe8d3;">
             <br/>
@@ -70,8 +91,9 @@
                 <input type="text" id="inputTelefoonnummer" name="inputTelefoonummer" class="form-control" placeholder="Telefoonnummer" required>
             </div>
             <div class="form-label-group">
+                <span id='status'></span><br>
                 <label for="inputEmail">Email-adres</label>
-                <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email-adres" required autofocus>
+                <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email-adres" onkeyup='EmailCheck();' required>
             </div><br>
             <div class="form-label-group">
                 <label for="inputPassword">Wachtwoord</label>

@@ -39,6 +39,20 @@ namespace petgoods4all.Controllers
         }
 
         [HttpPost]
+        public JsonResult CheckEmail(string inputEmail){
+            var db = new ModelContext();
+            System.Threading.Thread.Sleep(200);
+            var SeachData = db.Account.Where( x => x.email == inputEmail).SingleOrDefault();
+            if(SeachData != null)
+            {
+                return Json(1);
+            }
+            else{
+                return Json(0);
+            }
+        }
+
+        [HttpPost]
         public ActionResult Aanmelden(string inputEmail, string inputPassword, string inputHuisnummer,string inputPostcode, string inputProvincie, string confirmPassword, string inputVoornaam, string inputAchternaam, string inputStraatnaam, string inputTelefoonnummer)
         {
             int MaxId;
