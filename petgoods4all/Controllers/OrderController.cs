@@ -24,6 +24,11 @@ namespace petgoods4all.Controllers
             return View();
         }
 
+        public ActionResult Bedankt()
+        {
+            return View();
+        }
+
         public ActionResult ViewOrder(int orderId)
         {
             var db = new ModelContext();
@@ -202,6 +207,10 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             //if userId null "UserId = HttpContext.Session.GetInt32("SessionAccountId");" en de user zelf zijn data laten invullen
             var UserId = HttpContext.Session.GetInt32("UID");
+            o_email = o_email.Replace(" ","_");
+            o_postal = o_postal.Replace(" ","_");
+            o_address = o_address.Replace(" ","_");
+            o_number = o_number.Replace(" ","_");
             if(UserId == null)
             {
                 UserId = HttpContext.Session.GetInt32("SessionAccountId");
@@ -452,7 +461,7 @@ namespace petgoods4all.Controllers
                 //db.Account.Remove(delUser);
                 //db.SaveChanges();
                 HttpContext.Session.SetInt32("SessionAccountId", UserId.GetValueOrDefault(0)+1);
-                return Redirect("http://localhost:56003/");
+                return Redirect("http://localhost:56003/Order/Bedankt");
             }
         }
     }
