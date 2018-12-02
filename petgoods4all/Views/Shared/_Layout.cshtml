@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+@using petgoods4all.Models;
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -94,17 +95,20 @@
                     @if (Context.Session.GetInt32("UID") != null)
                     {
                         var UserID = Context.Session.GetInt32("UID");
-                        var Admin = new ModelContext().Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
-                        var User = new ModelContext().Account.FirstOrDefault(x => x.id == UserID && x.Admin == false);
+                        var AdminIngelogt = new ModelContext().Account.FirstOrDefault(v => v.id == UserID && v.Admin == true);
+                        var UserIngelogt = new ModelContext().Account.FirstOrDefault(v => v.id == UserID && v.Admin == false);
                         
-                        if (Admin != null)
+                        @if (AdminIngelogt != null)
                         {
-                            <li><a asp-area="" asp-controller="Admin" asp-action="AdminHome">Admin Home</a></li>
+                            <li><a asp-area="" asp-controller="Admin" asp-action="AdminHome">
+                            <span class="glyphicon glyphicon-user"></span></a></li>
                         }
-                        if (User != null)
+                        @if (UserIngelogt != null)
                         {
-                            <li><a asp-area="" asp-controller="User" asp-action="UserHome">Gebruikers Home</a></li>
+                            <li><a asp-area="" asp-controller="User" asp-action="UserHome">
+                            <span class="glyphicon glyphicon-user"></span></a></li>
                         }
+                    }
                 </ul>
             </div>
         </div>
