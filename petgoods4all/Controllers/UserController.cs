@@ -57,23 +57,26 @@ namespace petgoods4all.Controllers
         {
             int MaxId;
             var userId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(0);
-           
-                var result = from acc in db.Personal_animal select acc.id;
-                if (!result.Any())
+                var checkAnimal = (from s in db.Personal_animal where userId == s.id select s).Any();
+                if(checkAnimal == false)
                 {
-                    MaxId = 0;
+                    var result = from acc in db.Personal_animal select acc.id;
+                    if (!result.Any())
+                    {
+                        MaxId = 0;
+                    }
+                    else
+                    {
+                        MaxId = result.Max();
+                    }
+                    Personal_animal b = new Personal_animal
+                    {
+                        id = MaxId + 1,
+                        user_id = userId,
+                        animal = a,
+                    };
+                    db.Personal_animal.Add(b);
                 }
-                else
-                {
-                    MaxId = result.Max();
-                }
-                Personal_animal b = new Personal_animal
-                {
-                    id = MaxId + 1,
-                    user_id = userId,
-                    animal = a,
-                };
-                db.Personal_animal.Add(b);
            
             return new EmptyResult();
         }
