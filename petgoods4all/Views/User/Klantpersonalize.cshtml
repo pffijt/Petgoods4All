@@ -1,0 +1,30 @@
+@{
+    ViewBag.Title = "Vandaag nog Persoonlijker!";
+}
+<br/><br/><br/><br/>
+<div class="container-fluid" style="background-color:#ffe8d3;">
+@if(ViewBag.empty == true)
+{
+<div>
+<h1 style="padding: 20px 20px 20px 20px;">Selecteer uw huisdier(en)!</h1>
+<p>  Hiermee select je huisdier(en) en maak je een gepersonaliseerde site!<br/> De thuispagina zal hiermee veranderen op uw huisdier(en). Petgoods4All staat voor een warme gepersonaliseerde website!</p>
+<form action="" method="POST">
+    <div class="checkbox" style="padding: 20px 20px 20px 20px;">
+      <label><input type="checkbox" name="personCat" id="personCat" value="true">Katten</label><br/>
+      <label><input type="checkbox" name="personDog" id="personDog" value="true">Honden</label><br/>
+      <label><input type="checkbox" name="personFish" id="personFish" value="true">Vissen</label><br/>
+      <label><input type="checkbox" name="personReptile" id="personReptile" value="true">Reptielen</label><br/><br/>
+    </div>
+    <button  class="btn btn-danger col-sm-1"  type="submit" style="margin: 20px 20px 20px 20px;"> Pas aan!</button>
+</form>
+</div>
+}
+@if(ViewBag.empty == false)
+{
+<h1>Je gepersonaliseerde Pagina!</h1>
+}
+@if(ViewBag.empty == null)
+{
+    <h1>ERROR</h1>
+}
+</div>

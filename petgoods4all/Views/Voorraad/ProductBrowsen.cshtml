@@ -44,7 +44,7 @@
             @foreach (var item in ViewBag.Voorraad)
             {
                 <div id="browsProductContainer" class="col-sm-3 offset-1">
-                    <img src="@item.Url"  onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:140px;height:140px;" />
+                    <img src="@item.image"  style="width:140px;height:140px;" />
                     <br />
                     <p><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@item.Naam</a> <br />&euro; @item.Prijs</p>
                 </div>

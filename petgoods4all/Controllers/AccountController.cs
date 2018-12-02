@@ -70,7 +70,6 @@ namespace petgoods4all.Controllers
 
             var db = new ModelContext();
             var result = from acc in db.Account select acc.id;
-
             if (!result.Any())
             {
                  MaxId = 0;
@@ -153,11 +152,11 @@ namespace petgoods4all.Controllers
                 if (resultAdmin == true)
                 {
                     //string strEmailId = HttpContext.Session.GetString("resultEmail");
-                    return View("~/Views/Admin/AdminHome.cshtml");
+                    return View("~/Admin/AdminHome");
                 }
                 else
                 {
-                    return View("~/Views/User/UserHome.cshtml");
+                    return Redirect("~/User/UserHome");
                 }
             }
             else
