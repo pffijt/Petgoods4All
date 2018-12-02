@@ -28,13 +28,10 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                                   where acc.id == userId
-                                   select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
                     return View();
                 }
@@ -352,21 +349,18 @@ namespace petgoods4all.Controllers
                     ViewBag.secondnum = ViewBag.count;
                 }
 
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                //if (loggedinUser == "true")
-                //{
-                var accounts = db.Account.ToList();
-                return View(accounts);
-                //}
-                //else
-                //{
-                //    return RedirectToAction("ToegangGeweigerd");
-                //}                
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
+                {
+                    var accounts = db.Account.ToList();
+                    return View(accounts);
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
             }
         }
 
@@ -390,22 +384,18 @@ namespace petgoods4all.Controllers
                     ViewBag.secondnum = ViewBag.count;
                 }
 
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                //if (loggedinUser == "true")
-                //{
-                var voorraad = db.Voorraad.ToList();
-                
-                return View(voorraadList);
-                //}
-                //else
-                //{
-                //    return RedirectToAction("ToegangGeweigerd");
-                //}
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
+                {
+                    var voorraad = db.Voorraad.ToList();
+                    return View(voorraadList);
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
             }
         }
         //Roept pagina op met de Details van Account of Product
@@ -413,17 +403,12 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
-
                     Account account = db.Account.Find(id);
-
                     return View(account);
                 }
                 else
@@ -437,13 +422,10 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
                     Voorraad voorraad = db.Voorraad.Find(id);
                     return View(voorraad);
@@ -460,21 +442,18 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                //if (loggedinUser == "true")
-                //{
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
+                {
 
                     return View();
-                //}
-                //else
-                //{
-                //    return RedirectToAction("ToegangGeweigerd");
-                //}
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
             }
         }
 
@@ -505,21 +484,18 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                //if (loggedinUser == "true")
-                //{
-                Account account = db.Account.Find(id);
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
+                {
+                    Account account = db.Account.Find(id);
                 return View(account);
-                //}
-                //else
-                //{
-                //    return RedirectToAction("ToegangGeweigerd");
-                //}
+                }
+                else
+                {
+                    return RedirectToAction("ToegangGeweigerd");
+                }
             }
         }
 
