@@ -57,7 +57,7 @@
                 <button type="submit" asp-controller="Voorraad" 
                 asp-action="AddToShoppingCart" asp-route-identication="@Html.Raw(a.Id)" 
                 class="btn btn-warning col-sm-4">Naar winkelwagen</button>
-                <form action="" method="POST">
+                <form action="" method="POST"> 
                     <button  class="btn btn-danger col-sm-1" asp-controller="Home" asp-action="addWishList"
                     asp-route-identication="@Html.Raw(a.Id)" type="submit">&#10084;</button>
                 </form>

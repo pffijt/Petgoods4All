@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Web;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using petgoods4all.Models;
 
@@ -39,17 +40,103 @@ namespace petgoods4all.Controllers
             using(db)
             {
                 var checkUID = (from a in db.Account where userId == a.id select a.id).Single();
-                var checkPA = (from a in db.Personal_Animal where checkUID == a.user_id select a).Any();
+                var checkPA = (from a in db.Personal_animal where checkUID == a.user_id select a).Any();
                 if(checkPA == false)
                 {
                     ViewBag.empty = true;
                 }
                 else
                 {
-                    ViewBag.empty = false;
+                    ViewBag.empty = true;
+                    //ViewBag.empty = false;
                 }
             }
             return View();
+        }
+        public EmptyResult Addpersonal(string a)
+        {
+            int MaxId;
+            var userId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(0);
+           
+                var result = from acc in db.Personal_animal select acc.id;
+                if (!result.Any())
+                {
+                    MaxId = 0;
+                }
+                else
+                {
+                    MaxId = result.Max();
+                }
+                Personal_animal b = new Personal_animal
+                {
+                    id = MaxId + 1,
+                    user_id = userId,
+                    animal = a,
+                };
+                db.Personal_animal.Add(b);
+           
+            return new EmptyResult();
+        }
+        public EmptyResult Removepersonal(string a)
+        {
+            var userId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(0);
+        
+                var checkAnimal = (from s in db.Personal_animal where a == s.animal select s).Any();
+                if(checkAnimal == true)
+                {
+                    var findID = (from acc in db.Personal_animal where acc.animal == a select acc.id).Single();
+                    Personal_animal b = new Personal_animal
+                    {
+                        id = findID,
+                        user_id = userId,
+                        animal = a,
+                    };
+                    db.Personal_animal.Remove(b);
+                }
+            
+            return new EmptyResult();
+        }
+        [HttpPost]
+        public ActionResult Klantpersonalize(bool personCat = false, bool personDog = false, bool personFish = false, bool personReptile = false)
+        {
+            if(personCat == true)
+            {
+                Addpersonal("Cat");
+            }
+            if(personCat == false)
+            {
+                Removepersonal("Cat");
+            }
+
+            if(personDog == true)
+            {
+                Addpersonal("Dog");
+            }
+            if(personDog == false)
+            {
+                Removepersonal("Dog");
+            }
+
+            if(personFish == true)
+            {
+                Addpersonal("Fish");
+            }
+            if(personFish == false)
+            {
+                Removepersonal("Fish");
+            }
+
+            if(personReptile == true)
+            {
+                Addpersonal("Reptile");
+            }
+            if(personReptile == false)
+            {
+                Removepersonal("Reptile");
+            }
+
+            db.SaveChanges();
+            return Redirect("~/User/Klantpersonalize");
         }
         public ActionResult UserBeheer()
         {
