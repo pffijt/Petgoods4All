@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using petgoods4all.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -90,6 +91,19 @@
                     {
                         <li><a asp-area="" asp-controller="Account" asp-action="Uitloggen">Log uit</a></li>
                         <li><a asp-area="" asp-controller="User" asp-action="UserBeheer">Mijn gegevens</a></li>
+                    }
+                    @if (Context.Session.GetInt32("UID") != null)
+                    {
+                        var UserID = Context.Session.GetInt32("UID");
+                        var Admin = new ModelContext().Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                        if (Admin != null)
+                        {
+
+                            <li><a asp-area="" asp-controller="Admin" asp-action="AdminHome">Admin Home</a></li>
+                        }
+
+
                     }
                 </ul>
             </div>
