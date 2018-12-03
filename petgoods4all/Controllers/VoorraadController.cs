@@ -305,7 +305,7 @@ namespace petgoods4all.Controllers
                 double a = double.Parse(item.Prijs);
                 double b = a * item.Kwantiteit;
                 c = c + b;
-                decimal d = Convert.ToDecimal(new System.Globalization.CultureInfo("en-US"));
+                decimal d = Convert.ToDecimal(c, new System.Globalization.CultureInfo("en-US"));
                 string prijs = d.ToString(new System.Globalization.CultureInfo("en-US"));
 
                 ViewBag.Prijs = prijs;
