@@ -263,7 +263,7 @@ namespace petgoods4all.Controllers
                     }
                     UserId = AccountSession;
                 }
-                
+                UserId = AccountSession;
             }
             else
             {
