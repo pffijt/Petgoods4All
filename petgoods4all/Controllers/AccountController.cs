@@ -92,9 +92,6 @@ namespace petgoods4all.Controllers
                 IsEmailVerified =  false,
             };
 
-            db.Account.Add(a);
-            db.SaveChanges();
-
             MailMessage message = new System.Net.Mail.MailMessage();
             string fromEmail = "petgoods4all@gmail.com";
             string emailPassword = "adminpetgoods4all";
@@ -114,6 +111,8 @@ namespace petgoods4all.Controllers
                 smtpClient.Send(message.From.ToString(), message.To.ToString(), message.Subject, message.Body);
             }
 
+            db.Account.Add(a);
+            db.SaveChanges();
             return Redirect("Inloggen");
         }
 
