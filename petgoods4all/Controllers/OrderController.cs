@@ -49,7 +49,6 @@ namespace petgoods4all.Controllers
                     Prijs = orderedProductsResult.Prijs,
                     image = orderedProductsResult.image,
                 });
-            
             }
 
             ViewBag.ViewOrder = voorraadList;

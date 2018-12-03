@@ -128,7 +128,7 @@ namespace petgoods4all.Controllers
 
             foreach (var item in Orders)
             {
-                string datumString = item.Datum.ToString();
+                string datumString = item.Datum.ToString(new System.Globalization.CultureInfo("en-US"));
                 string splittedDatumString = datumString.Split('/')[0].ToString();
                 if (splittedDatumString == "1") {
                     double a = Convert.ToDouble(item.Prijs);
@@ -297,7 +297,7 @@ namespace petgoods4all.Controllers
             ViewBag.September = SeptemberPrijs;
             ViewBag.Oktober = OktoberPrijs;
             ViewBag.November = NovemberPrijs;
-            ViewBag.Decemeber = DecemberPrijs;
+            ViewBag.December = DecemberPrijs;
             ViewBag.Orders = Orders;
             ViewBag.JanuariInkoop = JanuariInkoopPrijs;
             ViewBag.FebruariInkoop = FebruariInkoopPrijs;
@@ -310,7 +310,7 @@ namespace petgoods4all.Controllers
             ViewBag.SeptemberInkoop = SeptemberInkoopPrijs;
             ViewBag.OktoberInkoop = OktoberInkoopPrijs;
             ViewBag.NovemberInkoop = NovemberInkoopPrijs;
-            ViewBag.DecemeberInkoop = DecemberInkoopPrijs;
+            ViewBag.DecemberInkoop = DecemberInkoopPrijs;
             ViewBag.JanuariOmzet = JanuariOmzet;
             ViewBag.FebruariOmzet = FebruariOmzet;
             ViewBag.MaartOmzet = MaartOmzet;
@@ -322,7 +322,7 @@ namespace petgoods4all.Controllers
             ViewBag.SeptemberOmzet = SeptemberOmzet;
             ViewBag.OktoberOmzet = OktoberOmzet;
             ViewBag.NovemberOmzet = NovemberOmzet;
-            ViewBag.DecemeberOmzet = DecemberOmzet;
+            ViewBag.DecemberOmzet = DecemberOmzet;
             ViewBag.Orders = Orders;
 
             return View();
@@ -639,6 +639,50 @@ namespace petgoods4all.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("AdminVoorraadIndex");
+        }
+
+        public ActionResult OmzetProducten(int Datum, int DatumYear)
+        { 
+
+            var db = new ModelContext();
+
+            //per maand de verkochte producten laten zien skrr
+            //var Orders = from m in db.Order where m.Datum == Datum select m;
+            //var result = from s in db.OrderedProducts select s;
+
+            var OrdersJoin = from op in db.OrderedProducts
+                             join o in db.Order on op.OrderId equals o.Id
+                             where o.Datum.Month == Datum && o.Datum.Year == DatumYear
+                             select new OrderedProducts
+                             {
+                                 Id = op.Id,
+                                 OrderId = op.OrderId,
+                                 ProductId = op.ProductId,
+                                 Quantity = op.Quantity
+                             };
+
+            List < Voorraad > voorraadList = new List<Voorraad>();
+
+            foreach (var item in OrdersJoin)
+            {
+                var orderedProductsResult = (from s in db.Voorraad where s.Id == item.ProductId select s).Single();
+
+                voorraadList.Add(new Voorraad
+                {
+                    Id = orderedProductsResult.Id,
+                    Naam = orderedProductsResult.Naam,
+                    Dier = orderedProductsResult.Dier,
+                    Subklasse = orderedProductsResult.Subklasse,
+                    Kwantiteit = item.Quantity,
+                    Prijs = orderedProductsResult.Prijs,
+                    image = orderedProductsResult.image,
+                });
+
+            }
+
+            ViewBag.Producten = voorraadList;
+
+            return View();
         }
     }
 }
