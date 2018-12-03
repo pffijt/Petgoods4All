@@ -48,25 +48,33 @@
     <hr>
     @foreach (var item in ViewBag.ShoppingCart)
     {
-        <div class="row">
-            <div class="col-md-2">
-                <br>
-                <img src="@item.image" width="180px" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" />
-            </div>
+    <div class="row">
+        <div class="col-md-2">
+            <br>
+            <img src="@item.image" width="180px" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" />
+        </div>
+        <form class="form-products" method="post" asp-controller="Voorraad" asp-action="UpdateQuantity">
             <div class="col-md-2">
                 <h3>@item.Naam</h3>
-                <p>Kwantiteit: @item.Kwantiteit</p>
+                <p>Kwantiteit:<input type="number" value="@item.Kwantiteit" name="NewQuantity" id="NewQuantity" style="width:50px;" /></p>
                 <p>Prijs: &#8364; @item.Prijs</p>
             </div>
-            <div class="col-md-8">
-                <br><br>
-                <form class="form-products" method="post" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart">
-                    <button type="submit" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Id" class="btn btn-danger col-sm-4" align="right">Verwijderen</button>
-                </form>
-            </div>
+            <br><br><br><br>
+        <div class="col-md-8">
+            <br><br>
+            <button type="submit" asp-controller="Voorraad" asp-action="UpdateQuantity" asp-route-productId="@item.Id" class="btn btn-success col-sm-3">Opslaan</button>
         </div>
-        <br>
-        <hr>
+        </form>
+
+        <div class="col-md-7">
+          <br>
+            <form class="form-products" method="post" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart">
+                <button type="submit" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Id" class="btn btn-danger col-sm-4" align="right">Verwijderen</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <hr>
     }
 </div>
 

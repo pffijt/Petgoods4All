@@ -170,7 +170,7 @@ namespace petgoods4all.Controllers
             var UserId = HttpContext.Session.GetInt32("UID");
             if (UserId == null)
             {
-                var AccountResult = from r in db.ShoppingCart select r.AccountId;
+                var AccountResult = from r in db.Account select r.id;
                 //Random rnd = new Random();
                 //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
                 int? randomAccountIdSum = AccountResult.Max() + 1;
@@ -247,7 +247,7 @@ namespace petgoods4all.Controllers
                 var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
 
                 if (AccountSession == null) {
-                    var AccountResult = from r in db.ShoppingCart select r.AccountId;
+                    var AccountResult = from r in db.Account select r.id;
                     //Random rnd = new Random();
                     //var randomAccountId = rnd.Next(skrr.Max(), 1000000000);
                     int? randomAccountIdSum = AccountResult.Max() + 1;
@@ -257,8 +257,13 @@ namespace petgoods4all.Controllers
                     {
                         HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
                     }
+                    if (!AccountResult.Contains(randomAccountId))
+                    {
+                        AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
+                    }
+                    UserId = AccountSession;
                 }
-                UserId = AccountSession;
+                
             }
             else
             {
@@ -300,13 +305,13 @@ namespace petgoods4all.Controllers
                 double a = double.Parse(item.Prijs);
                 double b = a * item.Kwantiteit;
                 c = c + b;
-                decimal d = Convert.ToDecimal(c / 1);
+                decimal d = Convert.ToDecimal(c / 100);
                 string prijs = d.ToString(new System.Globalization.CultureInfo("en-US"));
 
                 ViewBag.Prijs = prijs;
             }
 
-            return View(); ;
+            return View();
         }
         [HttpPost]
         public ActionResult RemoveFromShoppingCart(int productId)
@@ -319,6 +324,25 @@ namespace petgoods4all.Controllers
                 db.ShoppingCart.Remove(result);
                 db.SaveChanges();
 
+
+            return RedirectToAction("ShoppingCart", "Voorraad");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateQuantity(int productId, int NewQuantity)
+        {
+            var db = new ModelContext();
+
+            var UserId = HttpContext.Session.GetInt32("UID");
+
+            var result = (from r in db.ShoppingCart where r.Id == productId && r.AccountId == UserId select r).ToList();
+            
+            foreach(var item in result)
+            {
+                item.Quantity = NewQuantity;
+            }
+
+            db.SaveChanges();
 
             return RedirectToAction("ShoppingCart", "Voorraad");
         }
