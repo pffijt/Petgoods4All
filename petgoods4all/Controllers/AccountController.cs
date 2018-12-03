@@ -152,11 +152,11 @@ namespace petgoods4all.Controllers
                 if (resultAdmin == true)
                 {
                     //string strEmailId = HttpContext.Session.GetString("resultEmail");
-                    return View("~/Views/Admin/AdminHome.cshtml");
+                    return RedirectToAction("AdminHome", "Admin");
                 }
                 else
                 {
-                    return View("~/Views/User/UserHome.cshtml");
+                    return RedirectToAction("UserHome", "User");
                 }
             }
             else
