@@ -33,7 +33,6 @@
     </script>
     <script>
         function EmailCheck(){
-            $("#status").html("Checking...");
             $.post("@Url.Action("CheckEmail","Account")",
             {
                 inputEmail: $("#inputEmail").val()
