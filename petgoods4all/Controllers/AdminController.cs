@@ -28,13 +28,10 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                                   where acc.id == userId
-                                   select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
                     return View();
                 }
@@ -333,44 +330,68 @@ namespace petgoods4all.Controllers
             return View();
         }
         //Roept pagina op met de lijsten van Account of Product
-        public ActionResult AdminKlantIndex()
+        public ActionResult AdminKlantIndex(int P=1)
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                ViewBag.firstnum = (P * 16) - 15;
+                ViewBag.secondnum = 16 * P;
+                ViewBag.paginationindex = P + 1;
+
+                var query = from acc in db.Account select acc;
+
+                
+                    ViewBag.count = query.Count();
+                
+                 
+
+                if (ViewBag.secondnum > ViewBag.count)
+                {
+                    ViewBag.secondnum = ViewBag.count;
+                }
+
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
                     var accounts = db.Account.ToList();
                     return View(accounts);
                 }
                 else
                 {
-                      var accounts = db.Account.ToList();
-                    return View(accounts);
-                    //return RedirectToAction("ToegangGeweigerd");
-                }                
+                    return RedirectToAction("ToegangGeweigerd");
+                }
             }
         }
 
-        public ActionResult AdminVoorraadIndex()
+        public ActionResult AdminVoorraadIndex(int P=1)
         {
             using (db)
-            {   var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+            {
+                
+                ViewBag.firstnum = (P * 16) - 15;
+                ViewBag.secondnum = 16 * P;
+                ViewBag.paginationindex = P;
+
+                IQueryable<Voorraad> query = from v in db.Voorraad select v;
+                
+                var result = query.Skip(((P * 16) - 16)).Take(16);
+                var voorraadList = result.ToList();
+                ViewBag.count = query.Count();
+                ViewBag.Voorraad = voorraadList;
+                if (ViewBag.secondnum > ViewBag.count)
+                {
+                    ViewBag.secondnum = ViewBag.count;
+                }
+
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
                     var voorraad = db.Voorraad.ToList();
-
-                    return View(voorraad);
+                    return View(voorraadList);
                 }
                 else
                 {
@@ -386,17 +407,12 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
-
                     Account account = db.Account.Find(id);
-
                     return View(account);
                 }
                 else
@@ -413,13 +429,10 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
                     Voorraad voorraad = db.Voorraad.Find(id);
                     return View(voorraad);
@@ -438,13 +451,10 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
 
                     return View();
@@ -480,20 +490,17 @@ namespace petgoods4all.Controllers
         }
 
         //Roept pagina op voor de Details van een Account of Product
-        public ActionResult AdminKlantEdit()
+        public ActionResult AdminKlantEdit(int? id)
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
-                {
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
 
-                    return View();
+                if (Admin != null)
+                {
+                    Account account = db.Account.Find(id);
+                return View(account);
                 }
                 else
                 {
@@ -502,7 +509,7 @@ namespace petgoods4all.Controllers
             }
         }
 
-        public ActionResult AdminVoorraadEdit()
+        public ActionResult AdminVoorraadEdit(int? id)
         {
             using (db)
             {
@@ -514,7 +521,8 @@ namespace petgoods4all.Controllers
                 var loggedinUser = isAdmin.ToString();
                 if (loggedinUser == "true")
                 {
-                    return View();
+                    Voorraad voorraad = db.Voorraad.Find(id);
+                    return View(voorraad);
                 }
                 else
                 {
@@ -531,8 +539,9 @@ namespace petgoods4all.Controllers
             {
                 var result = from acc in db.Account select acc.id;
 
-                var MaxId = result.FirstOrDefault();
+                var MaxId = result.Max();
 
+                
                 Account a = new Account
                 {
                     id = MaxId + 1,
@@ -581,7 +590,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var accountToUpdate = (from s in db.Account where s.id == id select s).Single();
+                var accountToUpdate = db.Account.Find(id);
 
                 accountToUpdate.achternaam = achternaam;
                 accountToUpdate.voornaam = voornaam;
@@ -603,7 +612,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var voorraadToUpdate = db.Voorraad.FirstOrDefault();
+                var voorraadToUpdate = db.Voorraad.Find(id);
 
                 voorraadToUpdate.Naam = Naam;
                 voorraadToUpdate.Dier = Dier;
