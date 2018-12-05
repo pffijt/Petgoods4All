@@ -499,7 +499,7 @@ namespace petgoods4all.Controllers
 
                 if (Admin != null)
                 {
-                    Account account = db.Account.Find(id);
+                    Account account = db.Account.FirstOrDefault(x => x.id == id);
                 return View(account);
                 }
                 else
@@ -521,7 +521,7 @@ namespace petgoods4all.Controllers
                 var loggedinUser = isAdmin.ToString();
                 if (loggedinUser == "true")
                 {
-                    Voorraad voorraad = db.Voorraad.Find(id);
+                    Voorraad voorraad = db.Voorraad.FirstOrDefault(x => x.Id == id);
                     return View(voorraad);
                 }
                 else

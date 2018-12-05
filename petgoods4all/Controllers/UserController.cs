@@ -26,10 +26,7 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-        public ActionResult updateGegevens()
-        {
-            return View();
-        }
+        
         public ActionResult Klantpersonalize()
         {
             var userId = HttpContext.Session.GetInt32("UID");
@@ -175,7 +172,19 @@ namespace petgoods4all.Controllers
             return View(account);
         }
 
-        public ActionResult UpdateAccount(string inputEmailUser, string inputProvincieUser, string inputHuisnummerUser, string inputPostcodeUser, string originalEmailUser, string inputPasswordUser, string inputVoornaamUser, string inputAchternaamUser, string inputTelefoonnummerUser, string inputStraatnaamUser)
+        public ActionResult updateGegevens()
+        {
+            using (db)
+            {
+                var UserID = HttpContext.Session.GetInt32("UID");
+                Account account = db.Account.FirstOrDefault(x => x.id == UserID);
+
+                return View(account);
+            }
+        }
+
+
+        public ActionResult UpdateAccountSave(string inputEmailUser, string inputProvincieUser, string inputHuisnummerUser, string inputPostcodeUser, string originalEmailUser, string inputPasswordUser, string inputVoornaamUser, string inputAchternaamUser, string inputTelefoonnummerUser, string inputStraatnaamUser)
         {            
             using (db)
             {
