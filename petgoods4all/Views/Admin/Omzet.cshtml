@@ -29,6 +29,12 @@
 <div class="row" style="background-color:#ffe8d3;"><br>
     <a asp-controller="Admin" asp-action="AdminHome">Terug naar home pagina</a>
     <h1>Inkoopprijs Bestelde producten</h1>
+    <div class="tab">
+    @foreach (var item in ViewBag.jaren)
+    {
+        <button class="tablinks" onclick="openCity(event, '@item.Year')">@item.Year</button>
+    }
+    </div>
     <h2>Inkoopprijs</h2>
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'inkoop 1')">Januari</button>
