@@ -13,7 +13,7 @@ namespace petgoods4all.Controllers
 {
     public class AccountController : Controller
     {
-
+        ModelContext db = new ModelContext();
         // GET: Account
         [HttpGet]
         public ActionResult Index()
@@ -38,7 +38,6 @@ namespace petgoods4all.Controllers
             HttpContext.Session.Clear();
             return Redirect("~/Home/Index");
         }
-
 
         [HttpPost]
         public JsonResult CheckEmail(string inputEmail){
@@ -90,11 +89,8 @@ namespace petgoods4all.Controllers
                 postcode = inputPostcode,
                 provincie = inputProvincie,
                 telefoonnummer = inputTelefoonnummer,
-
+                IsEmailVerified =  false,
             };
-
-            db.Account.Add(a);
-            db.SaveChanges();
 
             MailMessage message = new System.Net.Mail.MailMessage();
             string fromEmail = "petgoods4all@gmail.com";
@@ -115,6 +111,9 @@ namespace petgoods4all.Controllers
                 smtpClient.Send(message.From.ToString(), message.To.ToString(), message.Subject, message.Body);
             }
 
+            db.Account.Add(a);
+            db.SaveChanges();
+            
             return Redirect("Inloggen");
         }
 
@@ -143,8 +142,9 @@ namespace petgoods4all.Controllers
             var resultPassword = (from acc in db.Account where password == acc.password select acc.password).Single();
             var resultAdmin = (from acc in db.Account where email == acc.email select acc.Admin).Single();
             var resultId = (from acc in db.Account where email == acc.email select acc.id).Single();
+            var resultVerified = (from acc in db.Account where email == acc.email select acc.IsEmailVerified).Single();
 
-            if (resultEmail == email && resultPassword == password)
+            if (resultEmail == email && resultPassword == password && resultVerified == true)
             {
                 //HttpContext.Session.SetString("resultEmail", resultEmail);
                 HttpContext.Session.SetInt32(("UID"),resultId);
@@ -156,12 +156,12 @@ namespace petgoods4all.Controllers
                 }
                 else
                 {
-                    return Redirect("~/User/UserHome");
+                    return RedirectToAction("UserHome", "User");
                 }
             }
             else
             {
-                return View("~/Views/Account/Inloggen.cshtml");
+                return Redirect("Inloggen");
             }
         }
     }
