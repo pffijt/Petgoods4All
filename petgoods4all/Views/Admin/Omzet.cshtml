@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Winst";
 }
+
 <script>
     function openCity(evt, cityName) {
         // Declare all variables
@@ -29,12 +30,22 @@
 <div class="row" style="background-color:#ffe8d3;"><br>
     <a asp-controller="Admin" asp-action="AdminHome">Terug naar home pagina</a>
     <h1>Inkoopprijs Bestelde producten</h1>
-    <div class="tab">
-    @foreach (var item in ViewBag.jaren)
-    {
-        <button class="tablinks" onclick="openCity(event, '@item.Year')">@item.Year</button>
-    }
-    </div>
+    <div class="container">
+
+        @foreach (var item in ViewBag.jaren)
+        {
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1">@item</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                    
+
+    
     <h2>Inkoopprijs</h2>
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'inkoop 1')">Januari</button>
@@ -53,10 +64,10 @@
 
         <!-- Tab content -->
         @{double c = 0; }
-        @foreach (var item in ViewBag.Orders)
+        @foreach (var item2 in ViewBag.Orders)
         {
-        <div id="inkoop @item.Datum.Month" class="tabcontent">
-            @switch (@item.Datum.Month)
+        <div id="inkoop @item2.Datum.Month" class="tabcontent">
+            @switch (@item2.Datum.Month)
             {
                 case 1:
                     <h3>Inkoopprijs Januari </h3>
@@ -65,8 +76,8 @@
                         <p>&euro;@JanuariInkoopPrijs</p>
                         <input type="button" class="btn btn-success" asp-controller="Voorraad" asp-action="OmzetProducten" />
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;"/>
                         </form>
 
                 break;
@@ -76,8 +87,8 @@
                 string FebruariInkoopPrijs = ViewBag.FebruariInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@FebruariInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;"/>
                         </form>
 
                 break;
@@ -87,8 +98,8 @@
                 string MaartInkoopPrijs = ViewBag.MaartInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@MaartInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;"/>
                         </form>
 
                 break;
@@ -98,8 +109,8 @@
                 string AprilInkoopPrijs = ViewBag.AprilInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@AprilInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;"/>
                         </form>
 
                 break;
@@ -109,8 +120,8 @@
                 string MeiInkoopPrijs = ViewBag.MeiInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@MeiInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;"/>
                         </form>
 
                 break;
@@ -120,8 +131,8 @@
                 string JuniInkoopPrijs = ViewBag.JuniInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@JuniInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;" />
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;" />
                         </form>
 
                 break;
@@ -131,8 +142,8 @@
                 string JuliInkoopPrijs = ViewBag.JuliInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@JuliInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;" />
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;" />
                         </form>
 
                 break;
@@ -142,8 +153,8 @@
                 string AugustusInkoopPrijs = ViewBag.AugustusInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@AugustusInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;" />
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;" />
                         </form>
 
                 break;
@@ -153,8 +164,8 @@
                 string SeptemberInkoopPrijs = ViewBag.SeptemberInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@SeptemberInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;" />
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;" />
                         </form>
 
                 break;
@@ -164,8 +175,8 @@
                 string OktoberInkoopPrijs = ViewBag.OktoberInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@OktoberInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;" />
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;" />
                         </form>
 
                 break;
@@ -175,8 +186,8 @@
                 string NovemberInkoopPrijs = ViewBag.NovemberInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro; @NovemberInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;" />
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;" />
                         </form>
 
                 break;
@@ -186,8 +197,8 @@
                 string DecemberInkoopPrijs = ViewBag.DecemberInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@DecemberInkoopPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;"/>
                         </form>
 
                 break;
@@ -211,10 +222,10 @@
             <button class="tablinks" onclick="openCity(event, 'verkoop 12')">December</button>
         </div>
 
-        @foreach (var item in ViewBag.Orders)
+        @foreach (var item3 in ViewBag.Orders)
         {
-            <div id="verkoop @item.Datum.Month" class="tabcontent">
-                @switch (@item.Datum.Month)
+            <div id="verkoop @item3.Datum.Month" class="tabcontent">
+                @switch (@item3.Datum.Month)
                 {
                     case 1:
                         <h3>Omzet Januari </h3>
@@ -222,8 +233,8 @@
                         string JanuariPrijs = ViewBag.Januari.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@JanuariPrijs</p>
                             <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                                <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                                <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                                <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                                <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                             </form>
 
                         break;
@@ -233,23 +244,23 @@
                         string FebruariPrijs = ViewBag.Februari.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@FebruariPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
                     case 3:
                         <h3>Omzet Maart </h3>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         string MaartPrijs = ViewBag.Maart.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@MaartPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -259,8 +270,8 @@
                         string AprilPrijs = ViewBag.April.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@AprilPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -270,8 +281,8 @@
                         string MeiPrijs = ViewBag.Mei.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@MeiPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -281,8 +292,8 @@
                         string JuniPrijs = ViewBag.Juni.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@JuniPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -292,8 +303,8 @@
                         string JuliPrijs = ViewBag.Juli.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@JuliPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -303,8 +314,8 @@
                         string AugustusPrijs = ViewBag.Augustus.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@AugustusPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -314,8 +325,8 @@
                         string SeptemberPrijs = ViewBag.September.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@SeptemberPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -325,8 +336,8 @@
                         string OktoberPrijs = ViewBag.Oktober.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@OktoberPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -336,8 +347,8 @@
                         string NovemberPrijs = ViewBag.November.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@NovemberPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -347,8 +358,8 @@
                         string DecemberPrijs = ViewBag.December.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@DecemberPrijs</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item3.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item3.Datum" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -370,10 +381,10 @@
             <button class="tablinks" onclick="openCity(event, 'Winst 11')">November</button>
             <button class="tablinks" onclick="openCity(event, 'Winst 12')">December</button>
         </div>
-        @foreach (var item in ViewBag.Orders)
+        @foreach (var item4 in ViewBag.Orders)
         {
-            <div id="Winst @item.Datum.Month" class="tabcontent">
-                @switch (@item.Datum.Month)
+            <div id="Winst @item4.Datum.Month" class="tabcontent">
+                @switch (@item4.Datum.Month)
                 {
                     case 1:
                         <h3>Winst Januari </h3>
@@ -381,8 +392,8 @@
                         string JanuariWinst = ViewBag.JanuariOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@JanuariWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -392,8 +403,8 @@
                         string FebruariWinst = ViewBag.FebruariOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@FebruariWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -403,8 +414,8 @@
                         string MaartWinst = ViewBag.MaartOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@MaartWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -414,8 +425,8 @@
                         string AprilWinst = ViewBag.AprilOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@AprilWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -425,8 +436,8 @@
                         string MeiWinst = ViewBag.MeiOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@MeiWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -436,8 +447,8 @@
                         string JuniWinst = ViewBag.JuniOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@JuniWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -447,8 +458,8 @@
                         string JuliWinst = ViewBag.JuliOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@JuliWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -458,8 +469,8 @@
                         string AugustusWinst = ViewBag.AugustusOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@AugustusWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -469,8 +480,8 @@
                         string SeptemberWinst = ViewBag.SeptemberOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@SeptemberWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -480,8 +491,8 @@
                         string OktoberWinst = ViewBag.OktoberOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@OktoberWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -491,8 +502,8 @@
                         string NovemberWinst = ViewBag.NovemberOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro; @NovemberWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
@@ -502,12 +513,20 @@
                         string DecemberWinst = ViewBag.DecemberOmzet.ToString(new System.Globalization.CultureInfo("en-US"));
                         <p>&euro;@DecemberWinst</p>
                         <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
-                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item.Datum.Month"> Bekijk producten </button>
-                            <input type="text" id="DatumYear" name="DatumYear" value="@item.Datum.Year" style="visibility:hidden;"/>
+                            <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item4.Datum.Month"> Bekijk producten </button>
+                            <input type="text" id="DatumYear" name="DatumYear" value="@item4.Datum.Year" style="visibility:hidden;"/>
                         </form>
 
                         break;
                 }
             </div>
         }
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        }
+        </div>
 </div>

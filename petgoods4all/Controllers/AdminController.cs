@@ -56,7 +56,7 @@ namespace petgoods4all.Controllers
         public ActionResult Omzet()
         {
             var Orders = (from a in db.Order orderby a.Datum, a.Prijs  select a).Distinct();
-            var jaren = (from j in db.Order orderby j.Datum select j.Datum).Distinct();
+            var jaren = (from j in db.Order orderby j.Datum.Year select j.Datum.Year).Distinct();
             //foreach (var item in Orders)
             //{
             //    var stringDatum = item.Datum.ToString();
@@ -653,7 +653,7 @@ namespace petgoods4all.Controllers
             return RedirectToAction("AdminVoorraadIndex");
         }
 
-        public ActionResult OmzetProducten(int Datum, int DatumYear)
+        public ActionResult OmzetProducten(int Datum, DateTime DatumYear)
         { 
 
             var db = new ModelContext();
@@ -664,7 +664,7 @@ namespace petgoods4all.Controllers
 
             var OrdersJoin = from op in db.OrderedProducts
                              join o in db.Order on op.OrderId equals o.Id
-                             where o.Datum.Month == Datum && o.Datum.Year == DatumYear
+                             where o.Datum.Month == Datum && o.Datum.Year == DatumYear.Year
                              select new OrderedProducts
                              {
                                  Id = op.Id,
@@ -692,9 +692,17 @@ namespace petgoods4all.Controllers
 
             }
 
-            var totaalPrijs = (from order in db.Order where order.Datum.Month == Datum && order.Datum.Year == DatumYear select order.Prijs).Single();
-
-            ViewBag.Prijs = totaalPrijs;
+            var totaalPrijsResult = from order in db.Order where order.Datum.Month == Datum && order.Datum.Year == DatumYear.Year select order.Prijs;
+            double totaalPrijs = 0;
+            foreach(var item in totaalPrijsResult)
+            {
+                double a = Convert.ToDouble(item);
+                totaalPrijs = totaalPrijs + a;
+                
+            }
+            decimal e = Convert.ToDecimal(totaalPrijs / 100);
+            e.ToString(new System.Globalization.CultureInfo("en-US"));
+            ViewBag.Prijs = e;
             ViewBag.Producten = voorraadList;
 
             return View();
