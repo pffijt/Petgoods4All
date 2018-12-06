@@ -239,10 +239,18 @@ namespace petgoods4all.Controllers
         {
             var db = new ModelContext();
             //make query to find what user is logged in or get products from session
-
+            
             var UserId = HttpContext.Session.GetInt32("UID");
-            var _emptylist = (from s in db.ShoppingCart where s.AccountId == UserId  select s).ToList();
-
+            var MaxReached = HttpContext.Session.GetInt32("MaxReached"); 
+            if(MaxReached != null)
+            {
+                var selectProduct = (from r in db.Voorraad where MaxReached == r.Id select r.Naam).Single();
+                var selectAmount = (from r in db.Voorraad where MaxReached == r.Id select r.Kwantiteit).Single();
+                ViewBag.SP = selectProduct;
+                ViewBag.SA = selectAmount;
+            }
+            HttpContext.Session.Remove("MaxReached");
+           
             if (UserId == null) {
                 ViewBag.AnonymousU = true;
                 var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
@@ -265,12 +273,13 @@ namespace petgoods4all.Controllers
                     UserId = AccountSession;
                 }
                 UserId = AccountSession;
+                
             }
             else
             {
                 ViewBag.AnonymousU = false;
             }
-
+            var _emptylist = (from s in db.ShoppingCart where s.AccountId == UserId  select s).ToList();
             if(_emptylist.Any())
             {
                 //item uit de voorraad met prodcut id
@@ -341,16 +350,23 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
 
             var UserId = HttpContext.Session.GetInt32("UID");
-
-            var result = (from r in db.ShoppingCart where r.Id == productId && r.AccountId == UserId select r).ToList();
-            
-            foreach(var item in result)
+            UserId = HttpContext.Session.GetInt32("SessionAccountId");
+            var QuantityPossible = (from q in db.Voorraad where q.Id == productId && NewQuantity <= q.Kwantiteit select q).Any();
+            if(QuantityPossible)
             {
-                item.Quantity = NewQuantity;
+                var result = (from r in db.ShoppingCart where r.Id == productId && r.AccountId == UserId select r).ToList();
+                foreach(var item in result)
+                {
+                    item.Quantity = NewQuantity;
+                }
+
+                db.SaveChanges();
             }
-
-            db.SaveChanges();
-
+            else
+            {
+                HttpContext.Session.SetInt32("MaxReached",productId);
+            }
+            
             return RedirectToAction("ShoppingCart", "Voorraad");
         }
     }
