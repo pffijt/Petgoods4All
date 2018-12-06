@@ -37,8 +37,7 @@ namespace petgoods4all.Controllers
                 }
                 else
                 {
-                     return View();
-                    //return RedirectToAction("ToegangGeweigerd");
+                     return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -431,17 +430,15 @@ namespace petgoods4all.Controllers
             {
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+                Voorraad voorraad = db.Voorraad.FirstOrDefault(x => x.Id == UserID);
 
                 if (Admin != null)
                 {
-                    Voorraad voorraad = db.Voorraad.Find(id);
                     return View(voorraad);
                 }
                 else
                 {
-                    Voorraad voorraad = db.Voorraad.Find(id);
-                    return View(voorraad);
-                    //return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -461,8 +458,7 @@ namespace petgoods4all.Controllers
                 }
                 else
                 {
-                    return View();
-                    //return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -484,7 +480,7 @@ namespace petgoods4all.Controllers
                 }
                 else
                 {
-                    return View();//return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -496,15 +492,15 @@ namespace petgoods4all.Controllers
             {
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+                Account account = db.Account.FirstOrDefault(x => x.id == UserID);
 
                 if (Admin != null)
                 {
-                    Account account = db.Account.FirstOrDefault(x => x.id == id);
-                return View(account);
+                    return View(account);
                 }
                 else
                 {
-                   return View();// return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -513,20 +509,17 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+                Voorraad voorraad = db.Voorraad.FirstOrDefault(x => x.Id == id);
+
+                if (Admin != null)
                 {
-                    Voorraad voorraad = db.Voorraad.FirstOrDefault(x => x.Id == id);
                     return View(voorraad);
                 }
                 else
                 {
-                    return View();//return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
