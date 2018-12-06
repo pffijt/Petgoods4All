@@ -22,18 +22,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Dier)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Subklasse)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Kwantiteit)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prijs)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.image)
-                </th>
                 <th></th>
             </tr>
         </thead>
@@ -46,18 +34,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Dier)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Subklasse)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Kwantiteit)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Prijs)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.image)
                     </td>
                     <td>
                         <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Voorraad</a> |

@@ -29,6 +29,12 @@ namespace petgoods4all.Controllers
 
             return View();
         }
+
+        public ActionResult AddToWishpage()
+        {
+            return View();
+        }
+
         public List<int> Related(int indentication)
         {
             List<int> productsID = new List<int>();
@@ -190,7 +196,7 @@ namespace petgoods4all.Controllers
                     db.SaveChanges();
                 }
                 var product = from m in db.Voorraad where m.Id == identication select m;
-                return Redirect("Wishpage");
+                return Redirect("/Home/AddToWishpage");
             }
         }
                 public ActionResult AddReviews(string description, int productId, int rating)
@@ -322,7 +328,7 @@ namespace petgoods4all.Controllers
                         db.ShoppingCart.Add(shoppingCart);
                         db.SaveChanges();
                     }
-                    return Redirect("Wishpage");
+                    return Redirect("~/Voorraad/ShoppingCart");
                 }
             }
             if(Option == "x Verwijderen")
