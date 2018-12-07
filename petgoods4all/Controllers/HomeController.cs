@@ -13,6 +13,48 @@ namespace petgoods4all.Controllers
     {
         public ActionResult Index()
         {
+            var UID = HttpContext.Session.GetInt32("UID");
+            List<string> lista = new List<string>();
+            using (var db = new ModelContext())
+            {
+                if(UID != null)
+                {
+                    var checkAssignedPers = (from a in db.Personal_animal where UID == a.user_id select a).Any();
+                    if(checkAssignedPers == true)
+                    {
+                        
+                        var checkDog = (from a in db.Personal_animal where UID == a.user_id && "Dog" == a.animal select a).Any();
+                        var checkCat = (from a in db.Personal_animal where UID == a.user_id && "Cat" == a.animal select a).Any();
+                        var checkFish = (from a in db.Personal_animal where UID == a.user_id && "Fish" == a.animal select a).Any();
+                        var checkReptile = (from a in db.Personal_animal where UID == a.user_id && "Reptile" == a.animal select a).Any();
+                        if(checkDog)
+                        {
+                            lista.AddRange(new List<string> {"dog_1.jpg","dog_2.jpg","dog_3.jpg","dog_4.jpg","dog_5.jpg"});
+                        }
+                        if(checkCat)
+                        {
+                             lista.AddRange(new List<string> {"cat_1.jpg","cat_2.jpg","cat_3.jpg","cat_4.jpg","cat_5.jpg"});
+                        }
+                        if(checkFish)
+                        {
+                             lista.AddRange(new List<string> {"fish_1.jpg","fish_2.jpg","fish_3.jpg","fish_4.jpg","fish_5.jpg"});
+                        }
+                        if(checkReptile)
+                        {
+                             lista.AddRange(new List<string> {"reptile_1.jpg","reptile_2.jpg","reptile_3.jpg","reptile_4.jpg","reptile_5.jpg"});
+                        }
+                        var newList = lista.OrderBy(a => Guid.NewGuid()).Take(5).ToList();
+                        ViewBag.x = newList[0];
+                        ViewBag.y = newList[1];
+                        ViewBag.z = newList[2];
+                        ViewBag.g = newList[3];
+                        ViewBag.h = newList[4];
+                        var checkName = (from a in db.Account where UID == a.id select a.voornaam).Single();
+                        ViewBag.name = checkName;
+                    }
+
+                }
+            }
             return View();
         }
 
@@ -259,6 +301,13 @@ namespace petgoods4all.Controllers
                                 index = index + 1;
                             }
                         }
+                        var _PIDD = HttpContext.Session.GetInt32("PIDD");
+                        if(_PIDD != null)
+                        {
+                            ViewBag.productAdded = (from s in db.Voorraad where _PIDD == s.Id select s.Naam).Single();
+                            HttpContext.Session.Remove("PIDD");
+                        }
+
                         return View(pList);
                     }
                     else
@@ -286,6 +335,7 @@ namespace petgoods4all.Controllers
                 {
                     var db = new ModelContext();
                     var MaxId = 0;
+                    HttpContext.Session.SetInt32("PIDD", pIDD);
                     List<int> productList = new List<int>();
                     productList.Add(pIDD);
                     int AccountId = 0;
