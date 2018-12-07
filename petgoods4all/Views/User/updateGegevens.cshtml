@@ -1,106 +1,71 @@
-﻿@model IEnumerable<petgoods4all.Models.Account>
+﻿@model petgoods4all.Models.Account
 
 @{
     ViewData["Title"] = "Klant Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<body>
-
     <br /><br /><br /><br /><br /><br /><br />
-    <form class="table" method="put" asp-action="UpdateAccount">
-        <div class="container-fluid" style="background-color:#ffe8d3;">
-            <div class="row">
-                <h2>Gegevens beheer</h2>
-                <p>
-                    <a href="~/User/UserHome">Home</a>
-                </p>
-            </div>
-            <div class="row">
-                <table>
-                            <tr>
-                                <th>Voornaam</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="voornaam" id="inputVoornaamUser" name="inputVoornaamUser" class="form-control" required >
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Achternaam</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="achternaam" id="inputAchternaamUser" name="inputAchternaamUser" class="form-control" required >
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Straatnaam</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="straatnaam" id="inputStraatnaamUser" name="inputStraatnaamUser" class="form-control" required >
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Huisnummer</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="huisnummer" id="inputHuisnummerUser" name="inputHuisnummerUser" class="form-control" required >
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Postcode</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="postcode" id="inputPostcodeUser" name="inputPostcodeUser" class="form-control" required >
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Provincie</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="provincie" id="inputProvincieUser" name="inputProvincieUser" class="form-control" required >
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Nieuwe E-mail</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="email" id="inputEmailUser" name="inputEmailUser" class="form-control" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Telefoonnummer</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="telefoonnummer" id="inputTelefoonnummerUser" name="inputTelefoonnummerUser" class="form-control" required >
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Wachtwoord</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="password" id="inputPasswordUser" name="inputPasswordUser" class="form-control" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button class="btn btn-sm btn-primary btn-block" value="Opslaan" type="submit">Opslaan</button>
-                                </td>
-                            </tr>
-                </table>
-                <br /><br />
-            </div>
-        </div>    
-    </form>
-</body>
-</html>
+
+    <div class="container-fluid" style="background-color:#ffe8d3;">
+        <div class="row">
+            <h2>Gegevens beheer</h2>
+            <p>
+                <a href="~/User/UserHome">Home</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <form asp-action="AdminKlantEditSave">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="id" />
+                <div class="form-group">
+                    <label asp-for="email" class="control-label"></label>
+                    <input asp-for="email" class="form-control" />
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="password" class="control-label"></label>
+                    <input asp-for="password" class="form-control" />
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="voornaam" class="control-label"></label>
+                    <input asp-for="voornaam" class="form-control" placeholder="" />
+                    <span asp-validation-for="voornaam" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="achternaam" class="control-label"></label>
+                    <input asp-for="achternaam" class="form-control" />
+                    <span asp-validation-for="achternaam" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="straatnaam" class="control-label"></label>
+                    <input asp-for="straatnaam" class="form-control" />
+                    <span asp-validation-for="straatnaam" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="huisnummer" class="control-label"></label>
+                    <input asp-for="huisnummer" class="form-control" />
+                    <span asp-validation-for="huisnummer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="postcode" class="control-label"></label>
+                    <input asp-for="postcode" class="form-control" />
+                    <span asp-validation-for="postcode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="provincie" class="control-label"></label>
+                    <input asp-for="provincie" class="form-control" />
+                    <span asp-validation-for="provincie" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="telefoonnummer" class="control-label"></label>
+                    <input asp-for="telefoonnummer" class="form-control" />
+                    <span asp-validation-for="telefoonnummer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" value="Opslaan" class="btn btn-default btn-primary">Opslaan </button>
+                </div>
+            </form>
+        </div>
+    </div>

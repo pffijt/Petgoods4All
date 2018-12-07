@@ -32,6 +32,18 @@
         }
     </script>
     <script>
+        var check = function () {
+            if (document.getElementById('inputEmail').value ==
+                document.getElementById('confirmEmail').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'matching';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'not matching';
+            }
+        }
+    </script>
+    <script>
         function EmailCheck(){
             $("#status").html("Checking...");
             $.post("@Url.Action("CheckEmail","Account")",
@@ -52,10 +64,10 @@
         </script>
 
     <form class="form-signin" method="post">
-        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
         <div class="container-fluid" style="background-color:#ffe8d3;">
-            <br/>
+            <br />
             <div class="text-center mb-4">
                 <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
                 <h1 class="h3 mb-3 font-weight-normal">Aanmelden</h1>
@@ -72,15 +84,15 @@
                 <label for="straatnaam">Straatnaam</label>
                 <input type="text" id="inputStraatnaam" name="inputStraatnaam" class="form-control" placeholder="Straatnaam" required>
             </div>
-             <div class="form-label-group">
+            <div class="form-label-group">
                 <label for="straatnaam">Huisnummer</label>
                 <input type="text" id="inputHuisnummer" name="inputHuisnummer" class="form-control" placeholder="Huisnummer" required>
             </div>
-             <div class="form-label-group">
+            <div class="form-label-group">
                 <label for="straatnaam">Postcode</label>
                 <input type="text" id="inputPostcode" name="inputPostcode" class="form-control" placeholder="Postcode" required>
             </div>
-             <div class="form-label-group">
+            <div class="form-label-group">
                 <label for="straatnaam">Provincie</label>
                 <input type="text" id="inputProvincie" name="inputProvincie" class="form-control" placeholder="Provincie" required>
             </div>
@@ -92,7 +104,12 @@
                 <span id='status'></span><br>
                 <label for="inputEmail">Email-adres</label>
                 <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email-adres" onkeyup='EmailCheck();' required>
-            </div><br>
+            </div>
+            <div class="form-label-group">
+                <span id='message'></span>
+                <label for="inputEmail">Bevestig email</label>
+                <input type="email" id="confirmEmail" name="confirmEmail" class="form-control" placeholder="Bevestig email" onkeyup='check();' required>
+            </div><br><br>
             <div class="form-label-group">
                 <label for="inputPassword">Wachtwoord</label>
                 <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Wachtwoord" required>

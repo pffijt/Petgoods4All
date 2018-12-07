@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<petgoods4all.Models.Voorraad>
 
 @{
-    ViewData["Title"] = "AdminVoorraadIndex";
+    ViewData["Title"] = "Admin Voorraad Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -31,9 +31,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Prijs)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.image)
-                </th>
                 <th></th>
             </tr>
         </thead>
@@ -57,10 +54,7 @@
                         @Html.DisplayFor(modelItem => item.Prijs)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.image)
-                    </td>
-                    <td>
-                        <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Voorraad</a> |
+                        <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Bewerken</a> |
                         <a asp-action="AdminVoorraadDetails" asp-route-id="@item.Id">Details</a> |
                         <a asp-action="AdminVoorraadDelete" asp-route-id="@item.Id">Verwijderen</a>
                     </td>
