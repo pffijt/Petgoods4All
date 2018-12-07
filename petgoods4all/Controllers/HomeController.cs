@@ -196,7 +196,7 @@ namespace petgoods4all.Controllers
                     db.SaveChanges();
                 }
                 var product = from m in db.Voorraad where m.Id == identication select m;
-                return Redirect("/Home/AddToWishpage");
+                return Redirect("AddToWishpage");
             }
         }
                 public ActionResult AddReviews(string description, int productId, int rating)

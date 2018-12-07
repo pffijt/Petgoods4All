@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Mijn wensenlijst";
 }
+<head>
+    <link rel="stylesheet" href="~/Content/shoppingcart.css" />
+</head>
 <div class="container-fluid" style="background-color:#ffe8d3;">
 <h2>
     @ViewBag.Title
@@ -12,7 +15,7 @@
     @foreach(var item in Model)
     {
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-5">
                 <br>
                 <img src="@Html.DisplayFor(modelItem => item.image)" width="180px" height="100px"/>
             </div>
@@ -33,6 +36,7 @@
                 <br/>
             </div>
         </div>
+        <hr>
         <br/>
         <br/>
     }
