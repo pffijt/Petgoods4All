@@ -467,13 +467,10 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
 
                     return View();
@@ -559,7 +556,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var result = from acc in db.Account select acc.id;
+                var result = from v in db.Voorraad select v.Id;
 
                 var MaxId = result.Max();
 
