@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<petgoods4all.Models.Voorraad>
 
 @{
-    ViewData["Title"] = "AdminVoorraadIndex";
+    ViewData["Title"] = "Admin Voorraad Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="background-color:#ffe8d3;">
@@ -35,7 +35,7 @@
                         @Html.DisplayFor(modelItem => item.Dier)
                     </td>
                     <td>
-                        <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Voorraad</a> |
+                        <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Bewerken</a> |
                         <a asp-action="AdminVoorraadDetails" asp-route-id="@item.Id">Details</a> |
                         <a asp-action="AdminVoorraadDelete" asp-route-id="@item.Id">Verwijderen</a>
                     </td>

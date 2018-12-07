@@ -25,14 +25,20 @@
 
                     <!--<button type="submit" asp-controller="Order" 
                     asp-action="OrderProducts" class="btn btn-success col-sm-4" align="right">Bestellen</button>-->
-                    @if(ViewBag.AnonymousU == false)
-                    {
-                        <button asp-controller="Order" asp-action="Pay" class="btn btn-success col-sm-4" align="right">Bestellen</button>
-                    }
-                    else
-                    {
-                        <button asp-controller="Order" asp-action="CustOrder" class="btn btn-success col-sm-4" align="right">Bestellen</button>
-                    }
+                        @if(ViewBag.AnonymousU == false)
+                        {
+                            <button asp-controller="Order" asp-action="Pay" class="btn btn-success col-sm-4" align="right">Bestellen</button>
+                        }
+                        else
+                        {
+                            <button asp-controller="Order" asp-action="CustOrder" class="btn btn-success col-sm-4" align="right">Bestellen</button>
+                        }
+                   @if(ViewBag.SP != null && ViewBag.SA != null)
+                   {
+                       <br/>
+                       <h5 style="color:red;"> Petgoods4all heeft van het product ( @ViewBag.SP ), maar @ViewBag.SA product(en) in Voorraad. </h5>
+
+                   }
 
                 </h2>
             </div>

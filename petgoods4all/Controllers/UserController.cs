@@ -26,10 +26,7 @@ namespace petgoods4all.Controllers
             return View();
         }
 
-        public ActionResult updateGegevens()
-        {
-            return View();
-        }
+        
         public ActionResult Klantpersonalize()
         {
             var userId = HttpContext.Session.GetInt32("UID");
@@ -50,6 +47,10 @@ namespace petgoods4all.Controllers
                     ViewBag.empty = true;
                     //ViewBag.empty = false;
                 }
+                ViewBag.hond = (from a in db.Personal_animal where userId == a.user_id && "Dog" == a.animal select a).Any();
+                ViewBag.reptiel = (from a in db.Personal_animal where userId == a.user_id && "Reptile" == a.animal select a).Any();
+                ViewBag.vis = (from a in db.Personal_animal where userId == a.user_id && "Fish" == a.animal select a).Any();
+                ViewBag.kat = (from a in db.Personal_animal where userId == a.user_id && "Cat" == a.animal select a).Any();
             }
             return View();
         }
@@ -57,7 +58,7 @@ namespace petgoods4all.Controllers
         {
             int MaxId;
             var userId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(0);
-                var checkAnimal = (from s in db.Personal_animal where userId == s.id select s).Any();
+                var checkAnimal = (from s in db.Personal_animal where userId == s.user_id && a == s.animal select s).Any();
                 if(checkAnimal == false)
                 {
                     var result = from acc in db.Personal_animal select acc.id;
@@ -84,10 +85,10 @@ namespace petgoods4all.Controllers
         {
             var userId = HttpContext.Session.GetInt32("UID").GetValueOrDefault(0);
         
-                var checkAnimal = (from s in db.Personal_animal where a == s.animal select s).Any();
+                var checkAnimal = (from s in db.Personal_animal where a == s.animal && userId == s.user_id select s).Any();
                 if(checkAnimal == true)
                 {
-                    var findID = (from acc in db.Personal_animal where acc.animal == a select acc.id).Single();
+                    var findID = (from acc in db.Personal_animal where acc.animal == a && userId == acc.user_id select acc.id).Single();
                     Personal_animal b = new Personal_animal
                     {
                         id = findID,
@@ -105,40 +106,47 @@ namespace petgoods4all.Controllers
             if(personCat == true)
             {
                 Addpersonal("Cat");
+                db.SaveChanges();
             }
             if(personCat == false)
             {
                 Removepersonal("Cat");
+                db.SaveChanges();
             }
 
             if(personDog == true)
             {
                 Addpersonal("Dog");
+                db.SaveChanges();
             }
             if(personDog == false)
             {
                 Removepersonal("Dog");
+                db.SaveChanges();
             }
 
             if(personFish == true)
             {
                 Addpersonal("Fish");
+                db.SaveChanges();
             }
             if(personFish == false)
             {
                 Removepersonal("Fish");
+                db.SaveChanges();
             }
 
             if(personReptile == true)
             {
                 Addpersonal("Reptile");
+                db.SaveChanges();
             }
             if(personReptile == false)
             {
                 Removepersonal("Reptile");
+                db.SaveChanges();
             }
 
-            db.SaveChanges();
             return Redirect("~/User/Klantpersonalize");
         }
         public ActionResult UserBeheer()
@@ -175,7 +183,19 @@ namespace petgoods4all.Controllers
             return View(account);
         }
 
-        public ActionResult UpdateAccount(string inputEmailUser, string inputProvincieUser, string inputHuisnummerUser, string inputPostcodeUser, string originalEmailUser, string inputPasswordUser, string inputVoornaamUser, string inputAchternaamUser, string inputTelefoonnummerUser, string inputStraatnaamUser)
+        public ActionResult updateGegevens()
+        {
+            using (db)
+            {
+                var UserID = HttpContext.Session.GetInt32("UID");
+                Account account = db.Account.FirstOrDefault(x => x.id == UserID);
+
+                return View(account);
+            }
+        }
+
+
+        public ActionResult UpdateAccountSave(string inputEmailUser, string inputProvincieUser, string inputHuisnummerUser, string inputPostcodeUser, string originalEmailUser, string inputPasswordUser, string inputVoornaamUser, string inputAchternaamUser, string inputTelefoonnummerUser, string inputStraatnaamUser)
         {            
             using (db)
             {
