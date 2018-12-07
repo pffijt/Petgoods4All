@@ -9,6 +9,10 @@
 </h2>
 @if(@ViewBag.uID != 0 && @ViewBag.emptylist == false)
 {
+    @if(ViewBag.productAdded != null)
+    {
+        <h5 style="color:red; padding-left: 20px;">Het product (@ViewBag.productAdded) is aan de winkelwagen toegevoegd!</h5>
+    }
     @foreach(var item in Model)
     {
         <div class="row">

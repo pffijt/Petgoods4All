@@ -259,6 +259,13 @@ namespace petgoods4all.Controllers
                                 index = index + 1;
                             }
                         }
+                        var _PIDD = HttpContext.Session.GetInt32("PIDD");
+                        if(_PIDD != null)
+                        {
+                            ViewBag.productAdded = (from s in db.Voorraad where _PIDD == s.Id select s.Naam).Single();
+                            HttpContext.Session.Remove("PIDD");
+                        }
+
                         return View(pList);
                     }
                     else
@@ -286,6 +293,7 @@ namespace petgoods4all.Controllers
                 {
                     var db = new ModelContext();
                     var MaxId = 0;
+                    HttpContext.Session.SetInt32("PIDD", pIDD);
                     List<int> productList = new List<int>();
                     productList.Add(pIDD);
                     int AccountId = 0;
