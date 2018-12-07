@@ -13,6 +13,23 @@ namespace petgoods4all.Controllers
     {
         public ActionResult Index()
         {
+            var UID = HttpContext.Session.GetInt32("UID");
+            using (var db = new ModelContext())
+            {
+                if(UID != null)
+                {
+                    var checkAssignedPers = (from a in db.Personal_animal where UID == a.user_id select a).Any();
+                    if(checkAssignedPers == true)
+                    {
+                        var checkDog = (from a in db.Personal_animal where UID == a.user_id && "Dog" == a.animal select a).Any();
+                        var checkCat = (from a in db.Personal_animal where UID == a.user_id && "Cat" == a.animal select a).Any();
+                        var checkFish = (from a in db.Personal_animal where UID == a.user_id && "Fish" == a.animal select a).Any();
+                        var checkReptile = (from a in db.Personal_animal where UID == a.user_id && "Reptile" == a.animal select a).Any();
+                        
+                    }
+
+                }
+            }
             return View();
         }
 

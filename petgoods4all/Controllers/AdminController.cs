@@ -74,7 +74,7 @@ namespace petgoods4all.Controllers
             //        };
             //}
 
-            double c = 0;
+            //double c = 0;
             double Januari = 0;
             double Februari = 0;
             double Maart = 0;
