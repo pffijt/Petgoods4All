@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
 namespace petgoods4all.Models
@@ -18,6 +19,7 @@ namespace petgoods4all.Models
         public string huisnummer { get; set; }
         public string postcode { get; set; }
         public string provincie { get; set; }
+        [Required]
         public string telefoonnummer { get; set; }
         public Boolean IsEmailVerified {get; set;}
         
