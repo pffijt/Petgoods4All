@@ -39,6 +39,10 @@ namespace petgoods4all.Controllers
             return Redirect("~/Home/Index");
         }
 
+        public ActionResult tussenpagina(){
+            return View();
+        }
+
         [HttpPost]
         public JsonResult CheckEmail(string inputEmail){
             var db = new ModelContext();
@@ -114,7 +118,7 @@ namespace petgoods4all.Controllers
             db.Account.Add(a);
             db.SaveChanges();
             
-            return Redirect("Inloggen");
+            return Redirect("tussenpagina");
         }
 
         public ActionResult Verification(string uid)
