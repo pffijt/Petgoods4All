@@ -37,8 +37,7 @@ namespace petgoods4all.Controllers
                 }
                 else
                 {
-                     return View();
-                    //return RedirectToAction("ToegangGeweigerd");
+                     return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -56,6 +55,7 @@ namespace petgoods4all.Controllers
         public ActionResult Omzet()
         {
             var Orders = (from a in db.Order orderby a.Datum, a.Prijs  select a).Distinct();
+            var jaren = (from j in db.Order orderby j.Datum.Year select j.Datum.Year).Distinct();
             //foreach (var item in Orders)
             //{
             //    var stringDatum = item.Datum.ToString();
@@ -73,7 +73,7 @@ namespace petgoods4all.Controllers
             //        };
             //}
 
-            double c = 0;
+            //double c = 0;
             double Januari = 0;
             double Februari = 0;
             double Maart = 0;
@@ -125,14 +125,15 @@ namespace petgoods4all.Controllers
 
             foreach (var item in Orders)
             {
-                string datumString = item.Datum.ToString(new System.Globalization.CultureInfo("en-US"));
-                string splittedDatumString = datumString.Split('/')[0].ToString();
+                //string datumString = item.Datum.ToString(new System.Globalization.CultureInfo("en-US"));
+                //string splittedDatumString = datumString.Split('/')[0].ToString();
+                string splittedDatumString = item.Datum.Month.ToString();
                 if (splittedDatumString == "1") {
                     double a = Convert.ToDouble(item.Prijs);
                     Januari = Januari + a;
                     double b = (Januari / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(Januari / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Januari / 100);
 
                     JanuariInkoopPrijs = e;
                     JanuariPrijs = d;
@@ -144,8 +145,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Februari = Februari + a;
                     double b = (Februari / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(Februari / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Februari / 100);
 
                     FebruariInkoopPrijs = e;
                     FebruariPrijs = d;
@@ -157,8 +158,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Maart = Maart + a;
                     double b = (Maart / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(Maart / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Maart / 100);
 
                     MaartInkoopPrijs = e;
                     MaartPrijs = d;
@@ -170,8 +171,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     April = April + a;
                     double b = (April / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(April / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(April / 100);
 
                     AprilInkoopPrijs = e;
                     AprilPrijs = d;
@@ -183,8 +184,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Mei = Mei + a;
                     double b = (Mei / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(Mei / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Mei / 100);
 
                     MeiInkoopPrijs = e;
                     MeiPrijs = d;
@@ -196,8 +197,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Juni = Juni + a;
                     double b = (Juni / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(Juni / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Juni / 100);
 
                     JuniInkoopPrijs = e;
                     JuniPrijs = d;
@@ -209,8 +210,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Juli = Juli + a;      
                     double b = (Juli / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(Juli / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Juli / 100);
 
                     JuliInkoopPrijs = e;
                     JuliPrijs = d;
@@ -222,8 +223,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Augustus = Augustus + a;
                     double b = (Augustus / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(Augustus / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Augustus / 100);
 
                     AugustusInkoopPrijs = e;
                     AugustusPrijs = d;
@@ -235,8 +236,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     September = September + a;
                     double b = (September / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(September / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(September / 100);
 
                     SeptemberInkoopPrijs = e;
                     SeptemberPrijs = d;
@@ -248,8 +249,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Oktober = Oktober + a;
                     double b = (Oktober / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(Oktober / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(Oktober / 100);
 
                     OktoberInkoopPrijs = e;
                     OktoberPrijs = d;
@@ -261,8 +262,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     November = November + a;
                     double b = (November / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(November / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(November / 100);
 
                     NovemberInkoopPrijs = e;
                     NovemberPrijs = d;
@@ -274,8 +275,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     December = December + a;
                     double b = (December / 100) * 80;
-                    decimal e = Convert.ToDecimal(b / 1);
-                    decimal d = Convert.ToDecimal(December / 1);
+                    decimal e = Convert.ToDecimal(b / 100);
+                    decimal d = Convert.ToDecimal(December / 100);
 
                     DecemberInkoopPrijs = e;
                     DecemberPrijs = d;
@@ -321,6 +322,7 @@ namespace petgoods4all.Controllers
             ViewBag.NovemberOmzet = NovemberOmzet;
             ViewBag.DecemberOmzet = DecemberOmzet;
             ViewBag.Orders = Orders;
+            ViewBag.jaren = jaren;
 
             return View();
         }
@@ -431,17 +433,15 @@ namespace petgoods4all.Controllers
             {
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+                Voorraad voorraad = db.Voorraad.FirstOrDefault(x => x.Id == UserID);
 
                 if (Admin != null)
                 {
-                    Voorraad voorraad = db.Voorraad.Find(id);
                     return View(voorraad);
                 }
                 else
                 {
-                    Voorraad voorraad = db.Voorraad.Find(id);
-                    return View(voorraad);
-                    //return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -461,8 +461,7 @@ namespace petgoods4all.Controllers
                 }
                 else
                 {
-                    return View();
-                    //return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -471,20 +470,17 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+
+                if (Admin != null)
                 {
 
                     return View();
                 }
                 else
                 {
-                    return View();//return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -496,15 +492,15 @@ namespace petgoods4all.Controllers
             {
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+                Account account = db.Account.FirstOrDefault(x => x.id == UserID);
 
                 if (Admin != null)
                 {
-                    Account account = db.Account.Find(id);
-                return View(account);
+                    return View(account);
                 }
                 else
                 {
-                   return View();// return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -513,20 +509,17 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var userId = HttpContext.Session.GetInt32("UID");
-                ViewBag.userId = userId;
-                var isAdmin = from acc in db.Account
-                              where acc.id == userId
-                              select acc.Admin;
-                var loggedinUser = isAdmin.ToString();
-                if (loggedinUser == "true")
+                var UserID = HttpContext.Session.GetInt32("UID");
+                var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+                Voorraad voorraad = db.Voorraad.FirstOrDefault(x => x.Id == id);
+
+                if (Admin != null)
                 {
-                    Voorraad voorraad = db.Voorraad.Find(id);
                     return View(voorraad);
                 }
                 else
                 {
-                    return View();//return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -566,7 +559,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var result = from acc in db.Account select acc.id;
+                var result = from v in db.Voorraad select v.Id;
 
                 var MaxId = result.Max();
 
@@ -650,7 +643,7 @@ namespace petgoods4all.Controllers
             return RedirectToAction("AdminVoorraadIndex");
         }
 
-        public ActionResult OmzetProducten(int Datum, int DatumYear)
+        public ActionResult OmzetProducten(int Datum, DateTime DatumYear)
         { 
 
             var db = new ModelContext();
@@ -661,7 +654,7 @@ namespace petgoods4all.Controllers
 
             var OrdersJoin = from op in db.OrderedProducts
                              join o in db.Order on op.OrderId equals o.Id
-                             where o.Datum.Month == Datum && o.Datum.Year == DatumYear
+                             where o.Datum.Month == Datum && o.Datum.Year == DatumYear.Year
                              select new OrderedProducts
                              {
                                  Id = op.Id,
@@ -689,6 +682,17 @@ namespace petgoods4all.Controllers
 
             }
 
+            var totaalPrijsResult = from order in db.Order where order.Datum.Month == Datum && order.Datum.Year == DatumYear.Year select order.Prijs;
+            double totaalPrijs = 0;
+            foreach(var item in totaalPrijsResult)
+            {
+                double a = Convert.ToDouble(item);
+                totaalPrijs = totaalPrijs + a;
+                
+            }
+            decimal e = Convert.ToDecimal(totaalPrijs / 100);
+            e.ToString(new System.Globalization.CultureInfo("en-US"));
+            ViewBag.Prijs = e;
             ViewBag.Producten = voorraadList;
 
             return View();

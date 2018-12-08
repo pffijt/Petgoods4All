@@ -239,9 +239,18 @@ namespace petgoods4all.Controllers
         {
             var db = new ModelContext();
             //make query to find what user is logged in or get products from session
-
+            
             var UserId = HttpContext.Session.GetInt32("UID");
-
+            var MaxReached = HttpContext.Session.GetInt32("MaxReached"); 
+            if(MaxReached != null)
+            {
+                var selectProduct = (from r in db.Voorraad where MaxReached == r.Id select r.Naam).Single();
+                var selectAmount = (from r in db.Voorraad where MaxReached == r.Id select r.Kwantiteit).Single();
+                ViewBag.SP = selectProduct;
+                ViewBag.SA = selectAmount;
+            }
+            HttpContext.Session.Remove("MaxReached");
+           
             if (UserId == null) {
                 ViewBag.AnonymousU = true;
                 var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
@@ -264,54 +273,61 @@ namespace petgoods4all.Controllers
                     UserId = AccountSession;
                 }
                 UserId = AccountSession;
+                
             }
             else
             {
                 ViewBag.AnonymousU = false;
             }
-
-            //item uit de voorraad met prodcut id
-            var result = from s in db.ShoppingCart where s.AccountId == UserId select s;
-
-            var ShoppingCartList = result.ToList();
-            //get products from voorraad db foreach productid got from result
-            List<Voorraad> productList = new List<Voorraad>();
-
-            foreach (var item in ShoppingCartList)
+            var _emptylist = (from s in db.ShoppingCart where s.AccountId == UserId  select s).ToList();
+            if(_emptylist.Any())
             {
-                var voorraadResult = from v in db.Voorraad where v.Id == item.VoorraadId select v;
-                foreach (var i in voorraadResult)
+                //item uit de voorraad met prodcut id
+                var result = from s in db.ShoppingCart where s.AccountId == UserId select s;
+                var ShoppingCartList = result.ToList();
+                //get products from voorraad db foreach productid got from result
+                List<Voorraad> productList = new List<Voorraad>();
+            
+                ViewBag.emptylist = false;
+                foreach (var item in ShoppingCartList)
                 {
-                    productList.Add(new Voorraad()
+                    var voorraadResult = from v in db.Voorraad where v.Id == item.VoorraadId select v;
+                    foreach (var i in voorraadResult)
                     {
-                        Id = item.Id,
-                        Naam = i.Naam,
-                        Dier = i.Dier,
-                        Subklasse = i.Subklasse,
-                        Kwantiteit = item.Quantity,
-                        Prijs = i.Prijs,
-                        image = i.image
-                    });
+                        productList.Add(new Voorraad()
+                        {
+                            Id = item.Id,
+                            Naam = i.Naam,
+                            Dier = i.Dier,
+                            Subklasse = i.Subklasse,
+                            Kwantiteit = item.Quantity,
+                            Prijs = i.Prijs,
+                            image = i.image
+                        });
+                    }
                 }
+
+                Console.WriteLine(productList);
+                ViewBag.ShoppingCart = productList;
+
+                double c = 0;
+                foreach (var item in productList)
+                {
+                    double a = double.Parse(item.Prijs);
+                    double b = a * item.Kwantiteit;
+                    c = c + b;
+                    decimal d = Convert.ToDecimal(c, new System.Globalization.CultureInfo("en-US"));
+                    string prijs = d.ToString(new System.Globalization.CultureInfo("en-US"));
+
+                    ViewBag.Prijs = prijs;
+                }
+                 return View();
             }
-
-            Console.WriteLine(productList);
-            ViewBag.ShoppingCart = productList;
-
-            double c = 0;
-            foreach (var item in productList)
+            else
             {
-                
-                double a = double.Parse(item.Prijs);
-                double b = a * item.Kwantiteit;
-                c = c + b;
-                decimal d = Convert.ToDecimal(c, new System.Globalization.CultureInfo("en-US"));
-                string prijs = d.ToString(new System.Globalization.CultureInfo("en-US"));
-
-                ViewBag.Prijs = prijs;
+                ViewBag.emptylist = true;
+                return View();
             }
-
-            return View();
         }
         [HttpPost]
         public ActionResult RemoveFromShoppingCart(int productId)
@@ -334,16 +350,23 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
 
             var UserId = HttpContext.Session.GetInt32("UID");
-
-            var result = (from r in db.ShoppingCart where r.Id == productId && r.AccountId == UserId select r).ToList();
-            
-            foreach(var item in result)
+            UserId = HttpContext.Session.GetInt32("SessionAccountId");
+            var QuantityPossible = (from q in db.Voorraad where q.Id == productId && NewQuantity <= q.Kwantiteit select q).Any();
+            if(QuantityPossible)
             {
-                item.Quantity = NewQuantity;
+                var result = (from r in db.ShoppingCart where r.Id == productId && r.AccountId == UserId select r).ToList();
+                foreach(var item in result)
+                {
+                    item.Quantity = NewQuantity;
+                }
+
+                db.SaveChanges();
             }
-
-            db.SaveChanges();
-
+            else
+            {
+                HttpContext.Session.SetInt32("MaxReached",productId);
+            }
+            
             return RedirectToAction("ShoppingCart", "Voorraad");
         }
     }

@@ -113,6 +113,16 @@ a:hover {
     bottom: 0;
 }
 
+@media(min-width: 768px) {
+    .navbar-collapse.collapse {
+        margin-top: 20px;
+    }
+    #imgHomeLogo {
+        width: 150px;
+        height: 35px;
+    }
+}
+
 @media (max-width: 1170px) {
     .navbar-header {
         float: none;

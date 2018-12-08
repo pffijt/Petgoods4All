@@ -3,16 +3,23 @@
 @{
     ViewBag.Title = "Mijn wensenlijst";
 }
+<head>
+    <link rel="stylesheet" href="~/Content/shoppingcart.css" />
+</head>
 <div class="container-fluid" style="background-color:#ffe8d3;">
 <h2>
     @ViewBag.Title
 </h2>
 @if(@ViewBag.uID != 0 && @ViewBag.emptylist == false)
 {
+    @if(ViewBag.productAdded != null)
+    {
+        <h5 style="color:red; padding-left: 20px;">Het product (@ViewBag.productAdded) is aan de winkelwagen toegevoegd!</h5>
+    }
     @foreach(var item in Model)
     {
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-5">
                 <br>
                 <img src="@Html.DisplayFor(modelItem => item.image)" width="180px" height="100px"/>
             </div>
@@ -26,13 +33,14 @@
                 <form action="" method="POST">
                     <input type="hidden" value="@Html.DisplayFor(modelItem => item.Id)" name="pIDD">
                     <input type="submit" class="btn btn-warning" value="+ Naar winkelwagen" name="Option" />
-                <br/><br/>
+                    <br/><br/>
                     <input type="submit" class="btn btn-danger" value="x Verwijderen" placeholder="hello" name="Option" />
                 </form>
                 <br/>
                 <br/>
             </div>
         </div>
+        <hr>
         <br/>
         <br/>
     }

@@ -1,19 +1,18 @@
 ﻿@model IEnumerable<petgoods4all.Models.Voorraad>
 
 @{
-    ViewData["Title"] = "AdminVoorraadIndex";
+    ViewData["Title"] = "Admin Voorraad Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div style="background-color:#ffe8d3;">
+<h2 >Voorraad Index</h2>
 
-<h2 style="background-color:#ffe8d3;">Voorraad Index</h2>
-
-<p style="background-color:#ffe8d3;">
+<p>
     <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
     <a asp-action="AdminCreateVoorraad">Voeg nieuw product toe</a>
 </p>
 <div>
-    <
-    <table class="table" style="background-color:#ffe8d3;">
+    <table class="table">
         <thead>
             <tr>
                 <th>
@@ -22,22 +21,10 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Dier)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Subklasse)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Kwantiteit)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prijs)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.image)
-                </th>
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody  style="background-color:#ffe8d3;">
             @foreach (var item in Model)
             {
                 <tr>
@@ -48,19 +35,7 @@
                         @Html.DisplayFor(modelItem => item.Dier)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Subklasse)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Kwantiteit)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Prijs)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.image)
-                    </td>
-                    <td>
-                        <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Voorraad</a> |
+                        <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Bewerken</a> |
                         <a asp-action="AdminVoorraadDetails" asp-route-id="@item.Id">Details</a> |
                         <a asp-action="AdminVoorraadDelete" asp-route-id="@item.Id">Verwijderen</a>
                     </td>
@@ -114,4 +89,5 @@
         </div>
     </div>
     <!--end page pagination-->
+</div>
 </div>

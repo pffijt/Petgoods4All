@@ -10,10 +10,15 @@
 <p>  Hiermee select je huisdier(en) en maak je een gepersonaliseerde site!<br/> De thuispagina zal hiermee veranderen op uw huisdier(en). Petgoods4All staat voor een warme gepersonaliseerde website!</p>
 <form action="" method="POST">
     <div class="checkbox" style="padding: 20px 20px 20px 20px;">
-      <label><input type="checkbox" name="personCat" id="personCat" value="true">Katten</label><br/>
-      <label><input type="checkbox" name="personDog" id="personDog" value="true">Honden</label><br/>
-      <label><input type="checkbox" name="personFish" id="personFish" value="true">Vissen</label><br/>
-      <label><input type="checkbox" name="personReptile" id="personReptile" value="true">Reptielen</label><br/><br/>
+      @if(ViewBag.kat == true){ <label><input type="checkbox" name="personCat" id="personCat"  value="true"  checked>Katten </label><br/>}
+      @if(ViewBag.kat == false){ <label><input type="checkbox" name="personCat" id="personCat" value="true" >Katten </label><br/>}
+      @if(ViewBag.hond == true){ <label><input type="checkbox" name="personDog" id="personDog" value="true" checked>Honden </label><br/>}
+      @if(ViewBag.hond == false){ <label><input type="checkbox" name="personDog" id="personDog" value="true" >Honden </label><br/>}
+      @if(ViewBag.vis == true){ <label><input type="checkbox" name="personFish" id="personFish" value="true"  checked>Vissen </label><br/>}
+      @if(ViewBag.vis == false){ <label><input type="checkbox" name="personFish" id="personFish" value="true"  >Vissen </label><br/>}
+      @if(ViewBag.reptiel == true){ <label><input type="checkbox" name="personReptile" id="personReptile" value="true" checked>Reptielen </label><br/>}
+      @if(ViewBag.reptiel == false){ <label><input type="checkbox" name="personReptile" id="personReptile" value="true"  >Reptielen </label><br/>}
+    <br/>
     </div>
     <button  class="btn btn-danger col-sm-1"  type="submit" style="margin: 20px 20px 20px 20px;"> Pas aan!</button>
 </form>
