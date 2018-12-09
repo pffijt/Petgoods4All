@@ -411,18 +411,16 @@ namespace petgoods4all.Controllers
             {
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+                Account account = db.Account.FirstOrDefault(x => x.id == id);
 
                 if (Admin != null)
                 {
-                    Account account = db.Account.Find(id);
                     return View(account);
                 }
                 else
                 {
-                    Account account = db.Account.Find(id);
 
-                    return View(account);
-                    //return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -433,7 +431,7 @@ namespace petgoods4all.Controllers
             {
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
-                Voorraad voorraad = db.Voorraad.FirstOrDefault(x => x.Id == UserID);
+                Voorraad voorraad = db.Voorraad.FirstOrDefault(x => x.Id == id);
 
                 if (Admin != null)
                 {
@@ -492,7 +490,7 @@ namespace petgoods4all.Controllers
             {
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
-                Account account = db.Account.FirstOrDefault(x => x.id == UserID);
+                Account account = db.Account.FirstOrDefault(x => x.id == id);
 
                 if (Admin != null)
                 {
@@ -625,7 +623,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var accountToDelete = db.Account.Find(id); ;
+                var accountToDelete = db.Account.FirstOrDefault(x => x.id == id); 
                 db.Account.Remove(accountToDelete);
                 db.SaveChanges();
             }
@@ -636,7 +634,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var voorraadToDelete = db.Voorraad.Find(id);
+                var voorraadToDelete = db.Voorraad.FirstOrDefault(x => x.Id == id);
                 db.Voorraad.Remove(voorraadToDelete);
                 db.SaveChanges();
             }

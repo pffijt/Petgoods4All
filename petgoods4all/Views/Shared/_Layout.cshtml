@@ -89,11 +89,7 @@
                         <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Registreren</a></li>
                         <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Inloggen</a></li>
                     }
-                    @if (Context.Session.GetInt32("UID") != null)
-                    {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Uitloggen">Log uit</a></li>
-                        <li><a asp-area="" asp-controller="User" asp-action="UserBeheer">Mijn gegevens</a></li>
-                    }
+                    
                     @if (Context.Session.GetInt32("UID") != null)
                     {
                         var UserID = Context.Session.GetInt32("UID");
