@@ -65,13 +65,13 @@
             </div>
             <div class="col-md-4">
                 <form id="cartInfo" class="form-products" method="post" asp-controller="Voorraad" asp-action="UpdateQuantity">
-                    <div class="col-md-6">
+                    <div class="col-md-9">
                         <h3>@item.Naam</h3>
                         <p>Kwantiteit:<input type="number" value="@item.Kwantiteit" name="NewQuantity" id="NewQuantity" style="width:50px;" /></p>
                         <p>Prijs: &#8364;@item.Prijs</p>         
                     </div>
                     <br><br>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <br><br><br><br>
                         <button type="submit" asp-controller="Voorraad" asp-action="UpdateQuantity" asp-route-productId="@item.Id" class="btn btn-success">Opslaan</button>
                     </div>

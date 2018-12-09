@@ -35,7 +35,7 @@
         </div>
         <div class="col-sm-8">
             <h2>@Html.Raw(a.Naam)</h2>
-            <p style="color:red;">&#8364; @Html.Raw(a.Prijs)</p>
+            <p>&#8364; @Html.Raw(a.Prijs)</p>
             <label for="sel1">Gemiddelde Product Score:</label>
             @if (ViewBag.AverageRating == 0) { <p>Geen score aanwezig</p>}
             @if (ViewBag.AverageRating > 0)
@@ -56,7 +56,7 @@
            
                 <button type="submit" asp-controller="Voorraad" 
                 asp-action="AddToShoppingCart" asp-route-identication="@Html.Raw(a.Id)" 
-                class="btn btn-warning col-sm-4">Naar winkelwagen</button>
+                class="btn btn-warning col-sm-4">In de winkelwagen</button>
                 <form action="" method="POST"> 
                     <button  class="btn btn-danger col-sm-1" asp-controller="Home" asp-action="addWishList"
                     asp-route-identication="@Html.Raw(a.Id)" type="submit">&#10084;</button>
