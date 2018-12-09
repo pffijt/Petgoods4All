@@ -15,103 +15,55 @@
     <br />
     <!--begin selecting-->
     <div class="row">
-        <button class="button button5">Sorting</button>
-        <button class="button button5">Popular</button>
+        @*<button class="button button5">Sorteren</button>
+        <button class="button button5">Populair</button>*@
         <div class="pull-right">
-            @ViewBag.firstnum - @ViewBag.secondnum of @ViewBag.count results
+            @ViewBag.firstnum - @ViewBag.secondnum van @ViewBag.count resultaten
         </div>
     </div>
     <br />
     <div id="browsProduct">
-        <div class="row">
+        <div class="row" style="margin-left:70px;">
             @foreach(var item in Model)
             {
                 <div id="browsProductContainer" class="col-lg-3">
-                    <img src="@Html.DisplayFor(modelItem => item.image)" alt="@Html.DisplayFor(modelItem => item.Naam)" style="width:140px;height:140px;" />
+                    <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">
+                    <img src="@Html.DisplayFor(modelItem => item.image)" alt="" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:140px;height:140px;" />
+                    </a>
                     
-                        <li><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a></li>
+                        <li style="list-style-type: none;"><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a></li>
                         <br/>
-                        @Html.DisplayFor(modelItem => item.Prijs)
-                    
+                        <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">
+                        &#8364; @Html.DisplayFor(modelItem => item.Prijs)
+                        </a>
                 </div>
             }
         </div>
     </div>
     <!--end selecting-->
-    <!--begin products-->
-    <!--<div id="browsProduct">
-        <div class="row">
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-        </div>
-        <div class="row">
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-        </div>
-        <div class="row">
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-            <div id="browsProductContainer" class="col-lg-3">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" style="width:140px;height:140px;" />
-                <br />
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-        </div>
-    </div>-->
-    <!--end products-->
+           
     <!--begin page pagination-->
     @{
+        string fvis;
+        string lvis;
         var second = ViewBag.paginationindex - 1;
         var third = ViewBag.paginationindex + 1;
+        if(second != 0)
+        {
+            fvis = "visible";
+        }
+        else
+        {
+            fvis = "hidden";
+        }
+        if(third >= (ViewBag.count/16)+2 )
+        {
+            lvis = "hidden";
+        }
+        else
+        {
+            lvis = "visible";
+        }
         if(second < 1)
         {
             second = 1;
@@ -121,9 +73,10 @@
         <div class="text-center">
             <ul class="pagination">
                 <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
-                <li class="page-item"><a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@second">@second</a></li>
+                <li class="page-item" style="visibility:@fvis">
+                <a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@second">@second</a></li>
                 <li class="page-item"><a style="color:black;"class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@ViewBag.paginationindex">@ViewBag.paginationindex</a></li>
-                <li class="page-item"><a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@third">@third</a></li>
+                <li class="page-item" style="visibility:@lvis"><a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@third">@third</a></li>
                 <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
             </ul>
         </div>

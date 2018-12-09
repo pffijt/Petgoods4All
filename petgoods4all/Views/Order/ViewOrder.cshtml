@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "ViewOrder";
+}
+
+<h2>Bestel Geschiedenis</h2>
+<div class="container-fluid" id="bodyPB" style="background-color:#ffe8d3;">
+    <div class="row">
+        <br><br>
+        <div class="col-md-12">
+            <p align="left">Producten</p>
+        </div>
+    </div>
+    <hr>
+    @foreach (var item in ViewBag.ViewOrder)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                <br>
+                <img src="@item.image" width="180px"  onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" />
+            </div>
+            <div class="col-md-2">
+                <h3>@item.Naam</h3>
+                <p>Quantity: @item.Kwantiteit</p>
+                <p>Price: &#8364; @item.Prijs</p>
+            </div>
+            <div class="col-md-8">
+                <br><br>
+            </div>
+        </div>
+        <br>
+        <hr>
+    }
+</div>
+

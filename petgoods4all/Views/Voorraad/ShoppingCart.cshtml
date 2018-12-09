@@ -1,0 +1,102 @@
+﻿@model IEnumerable<petgoods4all.Models.Voorraad>
+@{
+    ViewBag.Title = "ShoppingCart";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/shoppingcart.css" />
+</head>
+<br><br><br>
+@if(@ViewBag.emptylist == false)
+{
+<!-- HEADER, ORDER AND PRICE INDICATOR-->
+    <div style="background-color:#ffe8d3;">
+
+    <div class="row">
+        <form class="form-products" method="post" asp-controller="Order" asp-action="OrderProducts">
+            <div class="col-md-3">
+
+                <h2>Prijs: &#8364; @ViewBag.Prijs</h2>
+                <input type="text" value="@ViewBag.Prijs" name="prijs" id="prijs" style="visibility:hidden">
+
+            </div>
+
+            <div class="col-md-9">
+                <h2 align="right">
+
+                    <!--<button type="submit" asp-controller="Order" 
+                    asp-action="OrderProducts" class="btn btn-success col-sm-4" align="right">Bestellen</button>-->
+                        @if(ViewBag.AnonymousU == false)
+                        {
+                            <button asp-controller="Order" asp-action="Pay" class="btn btn-success col-sm-4" align="right">Bestellen</button>
+                        }
+                        else
+                        {
+                            <button asp-controller="Order" asp-action="CustOrder" class="btn btn-success col-sm-4" align="right">Bestellen</button>
+                        }
+                   @if(ViewBag.SP != null && ViewBag.SA != null)
+                   {
+                       <br/>
+                       <h5 style="color:red;"> Petgoods4all heeft van het product ( @ViewBag.SP ), maar @ViewBag.SA product(en) in Voorraad. </h5>
+
+                   }
+
+                </h2>
+            </div>
+        </form>
+    </div>
+
+    <!-- 1 ROW DIV REPRESENTS ONE ITEM -->
+
+    <!-- WHEN NOT HARDCODED THESE SHOULD BE GENERATED WITH A FOREACH -->
+    <div class="container-fluid" id="bodyPB" style="background-color:#ffe8d3;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 align="left">Producten</h3>
+            </div>
+        </div>
+        <hr>
+
+        @foreach (var item in ViewBag.ShoppingCart)
+        {
+        <div class="row">
+            <div class="col-md-4">
+                <br>
+                <img src="@item.image" width="180px" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" />
+            </div>
+            <div class="col-md-4">
+                <form id="cartInfo" class="form-products" method="post" asp-controller="Voorraad" asp-action="UpdateQuantity">
+                    <div class="col-md-6">
+                        <h3>@item.Naam</h3>
+                        <p>Kwantiteit:<input type="number" value="@item.Kwantiteit" name="NewQuantity" id="NewQuantity" style="width:50px;" /></p>
+                        <p>Prijs: &#8364;@item.Prijs</p>         
+                    </div>
+                    <br><br>
+                    <div class="col-md-6">
+                        <br><br><br><br>
+                        <button type="submit" asp-controller="Voorraad" asp-action="UpdateQuantity" asp-route-productId="@item.Id" class="btn btn-success">Opslaan</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+            <br>
+                <form class="form-products" method="post" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart">
+                    <button type="submit" asp-controller="Voorraad" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Id" class="btn btn-danger col-sm-4" align="right">Verwijderen</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <hr>
+        }
+    </div> 
+    </div> 
+}
+@if(@ViewBag.emptylist == true)
+{
+    <div style="background-color:#ffe8d3;">
+        <h3>Je Boodschappenkar is leeg!</h3>
+    </div>
+}
+
+
+
+

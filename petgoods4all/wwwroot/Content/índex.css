@@ -1,6 +1,16 @@
 ﻿body {
     background-image: url("../Content/Images/bg3.PNG");
     background-repeat: repeat;
+    overflow-x: hidden;
+}
+
+.navbar-toggle {
+    margin-right: 100px;
+}
+
+body,
+p {
+    padding: 20px 20px 20px 20px;
 }
 
 h2 {
@@ -8,18 +18,28 @@ h2 {
 }
 
 h3 {
-    padding: 0px 20px 0px 50px;
+    padding: 0px 20px 10px 20px;
 }
 
-body, p {
-    padding: 20px 20px 20px 20px;
-}
-
-#introduction, img {
-    margin: 5px 0px 20px 20px;
-}
-
-footer{
+footer {
     background-color: #ffe8d3;
     text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+    #screensize,
+    img {
+        margin: 5px 0px 20px 20px;
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+    #screensize,
+    img {
+        margin: 5px 0px 20px 20px;
+        height: 100px;
+    }
 }

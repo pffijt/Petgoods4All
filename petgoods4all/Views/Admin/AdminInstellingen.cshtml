@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ViewData["Title"] - Petgoods4All</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/Content/signin.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+
+    <script>
+        var check = function () {
+            if (document.getElementById('inputPasswordAdmin').value ==
+                document.getElementById('confirmPasswordAdmin').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'matching';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'not matching';
+            }
+        }
+    </script>
+    <br /><br /><br /><br /><br />
+    <form class="input-group" method="put" style="background-color:#ffe8d3;">
+        <h2>Admin instellingen</h2>
+        <div class="col-lg-4">
+            <a href="~/Admin/AdminHome">Home</a> <br />
+            <a href="~/Admin/AdminKlantIndex">Klant beheer</a> <br />
+            <a href="~/Admin/AdminVoorraadIndex">Product beheer</a>
+        </div>
+        <div class="col-lg-8">
+            <div class="form-label-group">
+                <label for="inputNaamAdmin">Email-adres</label>
+                <input type="text" id="inputEmailAdmin" name="inputEmailAdmin" class="form-control" placeholder="Email-adres" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <label for="inputPasswordAdmin">Wachtwoord</label>
+                <input type="password" id="inputPasswordAdmin" name="inputPasswordAdmin" class="form-control" placeholder="Wachtwoord" required>
+            </div>
+            <div class="form-label-group">
+                <span id='message'></span>
+                <label for="inputPasswordAdmin">Bevestig wachtwoord</label>
+                <input type="password" id="confirmPasswordAdmin" name="confirmPasswordAdmin" class="form-control" placeholder="Bevestig wachtwoord" onkeyup='check();' required>
+            </div>
+            <br /><br /><br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Opslaan</button><br><br>
+        </div>
+    </form>
+</body>
+</html>

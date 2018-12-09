@@ -6,47 +6,36 @@
 <br><br><br>
 
 <!-- HEADER -->
-<div class="row">
-    <div class="col-md-6">
-        <h2>Order History</h2>
-    </div>
-</div>
-
-<br>
-
-<!-- WHEN NOT HARDCODED THESE SHOULD BE GENERATED WITH A FOREACH -->
-<div class="row">
-    <br><br>
-    <div class="col-md-12">
-        <table class="table">
-            <tr>
-                <td>Bestelling</td>
-                <td>Datum</td>
-                <td>Bedrag</td>
-                <td>Orderstatus</td>
-                <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
-            </tr>
-            <tr>
-                <td>10234901824190121</td>
-                <td>05.09.18</td>
-                <td>$ 189.94</td>
-                <td>Afgeleverd</td>
-                <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
-            </tr>
-            <tr>
-                <td>102353623515235</td>
-                <td>25.12.18</td>
-                <td>$ 95.24</td>
-                <td>Afgeleverd</td>
-                <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
-            </tr>
+        <div class="container-fluid" style="background-color:#ffe8d3;">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Bestel Geschiedenis</h2>
+                </div>
+            </div>
+            <br>
+            <!-- WHEN NOT HARDCODED THESE SHOULD BE GENERATED WITH A FOREACH -->
+            <div class="row">
+                <br><br>
+                <div class="col-md-12">
+                    <table class="table">
                         <tr>
-                <td>124235363121421</td>
-                <td>25.09.18</td>
-                <td>$ 25.94</td>
-                <td>Verzonden</td>
-                <td>@Html.ActionLink("Bestelling bekijken", "#", "Order", new { area = "" }, new { @class = "" })</td>
-            </tr>
-        </table>
-    </div>
-</div>
+                            <td>Bestelling</td>
+                            <td>Datum</td>
+                            <td>Bedrag</td>
+                            <td>Orderstatus</td>
+                            <td>Bestelling bekijken</td>
+                        </tr>
+                        @foreach (var item in ViewBag.Orders)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Datum</td>
+                                <td>&#8364; @item.Prijs</td>
+                                <td>@item.OrderStatus</td>
+                                <td><a asp-controller="Order" asp-action="ViewOrder" asp-route-orderId="@item.Id">Bestelling bekijken</a></td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "OrderError";
+}
+
+<h2>OrderError</h2>
+
+@{switch (ViewBag.Error) {
+        case "NietInVoorraad":
+            <text>
+                <div class="alert alert-danger" role="alert">
+                    Een van uw producten is niet in de voorraad
+                </div>
+            </text>
+            break;
+        default:
+        break;
+    }
+}
+

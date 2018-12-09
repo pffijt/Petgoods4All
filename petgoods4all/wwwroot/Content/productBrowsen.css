@@ -1,14 +1,14 @@
-﻿
-h2 {
+﻿h2 {
     padding: 50px 20px 20px 20px;
 }
 
-body, p {
+body,
+p {
     padding: 10px 10px 10px 10px;
-    
 }
 
-#browsProduct, img {
+#browsProduct,
+img {
     margin: 5px 0px 0px 15px;
     border-radius: 10%;
     text-align: center;
@@ -20,8 +20,8 @@ body, p {
     margin: 20px 15px 0px 15px;
     border-radius: 10%;
     text-align: center;
-    width:210px;
-    height:225px;
+    width: 210px;
+    height: 290px;
 }
 
 button {
@@ -31,7 +31,39 @@ button {
     border-radius: 10%;
 }
 
+button:hover {
+    background-color: #ffddbe;
+    border-color: snow;
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+    .pull-right {
+        margin: 20px 40px 0px 0px;
+    }
+    #browsProduct,
+    img {
+        margin: 5px 0px 0px 5px;
+        border-radius: 10%;
+        text-align: center;
+    }
+    #browsProductContainer {
+        background-color: #ffddbf;
+        padding: 20px 5px 0px 0px;
+        margin: 20px 15px 0px -80px;
+        border-radius: 10%;
+        text-align: center;
+        width: 220px;
+        height: 265px;
+    }
+    button {
+        margin: 0px 0px 0px 30px;
+        background-color: snow;
+        border-color: #ffddbe;
+        border-radius: 10%;
+    }
     button:hover {
         background-color: #ffddbe;
         border-color: snow;
     }
+}

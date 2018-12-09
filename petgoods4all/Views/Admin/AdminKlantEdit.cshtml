@@ -1,0 +1,82 @@
+﻿@model petgoods4all.Models.Account
+@{
+    ViewData["Title"] = "Admin Klant bewerken";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row" style="background-color:#ffe8d3;">
+    <h2 style="background-color:#ffe8d3;">Admin Klant bewerken</h2>
+    <h4 style="background-color:#ffe8d3;">Accounts</h4>
+    <hr />
+
+    <div class="col-md-4">
+        <form asp-action="AdminKlantEditSave">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Admin" /> @Html.DisplayNameFor(model => model.Admin)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="voornaam" class="control-label"></label>
+                <input asp-for="voornaam" class="form-control" placeholder="" />
+                <span asp-validation-for="voornaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="achternaam" class="control-label"></label>
+                <input asp-for="achternaam" class="form-control" />
+                <span asp-validation-for="achternaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="straatnaam" class="control-label"></label>
+                <input asp-for="straatnaam" class="form-control" />
+                <span asp-validation-for="straatnaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="huisnummer" class="control-label"></label>
+                <input asp-for="huisnummer" class="form-control" />
+                <span asp-validation-for="huisnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="postcode" class="control-label"></label>
+                <input asp-for="postcode" class="form-control" />
+                <span asp-validation-for="postcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="provincie" class="control-label"></label>
+                <input asp-for="provincie" class="form-control" />
+                <span asp-validation-for="provincie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefoonnummer" class="control-label"></label>
+                <input asp-for="telefoonnummer" class="form-control" />
+                <span asp-validation-for="telefoonnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsEmailVerified" /> @Html.DisplayNameFor(model => model.IsEmailVerified)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Opslaan" class="btn btn-default btn-primary">Opslaan </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div style="background-color:#ffe8d3;">
+    <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
+</div>

@@ -1,69 +1,98 @@
-﻿@model IEnumerable<petgoods4all.Models.Voorraad>
+﻿@model List<petgoods4all.Models.Voorraad>
 @{
     ViewBag.Title = "Friskies Pate";
+    petgoods4all.Models.Voorraad b = Model[0];
+    petgoods4all.Models.Voorraad c = Model[1];
+    petgoods4all.Models.Voorraad d = Model[2];
+    petgoods4all.Models.Voorraad a = Model[3];
 }
+@using Microsoft.AspNetCore.Http;
 <!-- Dit is gemaakt door Pepijn Fijt, als jullie het niet begrijpen dan moet je even een berichtje versturen-->
 <!--<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>-->
-<ul class="breadcrumb">
-    <li><a href="../">Home</a></li>
-    <li><a href="#">@foreach(var item in Model){@Html.DisplayFor(modelItem => item.Naam)}</a></li>
-</ul>
-<div class="row">
-    <div class="col-sm-4">
-        <img src="@foreach(var item in Model){@Html.DisplayFor(modelItem => item.image)}" alt="@foreach(var item in Model){@Html.DisplayFor(modelItem => item.Naam)}" />
-    </div>
-    <div class="col-sm-8">
-        <h2>@foreach(var item in Model){@Html.DisplayFor(modelItem => item.Naam)}</h2>
-        <p style="color:red;">@foreach(var item in Model){@Html.DisplayFor(modelItem => item.Prijs)}</p>
-        <label for="sel1">Select list:</label>
-        <div>
-            <div class="form-group col-sm-4">
-                <select class="form-control" id="sel1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select>
-            </div>
-            <button type="button" class="btn btn-warning col-sm-4">Into shopping cart</button>
+<head>
+    <meta charset="utf-8" />
+    <title>ViewData["Title"] - Petgoods4All</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/Content/productPage.css" />
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<div class="container-fluid" style="background-color:#ffe8d3;">
+<form class="form-products" method="post" asp-controller="Voorraad" asp-action="AddToShoppingCart">
+    <ul class="breadcrumb">
+        <br/>
+        <br/>
+        <li><a href="../">Home</a></li>
+        <li><a href="#">@Html.Raw(a.Naam)
+        </a></li>
+    </ul>
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="@Html.Raw(a.image)" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" />
         </div>
-    </div>
-    Delivery information
+        <div class="col-sm-8">
+            <h2>@Html.Raw(a.Naam)</h2>
+            <p style="color:red;">&#8364; @Html.Raw(a.Prijs)</p>
+            <label for="sel1">Gemiddelde Product Score:</label>
+            @if (ViewBag.AverageRating == 0) { <p>Geen score aanwezig</p>}
+            @if (ViewBag.AverageRating > 0)
+            {
+                <p>@ViewBag.AverageRating</p>
+            }
+            <label for="sel1">Kwantiteit:</label>
+            <div>
+                <div class="form-group col-sm-4">
+                    <select class="form-control" id="Quantity" name="Quantity">
+                        @for(var i = 1; i < @a.Kwantiteit + 1; i++) 
+                        { 
+                            <option>@i</option>
+                        }
+                    </select>
+                </div>
+                <input type="text" value="@Html.Raw(a.Prijs)" name="productId" id="productId" style="visibility:hidden">
+           
+                <button type="submit" asp-controller="Voorraad" 
+                asp-action="AddToShoppingCart" asp-route-identication="@Html.Raw(a.Id)" 
+                class="btn btn-warning col-sm-4">Naar winkelwagen</button>
+                <form action="" method="POST"> 
+                    <button  class="btn btn-danger col-sm-1" asp-controller="Home" asp-action="addWishList"
+                    asp-route-identication="@Html.Raw(a.Id)" type="submit">&#10084;</button>
+                </form>
+            </div>
 </div>
-<h3>Related options</h3>
+</div>
+</form>
+<h3>Gerelateerde producten</h3>
 <hr />
 <div class="row">
-    <div class="col-sm-4">
-        <div class="col-sm-2">
-            <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" class="img-responsive" />
+        <div class="col-sm-4">
+                <img src="@Html.Raw(b.image)"  onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:50px; height:50px;" />
+            
+                <a asp-area="" asp-controller="Home" asp-action="productpage"
+                 asp-route-identication="@Html.Raw(b.Id)">
+                <p style="font-size:10px;">@Html.Raw(b.Naam) <br />&#8364; @Html.Raw(b.Prijs),-</p>
+                </a>
         </div>
-        <div class="col-sm-2">
-            <p>@ViewBag.Title <br />&euro; 10,-</p>
+        <div class="col-sm-4">
+                    <img src="@Html.Raw(c.image)"  onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';"  style="width:50px; height:50px;"/>
+                    <a asp-area="" asp-controller="Home" asp-action="productpage"
+                    asp-route-identication="@Html.Raw(c.Id)">
+                    <p style="font-size:10px;">@Html.Raw(c.Naam) <br />&#8364;  @Html.Raw(c.Prijs),-</p>
+                    </a>
+                
         </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="row">
-            <div class="col-sm-2">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" class="img-responsive" />
-            </div>
-            <div class="col-sm-2">
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
+        <div class="col-sm-4">
+                    <img src="@Html.Raw(d.image)"   onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:50px; height:50px;" />
+                    <a asp-area="" asp-controller="Home" asp-action="productpage"
+                    asp-route-identication="@Html.Raw(d.Id)">
+                    <p style="font-size:10px;">@Html.Raw(d.Naam) <br />&#8364;  @Html.Raw(d.Prijs),-</p>
+                    </a>
         </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="row">
-            <div class="col-sm-2">
-                <img src="~/Content/Images/dogfood.jpg" alt="@ViewBag.Title" class="img-responsive" />
-            </div>
-            <div class="col-sm-2">
-                <p>@ViewBag.Title <br />&euro; 10,-</p>
-            </div>
-        </div>
-    </div>
 </div>
-<h3>Product information</h3>
+<h3>Product informatie</h3>
 <hr />
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nulla sem, laoreet sit amet lobortis nec, auctor rhoncus ex. Maecenas quis turpis nisi. Integer viverra pretium libero, non aliquet est ornare id. Aliquam in venenatis libero. Nam ut nisi accumsan, accumsan sem vel, luctus lorem. Praesent sed sollicitudin turpis, in commodo purus. Fusce lorem arcu, suscipit vitae egestas eget, hendrerit at mauris. Nunc purus nisi, dignissim sit amet risus quis, faucibus pellentesque elit. Maecenas sodales convallis congue. Curabitur ullamcorper nibh quis euismod elementum. Cras egestas, mi quis mollis iaculis, eros mi egestas sem, vel auctor erat augue non magna. In condimentum pellentesque leo, sit amet molestie nibh tristique eu. Sed diam est, imperdiet ac ex ut, mattis mattis eros.
@@ -80,3 +109,66 @@
 <p>
     Mauris ullamcorper nulla non dolor faucibus, ut eleifend risus ullamcorper. Praesent in mauris molestie, venenatis lectus eu, pharetra purus. Integer mollis magna orci. Morbi rutrum, mauris non fermentum pellentesque, lorem ligula condimentum nunc, nec ullamcorper ligula ex vel augue. Curabitur tincidunt interdum enim, in pulvinar nulla maximus eget. Praesent massa mauris, iaculis eu tempor vel, malesuada non felis. Duis sit amet nunc quis dolor dignissim aliquam. Curabitur lobortis non magna quis blandit. Pellentesque feugiat odio purus. Donec interdum sodales mi. Curabitur non nunc bibendum, ultricies metus quis, cursus magna. Cras vitae laoreet lectus, eu sollicitudin sapien. Nullam euismod eleifend augue ac suscipit.
 </p>
+
+<div id="Reviews">
+    <h3>Beoordelingen</h3>
+    <hr />
+    <!--Add review-->
+    <!-- Alleen laten zien wanneer user is ingelogt-->
+    @if (Context.Session.GetInt32("UID") != null)
+    {
+        <form class="form-products" method="post" asp-controller="Home" asp-action="AddReviews">
+            Product cijfer:<select id="rating" name="rating">
+                @for (var i = 1; i < 6; i++)
+                {
+                    <option>@i</option>
+                }
+            </select>
+                <br>
+                <textarea id="description" name="description"> </textarea><br>
+                @foreach (var item in ViewBag.Model)
+                {
+                    <input type="text" style="visibility:hidden" id="productId" name="productId" value="@item.Id">
+
+                    <button type="submit" class="btn btn-success" asp-controller="Home" asp-action="AddReviews" asp-route-identication="@item.Id">Submit</button>
+                }
+</form>
+        <hr/>
+    }
+
+    @{
+        var amountOfItems = 0;
+        var MaxAmountOfItems = 5;
+    }
+        @foreach (var item in ViewBag.reviews)
+        {
+            @if (amountOfItems < MaxAmountOfItems)
+            {
+            <!-- Reviews varaible moet een join worden-->
+            <!-- Klant Naam-->
+                @if (ViewBag.ProductId == item.ProductId)
+                {
+                <p> 
+                    @for (var i = 0; i < item.StarRating; i++)
+                    {
+                            <span class="glyphicon glyphicon-star"></span>
+                    }
+                    @for (var i = 0; i < (5 - item.StarRating); i++)
+                    {
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    }
+                    <br>
+                    @item.Naam | @item.Email<br>
+                    @item.Description
+                    @{amountOfItems = amountOfItems + 1;}
+                </p>
+                <hr />
+                        }
+                        }
+                        }
+    @ViewBag.MaxAmountOfItems
+    <!--<button type="button" onclick="@(ViewBag.MaxAmountOfItems = ViewBag.MaxAmountOfItems + 5)">Read More</button>
+    -->
+    
+</div>
+</div>

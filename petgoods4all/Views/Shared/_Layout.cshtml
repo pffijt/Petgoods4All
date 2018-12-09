@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using petgoods4all.Models;
+<!DOCTYPE html>
 <html>
+@using petgoods4all.Models;
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,45 +18,101 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     <link rel="stylesheet" href="~/Content/índex.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+
+
+    @*Search form submit when enter is pressed*@
+    <script type="text/javascript">
+        // Using jQuery.
+
+        $(document).ready(function () {
+
+            $('#productSearch').keydown(function (event) {
+                // enter has keyCode = 13, change it if you want to use another button
+                if (event.keyCode == 13) {
+                    this.form.submit();
+                    return false;
+                }
+            });
+
+        });
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header left">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="~/Content/Images/Logo_Petgoods4You.png" class="img-responsive" alt="Logo" width="200" height="50" />
+                
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="dog">Dog</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="cat">Cat</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="fish">Fish</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="reptile">Reptiles</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="infoPagina">Information</a></li>
-                    <li><a asp-area="" asp-controller="Order" asp-action="OrderHistory">Order history page</a></li>
-            
+                <ul class="nav navbar-nav navbar-left">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <img id="imgHomeLogo" src="~/Content/Images/Logo_Petgoods4You.png" alt="Logo" width="200" height="50" />
+                    </a>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Kat">Katten</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Hond">Honden</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Vis">Vissen</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="Reptiel">Reptielen</a></li>
+
                     <li>
-                        <form class="nav navbar-form form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="nav navbar-form form-inline" method="post" asp-controller="Voorraad" asp-action="Search">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Zoeken" aria-label="Search" id="productSearch" name="productSearch">
                         </form>
                     </li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Sign Up</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Login</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @using Microsoft.AspNetCore.Http;
 
+                    @if (Context.Session.GetInt32("UID") != null)
+                    {
+                        <li><a asp-area="" asp-controller="Order" asp-action="OrderHistory" asp-route-D="reptile">Bestel Geschiedenis</a></li>
+                    }
+
+                    <li><a asp-area="" asp-controller="Voorraad" asp-action="ShoppingCart"><span class="glyphicon glyphicon-shopping-cart"></a></li>
+
+                    @if (Context.Session.GetInt32("UID") != null)
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
+                    }
+
+                    @if (Context.Session.GetInt32("UID") == null)
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Registreren</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Inloggen</a></li>
+                    }
+                    
+                    @if (Context.Session.GetInt32("UID") != null)
+                    {
+                        var UserID = Context.Session.GetInt32("UID");
+                        var AdminIngelogt = new ModelContext().Account.FirstOrDefault(v => v.id == UserID && v.Admin == true);
+                        var UserIngelogt = new ModelContext().Account.FirstOrDefault(v => v.id == UserID && v.Admin == false);
+                        
+                        @if (AdminIngelogt != null)
+                        {
+                            <li><a asp-area="" asp-controller="Admin" asp-action="AdminHome">
+                            <span class="glyphicon glyphicon-user"></span></a></li>
+                        }
+                        @if (UserIngelogt != null)
+                        {
+                            <li><a asp-area="" asp-controller="User" asp-action="UserHome">
+                            <span class="glyphicon glyphicon-user"></span></a></li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Petgoods4All</p>
         </footer>

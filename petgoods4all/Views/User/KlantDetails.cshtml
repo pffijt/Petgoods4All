@@ -1,0 +1,71 @@
+﻿@model petgoods4all.Models.Account
+
+@{
+    ViewData["Title"] = "Klant Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Account gegevens</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.voornaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.achternaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.straatnaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.straatnaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.huisnummer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.huisnummer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.postcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.postcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.provincie)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.provincie)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.telefoonnummer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.telefoonnummer)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="KlantEdit" asp-controller="User" asp-route-id="@Model.id">Bewerken</a> |
+    <a asp-action="KlantIndex">Terug naar account pagina</a>
+</div>
