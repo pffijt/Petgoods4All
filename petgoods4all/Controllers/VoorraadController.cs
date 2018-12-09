@@ -134,7 +134,7 @@ namespace petgoods4all.Controllers
             var dierList = dier.ToList();
 
             var image = (from voorraad in db.Voorraad select voorraad.image).Distinct();
-            var imageList = dier.ToList();
+            var imageList = image.ToList();
 
             var subklasse = (from voorraad in db.Voorraad select voorraad.Subklasse).Distinct();
             var subklasseList = subklasse.ToList();
