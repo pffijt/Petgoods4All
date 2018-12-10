@@ -350,11 +350,11 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
 
             var UserId = HttpContext.Session.GetInt32("UID");
-            UserId = HttpContext.Session.GetInt32("SessionAccountId");
+            var UUserId = HttpContext.Session.GetInt32("SessionAccountId");
             var QuantityPossible = (from q in db.Voorraad where q.Id == productId && NewQuantity <= q.Kwantiteit select q).Any();
             if(QuantityPossible)
             {
-                var result = (from r in db.ShoppingCart where r.Id == productId && r.AccountId == UserId select r).ToList();
+                var result = (from r in db.ShoppingCart where r.Id == productId && (r.AccountId == UserId || r.AccountId == UUserId) select r).ToList();
                 foreach(var item in result)
                 {
                     item.Quantity = NewQuantity;
