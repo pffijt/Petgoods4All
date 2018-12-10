@@ -29,7 +29,7 @@ namespace petgoods4all.Controllers
             ViewBag.a = DierDropdown;
             ViewBag.b = SubklasseDropdown;
             ViewBag.c = minPrijs;
-            ViewBag.v = maxPrijs;
+            ViewBag.d = maxPrijs;
             ViewBag.firstnum = (P*16)-15;
             ViewBag.secondnum = 16*P;
             ViewBag.paginationindex = P;
