@@ -235,6 +235,10 @@ namespace petgoods4all.Controllers
             o_postal = (from s in db.Account where s.id == UserIdResult select s.postcode).Single();
             o_address = (from s in db.Account where s.id == UserIdResult select s.straatnaam).Single();
             o_number = (from s in db.Account where s.id == UserIdResult select s.huisnummer).Single();
+            o_name = o_name.Replace(" ","_");
+            o_postal = o_postal.Replace(" ","_");
+            o_address = o_address.Replace(" ","_");
+            o_number = o_number.Replace(" ","_");
             // string o_aanhef, string o_name, string o_postal, string o_address, string o_number
             var environment = new SandboxEnvironment("ATAmdaFGY2Pz6CH83fmdK8OaXu2Wd8b9fLDyuU8X3SNiAzvu2_Ks4IU3wPiNbpE74nWIkhb4jN_7pz9E", "EOksjziNOaGEYh-OroCWTFT_EKDlqJEIpsrZLMtUhmYNxgDZ_v6KGwyL1MFcWJ-dfv97PApRKroAAT0g");
             var Pay_client = new PayPalHttpClient(environment);

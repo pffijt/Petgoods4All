@@ -29,7 +29,7 @@ namespace petgoods4all.Controllers
             ViewBag.a = DierDropdown;
             ViewBag.b = SubklasseDropdown;
             ViewBag.c = minPrijs;
-            ViewBag.v = maxPrijs;
+            ViewBag.d = maxPrijs;
             ViewBag.firstnum = (P*16)-15;
             ViewBag.secondnum = 16*P;
             ViewBag.paginationindex = P;
@@ -134,7 +134,7 @@ namespace petgoods4all.Controllers
             var dierList = dier.ToList();
 
             var image = (from voorraad in db.Voorraad select voorraad.image).Distinct();
-            var imageList = dier.ToList();
+            var imageList = image.ToList();
 
             var subklasse = (from voorraad in db.Voorraad select voorraad.Subklasse).Distinct();
             var subklasseList = subklasse.ToList();
