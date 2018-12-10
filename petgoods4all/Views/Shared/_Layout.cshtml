@@ -118,9 +118,39 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Petgoods4All</p>
-        </footer>
+        <div id="myFooter">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="~/Content/Images/keurmerk.PNG" alt="Keurmerk" width="200" height="100" />
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>Home</h5>
+                            <ul>
+                                <li><a asp-area="" asp-controller="Account" asp-action="Inloggen">Inloggen</a></li>
+                                <li><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Aanmelden</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>Over ons</h5>
+                            <ul>
+                                <li><a asp-area="" asp-controller="Home" asp-action="infoPagina">Bedrijfsinformatie</a></li>
+                                <li><a href="#">Beoordelingen</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>Help</h5>
+                            <ul>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Help desk</a></li>
+                                <li><a href="#">Forums</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.ActionLink("Contact Ons", "Contact", "Home", new object { }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+            </div>
+        <p>&copy; @DateTime.Now.Year - Petgoods4All</p>
     </div>
 
     <environment include="Development">
