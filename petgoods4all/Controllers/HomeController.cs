@@ -402,7 +402,7 @@ namespace petgoods4all.Controllers
                         db.ShoppingCart.Add(shoppingCart);
                         db.SaveChanges();
                     }
-                    return Redirect("~/Voorraad/ShoppingCart");
+                    return Redirect("Wishpage");
                 }
             }
             if(Option == "x Verwijderen")

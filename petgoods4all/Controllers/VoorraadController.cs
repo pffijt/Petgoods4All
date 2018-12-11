@@ -29,7 +29,7 @@ namespace petgoods4all.Controllers
             ViewBag.a = DierDropdown;
             ViewBag.b = SubklasseDropdown;
             ViewBag.c = minPrijs;
-            ViewBag.v = maxPrijs;
+            ViewBag.d = maxPrijs;
             ViewBag.firstnum = (P*16)-15;
             ViewBag.secondnum = 16*P;
             ViewBag.paginationindex = P;
@@ -134,7 +134,7 @@ namespace petgoods4all.Controllers
             var dierList = dier.ToList();
 
             var image = (from voorraad in db.Voorraad select voorraad.image).Distinct();
-            var imageList = dier.ToList();
+            var imageList = image.ToList();
 
             var subklasse = (from voorraad in db.Voorraad select voorraad.Subklasse).Distinct();
             var subklasseList = subklasse.ToList();
@@ -350,11 +350,11 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
 
             var UserId = HttpContext.Session.GetInt32("UID");
-            UserId = HttpContext.Session.GetInt32("SessionAccountId");
+            var UUserId = HttpContext.Session.GetInt32("SessionAccountId");
             var QuantityPossible = (from q in db.Voorraad where q.Id == productId && NewQuantity <= q.Kwantiteit select q).Any();
             if(QuantityPossible)
             {
-                var result = (from r in db.ShoppingCart where r.Id == productId && r.AccountId == UserId select r).ToList();
+                var result = (from r in db.ShoppingCart where r.Id == productId && (r.AccountId == UserId || r.AccountId == UUserId) select r).ToList();
                 foreach(var item in result)
                 {
                     item.Quantity = NewQuantity;

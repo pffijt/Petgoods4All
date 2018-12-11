@@ -288,3 +288,7 @@ a:hover {
     border: 1px solid #ccc;
     border-top: none;
 }
+
+a.imageI, a.imageI:hover{
+    background-color:#ffddbf !important;
+}
