@@ -23,23 +23,23 @@
         var check = function () {
             if (document.getElementById('inputPassword').value ==
                 document.getElementById('confirmPassword').value) {
-                document.getElementById('message').style.color = 'green';
-                document.getElementById('message').innerHTML = 'matching';
+                document.getElementById('messagePassword').style.color = 'green';
+                document.getElementById('messagePassword').innerHTML = 'Wachtwoord komt overeen';
             } else {
-                document.getElementById('message').style.color = 'red';
-                document.getElementById('message').innerHTML = 'not matching';
+                document.getElementById('messagePassword').style.color = 'red';
+                document.getElementById('messagePassword').innerHTML = 'Wachtwoord komt niet overeen';
             }
         }
     </script>
     <script>
-        var check = function () {
+        var checkmatchingEmail = function () {
             if (document.getElementById('inputEmail').value ==
                 document.getElementById('confirmEmail').value) {
-                document.getElementById('message').style.color = 'green';
-                document.getElementById('message').innerHTML = 'matching';
+                document.getElementById('messageEmail').style.color = 'green';
+                document.getElementById('messageEmail').innerHTML = 'E-mail komt overeen';
             } else {
-                document.getElementById('message').style.color = 'red';
-                document.getElementById('message').innerHTML = 'not matching';
+                document.getElementById('messageEmail').style.color = 'red';
+                document.getElementById('messageEmail').innerHTML = 'E-mail komt niet overeen';
             }
         }
     </script>
@@ -105,16 +105,16 @@
                 <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email-adres" onkeyup='EmailCheck();' required>
             </div>
             <div class="form-label-group">
-                <span id='message'></span><br>
+                <span id='messageEmail'></span><br>
                 <label for="inputEmail">Bevestig email</label>
-                <input type="email" id="confirmEmail" name="confirmEmail" class="form-control" placeholder="Bevestig email" onkeyup='check();' required>
+                <input type="email" id="confirmEmail" name="confirmEmail" class="form-control" placeholder="Bevestig email" onkeyup='checkmatchingEmail();' required>
             </div>
             <div class="form-label-group">
                 <label for="inputPassword">Wachtwoord</label>
                 <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Wachtwoord" required>
             </div>
             <div class="form-label-group">
-                <span id='message'></span>
+                <span id='messagePassword'></span><br>
                 <label for="inputPassword">Bevestig wachtwoord</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Bevestig wachtwoord" onkeyup='check();' required>
             </div>
