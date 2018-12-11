@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "ad9a75db3a510a386c269a92fc95b274b79ade31"
+    "signature": "e6e15cf9e7ecc1134c4ab24a22aecfc4d8344c63"
   },
   "compilationOptions": {
     "defines": [
@@ -31,7 +31,8 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.4",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.1.2",
           "PayPal": "2.0.0-rc2",
-          "System.Web.Mvc.Extensions.Mvc.4": "1.0.9"
+          "System.Web.Mvc.Extensions.Mvc.4": "1.0.9",
+          "libphonenumber-csharp": "8.9.10"
         },
         "runtime": {
           "petgoods4all.dll": {}
@@ -49,6 +50,17 @@
         },
         "compile": {
           "lib/netstandard2.0/BraintreeHttp-Dotnet.dll": {}
+        }
+      },
+      "libphonenumber-csharp/8.9.10": {
+        "runtime": {
+          "lib/netstandard2.0/PhoneNumbers.dll": {
+            "assemblyVersion": "8.9.10.0",
+            "fileVersion": "8.9.10.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/PhoneNumbers.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -5156,6 +5168,13 @@
       "sha512": "sha512-fhDqo9V68BFvH6EWZVlUuQEg67KmgQtF7Ge2vkvxFq5oKdSLIwWprfTSL5LCB11Jdedgw0QZ7XKhSQrWTzvrCg==",
       "path": "braintreehttp-dotnet/0.3.0",
       "hashPath": "braintreehttp-dotnet.0.3.0.nupkg.sha512"
+    },
+    "libphonenumber-csharp/8.9.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rZT0EED9RoHC59rHFKknF2ylgj4avhhWmcxxEM7XZuiSJBrlSDPzdjBHSbe3mCka3O80kVONANBVsI0BeSH8kw==",
+      "path": "libphonenumber-csharp/8.9.10",
+      "hashPath": "libphonenumber-csharp.8.9.10.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",

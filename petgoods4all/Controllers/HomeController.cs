@@ -207,7 +207,7 @@ namespace petgoods4all.Controllers
             }
         }
         [HttpPost]
-       public ActionResult Contact(string contactEmail, string Onderwerp, string Bericht)
+       public ActionResult Contact(string contactEmail, string Onderwerp, string Bericht, string button)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(contactEmail));
@@ -228,7 +228,14 @@ namespace petgoods4all.Controllers
                 client.Disconnect(false);
             }
 
-            return View("Contact");
+            if (button == "btnSubmit"){
+                TempData["buttonVal"] = "Uw bericht is verstuurd!";
+            }
+            else{
+                TempData["buttonVal"] = "Uw bericht is niet verstuurd! Probeer het later nog eens";    
+            }
+           
+            return RedirectToAction("Contact");
         }
 
         [HttpPost]

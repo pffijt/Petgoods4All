@@ -8,20 +8,13 @@
 <head>
     <link rel="stylesheet" href="~/Content/contact.css" />
 </head>
-<script>
-    function buttonClicked(choice){
-        if(choice == )
-    }
-</script>
 <div class="container-fluid" style="background-color:#ffe8d3;">
     
     <h2>@ViewBag.Title</h2>
     <div class="row">
         <div class="col-md-6">
-            <!-- <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Gelukt!</h4><br>
-                <p>Uw bericht is verstuurd naar Petgoods4all.</p>
-            </div> -->
+                @TempData["buttonVal"]
+            
                 <form method="post">
                     <div class="form-label-group">
                         <label for="contactEmail">Email</label>
@@ -35,7 +28,7 @@
                         <label for="Bericht">Bericht</label>
                         <textarea type="text" id="Bericht" name="Bericht" class="form-control" placeholder="Bericht" rows="3"></textarea>
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" data-dismiss="alert" type="submit">Versturen</button>
+                    <button class="btn btn-lg btn-primary btn-block" name="button" value="btnSubmit" asp-action="Contact" type="submit">Versturen</button>
                 </form>
         </div>
     </div>
