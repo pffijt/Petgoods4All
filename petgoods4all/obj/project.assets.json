@@ -11,6 +11,15 @@
           "lib/netstandard2.0/BraintreeHttp-Dotnet.dll": {}
         }
       },
+      "libphonenumber-csharp/8.9.10": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/PhoneNumbers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PhoneNumbers.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -5321,6 +5330,21 @@
         "braintreehttp-dotnet.0.3.0.nupkg.sha512",
         "braintreehttp-dotnet.nuspec",
         "lib/netstandard2.0/BraintreeHttp-Dotnet.dll"
+      ]
+    },
+    "libphonenumber-csharp/8.9.10": {
+      "sha512": "rZT0EED9RoHC59rHFKknF2ylgj4avhhWmcxxEM7XZuiSJBrlSDPzdjBHSbe3mCka3O80kVONANBVsI0BeSH8kw==",
+      "type": "package",
+      "path": "libphonenumber-csharp/8.9.10",
+      "files": [
+        ".signature.p7s",
+        "lib/net35/PhoneNumbers.dll",
+        "lib/net40/PhoneNumbers.dll",
+        "lib/netstandard1.3/PhoneNumbers.dll",
+        "lib/netstandard2.0/PhoneNumbers.dll",
+        "lib/portable-net45+win8+wp8+wpa81/PhoneNumbers.dll",
+        "libphonenumber-csharp.8.9.10.nupkg.sha512",
+        "libphonenumber-csharp.nuspec"
       ]
     },
     "Libuv/1.10.0": {
@@ -13839,7 +13863,8 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.4",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 2.1.2",
       "PayPal >= 2.0.0-rc2",
-      "System.Web.Mvc.Extensions.Mvc.4 >= 1.0.9"
+      "System.Web.Mvc.Extensions.Mvc.4 >= 1.0.9",
+      "libphonenumber-csharp >= 8.9.10"
     ]
   },
   "packageFolders": {
@@ -13916,6 +13941,10 @@
           "System.Web.Mvc.Extensions.Mvc.4": {
             "target": "Package",
             "version": "[1.0.9, )"
+          },
+          "libphonenumber-csharp": {
+            "target": "Package",
+            "version": "[8.9.10, )"
           }
         },
         "imports": [

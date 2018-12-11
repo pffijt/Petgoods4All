@@ -30,8 +30,7 @@ namespace petgoods4all.Models
         [Required]
         public string provincie { get; set; }
         [Required]
-        [Phone]
-        [StringLength(30, MinimumLength = 9, ErrorMessage = "Uw telefoonnummer is niet correct!")]
+        [DataType(DataType.PhoneNumber)]
         public string telefoonnummer { get; set; }
         public Boolean IsEmailVerified {get; set;}
         
