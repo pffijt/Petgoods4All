@@ -364,15 +364,11 @@ namespace petgoods4all.Controllers
             {
                 ViewBag.firstnum = (P * 16) - 15;
                 ViewBag.secondnum = 16 * P;
-                ViewBag.paginationindex = P + 1;
+                ViewBag.paginationindex = P;
 
-                var query = from acc in db.Account select acc;
+                var accounts = from acc in db.Account select acc;
 
-                
-                    ViewBag.count = query.Count();
-                
-                 
-
+                ViewBag.count = accounts.Count();
                 if (ViewBag.secondnum > ViewBag.count)
                 {
                     ViewBag.secondnum = ViewBag.count;
@@ -380,11 +376,12 @@ namespace petgoods4all.Controllers
 
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
+                var accountlist = accounts.Skip(((P * 16) - 16)).Take(16).ToList();
 
                 if (Admin != null)
                 {
-                    var accounts = db.Account.ToList();
-                    return View(accounts);
+                    
+                    return View(accountlist);
                 }
                 else
                 {
@@ -397,36 +394,31 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                
                 ViewBag.firstnum = (P * 16) - 15;
                 ViewBag.secondnum = 16 * P;
                 ViewBag.paginationindex = P;
 
-                IQueryable<Voorraad> query = from v in db.Voorraad select v;
-                
-                var result = query.Skip(((P * 16) - 16)).Take(16);
-                var voorraadList = result.ToList();
-                ViewBag.count = query.Count();
-                ViewBag.Voorraad = voorraadList;
+                var products = from v in db.Voorraad select v;
+
+                ViewBag.count = products.Count();
                 if (ViewBag.secondnum > ViewBag.count)
                 {
                     ViewBag.secondnum = ViewBag.count;
                 }
+
+                var voorraadList = products.Skip(((P * 16) - 16)).Take(16).ToList();
+                
 
                 var UserID = HttpContext.Session.GetInt32("UID");
                 var Admin = db.Account.FirstOrDefault(x => x.id == UserID && x.Admin == true);
 
                 if (Admin != null)
                 {
-                    var voorraad = db.Voorraad.ToList();
                     return View(voorraadList);
                 }
                 else
                 {
-                    var voorraad = db.Voorraad.ToList();
-
-                    return View(voorraad);
-                    //return RedirectToAction("ToegangGeweigerd");
+                    return RedirectToAction("ToegangGeweigerd");
                 }
             }
         }
@@ -550,7 +542,7 @@ namespace petgoods4all.Controllers
 
         //Creeren nieuw Account/Product als je op de Opslaan knop klikt
         [HttpPost]
-        public ActionResult AdminCreateAccountSave(string email,string postcode, string provincie, string huisnummer, string achternaam, string voornaam, string telefoonnummer, string straatnaam, bool Admin, string password)
+        public ActionResult AdminCreateAccountSave(string email, string postcode, string provincie, string huisnummer, string achternaam, string voornaam, string telefoonnummer, string straatnaam, bool Admin, string password, bool IsEmailVerified)
         {
             using (db)
             {
@@ -558,7 +550,7 @@ namespace petgoods4all.Controllers
 
                 var MaxId = result.Max();
 
-                
+
                 Account a = new Account
                 {
                     id = MaxId + 1,
@@ -571,11 +563,12 @@ namespace petgoods4all.Controllers
                     straatnaam = straatnaam,
                     postcode = postcode,
                     provincie = provincie,
+                    IsEmailVerified = IsEmailVerified,
                     huisnummer = huisnummer
                 };
                 db.Account.Add(a);
                 db.SaveChanges();
-            }
+            } 
             return RedirectToAction("AdminKlantIndex");
         }
 
@@ -603,11 +596,11 @@ namespace petgoods4all.Controllers
         }
 
         //Updaten Account/Product als je op de opslaan knop klikt in de Edit pagina
-        public ActionResult AdminKlantEditSave(int? id, string voornaam,bool Admin, string huisnummer, string provincie, string postcode,  string achternaam, string email, string straatnaam, string telefoonnummer)
+        public ActionResult AdminKlantEditSave(int? id, string voornaam,bool IsEmailVerified, bool Admin, string huisnummer, string provincie, string postcode,  string achternaam, string email, string straatnaam, string telefoonnummer)
         {
             using (db)
             {
-                var accountToUpdate = db.Account.Find(id);
+                var accountToUpdate = db.Account.FirstOrDefault(x => x.id == id);
 
                 accountToUpdate.achternaam = achternaam;
                 accountToUpdate.voornaam = voornaam;
@@ -618,6 +611,7 @@ namespace petgoods4all.Controllers
                 accountToUpdate.provincie = provincie;
                 accountToUpdate.postcode = postcode;
                 accountToUpdate.Admin = Admin;
+                accountToUpdate.IsEmailVerified = IsEmailVerified;
 
                 db.SaveChanges();
             }
