@@ -271,7 +271,7 @@ namespace petgoods4all.Controllers
                     decimal e = Convert.ToDecimal(b);
                     decimal d = Convert.ToDecimal(Oktober);
                     Math.Round(d, 2); 
-                     Math.Round(e, 2); 
+                    Math.Round(e, 2); 
 
                     OktoberInkoopPrijs = e;
                     OktoberPrijs = d;
