@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using petgoods4all.Models;
 using MailKit.Net.Smtp;
 using MimeKit;
-
+using System.Globalization;
 
 namespace petgoods4all.Controllers
 {
@@ -15,6 +15,7 @@ namespace petgoods4all.Controllers
     {
         public ActionResult Index()
         {
+            Console.WriteLine("Cultureinfo : "+CultureInfo.CurrentCulture);
             var UID = HttpContext.Session.GetInt32("UID");
             List<string> lista = new List<string>();
             using (var db = new ModelContext())
@@ -113,7 +114,7 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             var product = from m in db.Voorraad where m.Id == identication select m;
             var UID = HttpContext.Session.GetInt32("UID");
-
+            ViewBag.hoeveelheid = (from m in db.Voorraad where identication == m.Id select m.Kwantiteit).Single();
             var reviews =
                 from r in db.Review
                 join u in db.Account on r.UserId equals u.id
@@ -176,7 +177,7 @@ namespace petgoods4all.Controllers
   
                 var product = from m in db.Voorraad where m.Id == identication select m;
                 //var reviews = from r in db.Review where r.ProductId == identication select r;
-
+                
                 var reviews =
                     from r in db.Review
                     join u in db.Account on r.UserId equals u.id
@@ -354,7 +355,7 @@ namespace petgoods4all.Controllers
         }
 
         [HttpPost]
-        public ActionResult Wishpage(string Option, int pIDD)
+        public ActionResult Wishpage(string Option, int pIDD, int hoeveelheid)
         {
             //Dit is wel echt slecht gescriptmaarja ik weet ook niet anders
             if(Option == "+ Naar winkelwagen")
@@ -392,14 +393,28 @@ namespace petgoods4all.Controllers
                     }
                     else
                     {
-                        ShoppingCart shoppingCart = new ShoppingCart
+                        var checkAlreadyIn = (from s in db.ShoppingCart where pIDD == s.VoorraadId && uID == s.AccountId select s).Any();
+                        if(checkAlreadyIn)
                         {
-                            Id = MaxId + 1,
-                            VoorraadId = pIDD,
-                            AccountId = AccountId,
-                            Quantity = 1,
-                        };
-                        db.ShoppingCart.Add(shoppingCart);
+                            var MogelijkGetal = (from a in db.Voorraad where pIDD == a.Id select a.Kwantiteit).Single();
+                            var eerstGetal = (from b in db.ShoppingCart where pIDD == b.VoorraadId && uID == b.AccountId select b.Quantity).Single();
+                            if(eerstGetal+hoeveelheid <= MogelijkGetal)
+                            {
+                                (from s in db.ShoppingCart where pIDD == s.VoorraadId && uID == s.AccountId select s)
+                                .ToList().ForEach(s => s.Quantity = s.Quantity+hoeveelheid);
+                            }
+                        }
+                        else
+                        {
+                            ShoppingCart shoppingCart = new ShoppingCart
+                            {
+                                Id = MaxId + 1,
+                                VoorraadId = pIDD,
+                                AccountId = AccountId,
+                                Quantity = hoeveelheid,
+                            };
+                            db.ShoppingCart.Add(shoppingCart);
+                        }
                         db.SaveChanges();
                     }
                     return Redirect("Wishpage");
