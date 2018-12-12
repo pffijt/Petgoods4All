@@ -61,6 +61,10 @@
                     <button  class="btn btn-danger col-sm-1" asp-controller="Home" asp-action="addWishList"
                     asp-route-identication="@Html.Raw(a.Id)" type="submit">&#10084;</button>
                 </form>
+                 <br/><br/>
+                 <div class="alert alert-info col-sm-7">
+                 Petgoods4All heeft nog <b>@Html.Raw(ViewBag.hoeveelheid)</b> product(en) in voorraad!
+                 </div>
             </div>
 </div>
 </div>
