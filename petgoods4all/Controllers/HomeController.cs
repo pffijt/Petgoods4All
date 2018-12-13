@@ -15,6 +15,9 @@ namespace petgoods4all.Controllers
     {
         public ActionResult Index()
         {
+            var culture = new System.Globalization.CultureInfo("nl-NL");
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
             Console.WriteLine("Cultureinfo : "+CultureInfo.CurrentCulture);
             var UID = HttpContext.Session.GetInt32("UID");
             List<string> lista = new List<string>();

@@ -251,6 +251,10 @@ namespace petgoods4all.Controllers
         public ActionResult ShoppingCart()
         {
             var db = new ModelContext();
+            var culture = new System.Globalization.CultureInfo("nl-NL");
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+            Console.WriteLine("Cultureinfo : "+CultureInfo.CurrentCulture);
             //make query to find what user is logged in or get products from session
             
             var UserId = HttpContext.Session.GetInt32("UID");
@@ -330,8 +334,8 @@ namespace petgoods4all.Controllers
                     double b = a * item.Kwantiteit;
                     c = c + b;
                 }
-                decimal d = Convert.ToDecimal(c, new System.Globalization.CultureInfo("en-US"));
-                string prijs = d.ToString("F");
+                decimal d = Convert.ToDecimal(c/100, new System.Globalization.CultureInfo("en-US"));
+                string prijs = d.ToString("F",new System.Globalization.CultureInfo("en-US"));
                 ViewBag.Prijs = prijs;
                  return View();
             }
