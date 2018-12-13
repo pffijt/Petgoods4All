@@ -147,7 +147,7 @@ namespace petgoods4all.Controllers
                 db.SaveChanges();
             }
 
-            return Redirect("~/User/Klantpersonalize");
+            return Redirect("~/Home");
         }
         public ActionResult UserBeheer()
         {
