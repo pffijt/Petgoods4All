@@ -4,7 +4,13 @@
     ViewData["Title"] = "Klanten";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="background-color:#ffe8d3;">
+
+<head>
+    <link rel="stylesheet" href="~/Content/adminKlantIndex.css" />
+</head>
+
+<div id="adminResponsive" class="container-fluid" style="background-color:#ffe8d3;">
+    <div class="row">
     <h2>Klanten</h2>
 
     <p>
@@ -94,5 +100,7 @@
                 </ul>
             </div>
         </div>
+    
         <!--end page pagination-->
     </div>
+</div>
