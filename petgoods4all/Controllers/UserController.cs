@@ -183,7 +183,7 @@ namespace petgoods4all.Controllers
             return View(account);
         }
 
-        public ActionResult updateGegevens()
+        public ActionResult updateGegevens(int? id)
         {
             using (db)
             {
@@ -195,23 +195,23 @@ namespace petgoods4all.Controllers
         }
 
 
-        public ActionResult UpdateAccountSave(string inputEmailUser, string inputProvincieUser, string inputHuisnummerUser, string inputPostcodeUser, string originalEmailUser, string inputPasswordUser, string inputVoornaamUser, string inputAchternaamUser, string inputTelefoonnummerUser, string inputStraatnaamUser)
+        public ActionResult UpdateAccountSave(string email, string provincie, string huisnummer, string postcode, string password, string voornaam, string achternaam, string telefoonnummer, string straatnaam)
         {            
             using (db)
             {
                 var userId = HttpContext.Session.GetInt32("UID");
                 
                 //var accountUpdate = db.Account.Find(inputEmailUser);// input from inlog, comparing db email.
-                var accountUpdate = db.Account.Where(account => account.id == userId).FirstOrDefault();
-                accountUpdate.voornaam = inputVoornaamUser;
-                accountUpdate.achternaam = inputAchternaamUser;
-                accountUpdate.telefoonnummer = inputTelefoonnummerUser;
-                accountUpdate.straatnaam = inputStraatnaamUser;
-                accountUpdate.password = inputPasswordUser;
-                accountUpdate.postcode = inputPostcodeUser;
-                accountUpdate.provincie = inputProvincieUser;
-                accountUpdate.huisnummer = inputHuisnummerUser;
-                accountUpdate.email = inputEmailUser;
+                var accountUpdate = db.Account.FirstOrDefault(x => x.id == userId);
+                accountUpdate.voornaam = voornaam;
+                accountUpdate.achternaam = achternaam;
+                accountUpdate.telefoonnummer = telefoonnummer;
+                accountUpdate.straatnaam = straatnaam;
+                accountUpdate.password = password;
+                accountUpdate.postcode = postcode;
+                accountUpdate.provincie = provincie;
+                accountUpdate.huisnummer = huisnummer;
+                accountUpdate.email = email;
 
                 db.Account.Update(accountUpdate);
                 db.SaveChanges();

@@ -214,6 +214,19 @@ namespace petgoods4all.Controllers
             //}
             //else
             //{
+            var checkAlreadyIn = (from s in db.ShoppingCart where identication == s.VoorraadId && UserId == s.AccountId select s).Any();
+            if(checkAlreadyIn)
+            {
+                var MogelijkGetal = (from a in db.Voorraad where identication == a.Id select a.Kwantiteit).Single();
+                var eerstGetal = (from b in db.ShoppingCart where identication == b.VoorraadId && UserId == b.AccountId select b.Quantity).Single();
+                if(eerstGetal+Quantity <= MogelijkGetal)
+                {
+                    (from s in db.ShoppingCart where identication == s.VoorraadId && UserId == s.AccountId select s)
+                    .ToList().ForEach(s => s.Quantity = s.Quantity+Quantity);
+                }
+            }
+            else
+            {
                 ShoppingCart shoppingCart = new ShoppingCart
                 {
                     Id = MaxId + 1,
@@ -221,10 +234,10 @@ namespace petgoods4all.Controllers
                     AccountId = AccountId,
                     Quantity = Quantity,
                 };
-
-
                 db.ShoppingCart.Add(shoppingCart);
-                db.SaveChanges();
+            }
+
+            db.SaveChanges();
             //}
 
             //}
@@ -313,14 +326,13 @@ namespace petgoods4all.Controllers
                 double c = 0;
                 foreach (var item in productList)
                 {
-                    double a = double.Parse(item.Prijs);
+                    double a = double.Parse(item.Prijs );
                     double b = a * item.Kwantiteit;
                     c = c + b;
-                    decimal d = Convert.ToDecimal(c, new System.Globalization.CultureInfo("en-US"));
-                    string prijs = d.ToString(new System.Globalization.CultureInfo("en-US"));
-
-                    ViewBag.Prijs = prijs;
                 }
+                decimal d = Convert.ToDecimal(c, new System.Globalization.CultureInfo("en-US"));
+                string prijs = d.ToString("F");
+                ViewBag.Prijs = prijs;
                  return View();
             }
             else
@@ -351,7 +363,9 @@ namespace petgoods4all.Controllers
 
             var UserId = HttpContext.Session.GetInt32("UID");
             var UUserId = HttpContext.Session.GetInt32("SessionAccountId");
-            var QuantityPossible = (from q in db.Voorraad where q.Id == productId && NewQuantity <= q.Kwantiteit select q).Any();
+            
+            var checkProductIDVoorraad = (from s in db.ShoppingCart where s.Id == productId select s.VoorraadId).Single();
+            var QuantityPossible = (from q in db.Voorraad where q.Id == checkProductIDVoorraad && NewQuantity <= q.Kwantiteit select q).Any();
             if(QuantityPossible)
             {
                 var result = (from r in db.ShoppingCart where r.Id == productId && (r.AccountId == UserId || r.AccountId == UUserId) select r).ToList();
@@ -364,7 +378,7 @@ namespace petgoods4all.Controllers
             }
             else
             {
-                HttpContext.Session.SetInt32("MaxReached",productId);
+                HttpContext.Session.SetInt32("MaxReached",checkProductIDVoorraad);
             }
             
             return RedirectToAction("ShoppingCart", "Voorraad");

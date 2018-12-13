@@ -81,6 +81,12 @@ namespace petgoods4all.Controllers
             {
                  MaxId = result.Max();
             }
+            var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
+            if(AccountSession != null)
+            {
+                MaxId = AccountSession.GetValueOrDefault(0) - 1;
+            }
+            HttpContext.Session.Remove("SessionAccountId");
             Account a = new Account
             {
                 id = MaxId + 1,

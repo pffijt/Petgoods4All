@@ -5,89 +5,94 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="background-color:#ffe8d3;">
-<h2 >Voorraad Index</h2>
+    <h2>Voorraad Index</h2>
 
-<p>
-    <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
-    <a asp-action="AdminCreateVoorraad">Voeg nieuw product toe</a>
-</p>
-<div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Naam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Dier)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody  style="background-color:#ffe8d3;">
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Naam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Dier)
-                    </td>
-                    <td>
-                        <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Bewerken</a> |
-                        <a asp-action="AdminVoorraadDetails" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="AdminVoorraadDelete" asp-route-id="@item.Id">Verwijderen</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <!--begin page pagination-->
-    @{
-        string fvis;
-        string lvis;
-        var second = ViewBag.paginationindex - 1;
-        var third = ViewBag.paginationindex + 1;
-        if (second != 0 )
-        {
-            fvis = "visible";
-        }
-        else
-        {
-            fvis = "hidden";
-        }
-        if (third >= (ViewBag.count / 16) + 2)
-        {
-            lvis = "hidden";
-        }
-        else
-        {
-            lvis = "visible";
-        }
-        if (second < 1)
-        {
-            second = 1;
-        }
-    }
-    <div class="row">
-        <div class="text-center">
-            <ul class="pagination">
-                <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
-                <li class="page-item" style="visibility:@fvis">
-                    <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex" asp-route-P="@second">@second</a>
-                </li>
-                <li class="page-item">
-                    <a style="color:black;" class="page-link" asp-area="" asp-controller="Admin"
-                       asp-action="AdminVoorraadIndex" asp-route-P="@ViewBag.paginationindex">@ViewBag.paginationindex</a>
-                </li>
-                <li class="page-item" style="visibility:@lvis">
-                    <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex" asp-route-P="@third">@third</a>
-                </li>
-                <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
-            </ul>
-        </div>
+    <p>
+        <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
+        <a asp-action="AdminCreateVoorraad">Voeg nieuw product toe</a>
+    </p>
+    <div>
+        <form class="nav navbar-form form-inline" method="post" asp-controller="Admin" asp-action="AdminVoorraadIndex">
+            <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op naam" aria-label="Search" id="productSearch" name="productSearch">
+        </form>
     </div>
-    <!--end page pagination-->
-</div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Naam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dier)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="background-color:#ffe8d3;">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Naam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dier)
+                        </td>
+                        <td>
+                            <a asp-action="AdminVoorraadEdit" asp-route-id="@item.Id">Bewerken</a> |
+                            <a asp-action="AdminVoorraadDetails" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="AdminVoorraadDelete" asp-route-id="@item.Id">Verwijderen</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!--begin page pagination-->
+        @{
+            string fvis;
+            string lvis;
+            var second = ViewBag.paginationindex - 1;
+            var third = ViewBag.paginationindex + 1;
+            if (second != 0)
+            {
+                fvis = "visible";
+            }
+            else
+            {
+                fvis = "hidden";
+            }
+            if (third >= (ViewBag.count / 16) + 2)
+            {
+                lvis = "hidden";
+            }
+            else
+            {
+                lvis = "visible";
+            }
+            if (second < 1)
+            {
+                second = 1;
+            }
+        }
+        <div class="row">
+            <div class="text-center">
+                <ul class="pagination">
+                    <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+                    <li class="page-item" style="visibility:@fvis">
+                        <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex" asp-route-P="@second">@second</a>
+                    </li>
+                    <li class="page-item">
+                        <a style="color:black;" class="page-link" asp-area="" asp-controller="Admin"
+                           asp-action="AdminVoorraadIndex" asp-route-P="@ViewBag.paginationindex">@ViewBag.paginationindex</a>
+                    </li>
+                    <li class="page-item" style="visibility:@lvis">
+                        <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex" asp-route-P="@third">@third</a>
+                    </li>
+                    <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+                </ul>
+            </div>
+        </div>
+        <!--end page pagination-->
+    </div>
 </div>
