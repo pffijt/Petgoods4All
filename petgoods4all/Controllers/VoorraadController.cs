@@ -331,7 +331,7 @@ namespace petgoods4all.Controllers
                     c = c + b;
                 }
                 decimal d = Convert.ToDecimal(c, new System.Globalization.CultureInfo("en-US"));
-                string prijs = d.ToString(new System.Globalization.CultureInfo("en-US"));
+                string prijs = d.ToString("F");
                 ViewBag.Prijs = prijs;
                  return View();
             }
