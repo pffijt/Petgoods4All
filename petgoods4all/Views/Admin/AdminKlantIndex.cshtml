@@ -23,6 +23,17 @@
         </form>
     </div>
     <div>
+        <form class="nav navbar-form form-inline" method="get" asp-controller="Admin" asp-action="AdminKlantIndex">
+            Sorteer op:<br>
+            <select class="form-control" id="Categories" name="Categories">
+                <option></option>
+                <option>Email</option>
+                <option>Admin</option>
+            </select>
+            <input class="btn btn-success" type="submit" />
+        </form>
+    </div>
+    <div>
         <table class="table" style="background-color:#ffe8d3;">
             <thead>
                 <tr>

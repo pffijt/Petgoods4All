@@ -22,6 +22,17 @@
         </form>
     </div>
     <div>
+        <form class="nav navbar-form form-inline" method="get" asp-controller="Admin" asp-action="AdminVoorraadIndex">
+            Sorteer op:<br>
+            <select class="form-control" id="Categories" name="Categories">
+                <option></option>
+                <option>Naam</option>
+                <option>Dier</option>
+            </select>
+            <input class="btn btn-success" type="submit" />
+        </form>
+    </div>
+    <div>
         <table class="table">
             <thead>
                 <tr>
