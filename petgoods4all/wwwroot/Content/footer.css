@@ -6,6 +6,7 @@
 
     #myFooter .footer-copyright {
         background-color: black;
+        margin-top: 20px;
         padding-top: 3px;
         padding-bottom: 3px;
         text-align: center;
@@ -95,9 +96,14 @@
         margin-top: 10px;
         line-height: 25px;
     }
+    #myFooter .copyright p{
+        margin-top: 10px;
+    }
 
 @media screen and (max-width: 767px) {
     #myFooter {
         text-align: center;
     }
 }
+
+

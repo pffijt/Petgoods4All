@@ -148,25 +148,32 @@ namespace petgoods4all.Controllers
 
             var db = new ModelContext();
 
-            var resultEmail = (from acc in db.Account where email == acc.email select acc.email).Single();
-            var resultPassword = (from acc in db.Account where password == acc.password select acc.password).Single();
-            var resultAdmin = (from acc in db.Account where email == acc.email select acc.Admin).Single();
-            var resultId = (from acc in db.Account where email == acc.email select acc.id).Single();
-            var resultVerified = (from acc in db.Account where email == acc.email select acc.IsEmailVerified).Single();
-
-            if (resultEmail == email && resultPassword == password && resultVerified == true)
+            var resultEmail = (from acc in db.Account where email == acc.email select acc.email).Any();
+            var resultPassword = (from acc in db.Account where password == acc.password && email == acc.email select acc.password).Any();
+            if(resultPassword == true)
             {
-                //HttpContext.Session.SetString("resultEmail", resultEmail);
-                HttpContext.Session.SetInt32(("UID"),resultId);
+                var resultAdmin = (from acc in db.Account where email == acc.email select acc.Admin).Single();
+                var resultId = (from acc in db.Account where email == acc.email select acc.id).Single();
+                var resultVerified = (from acc in db.Account where email == acc.email select acc.IsEmailVerified).Single();
 
-                if (resultAdmin == true)
+                if (resultEmail == true && resultPassword == true && resultVerified == true)
                 {
-                    //string strEmailId = HttpContext.Session.GetString("resultEmail");
-                    return RedirectToAction("AdminHome", "Admin");
+                    //HttpContext.Session.SetString("resultEmail", resultEmail);
+                    HttpContext.Session.SetInt32(("UID"),resultId);
+
+                    if (resultAdmin == true)
+                    {
+                        //string strEmailId = HttpContext.Session.GetString("resultEmail");
+                        return RedirectToAction("AdminHome", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("UserHome", "User");
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("UserHome", "User");
+                    return Redirect("Inloggen");
                 }
             }
             else
