@@ -424,11 +424,13 @@ namespace petgoods4all.Controllers
                         var orderedAccounts = accounts.ToList();
                         if (Categories == "Email")
                         {
-                            orderedAccounts = accounts.OrderBy(a => a.email).ToList();
+                            var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
+                            orderedAccounts = paccounts.OrderBy(a => a.email).ToList();
                         }
                         else if(Categories == "Admin")
                         {
-                            orderedAccounts = accounts.OrderByDescending(a => a.Admin).ToList();
+                            var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
+                            orderedAccounts = paccounts.OrderByDescending(a => a.Admin).ToList();
                         }
 
                         return View(orderedAccounts);
@@ -482,11 +484,13 @@ namespace petgoods4all.Controllers
                         var orderedProducts = products.ToList();
                         if (Categories == "Naam")
                         {
-                            orderedProducts = products.OrderBy(a => a.Naam).ToList();
+                            var pproducts = products.Skip(((P * 16) - 16)).Take(16);
+                            orderedProducts = pproducts.OrderBy(a => a.Naam).ToList();
                         }
                         else if (Categories == "Dier")
                         {
-                            orderedProducts = products.OrderBy(a => a.Dier).ToList();
+                            var pproducts = products.Skip(((P * 16) - 16)).Take(16);
+                            orderedProducts = pproducts.OrderBy(a => a.Dier).ToList();
                         }
 
                         return View(orderedProducts);
