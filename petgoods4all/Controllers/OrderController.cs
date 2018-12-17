@@ -320,7 +320,7 @@ namespace petgoods4all.Controllers
             return Redirect("http://localhost:56003/");
         }
         public async Task<ActionResult> OrderProducts()
-        {
+        {//hier betaling uitvoeren. met id kan hij pas de betaling uitvoeren
             var o_aanhef= HttpContext.Request.Query["o_aanhef"].ToString();
             var o_name= HttpContext.Request.Query["o_name"].ToString();
             var o_postal= HttpContext.Request.Query["o_postal"].ToString();
@@ -361,6 +361,7 @@ namespace petgoods4all.Controllers
             var ShoppingCartResult = from s in db.ShoppingCart where s.AccountId == UserId select s;
             Console.WriteLine(o_name+o_postal+o_address+o_number);
             //MaxId
+            //nieuwe bestelling aanmaken
             int MaxId = 0;
             var result = from s in db.Order select s.Id;
             if (!result.Any())
@@ -378,7 +379,7 @@ namespace petgoods4all.Controllers
                 AccountId = UserIdResult,
                 Datum = DateTime.Now,
                 Prijs = prijs,
-                OrderStatus = "Pending",
+                OrderStatus = "Verwerkt",
             };
 
             db.Order.Add(order);

@@ -4,7 +4,13 @@
     ViewData["Title"] = "Klanten";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="background-color:#ffe8d3;">
+
+<head>
+    <link rel="stylesheet" href="~/Content/adminKlantIndex.css" />
+</head>
+
+<div id="adminResponsive" class="container-fluid" style="background-color:#ffe8d3;">
+    <div class="row">
     <h2>Klanten</h2>
 
     <p>
@@ -14,6 +20,17 @@
     <div>
         <form class="nav navbar-form form-inline" method="post" asp-controller="Admin" asp-action="AdminKlantIndex">
             <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op email" aria-label="Search" id="accountSearch" name="accountSearch">
+        </form>
+    </div>
+    <div>
+        <form class="nav navbar-form form-inline" method="get" asp-controller="Admin" asp-action="AdminKlantIndex">
+            Sorteer op:<br>
+            <select class="form-control" id="Categories" name="Categories">
+                <option></option>
+                <option>Email</option>
+                <option>Admin</option>
+            </select>
+            <input class="btn btn-success" type="submit" />
         </form>
     </div>
     <div>
@@ -94,5 +111,7 @@
                 </ul>
             </div>
         </div>
+    
         <!--end page pagination-->
     </div>
+</div>

@@ -54,7 +54,10 @@ namespace petgoods4all.Controllers
 
         public ActionResult Omzet()
         {
-            var Orders = (from a in db.Order orderby a.Datum, a.Prijs select a).Distinct();
+            var culture = new System.Globalization.CultureInfo("nl-NL");
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+            var Orders = (from a in db.Order orderby a.Datum, a.Prijs  select a).Distinct();
             var jaren = (from j in db.Order orderby j.Datum.Year select j.Datum.Year).Distinct();
             //foreach (var item in Orders)
             //{
@@ -132,11 +135,11 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Januari = Januari + a;
                     double b = (Januari / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(Januari);
-
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(Januari/100);
+                    
+                    Math.Round(d, 2); 
+                     Math.Round(e, 2); 
 
                     JanuariInkoopPrijs = e;
                     JanuariPrijs = d;
@@ -148,10 +151,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Februari = Februari + a;
                     double b = (Februari / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(Februari);
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(Februari/100);
+                    Math.Round(d, 2); 
+                     Math.Round(e, 2); 
 
                     FebruariInkoopPrijs = e;
                     FebruariPrijs = d;
@@ -163,10 +166,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Maart = Maart + a;
                     double b = (Maart / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(Maart);
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(Maart/100);
+                    Math.Round(d, 2); 
+                     Math.Round(e, 2); 
 
                     MaartInkoopPrijs = e;
                     MaartPrijs = d;
@@ -178,10 +181,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     April = April + a;
                     double b = (April / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(April);
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(April/100);
+                    Math.Round(d, 2); 
+                     Math.Round(e, 2); 
 
                     AprilInkoopPrijs = e;
                     AprilPrijs = d;
@@ -193,10 +196,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Mei = Mei + a;
                     double b = (Mei / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(Mei);
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(Mei/100);
+                    Math.Round(d, 2); 
+                     Math.Round(e, 2); 
 
                     MeiInkoopPrijs = e;
                     MeiPrijs = d;
@@ -208,10 +211,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Juni = Juni + a;
                     double b = (Juni / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(Juni);
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(Juni/100);
+                    Math.Round(d, 2); 
+                     Math.Round(e, 2); 
 
                     JuniInkoopPrijs = e;
                     JuniPrijs = d;
@@ -223,10 +226,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Juli = Juli + a;
                     double b = (Juli / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(Juli);
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(Juli/100);
+                    Math.Round(d, 2); 
+                     Math.Round(e, 2); 
 
                     JuliInkoopPrijs = e;
                     JuliPrijs = d;
@@ -238,10 +241,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Augustus = Augustus + a;
                     double b = (Augustus / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(Augustus);
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(Augustus/100);
+                    Math.Round(d, 2); 
+                     Math.Round(e, 2); 
 
                     AugustusInkoopPrijs = e;
                     AugustusPrijs = d;
@@ -253,10 +256,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     September = September + a;
                     double b = (September / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(September);
-                    d = Math.Round(d, 2);
-                    e = Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(September/100);
+                    d = Math.Round(d, 2); 
+                    e = Math.Round(e, 2); 
 
                     SeptemberInkoopPrijs = e;
                     SeptemberPrijs = d;
@@ -268,8 +271,8 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     Oktober = Oktober + a;
                     double b = (Oktober / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(Oktober);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(Oktober/100);
                     Math.Round(d, 2); 
                     Math.Round(e, 2); 
 
@@ -283,10 +286,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     November = November + a;
                     double b = (November / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(November);
-                    Math.Round(d, 2);
-                    Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(November/100);
+                    Math.Round(d, 2); 
+                    Math.Round(e, 2); 
 
                     NovemberInkoopPrijs = e;
                     NovemberPrijs = d;
@@ -298,10 +301,10 @@ namespace petgoods4all.Controllers
                     double a = Convert.ToDouble(item.Prijs);
                     December = December + a;
                     double b = (December / 100) * 80;
-                    decimal e = Convert.ToDecimal(b);
-                    decimal d = Convert.ToDecimal(December);
-                    d = Math.Round(d, 2);
-                    e = Math.Round(e, 2);
+                    decimal e = Convert.ToDecimal(b/100);
+                    decimal d = Convert.ToDecimal(December/100);
+                     d = Math.Round(d, 2); 
+                    e = Math.Round(e, 2); 
 
 
                     DecemberInkoopPrijs = e;
@@ -367,6 +370,18 @@ namespace petgoods4all.Controllers
                 return foundaccounts;
             }
         }
+
+        public List<Account> AccountSort(string Categories)
+        {
+            using (db)
+            {
+                var allaccounts = db.Account;
+                var a = "x." + Categories;
+                var foundaccounts = allaccounts.OrderBy(x => a).ToList();
+                return foundaccounts;
+            }
+        }
+
         public List<Voorraad> ProductSearch(string productSearch)
         {
             var allproducts = db.Voorraad.OrderBy(x => x.Dier);
@@ -375,7 +390,7 @@ namespace petgoods4all.Controllers
         }
 
         //Roept pagina op met de lijsten van Account of Product
-        public ActionResult AdminKlantIndex(string accountSearch, int P = 1)
+        public ActionResult AdminKlantIndex(string accountSearch, string Categories, int P = 1)
         {
             using (db)
             {
@@ -396,19 +411,35 @@ namespace petgoods4all.Controllers
                 if (Admin != null)
                 {
                     var foundaccountlist = AccountSearch(accountSearch);
-                    if (foundaccountlist.Count() == 0)
+                    
+                    if(foundaccountlist.Count() != 0)
                     {
                         var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
                         var accountlist = paccounts.ToList();
-                        var oaccountlist = accountlist.OrderBy(x => x.email);
-                        return View(oaccountlist);
+                        return View(accountlist);
+                    }
+
+                    if (Categories != null)
+                    {
+                        var orderedAccounts = accounts.ToList();
+                        if (Categories == "Email")
+                        {
+                            var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
+                            orderedAccounts = paccounts.OrderBy(a => a.email).ToList();
+                        }
+                        else if(Categories == "Admin")
+                        {
+                            var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
+                            orderedAccounts = paccounts.OrderByDescending(a => a.Admin).ToList();
+                        }
+
+                        return View(orderedAccounts);
                     }
                     else
                     {
-                        var oaccountlist = foundaccountlist.OrderBy(x => x.email);
-                        var accountlist = oaccountlist.Skip(((P * 16) - 16)).Take(16);
-                        return View(accountlist);
+                        return View(accounts);
                     }
+
                 }
                 else
                 {
@@ -416,8 +447,8 @@ namespace petgoods4all.Controllers
                 }
             }
         }
-    
-        public ActionResult AdminVoorraadIndex(string productSearch, int P=1)
+
+        public ActionResult AdminVoorraadIndex(string productSearch, string Categories, int P=1)
         {
             using (db)
             {
@@ -441,17 +472,32 @@ namespace petgoods4all.Controllers
                 if (Admin != null)
                 {
                     var foundproductlist = ProductSearch(productSearch);
-                    if (foundproductlist.Count() == 0)
+
+                    if (foundproductlist.Count() != 0)
                     {
                         var pproducts = products.Skip(((P * 16) - 16)).Take(16);
                         var productlist = pproducts.OrderBy(x => x.Naam);
                         return View(productlist);
                     }
+                    if (Categories != null)
+                    {
+                        var orderedProducts = products.ToList();
+                        if (Categories == "Naam")
+                        {
+                            var pproducts = products.Skip(((P * 16) - 16)).Take(16);
+                            orderedProducts = pproducts.OrderBy(a => a.Naam).ToList();
+                        }
+                        else if (Categories == "Dier")
+                        {
+                            var pproducts = products.Skip(((P * 16) - 16)).Take(16);
+                            orderedProducts = pproducts.OrderBy(a => a.Dier).ToList();
+                        }
+
+                        return View(orderedProducts);
+                    }
                     else
                     {
-                        var oproductlist = foundproductlist.OrderBy(x => x.Naam);
-                        var productlist = oproductlist.Skip(((P * 16) - 16)).Take(16);
-                        return View(productlist);
+                        return View(products);
                     }
                 }
                 else
@@ -460,6 +506,7 @@ namespace petgoods4all.Controllers
                 }
             }
         }
+
         //Roept pagina op met de Details van Account of Product
         public ActionResult AdminKlantDetails(int? id)
         {
@@ -746,12 +793,19 @@ namespace petgoods4all.Controllers
                 totaalPrijs = totaalPrijs + a;
                 
             }
-            decimal e = Convert.ToDecimal(totaalPrijs);
+            decimal e = Convert.ToDecimal(totaalPrijs/100);
             
             e= Math.Round(e, 2); 
             e.ToString(new System.Globalization.CultureInfo("en-US"));
             ViewBag.Prijs = e;
             ViewBag.Producten = voorraadList;
+
+            return View();
+        }
+
+        public ActionResult KlantSort(string Categories)
+        {
+
 
             return View();
         }

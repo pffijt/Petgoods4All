@@ -5,28 +5,31 @@
 <div class="container-fluid" style="background-color:#ffe8d3;">
 @if(ViewBag.empty == true)
 {
-<div>
-<h1 style="padding: 20px 20px 20px 20px;">Selecteer uw huisdier(en)!</h1>
-<p>  Hiermee select je huisdier(en) en maak je een gepersonaliseerde site!<br/> De thuispagina zal hiermee veranderen op uw huisdier(en). Petgoods4All staat voor een warme gepersonaliseerde website!</p>
-<form action="" method="POST">
-    <div class="checkbox" style="padding: 20px 20px 20px 20px;">
-      @if(ViewBag.kat == true){ <label><input type="checkbox" name="personCat" id="personCat"  value="true"  checked>Katten </label><br/>}
-      @if(ViewBag.kat == false){ <label><input type="checkbox" name="personCat" id="personCat" value="true" >Katten </label><br/>}
-      @if(ViewBag.hond == true){ <label><input type="checkbox" name="personDog" id="personDog" value="true" checked>Honden </label><br/>}
-      @if(ViewBag.hond == false){ <label><input type="checkbox" name="personDog" id="personDog" value="true" >Honden </label><br/>}
-      @if(ViewBag.vis == true){ <label><input type="checkbox" name="personFish" id="personFish" value="true"  checked>Vissen </label><br/>}
-      @if(ViewBag.vis == false){ <label><input type="checkbox" name="personFish" id="personFish" value="true"  >Vissen </label><br/>}
-      @if(ViewBag.reptiel == true){ <label><input type="checkbox" name="personReptile" id="personReptile" value="true" checked>Reptielen </label><br/>}
-      @if(ViewBag.reptiel == false){ <label><input type="checkbox" name="personReptile" id="personReptile" value="true"  >Reptielen </label><br/>}
-    <br/>
+    <div>
+        <h1 style="padding: 20px 20px 20px 20px;">Selecteer uw huisdier(en)!</h1>
+        <p> Hiermee kunt u huisdier(en) selecteren en maakt u uw eigen gepersonaliseerde webshop aan!<br/> 
+            De thuispagina zal hiermee veranderen op huisdier(en). 
+            Petgoods4All staat voor een warme gepersonaliseerde webshop!
+        </p>
+        <form action="" method="POST">
+            <div class="checkbox" style="padding: 20px 20px 20px 20px;">
+                @if(ViewBag.kat == true){ <label><input type="checkbox" name="personCat" id="personCat"  value="true"  checked>Katten </label><br/>}
+                @if(ViewBag.kat == false){ <label><input type="checkbox" name="personCat" id="personCat" value="true" >Katten </label><br/>}
+                @if(ViewBag.hond == true){ <label><input type="checkbox" name="personDog" id="personDog" value="true" checked>Honden </label><br/>}
+                @if(ViewBag.hond == false){ <label><input type="checkbox" name="personDog" id="personDog" value="true" >Honden </label><br/>}
+                @if(ViewBag.vis == true){ <label><input type="checkbox" name="personFish" id="personFish" value="true"  checked>Vissen </label><br/>}
+                @if(ViewBag.vis == false){ <label><input type="checkbox" name="personFish" id="personFish" value="true"  >Vissen </label><br/>}
+                @if(ViewBag.reptiel == true){ <label><input type="checkbox" name="personReptile" id="personReptile" value="true" checked>Reptielen </label><br/>}
+                @if(ViewBag.reptiel == false){ <label><input type="checkbox" name="personReptile" id="personReptile" value="true"  >Reptielen </label><br/>}
+                <br/>
+            </div>
+            <button  class="btn btn-danger col-sm-1"  type="submit" style="margin: 20px 20px 20px 20px;"> Pas aan!</button>
+        </form>
     </div>
-    <button  class="btn btn-danger col-sm-1"  type="submit" style="margin: 20px 20px 20px 20px;"> Pas aan!</button>
-</form>
-</div>
 }
 @if(ViewBag.empty == false)
 {
-<h1>Je gepersonaliseerde Pagina!</h1>
+    <h1>Uw gepersonaliseerde Pagina!</h1>
 }
 @if(ViewBag.empty == null)
 {

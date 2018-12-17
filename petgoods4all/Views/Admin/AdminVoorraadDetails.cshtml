@@ -4,13 +4,13 @@
     ViewData["Title"] = "Voorraad Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2 style="background-color:#ffe8d3;">Voorraad Details</h2>
-
 <div style="background-color:#ffe8d3;">
+    <h2 style="background-color:#ffe8d3;">Voorraad Details</h2>
+
+
     <h4>Voorraad</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style=" word-wrap:break-word;">
         <dt>
             @Html.DisplayNameFor(model => model.Naam)
         </dt>
@@ -48,8 +48,9 @@
             @Html.DisplayFor(model => model.image)
         </dd>
     </dl>
-</div>
-<div style="background-color:#ffe8d3;">
-    <a asp-action="AdminVoorraadEditSave" asp-route-id="@Model.Id">Bijwerken</a> |
-    <a asp-action="AdminVoorraadIndex">Terug naar de lijst</a>
+
+    <div style="background-color:#ffe8d3;">
+        <a asp-action="AdminVoorraadEditSave" asp-route-id="@Model.Id">Bijwerken</a> |
+        <a asp-action="AdminVoorraadIndex">Terug naar de lijst</a>
+    </div>
 </div>

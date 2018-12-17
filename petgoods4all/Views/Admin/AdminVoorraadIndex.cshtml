@@ -4,7 +4,12 @@
     ViewData["Title"] = "Admin Voorraad Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="background-color:#ffe8d3;">
+
+<head>
+    <link rel="stylesheet" href="~/Content/adminKlantIndex.css" />
+</head>
+
+<div style="background-color:#ffe8d3; word-wrap:break-word;" id="adminResponsive" >
     <h2>Voorraad Index</h2>
 
     <p>
@@ -14,6 +19,17 @@
     <div>
         <form class="nav navbar-form form-inline" method="post" asp-controller="Admin" asp-action="AdminVoorraadIndex">
             <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op naam" aria-label="Search" id="productSearch" name="productSearch">
+        </form>
+    </div>
+    <div>
+        <form class="nav navbar-form form-inline" method="get" asp-controller="Admin" asp-action="AdminVoorraadIndex">
+            Sorteer op:<br>
+            <select class="form-control" id="Categories" name="Categories">
+                <option></option>
+                <option>Naam</option>
+                <option>Dier</option>
+            </select>
+            <input class="btn btn-success" type="submit" />
         </form>
     </div>
     <div>

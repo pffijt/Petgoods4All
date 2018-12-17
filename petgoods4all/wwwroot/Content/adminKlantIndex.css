@@ -1,0 +1,11 @@
+﻿@media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+    #adminResponsive {
+        width: 280px;
+        margin-left: -25px;
+    }
+}
