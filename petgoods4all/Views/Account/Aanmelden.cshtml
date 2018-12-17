@@ -48,7 +48,7 @@
             function EmailCheck(){  
                 
             var emailcheck = document.getElementById('inputEmail').value;
-            var pattern = /^[A-Za-z._]{3,}@@[A_Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+            var pattern = /^[A-Za-z0-9._]{3,}@@[A_Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
             
                 if(pattern.test(emailcheck)){
                     document.getElementById('status').innerHTML = " "
