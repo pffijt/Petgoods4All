@@ -414,9 +414,9 @@ namespace petgoods4all.Controllers
                     
                     if(foundaccountlist.Count() != 0)
                     {
-                        var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
-                        var accountlist = paccounts.ToList();
-                        return View(accountlist);
+                        ViewBag.searched = true;
+                        var accountlist = accounts.ToList();
+                        return View(foundaccountlist);
                     }
 
                     if (Categories != null)
@@ -424,13 +424,13 @@ namespace petgoods4all.Controllers
                         var orderedAccounts = accounts.ToList();
                         if (Categories == "Email")
                         {
-                            var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
-                            orderedAccounts = paccounts.OrderBy(a => a.email).ToList();
+                            var paccounts = accounts.OrderBy(a => a.email).ToList();
+                            orderedAccounts = orderedAccounts.Skip(((P * 16) - 16)).Take(16).ToList();
                         }
                         else if(Categories == "Admin")
                         {
-                            var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
-                            orderedAccounts = paccounts.OrderByDescending(a => a.Admin).ToList();
+                            var paccounts = accounts.OrderByDescending(a => a.Admin).ToList();
+                            orderedAccounts = orderedAccounts.Skip(((P * 16) - 16)).Take(16).ToList();
                         }
 
                         return View(orderedAccounts);
@@ -475,28 +475,32 @@ namespace petgoods4all.Controllers
 
                     if (foundproductlist.Count() != 0)
                     {
-                        var pproducts = products.Skip(((P * 16) - 16)).Take(16);
-                        var productlist = pproducts.OrderBy(x => x.Naam);
-                        return View(productlist);
+                        ViewBag.searched = true;
+                        var productlist = products.OrderBy(x => x.Naam);
+                        return View(foundproductlist);
                     }
                     if (Categories != null)
                     {
                         var orderedProducts = products.ToList();
                         if (Categories == "Naam")
                         {
-                            var pproducts = products.Skip(((P * 16) - 16)).Take(16);
-                            orderedProducts = pproducts.OrderBy(a => a.Naam).ToList();
+                            ViewBag.Categories = "Naam";
+                            
+                            orderedProducts = orderedProducts.OrderBy(a => a.Naam).ToList();
+                            orderedProducts = orderedProducts.Skip(((P * 16) - 16)).Take(16).ToList();
                         }
                         else if (Categories == "Dier")
                         {
-                            var pproducts = products.Skip(((P * 16) - 16)).Take(16);
-                            orderedProducts = pproducts.OrderBy(a => a.Dier).ToList();
+                            ViewBag.Categories = "Dier";
+                            orderedProducts = orderedProducts.OrderBy(a => a.Dier).ToList();
+                            orderedProducts = orderedProducts.Skip(((P * 16) - 16)).Take(16).ToList();
                         }
 
                         return View(orderedProducts);
                     }
                     else
                     {
+                        products = products.Skip(((P * 16) - 16)).Take(16).ToList();
                         return View(products);
                     }
                 }
