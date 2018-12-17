@@ -22,8 +22,20 @@
         <div class="row">
             <h2>Product beheer</h2>
             <p>
-                <a href="~/Admin/AdminInstellingen">Instellingen</a> | 
-                <a href="~/Admin/AdminKlantbeheer">Klant beheer</a>
+                <!-- <a href="~/Admin/AdminInstellingen">Instellingen</a> | 
+                <a href="~/Admin/AdminKlantbeheer">Klant beheer</a> -->
+                <form class="input-group" method="put">
+                    <button
+                        type="submit" asp-controller="Admin" asp-action="AdminInstellingen"
+                        class="btn btn-warning">
+                        Instellingen
+                    </button><br>
+                    <button 
+                        type="submit" asp-controller="Admin" asp-action="AdminKlantbeheer"
+                        class="btn btn-warning ">
+                        Klant beheer
+                    </button>
+                </form>
             </p>
         </div>
         <div class="row">
