@@ -9,16 +9,16 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/Content/signin.css" />
         <link rel="stylesheet" href="~/Content/Site.css" />
+        
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />  
     </environment>
 </head>
 <body>
-
     <script>
         var check = function () {
             if (document.getElementById('inputPassword').value ==
@@ -43,24 +43,23 @@
             }
         }
     </script>
-    <script>
-        function EmailCheck(){
-            $.post("@Url.Action("CheckEmail","Account")",
-            {
-                inputEmail: $("#inputEmail").val()
-            },
-            function(data){
-                if (data == 0){
-                    $("#status").html('<font color="Green"></font>')
-                    $("#inputEmail").css("border-color", "Green");
+    <script type="text/javascript">
+        
+            function EmailCheck(){  
+                
+            var emailcheck = document.getElementById('inputEmail').value;
+            var pattern = /^[A-Za-z._]{3,}@@[A_Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+            
+                if(pattern.test(emailcheck)){
+                    document.getElementById('status').innerHTML = " "
                 }
                 else{
-                    $("#status").html('<font color="Red"> Er bestaat al een account met deze e-mail</font>')
-                    $("#inputEmail").css("border-color", "Red");
+                    document.getElementById('status').style.color = 'red';
+                    document.getElementById('status').innerHTML = "E-mail is onjuist! Voorbeeld: Example@example.com"
                 }
-            });
-        }
+            }
         </script>
+
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br>
@@ -76,7 +75,7 @@
             </div>
             <div class="form-label-group">
                 <label for="achternaam">Achternaam</label>
-                <input type="text" id="inputAchternaam" name="inputAchternaam" class="form-control" placeholder="Achternaam" required>
+                <input type="text" id="inputAchternaam" name="inputAchternaam" class="form-control" placeholder="Achternaam" required >
             </div>
             <div class="form-label-group">
                 <label for="straatnaam">Straatnaam</label>
@@ -121,5 +120,6 @@
             <br>
         </div>
     </form>
+    <script type="text/javascript" src="~/js/validation.js"></script>
 </body>
 </html>
