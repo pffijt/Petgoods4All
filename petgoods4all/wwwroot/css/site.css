@@ -113,7 +113,7 @@ a:hover {
     bottom: 0;
 }
 
-@media(min-width: 768px) {
+/*@media(min-width: 768px) {
     .navbar-collapse.collapse {
         margin-top: 20px;
     }
@@ -121,7 +121,7 @@ a:hover {
         width: 150px;
         height: 35px;
     }
-}
+}*/
 
 @media (max-width: 1170px) {
     .navbar-header {
@@ -293,4 +293,13 @@ a.imageI, a.imageI:hover{
     background-color:#ffddbf !important;
 }
 
+.thead-dark th {
+    color: #fff;
+    background-color: #373a3c;
+}
+
+.thead-light td {
+    color: black;
+    background-color: white;
+}
 
