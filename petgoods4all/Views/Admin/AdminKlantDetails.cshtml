@@ -73,7 +73,19 @@
         </dd>
     </dl>
     <div>
-        <a asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@Model.id">Bijwerken</a> |
-        <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
+        <!-- <a asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@Model.id">Bijwerken</a> |
+        <a asp-action="AdminKlantIndex">Terug naar de lijst</a> -->
+        <form class="input-group" method="put">
+            <button 
+                type="submit" asp-controller="Admin" asp-action="AdminKlantEdit"
+                class="btn btn-warning">
+                Bijwerken
+            </button><br>
+            <button 
+                type="submit" asp-controller="Admin" asp-action="AdminKlantIndex"
+                class="btn btn-warning">
+                Terug naar de lijst
+            </button>
+        </form>
     </div>
 </div>

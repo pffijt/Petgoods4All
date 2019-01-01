@@ -14,9 +14,20 @@
     <h2>Klanten</h2>
 
     <p>
-        <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
-        <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount">Nieuwe klant</a><br />
+        <!-- <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
+        <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount">Nieuwe klant</a><br /> -->
+        <form class="input-group" method="put">
+            <button 
+                type="submit" asp-area="" asp-controller="Admin" asp-action="AdminHome" 
+                class="btn btn-warning ">Terug naar de Home pagina
+            </button><br>
+            <button 
+                type="submit" asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount" 
+                class="btn btn-warning ">Nieuwe klant
+            </button>
+        </form>
     </p>
+   
     <div>
         <form class="nav navbar-form form-inline" method="post" asp-controller="Admin" asp-action="AdminKlantIndex">
             <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op email" aria-label="Search" id="accountSearch" name="accountSearch">

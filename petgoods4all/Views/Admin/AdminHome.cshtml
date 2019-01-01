@@ -22,10 +22,25 @@
         <h2>Admin Home</h2>
         <p>
             Welkom administrator. <br /><br />
-            <a asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex">Klant beheer</a><br />
+            <!-- <a asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex">Klant beheer</a><br />
             
             <a asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex">Product beheer</a><br>
-            <a asp-area="" asp-controller="Admin" asp-action="Omzet">Omzet</a>
+            <a asp-area="" asp-controller="Admin" asp-action="Omzet">Omzet</a><br> -->
+            
+            <button 
+                type="submit" asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex" 
+                class="btn btn-warning">Klant beheer
+            </button><br>
+            <button 
+                type="submit" asp-controller="Admin" asp-action="AdminVoorraadIndex"
+                class="btn btn-warning">
+                Product beheer
+            </button><Br>
+            <button 
+                type="submit" asp-controller="Admin" asp-action="Omzet"
+                class="btn btn-warning ">
+                Omzet
+            </button>
         </p>
     </form>
 </body>
