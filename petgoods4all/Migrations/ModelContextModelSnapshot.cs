@@ -28,31 +28,23 @@ namespace petgoods4all.Migrations
 
                     b.Property<bool>("IsEmailVerified");
 
-                    b.Property<string>("achternaam")
-                        .IsRequired();
+                    b.Property<string>("achternaam");
 
-                    b.Property<string>("email")
-                        .IsRequired();
+                    b.Property<string>("email");
 
-                    b.Property<string>("huisnummer")
-                        .IsRequired();
+                    b.Property<string>("huisnummer");
 
-                    b.Property<string>("password")
-                        .IsRequired();
+                    b.Property<string>("password");
 
-                    b.Property<string>("postcode")
-                        .IsRequired();
+                    b.Property<string>("postcode");
 
-                    b.Property<string>("provincie")
-                        .IsRequired();
+                    b.Property<string>("provincie");
 
-                    b.Property<string>("straatnaam")
-                        .IsRequired();
+                    b.Property<string>("straatnaam");
 
                     b.Property<string>("telefoonnummer");
 
-                    b.Property<string>("voornaam")
-                        .IsRequired();
+                    b.Property<string>("voornaam");
 
                     b.HasKey("id");
 

@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace petgoods4all.Migrations
 {
-    public partial class initialDB : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,15 +14,15 @@ namespace petgoods4all.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    email = table.Column<string>(nullable: false),
-                    password = table.Column<string>(nullable: false),
+                    email = table.Column<string>(nullable: true),
+                    password = table.Column<string>(nullable: true),
                     Admin = table.Column<bool>(nullable: false),
-                    voornaam = table.Column<string>(nullable: false),
-                    achternaam = table.Column<string>(nullable: false),
-                    straatnaam = table.Column<string>(nullable: false),
-                    huisnummer = table.Column<string>(nullable: false),
-                    postcode = table.Column<string>(nullable: false),
-                    provincie = table.Column<string>(nullable: false),
+                    voornaam = table.Column<string>(nullable: true),
+                    achternaam = table.Column<string>(nullable: true),
+                    straatnaam = table.Column<string>(nullable: true),
+                    huisnummer = table.Column<string>(nullable: true),
+                    postcode = table.Column<string>(nullable: true),
+                    provincie = table.Column<string>(nullable: true),
                     telefoonnummer = table.Column<string>(nullable: true),
                     IsEmailVerified = table.Column<bool>(nullable: false)
                 },
