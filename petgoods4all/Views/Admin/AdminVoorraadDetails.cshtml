@@ -50,7 +50,20 @@
     </dl>
 
     <div style="background-color:#ffe8d3;">
-        <a asp-action="AdminVoorraadEditSave" asp-route-id="@Model.Id">Bijwerken</a> |
-        <a asp-action="AdminVoorraadIndex">Terug naar de lijst</a>
+        <!-- <a asp-action="AdminVoorraadEditSave" asp-route-id="@Model.Id">Bijwerken</a> |
+        <a asp-action="AdminVoorraadIndex">Terug naar de lijst</a> -->
+        <form class="input-group" method="put">
+            <button 
+                type="submit" asp-controller="Admin" asp-action="AdminVoorraadEditSave" 
+                asp-route-id="@Model.Id"
+                class="btn btn-warning">
+                Bijwerken
+            </button><br>
+            <button
+                type="submit" asp-controller="Admin" asp-action="AdminVoorraadIndex"
+                class="btn btn-warning ">
+                Terug naar de lijst
+            </button>
+        </form>
     </div>
 </div>

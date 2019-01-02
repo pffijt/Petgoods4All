@@ -22,9 +22,16 @@
         <form class="table" method="put" style="background-color:#ffe8d3;">
             <div class="row">
                 <h2>Klant beheer</h2>
-                <p>
+                <!-- <p>
                     <a href="~Admin/AdminProductbeheer">Product beheer</a>
-                </p>
+                </p> -->
+                <form class="input-group" method="put">
+                    <button 
+                        type="submit" asp-controller="Admin" asp-action="AdminProductbeheer"
+                        class="btn btn-warning">
+                        Product beheer
+                    </button>
+                </form>
             </div>
             <div class="row">
                 <table class="table">

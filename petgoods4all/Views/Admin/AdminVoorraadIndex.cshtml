@@ -13,8 +13,20 @@
     <h2>Voorraad Index</h2>
 
     <p>
-        <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
-        <a asp-action="AdminCreateVoorraad">Voeg nieuw product toe</a>
+        <!-- <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
+        <a asp-action="AdminCreateVoorraad">Voeg nieuw product toe</a> -->
+        <form class="input-group" method="put">
+            <button 
+                type="submit" asp-controller="Admin" asp-action="AdminHome"
+                class="btn btn-warning ">
+                Terug naar de Home pagina
+            </button><Br>
+            <button 
+                type="submit" asp-controller="Admin" asp-action="AdminCreateVoorraad"
+                class="btn btn-warning ">
+                Voeg nieuw product toe
+            </button>
+        </form>
     </p>
     <div>
         <form class="nav navbar-form form-inline" method="post" asp-controller="Admin" asp-action="AdminVoorraadIndex">
@@ -95,16 +107,19 @@
             <div class="text-center">
                 <ul class="pagination">
                     <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+                     @if(@ViewBag.searched != true)
+                    {
                     <li class="page-item" style="visibility:@fvis">
-                        <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex" asp-route-P="@second">@second</a>
+                        <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex" asp-route-P="@second" asp-route-Categories="@ViewBag.Categories">@second</a>
                     </li>
                     <li class="page-item">
                         <a style="color:black;" class="page-link" asp-area="" asp-controller="Admin"
-                           asp-action="AdminVoorraadIndex" asp-route-P="@ViewBag.paginationindex">@ViewBag.paginationindex</a>
+                           asp-action="AdminVoorraadIndex" asp-route-P="@ViewBag.paginationindex" asp-route-Categories="@ViewBag.Categories">@ViewBag.paginationindex</a>
                     </li>
                     <li class="page-item" style="visibility:@lvis">
-                        <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex" asp-route-P="@third">@third</a>
+                        <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminVoorraadIndex" asp-route-P="@third" asp-route-Categories="@ViewBag.Categories">@third</a>
                     </li>
+                    }
                     <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
                 </ul>
             </div>

@@ -14,9 +14,20 @@
     <h2>Klanten</h2>
 
     <p>
-        <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
-        <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount">Nieuwe klant</a><br />
+        <!-- <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
+        <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount">Nieuwe klant</a><br /> -->
+        <form class="input-group" method="put">
+            <button 
+                type="submit" asp-area="" asp-controller="Admin" asp-action="AdminHome" 
+                class="btn btn-warning ">Terug naar de Home pagina
+            </button><br>
+            <button 
+                type="submit" asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount" 
+                class="btn btn-warning ">Nieuwe klant
+            </button>
+        </form>
     </p>
+   
     <div>
         <form class="nav navbar-form form-inline" method="post" asp-controller="Admin" asp-action="AdminKlantIndex">
             <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op email" aria-label="Search" id="accountSearch" name="accountSearch">
@@ -97,6 +108,8 @@
             <div class="text-center">
                 <ul class="pagination">
                     <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+                    @if(@ViewBag.searched != true)
+                    {
                     <li class="page-item" style="visibility:@fvis">
                         <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex" asp-route-P="@second">@second</a>
                     </li>
@@ -107,6 +120,7 @@
                     <li class="page-item" style="visibility:@lvis">
                         <a class="page-link" asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex" asp-route-P="@third">@third</a>
                     </li>
+                    }
                     <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
                 </ul>
             </div>

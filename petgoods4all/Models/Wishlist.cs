@@ -11,5 +11,6 @@ namespace petgoods4all.Models
         public int id {get; set;}
         public int customerid { get; set; }
         public int productid { get; set; }
+        public int quantity {get; set;}
     }
 }

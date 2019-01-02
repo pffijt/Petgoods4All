@@ -50,8 +50,16 @@
     </div>
 </div>
 
-<div style="background-color:#ffe8d3;">
+<!-- <div style="background-color:#ffe8d3;">
     <a asp-action="AdminVoorraadIndex">Terug naar de lijst</a>
-</div>
+</div> -->
+<form class="input-group" method="put">
+    <button
+        type="submit" asp-controller="Admin" 
+        asp-action="AdminVoorraadIndex" 
+        class="btn btn-warning">
+        Terug naar de lijst
+    </button>
+</form>
 
 

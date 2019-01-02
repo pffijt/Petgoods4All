@@ -84,5 +84,12 @@
     
 </div>
 <div class="row"style="background-color:#ffe8d3;">
-    <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
+    <!-- <a asp-action="AdminKlantIndex">Terug naar de lijst</a> -->
+    <form class="input-group" method="put">
+        <button 
+            type="submit" asp-controller="Admin" asp-action="AdminKlantIndex"
+            class="btn btn-warning">
+            Terug naar de lijst
+        </button>
+    </form>
 </div>

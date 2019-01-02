@@ -20,6 +20,8 @@ namespace petgoods4all.Models
         public string huisnummer { get; set; }
         public string postcode { get; set; }
         public string provincie { get; set; }
+        //[Required]
+        //[DataType(DataType.PhoneNumber)]
         public string telefoonnummer { get; set; }
         public Boolean IsEmailVerified {get; set;}
         

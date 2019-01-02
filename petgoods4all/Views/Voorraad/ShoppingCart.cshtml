@@ -36,7 +36,10 @@
                    @if(ViewBag.SP != null && ViewBag.SA != null)
                    {
                        <br/>
-                       <h5 style="color:red;"> Petgoods4all heeft van het product ( @ViewBag.SP ), maar @ViewBag.SA product(en) in Voorraad. </h5>
+                       <br/>
+                       <div class="alert alert-danger col-sm-10">
+                       <h5> Petgoods4all heeft van het product ( @ViewBag.SP ), maar @ViewBag.SA product(en) in Voorraad. </h5>
+                       </div>
 
                    }
 
@@ -95,6 +98,7 @@
     <div style="background-color:#ffe8d3;">
         <br/><br/>
         <h3>Je Boodschappenkar is leeg!</h3>
+        <br/>
     </div>
 }
 

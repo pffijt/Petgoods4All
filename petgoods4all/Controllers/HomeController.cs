@@ -243,7 +243,7 @@ namespace petgoods4all.Controllers
         }
 
         [HttpPost]
-        public ActionResult addWishList()
+        public ActionResult addWishList(int Quantity = 1)
         {
             int identication = Int32.Parse(HttpContext.Request.Query["identication"].ToString());
             using (var db = new ModelContext())
@@ -267,7 +267,8 @@ namespace petgoods4all.Controllers
                     {
                         id = MaxId + 1,
                         customerid = uID,
-                        productid = pID
+                        productid = pID,
+                        quantity = Quantity
                     };
                     db.Wishlist.Add(n);
                     db.SaveChanges();
@@ -324,6 +325,7 @@ namespace petgoods4all.Controllers
                         Console.WriteLine("List is not empty");
                         ViewBag.emptylist = false;
                         List<petgoods4all.Models.Voorraad> pList = new List<petgoods4all.Models.Voorraad>();
+                        List<int> intList = new List<int>();
                         int index = 1;
                         int MaxId;
                         var myList = (from m in db.Wishlist where m.customerid == uID select m).ToList();
@@ -339,8 +341,11 @@ namespace petgoods4all.Controllers
                                 var pID = (from s in myList select s.productid).Skip(index-1).Take(1).Single();
                                 var p = (from m in db.Voorraad where pID == m.Id select m).Single();
                                 pList.Add(p);
+                                var number = (from a in db.Wishlist where uID == a.customerid && pID == a.productid select a.quantity).Single();
+                                intList.Add(number);
                                 index = index + 1;
                             }
+                            ViewBag.quantityList = intList;
                         }
                         var _PIDD = HttpContext.Session.GetInt32("PIDD");
                         if(_PIDD != null)
