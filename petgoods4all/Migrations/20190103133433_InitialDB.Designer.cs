@@ -10,8 +10,8 @@ using petgoods4all.Models;
 namespace petgoods4all.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    [Migration("20190101223228_initialDB")]
-    partial class initialDB
+    [Migration("20190103133433_InitialDB")]
+    partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,8 @@ namespace petgoods4all.Migrations
                     b.Property<bool>("Admin");
 
                     b.Property<bool>("IsEmailVerified");
+
+                    b.Property<bool>("IsUnregistered");
 
                     b.Property<string>("achternaam")
                         .IsRequired();
