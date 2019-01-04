@@ -51,7 +51,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.email)
                     </th>
-                    <th>
+                    <th> 
                         @Html.DisplayNameFor(model => model.Admin)
                     </th>
 
@@ -65,13 +65,13 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.email)
                         </td>
-                        <td>
+                        <td >
                             @Html.DisplayFor(modelItem => item.Admin)
                         </td>
                         <td>
-                            <a asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@item.id">Bewerken</a>
-                            <a asp-action="AdminKlantDetails" asp-controller="Admin" asp-route-id="@item.id">Details</a>
-                            <a asp-action="AdminKlantDelete" asp-controller="Admin" asp-route-id="@item.id">Verwijder</a>
+                            <a id="marginLeft" asp-action="AdminKlantEdit" asp-controller="Admin" asp-route-id="@item.id">Bewerken</a>
+                            <a id="marginLeft" asp-action="AdminKlantDetails" asp-controller="Admin" asp-route-id="@item.id">Details</a>
+                            <a id="marginLeft" asp-action="AdminKlantDelete" asp-controller="Admin" asp-route-id="@item.id">Verwijder</a>
                         </td>
                     </tr>
                 }

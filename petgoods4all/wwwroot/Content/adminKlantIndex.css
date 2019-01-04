@@ -8,4 +8,7 @@
         width: 280px;
         margin-left: -25px;
     }
+    #marginLeft {
+        margin-left: -40px;
+    }
 }
