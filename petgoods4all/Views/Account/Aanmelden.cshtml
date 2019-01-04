@@ -9,14 +9,15 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/Content/signin.css" />
         <link rel="stylesheet" href="~/Content/Site.css" />
-        
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />  
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    
 </head>
 <body>
     <script>
@@ -30,8 +31,7 @@
                 document.getElementById('messagePassword').innerHTML = 'Wachtwoord komt niet overeen';
             }
         }
-    </script>
-    <script>
+        
         var checkmatchingEmail = function () {
             if (document.getElementById('inputEmail').value ==
                 document.getElementById('confirmEmail').value) {
@@ -42,30 +42,54 @@
                 document.getElementById('messageEmail').innerHTML = 'E-mail komt niet overeen';
             }
         }
-    </script>
-    <script type="text/javascript">
         
-            function EmailCheck(){  
-                
-            var emailcheck = document.getElementById('inputEmail').value;
-            var pattern = /^[A-Za-z0-9._]{3,}@@[A_Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
-            
-                if(pattern.test(emailcheck)){
-                    document.getElementById('status').innerHTML = " "
-                }
-                else{
-                    document.getElementById('status').style.color = 'red';
-                    document.getElementById('status').innerHTML = "E-mail is onjuist! Voorbeeld: Example@example.com"
-                }
-            }
-        </script>
+        function EmailCheck(){
 
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br>
+        var emailcheck = document.getElementById('inputEmail').value;
+        var pattern = /^[A-Za-z0-9._]{3,}@@[A_Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+
+            if(pattern.test(emailcheck)){
+                document.getElementById('statusEmail').innerHTML = " "
+            }
+            else{
+                document.getElementById('statusEmail').style.color = 'red';
+                document.getElementById('statusEmail').innerHTML = "E-mail is onjuist! Voorbeeld: Example@example.com"
+            }
+        }
+
+        function postcodeCheck() {
+            var postcode = document.getElementById('inputPostcode').value;
+            var pattern = /^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i;
+
+            if (pattern.test(postcode)) {
+                document.getElementById('statusPostcode').innerHTML = " "
+            }
+            else {
+                document.getElementById('statusPostcode').style.color = 'red';
+                document.getElementById('statusPostcode').innerHTML = "Postcode is onjuist! Voorbeeld: 1234HN"
+            }
+        }
+
+        function telefoonCheck() {
+            var telefoon = document.getElementById('inputTelefoonnummer').value;
+            var pattern = /^\(?([+]31|0031|0)-?6(\s?|-)([0-9]\s{0,3}){8}$/g;
+
+            if (pattern.test(telefoon)) {
+                document.getElementById('statusTelefoon').innerHTML = " "
+            }
+            else {
+                document.getElementById('statusTelefoon').style.color = 'red';
+                document.getElementById('statusTelefoon').innerHTML = "Telefoonnummer is onjuist! Voorbeeld: 0612345678 of +31612345678"
+            }
+        }
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br>
     <form class="form-signin" method="post">
         <div class="container-fluid" style="background-color:#ffe8d3;">
-            
+
             <div class="text-center mb-4">
                 <h1 class="h3 mb-3 font-weight-normal">Registreren</h1>
             </div>
@@ -75,7 +99,7 @@
             </div>
             <div class="form-label-group">
                 <label for="achternaam">Achternaam</label>
-                <input type="text" id="inputAchternaam" name="inputAchternaam" class="form-control" placeholder="Achternaam" required >
+                <input type="text" id="inputAchternaam" name="inputAchternaam" class="form-control" placeholder="Achternaam" required>
             </div>
             <div class="form-label-group">
                 <label for="straatnaam">Straatnaam</label>
@@ -86,19 +110,21 @@
                 <input type="text" id="inputHuisnummer" name="inputHuisnummer" class="form-control" placeholder="Huisnummer" required>
             </div>
             <div class="form-label-group">
+                <span id='statusPostcode'></span><br>
                 <label for="straatnaam">Postcode</label>
-                <input type="text" id="inputPostcode" name="inputPostcode" class="form-control" placeholder="Postcode" required>
+                <input type="text" id="inputPostcode" name="inputPostcode" class="form-control" placeholder="Postcode" onkeyup='postcodeCheck();' required>
             </div>
             <div class="form-label-group">
                 <label for="straatnaam">Provincie</label>
                 <input type="text" id="inputProvincie" name="inputProvincie" class="form-control" placeholder="Provincie" required>
             </div>
             <div class="form-label-group">
+                <span id='statusTelefoon'></span><br>
                 <label for="telefoonnummer">Telefoonnummer</label>
-                <input type="text" id="inputTelefoonnummer" name="inputTelefoonnummer" class="form-control" placeholder="Telefoonnummer" required>
+                <input type="text" id="inputTelefoonnummer" name="inputTelefoonnummer" class="form-control" placeholder="Telefoonnummer" onkeyup='telefoonCheck();' required>
             </div>
             <div class="form-label-group">
-                <span id='status'></span><br>
+                <span id='statusEmail'></span><br>
                 <label for="inputEmail">Email-adres</label>
                 <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email-adres" onkeyup='EmailCheck();' required>
             </div>
@@ -120,6 +146,5 @@
             <br>
         </div>
     </form>
-    <script type="text/javascript" src="~/js/validation.js"></script>
 </body>
 </html>

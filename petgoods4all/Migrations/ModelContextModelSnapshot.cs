@@ -28,6 +28,8 @@ namespace petgoods4all.Migrations
 
                     b.Property<bool>("IsEmailVerified");
 
+                    b.Property<bool>("IsUnregistered");
+
                     b.Property<string>("achternaam");
 
                     b.Property<string>("email");

@@ -24,7 +24,8 @@ namespace petgoods4all.Migrations
                     postcode = table.Column<string>(nullable: true),
                     provincie = table.Column<string>(nullable: true),
                     telefoonnummer = table.Column<string>(nullable: true),
-                    IsEmailVerified = table.Column<bool>(nullable: false)
+                    IsEmailVerified = table.Column<bool>(nullable: false),
+                    IsUnregistered = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
