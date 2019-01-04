@@ -24,6 +24,8 @@ namespace petgoods4all.Models
         //[DataType(DataType.PhoneNumber)]
         public string telefoonnummer { get; set; }
         public Boolean IsEmailVerified {get; set;}
+
+        public Boolean IsUnregistered {get; set;}
         
     }
 }
