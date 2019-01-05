@@ -47,7 +47,7 @@ namespace petgoods4all.Controllers
         public JsonResult CheckEmail(string inputEmail){
             var db = new ModelContext();
             System.Threading.Thread.Sleep(200);
-            var SeachData = db.Account.Where( x => x.email == inputEmail).SingleOrDefault();
+            var SeachData = db.Account.Where( x => x.email == inputEmail && x.IsUnregistered == false ).SingleOrDefault();
             if(SeachData != null)
             {
                 return Json(1);
@@ -81,26 +81,51 @@ namespace petgoods4all.Controllers
             {
                  MaxId = result.Max();
             }
+
             var AccountSession = HttpContext.Session.GetInt32("SessionAccountId");
             if(AccountSession != null)
             {
                 MaxId = AccountSession.GetValueOrDefault(0) - 1;
             }
             HttpContext.Session.Remove("SessionAccountId");
-            Account a = new Account
+
+            var checkMailUsed = (from v in db.Account where email == v.email select v).Any();
+
+            if(checkMailUsed != true)
             {
-                id = MaxId + 1,
-                email = inputEmail,
-                password = confirmPassword,
-                voornaam = inputVoornaam,
-                achternaam = inputAchternaam,
-                straatnaam = inputStraatnaam,
-                huisnummer = inputHuisnummer,
-                postcode = inputPostcode,
-                provincie = inputProvincie,
-                telefoonnummer = inputTelefoonnummer,
-                IsEmailVerified =  false,
-            };
+                Account a = new Account
+                {
+                    id = MaxId + 1,
+                    email = inputEmail,
+                    password = confirmPassword,
+                    voornaam = inputVoornaam,
+                    achternaam = inputAchternaam,
+                    straatnaam = inputStraatnaam,
+                    huisnummer = inputHuisnummer,
+                    postcode = inputPostcode,
+                    provincie = inputProvincie,
+                    telefoonnummer = inputTelefoonnummer,
+                    IsEmailVerified =  false,
+                    IsUnregistered = false
+                };
+                db.Account.Add(a);
+            }
+            else
+            {
+                var getUserId = (from v in db.Account where email == v.email select v.id).Single();
+                //hier over id plaatsen
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.email = inputEmail); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.password = confirmPassword); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.voornaam = inputVoornaam); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.achternaam = inputAchternaam); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.straatnaam = inputStraatnaam); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.huisnummer = inputHuisnummer); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.postcode = inputPostcode); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.provincie = inputProvincie); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.telefoonnummer = inputTelefoonnummer); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.IsEmailVerified =  false); 
+                (from acc in db.Account where getUserId == acc.id select acc).ToList().ForEach(acc => acc.IsUnregistered = false ); 
+            }
 
             MailMessage message = new System.Net.Mail.MailMessage();
             string fromEmail = "petgoods4all@gmail.com";
@@ -121,7 +146,6 @@ namespace petgoods4all.Controllers
                 smtpClient.Send(message.From.ToString(), message.To.ToString(), message.Subject, message.Body);
             }
 
-            db.Account.Add(a);
             db.SaveChanges();
             
             return Redirect("tussenpagina");

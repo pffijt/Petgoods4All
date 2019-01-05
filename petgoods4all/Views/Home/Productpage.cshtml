@@ -44,6 +44,7 @@
             }
             <label for="sel1">Kwantiteit:</label>
             <div>
+                <form action="" method="POST"> 
                 <div class="form-group col-sm-4">
                     <select class="form-control" id="Quantity" name="Quantity">
                         @for(var i = 1; i < @a.Kwantiteit + 1; i++) 
@@ -57,7 +58,6 @@
                 <button type="submit" asp-controller="Voorraad" 
                 asp-action="AddToShoppingCart" asp-route-identication="@Html.Raw(a.Id)" 
                 class="btn btn-warning col-sm-4">In de winkelwagen</button>
-                <form action="" method="POST"> 
                     <button  class="btn btn-danger col-sm-1" asp-controller="Home" asp-action="addWishList"
                     asp-route-identication="@Html.Raw(a.Id)" type="submit">&#10084;</button>
                 </form>

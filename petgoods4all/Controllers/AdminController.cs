@@ -365,7 +365,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var allaccounts = db.Account;
+                 var allaccounts = from x in db.Account where x.IsUnregistered == null || x.IsUnregistered == false  select x;
                 var foundaccounts = allaccounts.Where(x => x.email.Contains(accountSearch)).ToList();
                 return foundaccounts;
             }
@@ -375,7 +375,7 @@ namespace petgoods4all.Controllers
         {
             using (db)
             {
-                var allaccounts = db.Account;
+                var allaccounts = from x in db.Account where x.IsUnregistered == null || x.IsUnregistered == false  select x;
                 var a = "x." + Categories;
                 var foundaccounts = allaccounts.OrderBy(x => a).ToList();
                 return foundaccounts;
@@ -398,7 +398,7 @@ namespace petgoods4all.Controllers
                 ViewBag.secondnum = 16 * P;
                 ViewBag.paginationindex = P;
 
-                var accounts = db.Account.ToList();
+                var accounts = (from x in db.Account where x.IsUnregistered == null || x.IsUnregistered == false  select x).ToList();
 
                 ViewBag.count = accounts.Count();
                 if (ViewBag.secondnum > ViewBag.count)
@@ -653,7 +653,8 @@ namespace petgoods4all.Controllers
                     postcode = postcode,
                     provincie = provincie,
                     IsEmailVerified = IsEmailVerified,
-                    huisnummer = huisnummer
+                    huisnummer = huisnummer,
+                    IsUnregistered = false
                 };
                 db.Account.Add(a);
                 db.SaveChanges();

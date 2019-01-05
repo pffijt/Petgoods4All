@@ -2,6 +2,7 @@
 @model IEnumerable<petgoods4all.Models.Voorraad>
 @{
     ViewBag.Title = "Mijn wensenlijst";
+    var index = 0;
 }
 <head>
     <link rel="stylesheet" href="~/Content/shoppingcart.css" />
@@ -21,14 +22,15 @@
         <div class="row">
             <div class="col-md-5">
                 <br>
-                <img src="@Html.DisplayFor(modelItem => item.image)" width="180px" height="100px"/>
+                <img src="@Html.DisplayFor(modelItem => item.image)" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" width="180px" height="100px"/>
             </div>
             <form action="" method="POST">
             <div class="col-md-4">
                 <h3>@Html.DisplayFor(modelItem => item.Naam)</h3>
                 Hoeveelheid:
                  @{var classb = "a"+ @item.Id;}
-                <input onclick='clickFunction("@classb")' type="number" value="1" min="1" max="@Html.DisplayFor(modelItem => item.Kwantiteit)" id="hoeveelheid" name="hoeveelheid" class="form-control" required>
+                <input onclick='clickFunction("@classb")' type="number" value="@ViewBag.quantityList[@index]" min="1" max="@Html.DisplayFor(modelItem => item.Kwantiteit)" id="hoeveelheid" name="hoeveelheid" class="form-control" required>
+                @{index = index +1;}
                 <br/>
                 <div class="alert alert-info " id="@classb" style="visibility:hidden">
                  Petgoods4All heeft nog <b>@Html.DisplayFor(modelItem => item.Kwantiteit)</b> product(en) in voorraad van @Html.DisplayFor(modelItem => item.Naam)!

@@ -225,6 +225,7 @@ namespace petgoods4all.Controllers
                 postcode = o_postal,
                 provincie = "",
                 telefoonnummer = null,
+                IsUnregistered = true
                 };
 
             db.Account.Add(a);
