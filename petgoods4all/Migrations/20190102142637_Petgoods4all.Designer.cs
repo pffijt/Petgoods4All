@@ -10,8 +10,8 @@ using petgoods4all.Models;
 namespace petgoods4all.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    [Migration("20190103133433_InitialDB")]
-    partial class InitialDB
+    [Migration("20190102142637_Petgoods4all")]
+    partial class Petgoods4all
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,8 +29,6 @@ namespace petgoods4all.Migrations
                     b.Property<bool>("Admin");
 
                     b.Property<bool>("IsEmailVerified");
-
-                    b.Property<bool>("IsUnregistered");
 
                     b.Property<string>("achternaam")
                         .IsRequired();
@@ -53,7 +51,8 @@ namespace petgoods4all.Migrations
                     b.Property<string>("straatnaam")
                         .IsRequired();
 
-                    b.Property<string>("telefoonnummer");
+                    b.Property<string>("telefoonnummer")
+                        .IsRequired();
 
                     b.Property<string>("voornaam")
                         .IsRequired();

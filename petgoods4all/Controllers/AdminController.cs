@@ -424,13 +424,11 @@ namespace petgoods4all.Controllers
                         var orderedAccounts = accounts.ToList();
                         if (Categories == "Email")
                         {
-                            var paccounts = accounts.OrderBy(a => a.email).ToList();
-                            orderedAccounts = orderedAccounts.Skip(((P * 16) - 16)).Take(16).ToList();
+                            var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
                         }
                         else if(Categories == "Admin")
                         {
-                            var paccounts = accounts.OrderByDescending(a => a.Admin).ToList();
-                            orderedAccounts = orderedAccounts.Skip(((P * 16) - 16)).Take(16).ToList();
+                            var paccounts = accounts.Skip(((P * 16) - 16)).Take(16);
                         }
 
                         return View(orderedAccounts);
@@ -484,23 +482,17 @@ namespace petgoods4all.Controllers
                         var orderedProducts = products.ToList();
                         if (Categories == "Naam")
                         {
-                            ViewBag.Categories = "Naam";
-                            
-                            orderedProducts = orderedProducts.OrderBy(a => a.Naam).ToList();
-                            orderedProducts = orderedProducts.Skip(((P * 16) - 16)).Take(16).ToList();
+                            orderedProducts = products.OrderBy(a => a.Naam).ToList();
                         }
                         else if (Categories == "Dier")
                         {
-                            ViewBag.Categories = "Dier";
-                            orderedProducts = orderedProducts.OrderBy(a => a.Dier).ToList();
-                            orderedProducts = orderedProducts.Skip(((P * 16) - 16)).Take(16).ToList();
+                            orderedProducts = products.OrderBy(a => a.Dier).ToList();
                         }
 
                         return View(orderedProducts);
                     }
                     else
                     {
-                        products = products.Skip(((P * 16) - 16)).Take(16).ToList();
                         return View(products);
                     }
                 }
