@@ -480,11 +480,12 @@ namespace petgoods4all.Controllers
             }
             return View();
         }
-        public IActionResult ProductBrowsen(string D, int P = 1)
+        public IActionResult ProductBrowsen(string D, string sel2, int P = 1)
         {
             ViewBag.Message = "Producten";
             using (var db = new ModelContext())
             {
+                System.Collections.Generic.List<petgoods4all.Models.Voorraad> goodss = new System.Collections.Generic.List<petgoods4all.Models.Voorraad>();
                 //pagination per soort
                 ViewBag.firstnum = (P*16)-15;
                 ViewBag.secondnum = 16*P;
@@ -496,7 +497,34 @@ namespace petgoods4all.Controllers
                 {
                     ViewBag.secondnum = ViewBag.count;
                 }
-                var goodsList = goods.Skip(((P*16)-16)).Take(16).ToList();
+                if(sel2 != null || sel2 == " ")
+                {
+                    if(sel2 == "Prijs ophogend")
+                    {
+                        goodss = goods.OrderBy(o=>double.Parse(o.Prijs)).ToList();
+                        ViewBag.sel2 = sel2;
+                    }
+                    if(sel2 == "Prijs verlagend")
+                    {
+                        goodss = goods.OrderByDescending(o=>double.Parse(o.Prijs)).ToList();
+                        ViewBag.sel2 = sel2;
+                    }
+                    if(sel2 == "Alfabetisch A-Z")
+                    {
+                        goodss = goods.OrderBy(o=>o.Naam).ToList();
+                        ViewBag.sel2 = sel2;
+                    }
+                    if(sel2 == "Alfabetisch Z-A")
+                    {
+                        goodss = goods.OrderByDescending(o=>o.Naam).ToList();
+                        ViewBag.sel2 = sel2;
+                    }
+                }
+                else
+                {
+                    goodss = goods.ToList();
+                }
+                var goodsList = goodss.Skip(((P*16)-16)).Take(16).ToList();
                 return View(goodsList);
             }
         }
