@@ -16,35 +16,37 @@
     <p>
         <!-- <a asp-action="AdminHome">Terug naar de Home pagina</a><br>
         <a asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount">Nieuwe klant</a><br /> -->
+        <div style="margin-left: 20px;">
         <form class="input-group" method="put">
             <button 
                 type="submit" asp-area="" asp-controller="Admin" asp-action="AdminHome" 
                 class="btn btn-warning ">Terug naar de Home pagina
-            </button><br>
+            </button><br/><br/>
             <button 
                 type="submit" asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount" 
                 class="btn btn-warning ">Nieuwe klant
             </button>
         </form>
+        </div>
     </p>
    
-    <div>
+    <div style="display: inline-block;">
         <form class="nav navbar-form form-inline" method="post" asp-controller="Admin" asp-action="AdminKlantIndex">
-            <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op email" aria-label="Search" id="accountSearch" name="accountSearch">
+            <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op email" aria-label="Search" id="accountSearch" name="accountSearch" style="display: inline-block;">
         </form>
     </div>
     <div>
         <form class="nav navbar-form form-inline" method="get" asp-controller="Admin" asp-action="AdminKlantIndex">
             Sorteer op:<br>
-            <select class="form-control" id="Categories" name="Categories">
+            <select class="form-control" id="Categories" name="Categories" style="display: inline-block;">
                 <option></option>
                 <option>Email</option>
                 <option>Admin</option>
             </select>
-            <input class="btn btn-success" type="submit" />
+            <input class="btn btn-success" type="submit" style="display: inline-block;"/>
         </form>
     </div>
-    <div>
+    <div style="margin-left: 20px; margin-right: 20px;">
         <table class="table" style="background-color:#ffe8d3;">
             <thead>
                 <tr>
@@ -105,7 +107,7 @@
             }
         }
         <div class="row">
-            <div class="text-center">
+            <div class="text-center" >
                 <ul class="pagination">
                     <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
                     @if(@ViewBag.searched != true)

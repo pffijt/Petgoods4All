@@ -30,12 +30,12 @@
 <div class="row" style="background-color:#ffe8d3;"><br>
     <!-- <a asp-controller="Admin" asp-action="AdminHome">Terug naar home pagina</a> -->
     <form class="input-group" method="put">
-        <button 
+        <button style="margin-left:20px;" 
             type="submit" asp-area="" asp-action="AdminHome" 
             class="btn btn-warning">Terug naar de Home pagina
         </button>
     </form>
-    <h1>Inkoopprijs Bestelde producten</h1>
+    <h1 style="margin-left:20px;">Financiën Petgoods4All</h1>
     <div class="container">
 
         @foreach (var item in ViewBag.jaren)
@@ -82,7 +82,7 @@
 
                         string JanuariInkoopPrijs = ViewBag.JanuariInkoop.ToString(new System.Globalization.CultureInfo("en-US"));
                             <p>&euro;@JanuariInkoopPrijs</p>
-                            <input type="button" class="btn btn-success" asp-controller="Voorraad" asp-action="OmzetProducten" />
+                            <!--<input type="button" class="btn btn-success" asp-controller="Voorraad" asp-action="OmzetProducten" />-->
                             <form class="form-products" method="post" asp-controller="Admin" asp-action="OmzetProducten">
                                 <button class="btn btn-success" asp-controller="Admin" asp-action="OmzetProducten" asp-route-Datum="@item2.Datum.Month"> Bekijk producten </button>
                                 <input type="text" id="DatumYear" name="DatumYear" value="@item2.Datum" style="visibility:hidden;"/>
