@@ -3,8 +3,6 @@
     ViewBag.Title = "Producten";
 }
 <br />
-<br />
-<br />
 <head>
     <link rel="stylesheet" href="~/Content/productBrowsen.css" />
 </head>
@@ -19,7 +17,7 @@
     <!--end selecting-->
     <!--begin products-->
     <div id="browsProduct">
-        <div class="row">
+        <div class="row" style="margin-left:50px!important;">
             <form method="post" asp-controller="Voorraad" asp-action="ProductSearch" asp-route-s="@ViewBag.SearchedString">
                 Dier:<select id="DierDropdown" name="DierDropdown">
                          <option></option>
@@ -39,17 +37,37 @@
                 <input type="submit" />
             </form>
             
-        </div>
-        <div class="row">
             @foreach (var item in ViewBag.Voorraad)
             {
-                <div id="browsProductContainer" class="col-sm-3 offset-1">
+                @*<div id="browsProductContainer" class="col-sm-3 offset-1">
                     <img src="@item.image "  style="width:140px;height:140px;" />
                     <br />
                     <p><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@item.Naam</a> <br />&euro; @item.Prijs</p>
+                </div>*@
+                        <div id="browsProductContainer" class="col-lg-12">
+                            <table>
+                                <tr>
+                                    <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id" class="imageI">
+                                        <img src="@item.image" alt="" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:140px;height:140px;" />
+                                    </a>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <li style="list-style-type: none;"><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@item.Naam</a></li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">
+                                            &#8364; @item.Prijs
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
                 </div>
             }
-        </div>
     </div>
     <!--end products-->
     <!--begin page pagination-->

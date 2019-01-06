@@ -8,6 +8,16 @@
     margin-right: 100px;
 }
 
+.container {
+    width: 110%;
+    margin-left: -5%;
+}
+
+.container-fluid {
+    width: 110%;
+    margin-left: -5%;
+}
+
 body,
 p {
     padding: 20px 20px 20px 20px;

@@ -7,6 +7,16 @@ p {
     padding: 10px 10px 10px 10px;
 }
 
+.container {
+    width: 110%;
+    margin-left: -5%;
+}
+
+.container-fluid {
+    width: 110%;
+    margin-left: -5%;
+}
+
 #browsProduct,
 img {
     margin: 5px 0px 0px 15px;
@@ -16,11 +26,11 @@ img {
 
 #browsProductContainer {
     background-color: #ffddbf;
-    padding: 1% 1% 0% 0%;
+    padding: 20px 5px 0px 0px;
     margin: 20px 15px 0px 15px;
     border-radius: 1%;
     text-align: center;
-    width: 14.4%;
+    width: 171px;
     height: 290px;
 }
 
@@ -50,10 +60,10 @@ button:hover {
     #browsProductContainer {
         background-color: #ffddbf;
         padding: 20px 5px 0px 0px;
-        margin: 20px 15px 0px -80px;
-        border-radius: 10%;
+        margin: 20px 15px 0px 18%;
+        border-radius: 1%;
         text-align: center;
-        width: 220px;
+        width: 171px;
         height: 265px;
     }
     button {

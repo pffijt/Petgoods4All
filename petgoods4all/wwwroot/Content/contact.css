@@ -2,6 +2,16 @@
     padding: 50px 20px 0px 20px;
 }
 
+.container {
+    width: 110%;
+    margin-left: -5%;
+}
+
+.container-fluid {
+    width: 110%;
+    margin-left: -5%;
+}
+
 form {
     margin: 20px 20px 20px 40px;
 }

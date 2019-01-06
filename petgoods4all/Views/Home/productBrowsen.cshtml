@@ -17,25 +17,35 @@
     <div class="row">
         @*<button class="button button5">Sorteren</button>
         <button class="button button5">Populair</button>*@
-        <div class="pull-right">
+        <div>
             @ViewBag.firstnum - @ViewBag.secondnum van @ViewBag.count resultaten
         </div>
     </div>
     <br />
     <div id="browsProduct">
-        <div class="row" style="margin-left:70px;">
+        <div class="row" style="margin-left:50px;">
             @foreach(var item in Model)
             {
-                <div id="browsProductContainer" class="col-lg-3">
-                    <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id" class="imageI">
-                    <img src="@Html.DisplayFor(modelItem => item.image)" alt="" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:140px;height:140px;" />
-                    </a>
-                    
-                        <li style="list-style-type: none;"><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a></li>
-                        <br/>
-                        <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">
-                        &#8364; @Html.DisplayFor(modelItem => item.Prijs)
-                        </a>
+                <div id="browsProductContainer" class="col-lg-12">
+                    <table>
+                        <tr>
+                            <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id" class="imageI">
+                                <img src="@Html.DisplayFor(modelItem => item.image)" alt="" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:140px;height:140px;" />
+                            </a>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                             <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">
+                                    &#8364; @Html.DisplayFor(modelItem => item.Prijs)
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             }
         </div>

@@ -4,6 +4,16 @@
     overflow-x: hidden;
 }
 
+.container {
+    width: 110%;
+    margin-left: -5%;
+}
+
+.container-fluid {
+    width: 110%;
+    margin-left: -5%;
+}
+
 .navbar-toggle {
     margin-right: 100px;
 }

@@ -2,6 +2,8 @@
     background-color:ghostwhite;
     color: black;
     padding-top: 30px;
+    width: 110%;
+    margin-left:-5%;
 }
 
     #myFooter .footer-copyright {

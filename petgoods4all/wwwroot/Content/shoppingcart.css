@@ -1,4 +1,14 @@
-﻿body {
+﻿.container {
+    width: 110%;
+    margin-left: -5%;
+}
+
+.container-fluid {
+    width: 110%;
+    margin-left: -5%;
+}
+
+body {
     background-image: url("../Content/Images/bg3.PNG");
     background-repeat: repeat;
     overflow-x: hidden;
