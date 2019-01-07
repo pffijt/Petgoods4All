@@ -9,3 +9,14 @@ C:\Users\jordi\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.
 C:\Users\jordi\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.AssemblyInfo.cs
 C:\Users\jordi\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.dll
 C:\Users\jordi\Documents\GitHub\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.pdb
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.deps.json
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.runtimeconfig.json
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.runtimeconfig.dev.json
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.dll
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\bin\Debug\netcoreapp2.0\petgoods4all.pdb
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.csprojResolveAssemblyReference.cache
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.csproj.CoreCompileInputs.cache
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.AssemblyInfoInputs.cache
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.AssemblyInfo.cs
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.dll
+C:\Users\jsuij\OneDrive\Documenten\github\Petgoods4All\petgoods4all\obj\Debug\netcoreapp2.0\petgoods4all.pdb

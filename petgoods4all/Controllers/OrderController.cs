@@ -338,7 +338,8 @@ namespace petgoods4all.Controllers
                 PayerId = PayerID
             });
             BraintreeHttp.HttpResponse response = await Pay_client.Execute(request);
-          
+            
+
 
             if(o_aanhef == null)
             {
@@ -407,6 +408,16 @@ namespace petgoods4all.Controllers
 
                 db.OrderedProducts.Add(orderedProducts);
                 db.SaveChanges();
+
+                var voorraad = (from v in db.Voorraad where v.Id == item.VoorraadId select v).ToList();
+
+                foreach(var item2 in voorraad)
+                {
+                    var NewQuantity = item2.Kwantiteit - item.Quantity;
+                    item2.Kwantiteit = NewQuantity;
+                }
+                db.SaveChanges();
+                
 
             }
 
