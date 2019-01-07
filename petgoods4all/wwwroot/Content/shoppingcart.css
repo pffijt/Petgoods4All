@@ -8,6 +8,11 @@ p {
     margin: -20px -20px -20px 0px;
 }
 
+#prijsTop {
+    margin-top: -150px;
+    margin-left: -20px;
+}
+
 @media only screen and (max-width: 767px) {
     /* phones */
     img {
@@ -19,5 +24,8 @@ p {
     }
     h3 {
         font-size: 90%;
+    }
+    #prijsTop {
+        margin-top: -200px;
     }
 }

@@ -16,12 +16,12 @@ img {
 
 #browsProductContainer {
     background-color: #ffddbf;
-    padding: 20px 5px 0px 0px;
-    margin: 20px 15px 0px 15px;
+    padding: 20px 5px 10px 0px;
+    margin: 20px 15px 20px 15px;
     border-radius: 10%;
     text-align: center;
     width: 210px;
-    height: 290px;
+    height: 310px;
 }
 
 button {

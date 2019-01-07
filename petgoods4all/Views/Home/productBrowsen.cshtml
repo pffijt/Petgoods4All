@@ -15,27 +15,38 @@
     <br />
     <!--begin selecting-->
     <div class="row">
-        @*<button class="button button5">Sorteren</button>
-        <button class="button button5">Populair</button>*@
+        <div style="padding-left:20px;">
+        <form  method="POST"> 
+        <label for="sel2">Sorteer: </label>
+        <select class="form-control" id="sel2" name="sel2" asp-controller="Home" asp-action="productBrowsen" type="submit" onchange="this.form.submit()" style="display: inline-block;">
+            <option> </option>
+            <option>Prijs ophogend</option>
+            <option>Prijs verlagend</option>
+            <option>Alfabetisch A-Z</option>
+            <option>Alfabetisch Z-A</option>
+        </select>
+        </form>
+        </div>
         <div class="pull-right">
             @ViewBag.firstnum - @ViewBag.secondnum van @ViewBag.count resultaten
         </div>
     </div>
     <br />
     <div id="browsProduct">
-        <div class="row" style="margin-left:70px;">
+        <div class="flex-row" style="margin-left:70px;">
             @foreach(var item in Model)
             {
-                <div id="browsProductContainer" class="col-lg-3">
+                <div id="browsProductContainer" class=" d-flex flex-lg-column  col-sm-3">
+                    <div style="position:absolute; bottom:10px; left: 0; right: 0; margin:0 auto; " >
+                        <a  asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">
+                        &#8364; @Html.DisplayFor(modelItem => item.Prijs)
+                        </a>
+                    </div>
                     <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id" class="imageI">
                     <img src="@Html.DisplayFor(modelItem => item.image)" alt="" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:140px;height:140px;" />
                     </a>
-                    
-                        <li style="list-style-type: none;"><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a></li>
-                        <br/>
-                        <a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">
-                        &#8364; @Html.DisplayFor(modelItem => item.Prijs)
-                        </a>
+                        <br/><br/>
+                        <li style="list-style-type: none; padding-left: 5px; padding-right: 5px;"><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@Html.DisplayFor(modelItem => item.Naam)</a></li>
                 </div>
             }
         </div>
@@ -69,14 +80,14 @@
             second = 1;
         }
     }
-    <div class="row">
+    <div class="flex-row">
         <div class="text-center">
             <ul class="pagination">
                 <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
                 <li class="page-item" style="visibility:@fvis">
-                <a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@second">@second</a></li>
-                <li class="page-item"><a style="color:black;"class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@ViewBag.paginationindex">@ViewBag.paginationindex</a></li>
-                <li class="page-item" style="visibility:@lvis"><a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@third">@third</a></li>
+                <a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@second"  asp-route-sel2="@ViewBag.sel2">@second</a></li>
+                <li class="page-item"><a style="color:black;"class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@ViewBag.paginationindex" asp-route-sel2="@ViewBag.sel2">@ViewBag.paginationindex</a></li>
+                <li class="page-item" style="visibility:@lvis"><a class="page-link" asp-area="" asp-controller="Home" asp-action="productBrowsen" asp-route-D="@ViewBag.animal" asp-route-P="@third" asp-route-sel2="@ViewBag.sel2">@third</a></li>
                 <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
             </ul>
         </div>

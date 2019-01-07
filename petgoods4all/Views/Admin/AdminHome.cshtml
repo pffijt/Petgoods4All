@@ -7,7 +7,6 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/Content/signin.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,9 +16,8 @@
     </environment>
 </head>
 <body>
-    <br /><br /><br /><br /><br /><br /><br />
     <form class="input-group" method="put" style="background-color:#ffe8d3;">
-        <h2>Admin Home</h2>
+        <h2>Administratiepaneel</h2>
         <p>
             Welkom administrator. <br /><br />
             <!-- <a asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex">Klant beheer</a><br />
@@ -30,12 +28,12 @@
             <button 
                 type="submit" asp-area="" asp-controller="Admin" asp-action="AdminKlantIndex" 
                 class="btn btn-warning">Klant beheer
-            </button><br>
+            </button><br/><br/>
             <button 
                 type="submit" asp-controller="Admin" asp-action="AdminVoorraadIndex"
                 class="btn btn-warning">
                 Product beheer
-            </button><Br>
+            </button><br/><br/>
             <button 
                 type="submit" asp-controller="Admin" asp-action="Omzet"
                 class="btn btn-warning ">

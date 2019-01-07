@@ -4,12 +4,9 @@
     ViewData["Title"] = "AdminCreateVoorraad";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2 style="background-color:#ffe8d3;">Product toevoegen</h2>
-
-<h4 style="background-color:#ffe8d3;">Voorraad</h4>
-<hr />
 <div class="row" style="background-color:#ffe8d3;">
+    <h2 style="background-color:#ffe8d3;">Product toevoegen</h2>
+    <hr />
     <div class="col-md-4">
         <form asp-action="AdminCreateVoorraadSave">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -47,19 +44,22 @@
                 <button type="submit" value="Opslaan" class="btn btn-default btn-primary">Opslaan </button>
             </div>
         </form>
+        <div class="row">
+            <form class="input-group" method="put">
+                <button
+                    type="submit" asp-controller="Admin" 
+                    asp-action="AdminVoorraadIndex" 
+                    class="btn btn-warning">
+                    Terug naar de lijst
+                </button>
+            </form>
+        </div>
     </div>
 </div>
 
 <!-- <div style="background-color:#ffe8d3;">
     <a asp-action="AdminVoorraadIndex">Terug naar de lijst</a>
 </div> -->
-<form class="input-group" method="put">
-    <button
-        type="submit" asp-controller="Admin" 
-        asp-action="AdminVoorraadIndex" 
-        class="btn btn-warning">
-        Terug naar de lijst
-    </button>
-</form>
+
 
 

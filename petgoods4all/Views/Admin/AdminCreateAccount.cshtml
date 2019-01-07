@@ -6,8 +6,6 @@
 }
 <div class="row" style="background-color:#ffe8d3;">
 <h2 style="background-color:#ffe8d3;">Maak een nieuw Account</h2>
-
-<h4 style="background-color:#ffe8d3;">Account</h4>
 <hr />
 
     <div class="col-md-4">
@@ -76,18 +74,21 @@
                 <button type="submit" value="Opslaan" class="btn btn-default btn-primary">Opslaan </button>
             </div>
         </form>
+        <div class="row">
+        <form class="input-group" method="put">
+            <button
+                type="submit" asp-controller="Admin" 
+                asp-action="AdminKlantIndex" 
+                class="btn btn-warning">
+                Terug naar de lijst
+            </button>
+        </form>
+        </div>
     </div>
 </div>
 
 <!-- <div style="background-color:#ffe8d3;">
     <a asp-action="AdminKlantIndex">Terug naar de lijst</a>
 </div> -->
-<form class="input-group" method="put">
-    <button
-        type="submit" asp-controller="Admin" 
-        asp-action="AdminKlantIndex" 
-        class="btn btn-warning">
-        Terug naar de lijst
-    </button>
-</form>
+
 
