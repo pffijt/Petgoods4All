@@ -80,7 +80,7 @@
 
                     <li><a asp-area="" asp-controller="Voorraad" asp-action="ShoppingCart"><span class="glyphicon glyphicon-shopping-cart"></a></li>
 
-                    @if (Context.Session.GetInt32("UID") == null)
+                    @if (Context.Session.GetInt32("UID") != null)
                     {
                         <li><a asp-area="" asp-controller="Home" asp-action="Wishpage">&#10084;</a></li>
                     }
