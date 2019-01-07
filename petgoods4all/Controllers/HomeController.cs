@@ -117,6 +117,7 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             var product = from m in db.Voorraad where m.Id == identication select m;
             var UID = HttpContext.Session.GetInt32("UID");
+            ViewBag.UID = UID;
             ViewBag.hoeveelheid = (from m in db.Voorraad where identication == m.Id select m.Kwantiteit).Single();
             var reviews =
                 from r in db.Review
@@ -177,6 +178,7 @@ namespace petgoods4all.Controllers
                 int pID = (from m in db.Voorraad where m.Id == identication select m.Id).Single();
                 int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
                 var UID = HttpContext.Session.GetInt32("UID");
+                ViewBag.UID = uID;
   
                 var product = from m in db.Voorraad where m.Id == identication select m;
                 //var reviews = from r in db.Review where r.ProductId == identication select r;
