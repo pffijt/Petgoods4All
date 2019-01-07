@@ -449,6 +449,7 @@ namespace petgoods4all.Controllers
             "De producten komen uw kant op.\n"+
             "adres:"+o_address+"\n"+
             "postcode: "+o_postal+"\n"+
+            "Huisnummer: "+o_number+"\n"+
             "Veel dierenplezier met de producten!\n Met vriendelijke groeten,\n\n Petgoods4All";
             client.Port = 587;
             client.Credentials = new System.Net.NetworkCredential("petgoods4all@gmail.com", "adminpetgoods4all");

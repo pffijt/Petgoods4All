@@ -50,8 +50,8 @@ textarea {
         margin: 10px 0px 10px 20px;
     }
     textarea {
-        width: 50px;
-        height: 100px;
+        width: 180px;
+        height: 150px;
         max-height: 450px;
     }
 }
