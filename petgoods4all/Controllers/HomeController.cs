@@ -265,14 +265,32 @@ namespace petgoods4all.Controllers
                     {
                         MaxId = result.Max();
                     }
-                    Wishlist n = new Wishlist
+                    var checkAlready = (from c in db.Wishlist where c.customerid == uID && c.productid == pID select c).Any();
+                    if(checkAlready == false)
                     {
-                        id = MaxId + 1,
-                        customerid = uID,
-                        productid = pID,
-                        quantity = Quantity
-                    };
-                    db.Wishlist.Add(n);
+                        Wishlist n = new Wishlist
+                        {
+                            id = MaxId + 1,
+                            customerid = uID,
+                            productid = pID,
+                            quantity = Quantity
+                        };
+                        db.Wishlist.Add(n);
+                    }
+                    if(checkAlready == true)
+                    {
+                        var selectWish = (from d in db.Wishlist where d.customerid == uID && d.productid == pID select d).Single();
+                        var seekQuantity = (from e in db.Voorraad where e.Id == pID select e.Kwantiteit).Single();
+                        var seekQuantityWhis = (from f in db.Wishlist where  f.customerid == uID && f.productid == pID select f.quantity).Single();
+                        if(Quantity + seekQuantityWhis > seekQuantity)
+                        {
+                            (from d in db.Wishlist where d.customerid == uID && d.productid == pID select d).ToList().ForEach(d => d.quantity = seekQuantity);
+                        }
+                        else
+                        {
+                            (from d in db.Wishlist where d.customerid == uID && d.productid == pID select d).ToList().ForEach(d => d.quantity = Quantity + seekQuantityWhis);
+                        }
+                    }
                     db.SaveChanges();
                 }
                 var product = from m in db.Voorraad where m.Id == identication select m;
