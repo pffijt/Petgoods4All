@@ -5,7 +5,7 @@
     var index = 0;
 }
 <head>
-    <link rel="stylesheet" href="~/Content/shoppingcart.css" />
+    <link rel="stylesheet" href="~/Content/wishpage.css" />
 </head>
 <div class="container-fluid" style="background-color:#ffe8d3;">
 <h2>
@@ -32,10 +32,10 @@
                 <input onclick='clickFunction("@classb")' type="number" value="@ViewBag.quantityList[@index]" min="1" max="@Html.DisplayFor(modelItem => item.Kwantiteit)" id="hoeveelheid" name="hoeveelheid" class="form-control" required>
                 @{index = index +1;}
                 <br/>
+                <p id="prijsTop">&#8364; @Html.DisplayFor(modelItem => item.Prijs)<br/><br/></p>
                 <div class="alert alert-info " id="@classb" style="visibility:hidden">
                  Petgoods4All heeft nog <b>@Html.DisplayFor(modelItem => item.Kwantiteit)</b> product(en) in voorraad van @Html.DisplayFor(modelItem => item.Naam)!
                 </div>
-                <p id="prijsTop">&#8364; @Html.DisplayFor(modelItem => item.Prijs)</p>
             </div>
             <div class="col-md-3">
                 <br><br>
@@ -67,6 +67,7 @@
 }
 @if(@ViewBag.uID == 0)
 {
+   
     <div>
         <h3 style="padding-top:10px;">Een wensenlijst is voor de gebruiker met een account</h3>
         <p  style="padding-left:50px;"><a asp-area="" asp-controller="Account" asp-action="Aanmelden">Maak nu een account aan </a>of<a asp-area="" asp-controller="Account" asp-action="Inloggen"> login!</a></p>

@@ -117,6 +117,7 @@ namespace petgoods4all.Controllers
             var db = new ModelContext();
             var product = from m in db.Voorraad where m.Id == identication select m;
             var UID = HttpContext.Session.GetInt32("UID");
+            ViewBag.UID = UID;
             ViewBag.hoeveelheid = (from m in db.Voorraad where identication == m.Id select m.Kwantiteit).Single();
             var reviews =
                 from r in db.Review
@@ -177,6 +178,7 @@ namespace petgoods4all.Controllers
                 int pID = (from m in db.Voorraad where m.Id == identication select m.Id).Single();
                 int uID = (HttpContext.Session.GetInt32("UID")).GetValueOrDefault(0);
                 var UID = HttpContext.Session.GetInt32("UID");
+                ViewBag.UID = uID;
   
                 var product = from m in db.Voorraad where m.Id == identication select m;
                 //var reviews = from r in db.Review where r.ProductId == identication select r;
@@ -263,14 +265,32 @@ namespace petgoods4all.Controllers
                     {
                         MaxId = result.Max();
                     }
-                    Wishlist n = new Wishlist
+                    var checkAlready = (from c in db.Wishlist where c.customerid == uID && c.productid == pID select c).Any();
+                    if(checkAlready == false)
                     {
-                        id = MaxId + 1,
-                        customerid = uID,
-                        productid = pID,
-                        quantity = Quantity
-                    };
-                    db.Wishlist.Add(n);
+                        Wishlist n = new Wishlist
+                        {
+                            id = MaxId + 1,
+                            customerid = uID,
+                            productid = pID,
+                            quantity = Quantity
+                        };
+                        db.Wishlist.Add(n);
+                    }
+                    if(checkAlready == true)
+                    {
+                        var selectWish = (from d in db.Wishlist where d.customerid == uID && d.productid == pID select d).Single();
+                        var seekQuantity = (from e in db.Voorraad where e.Id == pID select e.Kwantiteit).Single();
+                        var seekQuantityWhis = (from f in db.Wishlist where  f.customerid == uID && f.productid == pID select f.quantity).Single();
+                        if(Quantity + seekQuantityWhis > seekQuantity)
+                        {
+                            (from d in db.Wishlist where d.customerid == uID && d.productid == pID select d).ToList().ForEach(d => d.quantity = seekQuantity);
+                        }
+                        else
+                        {
+                            (from d in db.Wishlist where d.customerid == uID && d.productid == pID select d).ToList().ForEach(d => d.quantity = Quantity + seekQuantityWhis);
+                        }
+                    }
                     db.SaveChanges();
                 }
                 var product = from m in db.Voorraad where m.Id == identication select m;
