@@ -454,7 +454,7 @@ namespace petgoods4all.Controllers
                 ViewBag.secondnum = 16 * P;
                 ViewBag.paginationindex = P;
 
-                var products =  db.Voorraad.ToList();
+                var products =  db.Voorraad.Skip(((P * 16) - 16)).Take(16).ToList();
 
                 ViewBag.count = products.Count();
                 if (ViewBag.secondnum > ViewBag.count)
@@ -482,11 +482,11 @@ namespace petgoods4all.Controllers
                         var orderedProducts = products.ToList();
                         if (Categories == "Naam")
                         {
-                            orderedProducts = products.OrderBy(a => a.Naam).ToList();
+                            orderedProducts = products.Skip(((P * 16) - 16)).Take(16).OrderBy(a => a.Naam).ToList();
                         }
                         else if (Categories == "Dier")
                         {
-                            orderedProducts = products.OrderBy(a => a.Dier).ToList();
+                            orderedProducts = products.Skip(((P * 16) - 16)).Take(16).OrderBy(a => a.Dier).ToList();
                         }
 
                         return View(orderedProducts);
