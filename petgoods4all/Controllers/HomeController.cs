@@ -502,6 +502,10 @@ namespace petgoods4all.Controllers
         }
         public IActionResult ProductBrowsen(string D, string sel2, int P = 1)
         {
+            var culture = new System.Globalization.CultureInfo("en-US");
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+            Console.WriteLine("Cultureinfo : "+CultureInfo.CurrentCulture);
             ViewBag.Message = "Producten";
             using (var db = new ModelContext())
             {
@@ -545,6 +549,10 @@ namespace petgoods4all.Controllers
                     goodss = goods.ToList();
                 }
                 var goodsList = goodss.Skip(((P*16)-16)).Take(16).ToList();
+                culture = new System.Globalization.CultureInfo("nl-NL");
+                System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+                System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+                Console.WriteLine("Cultureinfo : "+CultureInfo.CurrentCulture);
                 return View(goodsList);
             }
         }
