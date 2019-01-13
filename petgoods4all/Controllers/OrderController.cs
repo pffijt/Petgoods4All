@@ -483,10 +483,18 @@ namespace petgoods4all.Controllers
                 //var delUser = (from s in db.Account where s.id == UserId select s).Single();
                 //db.Account.Remove(delUser);
                 //db.SaveChanges();
+                int? randomAccountIdSum;
                 var AccountResult = from r in db.Account select r.id;
                 HttpContext.Session.Remove("SessionAccountId");
-                int? randomAccountIdSum = AccountResult.Max() + 1;
-                int randomAccountId = randomAccountIdSum.GetValueOrDefault();
+                if(AccountResult == null)
+                {
+                    randomAccountIdSum = AccountResult.Max() + 1;
+                }
+                else
+                {
+                    randomAccountIdSum = 1;
+                }
+                int randomAccountId = randomAccountIdSum.GetValueOrDefault(1);
                 HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
 
                 return Redirect("http://localhost:56003/Order/Bedankt");
