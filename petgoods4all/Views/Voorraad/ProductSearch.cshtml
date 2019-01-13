@@ -15,45 +15,49 @@
     <!--Filters-->
     <div class="row">
     </div>
-    <br/>
+    <br />
     <div class="pull-right">
-            @ViewBag.firstnum - @ViewBag.secondnum van @ViewBag.count resultaten
+        @ViewBag.firstnum - @ViewBag.secondnum van @ViewBag.count resultaten
     </div>
     <br />
     <!--end selecting-->
     <!--begin products-->
-    <div id="browsProduct">
-        <div class="row">
-            <form method="post" asp-controller="Voorraad" asp-action="Search" asp-route-productSearch="@ViewBag.SearchedString">
-                Dier:<select id="DierDropdown" name="DierDropdown">
-                <option></option>
-                @{}
-                  @foreach (var item in ViewBag.Dier) { 
-                      <option value="@item">@item</option>
-                  }
-                </select>
-                SubKlasse:<select id="SubklassDropwdown" name="SubklasseDropdown">
-                <option></option>
-                    @foreach (var item in ViewBag.Subklasse)
-                    {
-                        <option value="@item">@item</option>
-                    }
-                </select>
-                MinPrijs;<input type="text" id="minPrijs" name="minPrijs"/>
-                MaxPrijs:<input type="text" id="maxPrijs" name="maxPrijs"/>
-                <input type="submit" />
-            </form>
-            
-        </div>
-        <div class="row">
-            @foreach (var item in ViewBag.Voorraad)
-            {
-                <div id="browsProductContainer" class="col-sm-3 offset-1">
-                    <img src="@item.image"  onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';"    style="width:140px;height:140px;" />
-                    <br />
-                    <p><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@item.Naam</a> <br />&euro; @item.Prijs</p>
+    <div class="container-fluid">
+        <div id="browsProduct">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-inline">
+                        <form method="post" asp-controller="Voorraad" asp-action="Search" asp-route-productSearch="@ViewBag.SearchedString">
+                            <select id="DierDropdown" name="DierDropdown" class="form-control">
+                                <option value="" disabled selected>Dier</option>
+                                @{}
+                                @foreach (var item in ViewBag.Dier)
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            </select>
+                            <select id="SubklassDropwdown" name="SubklasseDropdown" class="form-control">
+                                <option value="" disabled selected>Subklasse</option>
+                                @foreach (var item in ViewBag.Subklasse)
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            </select>
+                            <input type="text" class="form-control" id="minPrijs" name="minPrijs" placeholder="Minimale prijs" />
+                            <input type="text" class="form-control" id="maxPrijs" name="maxPrijs" placeholder="Maximale prijs" />
+                            <input type="submit" class="btn btn-success" />
+                        </form>
+                    </div>
                 </div>
-            }
+                @foreach (var item in ViewBag.Voorraad)
+                {
+                    <div id="browsProductContainer" class="col-sm-3 offset-1">
+                        <img src="@item.image" onerror="this.onerror=null;this.src='../Content/Images/dogfood.jpg';" style="width:140px;height:140px;" />
+                        <br />
+                        <p><a asp-area="" asp-controller="Home" asp-action="productpage" asp-route-identication="@item.Id">@item.Naam</a> <br />&euro; @item.Prijs</p>
+                    </div>
+                }
+            </div>
         </div>
     </div>
     <!--end products-->
@@ -63,7 +67,7 @@
         string lvis;
         var second = ViewBag.paginationindex - 1;
         var third = ViewBag.paginationindex + 1;
-        if(second != 0)
+        if (second != 0)
         {
             fvis = "visible";
         }
@@ -71,7 +75,7 @@
         {
             fvis = "hidden";
         }
-        if(third >= (ViewBag.count/16)+2 )
+        if (third >= (ViewBag.count / 16) + 2)
         {
             lvis = "hidden";
         }
@@ -79,7 +83,7 @@
         {
             lvis = "visible";
         }
-        if(second < 1)
+        if (second < 1)
         {
             second = 1;
         }
@@ -89,17 +93,24 @@
             <ul class="pagination">
                 <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
                 <li class="page-item" style="visibility:@fvis">
-                <a class="page-link" asp-area="" asp-controller="Voorraad" asp-action="ProductSearch"  asp-route-P="@second"
-                asp-route-DierDropdown="@ViewBag.a" asp-route-SubklasseDropdown="@ViewBag.b" asp-route-minPrijs="@ViewBag.c" asp-route-maxPrijs="@ViewBag.d" asp-route-s="@ViewBag.SearchedString">@second</a></li>
-                <li class="page-item"><a style="color:black;"class="page-link" asp-area="" asp-controller="Voorraad" 
-                asp-action="ProductSearch" asp-route-P="@ViewBag.paginationindex"  
-                asp-route-DierDropdown="@ViewBag.a" asp-route-SubklasseDropdown="@ViewBag.b" asp-route-minPrijs="@ViewBag.c" asp-route-maxPrijs="@ViewBag.d" asp-route-s="@ViewBag.SearchedString">@ViewBag.paginationindex</a></li>
-                <li class="page-item" style="visibility:@lvis"><a class="page-link" asp-area="" asp-controller="Voorraad" asp-action="ProductSearch"  asp-route-P="@third"
-                asp-route-DierDropdown="@ViewBag.a" asp-route-SubklasseDropdown="@ViewBag.b" asp-route-minPrijs="@ViewBag.c" asp-route-maxPrijs="@ViewBag.d" asp-route-s="@ViewBag.SearchedString">@third</a></li>
+                    <a class="page-link" asp-area="" asp-controller="Voorraad" asp-action="ProductSearch" asp-route-P="@second"
+                       asp-route-DierDropdown="@ViewBag.a" asp-route-SubklasseDropdown="@ViewBag.b" asp-route-minPrijs="@ViewBag.c" asp-route-maxPrijs="@ViewBag.d" asp-route-s="@ViewBag.SearchedString">@second</a>
+                </li>
+                <li class="page-item">
+                    <a style="color:black;" class="page-link" asp-area="" asp-controller="Voorraad"
+                       asp-action="ProductSearch" asp-route-P="@ViewBag.paginationindex"
+                       asp-route-DierDropdown="@ViewBag.a" asp-route-SubklasseDropdown="@ViewBag.b" asp-route-minPrijs="@ViewBag.c" asp-route-maxPrijs="@ViewBag.d" asp-route-s="@ViewBag.SearchedString">@ViewBag.paginationindex</a>
+                </li>
+                <li class="page-item" style="visibility:@lvis">
+                    <a class="page-link" asp-area="" asp-controller="Voorraad" asp-action="ProductSearch" asp-route-P="@third"
+                       asp-route-DierDropdown="@ViewBag.a" asp-route-SubklasseDropdown="@ViewBag.b" asp-route-minPrijs="@ViewBag.c" asp-route-maxPrijs="@ViewBag.d" asp-route-s="@ViewBag.SearchedString">@third</a>
+                </li>
                 <!--<li class="page-item"><a class="page-link" href="#">Next</a></li>-->
             </ul>
         </div>
     </div>
     <!--end page pagination-->
 </div>
+
+
 
