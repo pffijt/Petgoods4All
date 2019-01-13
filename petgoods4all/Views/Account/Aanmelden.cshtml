@@ -86,7 +86,7 @@
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <form class="form-signin" method="post">
         <div class="container-fluid" style="background-color:#ffe8d3;">
 
@@ -94,18 +94,22 @@
                 <h1 class="h3 mb-3 font-weight-normal">Registreren</h1>
             </div>
             <div class="form-label-group">
+                <span id='statusVoornaam'></span><br>
                 <label for="voornaam">Voornaam</label>
                 <input type="text" id="inputVoornaam" name="inputVoornaam" class="form-control" placeholder="Voornaam" required>
             </div>
             <div class="form-label-group">
+                <span id='statusAchternaam'></span><br>
                 <label for="achternaam">Achternaam</label>
                 <input type="text" id="inputAchternaam" name="inputAchternaam" class="form-control" placeholder="Achternaam" required>
             </div>
             <div class="form-label-group">
+                <span id='statusStraatnaam'></span><br>
                 <label for="straatnaam">Straatnaam</label>
                 <input type="text" id="inputStraatnaam" name="inputStraatnaam" class="form-control" placeholder="Straatnaam" required>
             </div>
             <div class="form-label-group">
+                <span id='statusHuisnummer'></span><br>
                 <label for="straatnaam">Huisnummer</label>
                 <input type="text" id="inputHuisnummer" name="inputHuisnummer" class="form-control" placeholder="Huisnummer" required>
             </div>
@@ -115,7 +119,8 @@
                 <input type="text" id="inputPostcode" name="inputPostcode" class="form-control" placeholder="Postcode" onkeyup='postcodeCheck();' required>
             </div>
             <div class="form-label-group">
-                <label for="straatnaam">Provincie</label>
+                <span id='statusProvincie'></span><br>
+                <label for="Provincie">Provincie</label>
                 <input type="text" id="inputProvincie" name="inputProvincie" class="form-control" placeholder="Provincie" required>
             </div>
             <div class="form-label-group">
@@ -134,6 +139,7 @@
                 <input type="email" id="confirmEmail" name="confirmEmail" class="form-control" placeholder="Bevestig email" onkeyup='checkmatchingEmail();' required>
             </div>
             <div class="form-label-group">
+                <span id='statusWachtwoord'></span><br>
                 <label for="inputPassword">Wachtwoord</label>
                 <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Wachtwoord" required>
             </div>
