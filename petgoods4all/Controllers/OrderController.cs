@@ -212,6 +212,14 @@ namespace petgoods4all.Controllers
             o_number = o_number.Replace(" ","_");
             if(UserId == null)
             {
+                var checkEmail = (from s in db.Account where s.email == o_email select s.email).Any();
+                if(checkEmail == true)
+                {
+                    var getEmail = (from s in db.Account where s.email == o_email select s).Single();
+                    HttpContext.Session.SetInt32("SessionAccountId", getEmail.id);
+                    db.Account.Remove(getEmail);
+                    db.SaveChanges();
+                }
                 UserId = HttpContext.Session.GetInt32("SessionAccountId");
                 Account a = new Account
                 {
@@ -228,8 +236,8 @@ namespace petgoods4all.Controllers
                 IsUnregistered = true
                 };
 
-            db.Account.Add(a);
-            db.SaveChanges();
+                db.Account.Add(a);
+                db.SaveChanges();
             }
             int UserIdResult = (from s in db.Account where s.id == UserId select s.id).Single();
             o_name =  (from s in db.Account where s.id == UserIdResult select s.achternaam).Single();
@@ -475,8 +483,12 @@ namespace petgoods4all.Controllers
                 //var delUser = (from s in db.Account where s.id == UserId select s).Single();
                 //db.Account.Remove(delUser);
                 //db.SaveChanges();
-                
-                HttpContext.Session.SetInt32("SessionAccountId", UserId.GetValueOrDefault(0)+1);
+                var AccountResult = from r in db.Account select r.id;
+                HttpContext.Session.Remove("SessionAccountId");
+                int? randomAccountIdSum = AccountResult.Max() + 1;
+                int randomAccountId = randomAccountIdSum.GetValueOrDefault();
+                HttpContext.Session.SetInt32("SessionAccountId", randomAccountId);
+
                 return Redirect("http://localhost:56003/Order/Bedankt");
             }
         }
