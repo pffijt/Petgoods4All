@@ -9,28 +9,34 @@
         <div class="container-fluid" style="background-color:#ffe8d3;">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>Bestel Geschiedenis</h2>
+                    <h2>Bestelgeschiedenis</h2>
                 </div>
             </div>
             <!-- WHEN NOT HARDCODED THESE SHOULD BE GENERATED WITH A FOREACH -->
             <div class="row">
 
                 <div class="col-md-12">
-                    <table class="table">
+                    <table class="table table-responsive table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Ordernummer</th>
+                                <th>Datum</th>
+                                <th>Prijs</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
                         @foreach (var item in ViewBag.Orders)
                         {
-                            <tr>
-                                <td>Bestelling @item.Id</td>
-                                <td>Datum @item.Datum</td>
-                            </tr>
-                            <tr>
-                                <td>&#8364; @item.Prijs</td>
-                                <td>Status @item.OrderStatus</td>
-                            </tr>
-                            <tr>
-                                <td><a asp-controller="Order" asp-action="ViewOrder" asp-route-orderId="@item.Id">Bestelling bekijken</a></td>
-                            </tr>
-                            <br>
+                            <tbody class="thead-light">
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Datum.ToString("dd MMMM yyyy")</td>
+                                    <td>&#8364; @item.Prijs</td>
+                                    <td>Status @item.OrderStatus</td>
+                                    <td><a asp-controller="Order" asp-action="ViewOrder" asp-route-orderId="@item.Id">Bestelling bekijken</a></td>
+                                </tr>
+                            </tbody>
                         }
                     </table>
                 </div>

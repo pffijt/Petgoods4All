@@ -20,10 +20,38 @@
         <label for="sel2">Sorteer: </label>
         <select class="form-control" id="sel2" name="sel2" asp-controller="Home" asp-action="productBrowsen" type="submit" onchange="this.form.submit()" style="display: inline-block;">
             <option> </option>
-            <option>Prijs ophogend</option>
-            <option>Prijs verlagend</option>
-            <option>Alfabetisch A-Z</option>
-            <option>Alfabetisch Z-A</option>
+            @if(@ViewBag.sel2 == "Prijs ophogend")
+            {
+            <option selected>Prijs ophogend</option>
+            }
+            else
+            {
+            <option>Prijs ophogend</option>   
+            }
+            @if(@ViewBag.sel2 == "Prijs verlagend")
+            {
+            <option selected>Prijs verlagend</option>
+            }
+            else
+            {
+            <option>Prijs verlagend</option>   
+            }
+            @if(@ViewBag.sel2 == "Alfabetisch A-Z<")
+            {
+            <option selected>Alfabetisch A-Z</option>
+            }
+            else
+            {
+            <option>Alfabetisch A-Z</option>   
+            }
+            @if(@ViewBag.sel2 == "Alfabetisch Z-A")
+            {
+            <option selected>Alfabetisch Z-A</option>
+            }
+            else
+            {
+            <option>Alfabetisch Z-A</option>   
+            }
         </select>
         </form>
         </div>
