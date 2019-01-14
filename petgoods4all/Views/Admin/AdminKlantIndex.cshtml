@@ -24,7 +24,7 @@
             </button><br/><br/>
             <button 
                 type="submit" asp-area="" asp-controller="Admin" asp-action="AdminCreateAccount" 
-                class="btn btn-warning ">Nieuwe klant
+                class="btn btn-warning ">Nieuwe klant toevoegen
             </button>
         </form>
         </div>
@@ -32,7 +32,7 @@
    
     <div style="display: inline-block;">
         <form class="nav navbar-form form-inline" method="post" asp-controller="Admin" asp-action="AdminKlantIndex">
-            <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op email" aria-label="Search" id="accountSearch" name="accountSearch" style="display: inline-block;">
+            <input class="form-control mr-sm-2" type="search" placeholder="Zoeken op e-mailadres" aria-label="Search" id="accountSearch" name="accountSearch" style="display: inline-block;">
         </form>
     </div>
     <div>
@@ -40,7 +40,7 @@
             Sorteer op:<br>
             <select class="form-control" id="Categories" name="Categories" style="display: inline-block;">
                 <option></option>
-                <option>Email</option>
+                <option>E-mail</option>
                 <option>Admin</option>
             </select>
             <input class="btn btn-success" type="submit" style="display: inline-block;"/>
@@ -51,7 +51,7 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.email)
+                        @Html.DisplayName("E-mailadres")
                     </th>
                     <th> 
                         @Html.DisplayNameFor(model => model.Admin)

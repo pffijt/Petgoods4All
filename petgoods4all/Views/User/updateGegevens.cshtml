@@ -9,7 +9,7 @@
 
     <div class="container-fluid" style="background-color:#ffe8d3;">
         <div class="row">
-            <h2>Gegevens beheer</h2>
+            <h2>Gegevensbeheer</h2>
             <p>
                 <a href="~/User/UserHome">Home</a>
             </p>
@@ -19,7 +19,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="id" />
                 <div class="form-group">
-                    <label asp-for="email" class="control-label"></label>
+                    <label asp-for="email" class="control-label">E-mailadres</label>
                     <input asp-for="email" class="form-control" />
                     <span asp-validation-for="email" class="text-danger"></span>
                 </div>
